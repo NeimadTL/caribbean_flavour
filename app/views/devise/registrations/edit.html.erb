@@ -46,7 +46,9 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "phone_number" }%>
-
+    <%= f.input :is_farmer,
+                as: :boolean,
+                label: 'I\'m a farmer' %>
     <%= f.input :password,
                 hint: "leave it blank if you don't want to change it",
                 required: false,

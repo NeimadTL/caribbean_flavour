@@ -5,7 +5,8 @@ class CustomisedRegistrationsController < Devise::RegistrationsController
     :phone_number, :city, :street,
     :additional_address_information,
     :postcode, :country, :email,
-    :password, :password_confirmation
+    :password, :password_confirmation,
+    :is_farmer
   ]
 
   def create
