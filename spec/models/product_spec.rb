@@ -12,4 +12,7 @@ RSpec.describe Product, type: :model do
 
   it { should belong_to :product_category }
 
+  it { should have_many :stocks }
+  it { should have_many :shops }
+
 end

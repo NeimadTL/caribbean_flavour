@@ -7,4 +7,7 @@ class Product < ApplicationRecord
 
   belongs_to :product_category
 
+  has_many :stocks, foreign_key: "product_reference"
+  has_many :shops, through: :stocks
+
 end
