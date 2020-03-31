@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+<div class="">
+  <p>Reference : <%= @product.reference %></p>
+  <p>Name : <%= @product.name %>  </p>
+  <p>Category : <%= @product.product_category.name %>  </p>
+</div>
+
+<%= link_to 'Edit', edit_admin_product_path(@product) %> |
+<%= link_to 'Back', admin_products_path %>
