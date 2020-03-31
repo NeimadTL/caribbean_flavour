@@ -12,4 +12,6 @@ RSpec.describe Shop, type: :model do
   it { should have_many :stocks }
   it { should have_many :products }
 
+  it { should belong_to :user }
+
 end

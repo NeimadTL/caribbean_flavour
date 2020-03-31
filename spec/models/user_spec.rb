@@ -12,4 +12,6 @@ RSpec.describe User, type: :model do
   it { should validate_presence_of :postcode }
   it { should validate_presence_of :country }
 
+  it { should have_one :shop }
+
 end

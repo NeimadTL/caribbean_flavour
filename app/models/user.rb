@@ -13,4 +13,6 @@ class User < ApplicationRecord
   validates :postcode, presence: true
   validates :country, presence: true
 
+  has_one :shop
+
 end
