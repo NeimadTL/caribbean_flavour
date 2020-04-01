@@ -1,0 +1,20 @@
+<%= simple_form_for @shop, url: partner_shops_path do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :name,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "name" }%>
+    <% @products = Product.where(product_category_id: ProductCategory::FARMING_CATEGORY_CODE) %>
+    <%= f.collection_check_boxes :product_ids, @products, :reference, :name %>
+
+
+  </div>
+
+  <br>
+  <div class="form-actions">
+    <%= f.button :submit, "Create Shop", class: 'btn btn-primary' %>
+  </div>
+<% end %>

@@ -1,0 +1,43 @@
+class Partner::ShopsController < ApplicationController
+
+  def index
+  end
+
+  def farming
+    @shop = Shop.new
+  end
+
+  def fishing
+  end
+
+  def create
+    @shop = Shop.new(shop_params.merge(user: current_user))
+
+    respond_to do |format|
+      if @shop.save
+        format.html { redirect_to partner_shop_path(@shop), notice: 'Shop was successfully created.' }
+        format.json { render :show, status: :created, location: @shop }
+      else
+        format.html { render :farming }
+        format.json { render json: @shop.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def show
+  end
+
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    # def set_product
+    #   @product = Product.find(params[:id])
+    # end
+
+
+    # Only allow a list of trusted parameters through.
+    def shop_params
+      params.require(:shop).permit(:name, :product_ids => [])
+    end
+
+end

@@ -4,4 +4,14 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :products
   end
+
+  namespace :partner do
+    resources :shops, only: [:index, :create, :show] do
+      collection do
+        get 'farming'
+        get 'fishing'
+      end
+
+    end
+  end
 end
