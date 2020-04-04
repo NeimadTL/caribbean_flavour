@@ -2,8 +2,9 @@ class Shop < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
 
-  has_many :stocks
-  has_many :products, through: :stocks
+  has_many :stocks, dependent: :destroy
+  has_many :products, through: :stocks, dependent: :destroy
+  accepts_nested_attributes_for :stocks
 
   belongs_to :user
 

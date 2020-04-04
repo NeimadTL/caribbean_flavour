@@ -1,4 +1,4 @@
-<%= simple_form_for @shop, url: partner_shops_path do |f| %>
+<%= simple_form_for @shop, url: partner_shops_path  do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
@@ -7,8 +7,25 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "name" }%>
-    <% @products = Product.where(product_category_id: ProductCategory::FARMING_CATEGORY_CODE) %>
-    <%= f.collection_check_boxes :product_ids, @products, :reference, :name %>
+
+    <%= f.simple_fields_for(:stocks) do |stocks_field| %>
+
+      <%= stocks_field.collection_select(:product_reference,
+          Product.where(product_category_id: ProductCategory::FARMING_CATEGORY_CODE),
+          :reference, :name, prompt: 'Please select a product',
+          class: 'dropdown-menu form-control') %>
+
+      <%= stocks_field.input :price,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "name" } %>
+    <% end %>
+
+    <div id="product-details" class="product-details">
+      <!-- placeholder for showing product details for additional product -->
+    </div>
+
+    <button id="add-product-btn" class="btn btn-primary" type="button" name="button">+</button>
 
 
   </div>
