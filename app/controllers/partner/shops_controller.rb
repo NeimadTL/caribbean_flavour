@@ -1,6 +1,7 @@
 class Partner::ShopsController < ApplicationController
 
   def index
+    redirect_to partner_shop_path(current_user.shop) unless current_user.shop.nil?
   end
 
   def farming

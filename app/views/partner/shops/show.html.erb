@@ -1,1 +1,22 @@
-<%= current_user.shop.products.inspect %>
+<br><h1>Welcome to <%= current_user.shop.name %></h1><br>
+
+<table class="table">
+
+    <caption>List of products</caption>
+    <thead>
+      <tr>
+        <th scope="col">Reference</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% current_user.shop.products.each do |product| %>
+        <tr>
+          <td><%= product.reference %></td>
+          <td><%= product.name %></td>
+          <td><%= number_to_currency(number_to_human(Stock.price_of(product, current_user.shop))) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+</table>
