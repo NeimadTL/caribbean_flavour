@@ -11,7 +11,7 @@ Rails.application.routes.draw do
         get 'farming'
         get 'fishing'
       end
-
+    resources :stocks
     end
   end
 end

@@ -1,22 +1,41 @@
 <br><h1>Welcome to <%= current_user.shop.name %></h1><br>
 
 <table class="table">
-
     <caption>List of products</caption>
     <thead>
       <tr>
         <th scope="col">Reference</th>
         <th scope="col">Name</th>
         <th scope="col">Price</th>
+        <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
-      <% current_user.shop.products.each do |product| %>
+      <% current_user.shop.stocks.each do |stock| %>
         <tr>
-          <td><%= product.reference %></td>
-          <td><%= product.name %></td>
-          <td><%= number_to_currency(number_to_human(Stock.price_of(product, current_user.shop))) %></td>
+          <td><%= stock.product.reference %></td>
+          <td><%= stock.product.name %></td>
+          <td><%= number_to_currency(number_to_human(Stock.price_of(stock.product, current_user.shop))) %></td>
+          <td>
+            <div class="dropdown">
+              <button style="background-color: Transparent;background-repeat:no-repeat;border: none;
+                cursor:pointer;overflow: hidden; outline:none;" class="" type="button" id="dropdownMenu2"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= image_tag("ellipsis-horizontal-outline.svg", size: "24") do %>
+              </button>
+              <% end %>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <%= link_to 'Update', edit_partner_shop_stock_path(current_user.shop, stock), class: 'dropdown-item' %>
+                <%= link_to 'Delete', partner_shop_stock_path(current_user.shop, stock), method: :delete,
+                    data: { confirm: 'Are you sure?' }, class: 'dropdown-item' %>
+              </div>
+            </div>
+
+
+          </td>
         </tr>
       <% end %>
     </tbody>
 </table>
+
+<%= link_to 'Add new product', new_partner_shop_stock_path(current_user.shop), class: 'btn btn-primary' %>
