@@ -8,4 +8,7 @@ class Shop < ApplicationRecord
 
   belongs_to :user
 
+  has_many :shop_delivery_options
+  has_many :delivery_options, through: :shop_delivery_options
+
 end

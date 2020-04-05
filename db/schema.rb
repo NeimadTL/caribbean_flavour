@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_31_202916) do
+ActiveRecord::Schema.define(version: 2020_04_05_143710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "delivery_options", force: :cascade do |t|
+    t.integer "code", null: false
+    t.string "option", default: "", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "product_categories", force: :cascade do |t|
     t.integer "code", null: false
@@ -28,6 +35,16 @@ ActiveRecord::Schema.define(version: 2020_03_31_202916) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "product_category_id", null: false
+  end
+
+  create_table "shop_delivery_options", force: :cascade do |t|
+    t.integer "shop_id", null: false
+    t.integer "delivery_option_code", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["delivery_option_code"], name: "index_shop_delivery_options_on_delivery_option_code"
+    t.index ["shop_id", "delivery_option_code"], name: "index_shop_delivery_options_on_shop_id_and_delivery_option_code"
+    t.index ["shop_id"], name: "index_shop_delivery_options_on_shop_id"
   end
 
   create_table "shops", force: :cascade do |t|
