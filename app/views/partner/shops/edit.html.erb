@@ -1,0 +1,16 @@
+<%= simple_form_for current_user.shop, url: partner_shop_path(current_user.shop)  do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :name,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "name" } %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Save shop settings", class: 'btn btn-primary' %>
+  </div>
+
+<% end %>

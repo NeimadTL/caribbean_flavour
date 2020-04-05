@@ -18,8 +18,7 @@
           <td><%= number_to_currency(number_to_human(stock.price)) %></td>
           <td>
             <div class="dropdown">
-              <button style="background-color: Transparent;background-repeat:no-repeat;border: none;
-                cursor:pointer;overflow: hidden; outline:none;" class="" type="button" id="dropdownMenu2"
+              <button class="transparent-btn" type="button" id="dropdownMenu2"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <%= image_tag("ellipsis-horizontal-outline.svg", size: "24") do %>
               </button>
@@ -39,3 +38,6 @@
 </table>
 
 <%= link_to 'Add new product', new_partner_shop_stock_path(current_user.shop), class: 'btn btn-primary' %>
+<%= link_to edit_partner_shop_path(current_user.shop), class: 'btn transparent-btn' do %>
+  <%= image_tag("build-outline.svg", size: "24") %>
+<% end %>

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end
 
   namespace :partner do
-    resources :shops, only: [:index, :create, :show] do
+    resources :shops, only: [:index, :create, :show, :edit, :update] do
       collection do
         get 'farming'
         get 'fishing'

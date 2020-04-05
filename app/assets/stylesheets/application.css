@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+
+ transparent-btn {
+   background-color: Transparent;
+   background-repeat:no-repeat;
+   border: none;
+   cursor:pointer;
+   overflow: hidden;
+   outline:none;
+  }
