@@ -1,10 +1,11 @@
 class Partner::ShopsController < ApplicationController
+  before_action :set_shop, only: [:show, :edit, :update]
 
   def index
     redirect_to partner_shop_path(current_user.shop) unless current_user.shop.nil?
   end
 
-  def farming
+  def new
     @shop = Shop.new
   end
 
@@ -32,21 +33,21 @@ class Partner::ShopsController < ApplicationController
 
   def update
     respond_to do |format|
-      if current_user.shop.update(shop_params)
-        format.html { redirect_to partner_shop_path(current_user.shop), notice: 'Shop was successfully updated.' }
-        format.json { render :show, status: :ok, location: current_user.shop }
+      if @shop.update(shop_params)
+        format.html { redirect_to partner_shop_path(@shop), notice: 'Shop was successfully updated.' }
+        format.json { render :show, status: :ok, location: @shop }
       else
         format.html { render :edit }
-        format.json { render json: current_user.shop.errors, status: :unprocessable_entity }
+        format.json { render json: @shop.errors, status: :unprocessable_entity }
       end
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    # def set_product
-    #   @product = Product.find(params[:id])
-    # end
+    def set_shop
+      @shop = Shop.find(params[:id])
+    end
 
 
     # Only allow a list of trusted parameters through.

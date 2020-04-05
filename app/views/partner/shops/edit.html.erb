@@ -1,17 +1,5 @@
-<%= simple_form_for current_user.shop, url: partner_shop_path(current_user.shop)  do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+<h1>Treak your shop</h1>
 
-  <div class="form-inputs">
-    <%= f.input :name,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "name" } %>
-    <%= f.association :delivery_options, label_method: :option, value_method: :code, as: :check_boxes %>                
-  </div>
+<%= render 'form', shop: @shop %>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Save shop settings", class: 'btn btn-primary' %>
-  </div>
-
-<% end %>
+<%= link_to 'Back', partner_shop_path(@shop) %>
