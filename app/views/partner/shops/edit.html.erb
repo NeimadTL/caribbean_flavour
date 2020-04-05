@@ -7,6 +7,7 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "name" } %>
+    <%= f.association :delivery_options, label_method: :option, value_method: :code, as: :check_boxes %>                
   </div>
 
   <div class="form-actions">

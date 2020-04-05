@@ -1,7 +1,12 @@
 <br><h1>Welcome to <%= current_user.shop.name %></h1><br>
 
+<h5>Delivery Options</h5>
+<% current_user.shop.delivery_options.each do |delivery_option| %>
+  <span class="badge badge-info"><%= delivery_option.option %></span>
+<% end %><br><br>
+
+<h5>Products</h5>
 <table class="table">
-    <caption>List of products</caption>
     <thead>
       <tr>
         <th scope="col">Reference</th>
@@ -22,7 +27,6 @@
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <%= image_tag("ellipsis-horizontal-outline.svg", size: "24") %>
               </button>
-              <% end %>
               <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                 <%= link_to 'Update', edit_partner_shop_stock_path(current_user.shop, stock), class: 'dropdown-item' %>
                 <%= link_to 'Delete', partner_shop_stock_path(current_user.shop, stock), method: :delete,

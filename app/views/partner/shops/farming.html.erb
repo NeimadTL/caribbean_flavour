@@ -18,8 +18,10 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "price" } %>
-    <% end %>
 
+
+    <% end %>
+    <%= f.association :delivery_options, label_method: :option, value_method: :code, as: :check_boxes %>
     <div id="product-details" class="product-details">
       <!-- placeholder for showing product details for additional product -->
     </div>

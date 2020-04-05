@@ -6,7 +6,15 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+ProductCategory.delete_all
+DeliveryOption.delete_all
+
 
 ProductCategory.create!(code: ProductCategory::FARMING_CATEGORY_CODE, name: 'FARMING')
 ProductCategory.create!(code: ProductCategory::FISHING_CATEGORY_CODE, name: 'FISHING')
 ProductCategory.create!(code: ProductCategory::CATERING_CATEGORY_CODE, name: 'CATERING')
+
+DeliveryOption.create!(code: DeliveryOption::CUSTOMER_PLACE_OPTION_CODE, option: "Customer's place")
+DeliveryOption.create!(code: DeliveryOption::SHOP_OWNER_PLACE_OPTION_CODE, option: "My place")
+DeliveryOption.create!(code: DeliveryOption::PARCEL_PICKUP_POINT_OPTION_CODE, option: "Parcel pick-up point")
+DeliveryOption.create!(code: DeliveryOption::MARKET_PLACE_OPTION_CODE, option: "Marketplace")
