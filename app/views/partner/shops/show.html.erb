@@ -15,7 +15,7 @@
         <tr>
           <td><%= stock.product.reference %></td>
           <td><%= stock.product.name %></td>
-          <td><%= number_to_currency(number_to_human(Stock.price_of(stock.product, current_user.shop))) %></td>
+          <td><%= number_to_currency(number_to_human(stock.price)) %></td>
           <td>
             <div class="dropdown">
               <button style="background-color: Transparent;background-repeat:no-repeat;border: none;
