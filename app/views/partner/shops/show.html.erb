@@ -1,8 +1,13 @@
 <br><h1>Welcome to <%= current_user.shop.name %></h1><br>
 
 <h5>Delivery Options</h5>
-<% current_user.shop.delivery_options.each do |delivery_option| %>
-  <span class="badge badge-info"><%= delivery_option.option %></span>
+<div class="" style="margin-bottom:16px;">
+  <% current_user.shop.delivery_options.each do |delivery_option| %>
+    <span class="badge badge-info"><%= delivery_option.option %></span>
+  <% end %>
+</div>
+<%= link_to edit_partner_shop_path(current_user.shop), class: 'btn btn-sm transparent-btn' do %>
+  <%= image_tag("build-outline.svg", size: "24") %>
 <% end %><br><br>
 
 <h5>Products</h5>
@@ -41,7 +46,6 @@
     </tbody>
 </table>
 
-<%= link_to 'Add new product', new_partner_shop_stock_path(current_user.shop), class: 'btn btn-primary' %>
-<%= link_to edit_partner_shop_path(current_user.shop), class: 'btn transparent-btn' do %>
-  <%= image_tag("build-outline.svg", size: "24") %>
+<%= link_to new_partner_shop_stock_path(current_user.shop), class: 'btn btn-sm transparent-btn' do %>
+  <%= image_tag("add-outline.svg", size: "24") %>
 <% end %>

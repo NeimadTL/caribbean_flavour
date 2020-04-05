@@ -4,7 +4,6 @@ class Shop < ApplicationRecord
 
   has_many :stocks, dependent: :destroy
   has_many :products, through: :stocks, dependent: :destroy
-  accepts_nested_attributes_for :stocks
 
   belongs_to :user
 

@@ -3,32 +3,8 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.input :name,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "name" }%>
-
-    <%= f.simple_fields_for(:stocks) do |stocks_field| %>
-
-      <%= stocks_field.select :product_reference,
-        Product.where(product_category_id: ProductCategory::FARMING_CATEGORY_CODE).collect {|p| [ p.name, p.reference ] },
-        { :prompt => "Please select a product" }, class: 'form-control' %>
-
-      <%= stocks_field.input :price,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "price" } %>
-
-
-    <% end %>
+    <%= f.input :name, required: true, autofocus: true, input_html: { autocomplete: "name" }%>
     <%= f.association :delivery_options, label_method: :option, value_method: :code, as: :check_boxes %>
-    <div id="product-details" class="product-details">
-      <!-- placeholder for showing product details for additional product -->
-    </div>
-
-    <button id="add-product-btn" class="btn btn-primary" type="button" name="button">+</button>
-
-
   </div>
 
   <br>

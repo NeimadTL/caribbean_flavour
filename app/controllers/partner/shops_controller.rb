@@ -6,7 +6,6 @@ class Partner::ShopsController < ApplicationController
 
   def farming
     @shop = Shop.new
-    @shop.stocks.build
   end
 
   def fishing
@@ -52,7 +51,7 @@ class Partner::ShopsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def shop_params
-      params.require(:shop).permit(:name, delivery_option_ids: [], stocks_attributes: [:product_reference, :price])
+      params.require(:shop).permit(:name, delivery_option_ids: [])
     end
 
 end
