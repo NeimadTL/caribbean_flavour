@@ -10,10 +10,9 @@
 
     <%= f.simple_fields_for(:stocks) do |stocks_field| %>
 
-      <%= stocks_field.collection_select(:product_reference,
-          Product.where(product_category_id: ProductCategory::FARMING_CATEGORY_CODE),
-          :reference, :name, prompt: 'Please select a product',
-          class: 'dropdown-menu form-control') %>
+      <%= stocks_field.select :product_reference,
+        Product.where(product_category_id: ProductCategory::FARMING_CATEGORY_CODE).collect {|p| [ p.name, p.reference ] },
+        { :prompt => "Please select a product" }, class: 'form-control' %>
 
       <%= stocks_field.input :price,
                 required: true,

@@ -1,18 +1,13 @@
 <%= simple_form_for @stock, url: @stock.persisted? ? partner_shop_stock_path :
-  partner_shop_stocks_path, class: "form-inline" do |f| %>
+  partner_shop_stocks_path do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.collection_select(:product_reference,
-        Product.where(product_category_id: ProductCategory::FARMING_CATEGORY_CODE),
-        :reference, :name, prompt: 'Please select a product',
-        class: 'dropdown-menu form-control') %>
-
-    <%= f.input :price,
-              required: true,
-              autofocus: true,
-              input_html: { autocomplete: "price" } %>
+    <%= f.select :product_reference,
+      Product.where(product_category_id: ProductCategory::FARMING_CATEGORY_CODE).collect {|p| [ p.name, p.reference ] },
+      { :prompt => "Please select a product" }, class: 'form-control' %>
+    <%= f.input :price, required: true, autofocus: true, input_html: { autocomplete: "price" } %>
   </div>
 
   <div class="form-actions">
