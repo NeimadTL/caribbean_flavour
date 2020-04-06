@@ -19,7 +19,7 @@ class Partner::ShopsController < ApplicationController
         format.html { redirect_to partner_shop_path(@shop), notice: 'Shop was successfully created.' }
         format.json { render :show, status: :created, location: @shop }
       else
-        format.html { render :farming }
+        format.html { render :new }
         format.json { render json: @shop.errors, status: :unprocessable_entity }
       end
     end
@@ -52,7 +52,7 @@ class Partner::ShopsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def shop_params
-      params.require(:shop).permit(:name, delivery_option_ids: [])
+      params.require(:shop).permit(:name, :product_category_code, delivery_option_ids: [])
     end
 
 end

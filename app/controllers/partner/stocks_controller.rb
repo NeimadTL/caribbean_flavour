@@ -15,6 +15,8 @@ class Partner::StocksController < ApplicationController
   # GET /stocks/new
   def new
     @stock = Stock.new
+    shop = Shop.find(params[:shop_id])
+    @products = Product.where(product_category_id: shop.product_category_code)
   end
 
   # GET /stocks/1/edit

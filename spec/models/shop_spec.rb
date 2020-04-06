@@ -17,4 +17,5 @@ RSpec.describe Shop, type: :model do
   it { should have_many :shop_delivery_options }
   it { should have_many :delivery_options }
 
+  it { should belong_to :product_category }
 end

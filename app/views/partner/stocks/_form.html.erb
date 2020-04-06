@@ -4,8 +4,7 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.select :product_reference,
-      Product.where(product_category_id: ProductCategory::FARMING_CATEGORY_CODE).collect {|p| [ p.name, p.reference ] },
+    <%= f.select :product_reference, @products.collect {|p| [ p.name, p.reference ] },
       { :prompt => "Please select a product" }, class: 'form-control' %>
     <%= f.input :price, required: true, autofocus: true, input_html: { autocomplete: "price" } %>
   </div>

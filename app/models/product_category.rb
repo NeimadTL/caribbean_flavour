@@ -10,5 +10,6 @@ class ProductCategory < ApplicationRecord
   validates :name, presence: true, uniqueness: true
 
   has_one :product
-  
+  has_one :shop, foreign_key: "product_category_code"
+
 end

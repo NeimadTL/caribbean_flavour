@@ -12,5 +12,6 @@ RSpec.describe ProductCategory, type: :model do
   end
 
   it { should have_one :product }
+  it { should have_one :shop }
 
 end

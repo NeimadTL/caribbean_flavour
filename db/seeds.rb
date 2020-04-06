@@ -10,9 +10,9 @@ ProductCategory.delete_all
 DeliveryOption.delete_all
 
 
-ProductCategory.create!(code: ProductCategory::FARMING_CATEGORY_CODE, name: 'FARMING')
-ProductCategory.create!(code: ProductCategory::FISHING_CATEGORY_CODE, name: 'FISHING')
-ProductCategory.create!(code: ProductCategory::CATERING_CATEGORY_CODE, name: 'CATERING')
+ProductCategory.create!(code: ProductCategory::FARMING_CATEGORY_CODE, name: 'Farming')
+ProductCategory.create!(code: ProductCategory::FISHING_CATEGORY_CODE, name: 'Fishing')
+ProductCategory.create!(code: ProductCategory::CATERING_CATEGORY_CODE, name: 'Catering')
 
 DeliveryOption.create!(code: DeliveryOption::CUSTOMER_PLACE_OPTION_CODE, option: "Customer's place")
 DeliveryOption.create!(code: DeliveryOption::SHOP_OWNER_PLACE_OPTION_CODE, option: "My place")
