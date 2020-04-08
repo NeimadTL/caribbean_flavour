@@ -1,5 +1,6 @@
 class Partner::StocksController < ApplicationController
   before_action :set_stock, only: [:show, :edit, :update, :destroy]
+  before_action :set_products, only: [:new, :create, :edit, :update]
 
   # GET /stocks
   # GET /stocks.json
@@ -15,8 +16,6 @@ class Partner::StocksController < ApplicationController
   # GET /stocks/new
   def new
     @stock = Stock.new
-    shop = Shop.find(params[:shop_id])
-    @products = Product.where(product_category_id: shop.product_category_code)
   end
 
   # GET /stocks/1/edit
@@ -67,6 +66,11 @@ class Partner::StocksController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_stock
       @stock = Stock.find(params[:id])
+    end
+
+    def set_products
+      shop = Shop.find(params[:shop_id])
+      @products = Product.where(product_category_id: shop.product_category_code)
     end
 
     # Only allow a list of trusted parameters through.
