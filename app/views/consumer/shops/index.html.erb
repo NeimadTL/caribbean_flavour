@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Shops</h1>
+
+<div class="row">
+  <% @shops.each do |shop| %>
+      <div class="col-sm-12 col-md-9 col-lg-6 col-xl-3">
+        <div class="card" style="">
+          <%= image_tag "guadeloupe_fruits.png", class: 'card-img-top' %>
+          <div class="card-body">
+            <h5 class="card-title">
+              <%= image_tag "home-outline.svg", size: "24" %>
+              <span class="badge badge-warning"><%= shop.name %></span>
+            </h5>
+            <p class="">
+              <%= image_tag "bicycle-outline.svg", size: "24" %>
+              <% shop.delivery_options.each do |delivery_option| %>
+                <span class="badge badge-info"><%= delivery_option.option %></span>
+              <% end %>
+            </p>
+            <%= link_to consumer_shop_path(shop), class: 'btn transparent float-right' do %>
+              Enter <%= image_tag "enter-outline.svg", size: "24" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+  <% end %>
+</div>
+<br>
+
+<!--<%# <%= link_to 'New Consumer Shop', new_consumer_shop_path %> %>-->

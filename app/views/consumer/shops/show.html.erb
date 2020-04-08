@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<br><h1>Welcome to <%= @shop.name %></h1><br>
+
+<h5>Delivery Options</h5>
+<div class="" style="margin-bottom:16px;">
+  <% @shop.delivery_options.each do |delivery_option| %>
+    <span class="badge badge-info"><%= delivery_option.option %></span>
+  <% end %>
+</div>
+
+<h5>Products</h5>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Reference</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @shop.stocks.each do |stock| %>
+        <tr>
+          <td><%= stock.product.reference %></td>
+          <td><%= stock.product.name %></td>
+          <td><%= number_to_currency(number_to_human(stock.price)) %></td>
+          <td>
+            <%= link_to "", class: 'btn transparent pt-0 pb-0' do %>
+              <%= image_tag "cart-outline.svg", size: "24" %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+</table>
+
+
+<%= link_to consumer_shops_path, class: 'btn transparent float-right' do %>
+  Exit <%= image_tag "exit-outline.svg", size: "24" %>
+<% end %>

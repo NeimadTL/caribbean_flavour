@@ -10,4 +10,8 @@ Rails.application.routes.draw do
       resources :stocks
     end
   end
+
+  namespace :consumer do
+    resources :shops, only: [:index, :show]
+  end
 end
