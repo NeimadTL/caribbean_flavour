@@ -38,6 +38,11 @@
         <ul class="navbar-nav ml-auto">
           <% if user_signed_in? %>
             <li class="nav-item">
+              <%= link_to consumer_cart_path(session[:cart_id]), class: 'nav-link' do %>
+                <%= image_tag("basket-outline.svg", size: "24") %>
+              <% end %>
+            </li>
+            <li class="nav-item">
               <%= link_to '#', class: 'nav-link' do %>
                 <span class="badge badge-warning nav-link text-dark">Hey @<%= current_user.username %></span>
               <% end %>
