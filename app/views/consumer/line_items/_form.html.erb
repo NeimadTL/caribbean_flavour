@@ -3,7 +3,8 @@
 </p>
 
 
-<%= simple_form_for(@line_item, url: consumer_stock_line_items_path(@stock)) do |f| %>
+<%= simple_form_for(@line_item, url: @line_item.persisted? ? consumer_stock_line_item_path :
+  consumer_stock_line_items_path(@stock)) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 

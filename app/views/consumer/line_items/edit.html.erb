@@ -2,5 +2,4 @@
 
 <%= render 'form', line_item: @line_item %>
 
-<%= link_to 'Show', @line_item %> |
-<%= link_to 'Back', line_items_path %>
+<%= link_to 'Back', consumer_cart_path(@line_item.cart) %>
