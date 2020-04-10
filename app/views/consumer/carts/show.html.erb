@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h5>Cart</h5>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Unit Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @cart.line_items.each do |item| %>
+        <tr>
+          <td><%= item.stock.product.name %></td>
+          <td><%= number_to_currency(number_to_human(item.stock.price)) %></td>
+          <td><%= item.quantity %></td>
+          <td><%= number_to_currency(number_to_human(item.quantity * item.stock.price)) %></td>
+          <td></td>
+        </tr>
+      <% end %>
+    </tbody>
+</table>
+
+
+<%= link_to 'Edit', edit_consumer_cart_path(@cart) %> |
+<%= link_to 'Back', consumer_carts_path %>
