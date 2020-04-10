@@ -3,13 +3,14 @@
 </p>
 
 
-<%= simple_form_for(@line_item, url: consumer_shop_stock_line_items_path(@shop, @stock)) do |f| %>
+<%= simple_form_for(@line_item, url: consumer_stock_line_items_path(@stock)) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
 
   <div class="form-inputs">
-    <%= f.input :quantity, required: true, autofocus: true, input_html: { autocomplete: "quantity" }%>
+    <%= f.input :quantity, required: true, autofocus: true, input_html: { autocomplete: "quantity" } %>
+    <%= f.hidden_field :stock_id, value: @stock.id %>
   </div>
 
   <div class="form-actions">

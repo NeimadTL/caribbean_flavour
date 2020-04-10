@@ -1,8 +1,7 @@
 class Consumer::LineItemsController < ApplicationController
   include CurrentCart
   before_action :set_cart, only: [:create]
-  before_action :set_shop, only: [:new, :create, :show]
-  before_action :set_stock, only: [:new, :create]
+  before_action :set_stock, only: [:new]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
 
 
@@ -29,8 +28,7 @@ class Consumer::LineItemsController < ApplicationController
   # POST /line_items
   # POST /line_items.json
   def create
-    @line_item = LineItem.new(line_item_params.merge(stock_id: @stock.id, cart_id: @cart.id))
-    # @line_item = @cart.line_items.build(stock_id: @stock.id, line_item_params)
+    @line_item = @cart.line_items.build(line_item_params)
 
     respond_to do |format|
       if @line_item.save
@@ -74,16 +72,12 @@ class Consumer::LineItemsController < ApplicationController
       @line_item = LineItem.find(params[:id])
     end
 
-    def set_shop
-      @shop = Shop.find(params[:shop_id])
-    end
-
     def set_stock
       @stock = Stock.find(params[:stock_id])
     end
 
     # Only allow a list of trusted parameters through.
     def line_item_params
-      params.require(:line_item).permit(:quantity)
+      params.require(:line_item).permit(:stock_id, :quantity)
     end
 end

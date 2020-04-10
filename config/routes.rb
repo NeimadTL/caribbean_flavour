@@ -12,10 +12,9 @@ Rails.application.routes.draw do
   end
 
   namespace :consumer do
-    resources :shops, only: [:index, :show] do
-      resources :stocks do
-        resources :line_items
-      end
+    resources :shops, only: [:index, :show]
+    resources :stocks, only:[] do
+      resources :line_items
     end
     resources :carts
   end
