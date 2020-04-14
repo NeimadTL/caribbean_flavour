@@ -21,10 +21,7 @@ class User < ApplicationRecord
   private
 
     def initialize_cart
-      unless self.is_partner
-        cart = self.create_cart
-        # session[:cart_id] = cart.id
-      end
+      self.create_cart unless self.is_partner
     end
 
 end
