@@ -38,7 +38,7 @@
         <ul class="navbar-nav ml-auto">
           <% if user_signed_in? %>
             <li class="nav-item">
-              <%= link_to consumer_cart_path(session[:cart_id]), class: 'nav-link' do %>
+              <%= link_to consumer_cart_path(current_user.cart), class: 'btn transparent-btn' do %>
                 <%= image_tag("basket-outline.svg", size: "24") %>
               <% end %>
             </li>

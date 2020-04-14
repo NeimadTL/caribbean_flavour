@@ -14,5 +14,17 @@ class User < ApplicationRecord
   validates :country, presence: true
 
   has_one :shop
+  has_one :cart
+
+  after_save :initialize_cart
+
+  private
+
+    def initialize_cart
+      unless self.is_partner
+        cart = self.create_cart
+        # session[:cart_id] = cart.id
+      end
+    end
 
 end

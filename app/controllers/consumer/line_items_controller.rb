@@ -1,8 +1,10 @@
 class Consumer::LineItemsController < ApplicationController
   include CurrentCart
-  before_action :set_cart, only: [:create]
+  before_action :set_cart, only: [:new, :create]
   before_action :set_stock, only: [:new, :create, :edit, :update]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
+  before_action :item_in_cart_already, only: [:new]
+
 
 
   # GET /line_items
@@ -80,4 +82,14 @@ class Consumer::LineItemsController < ApplicationController
     def line_item_params
       params.require(:line_item).permit(:stock_id, :quantity)
     end
+
+    def item_in_cart_already
+      if @cart.line_items.find_by(stock: @stock)
+        redirect_to consumer_shop_path(@stock.shop),
+          alert: 'This product is already in your cart. If you want more,
+          please go to your cart and increase the quantity for it'
+      end
+    end
+
+
 end
