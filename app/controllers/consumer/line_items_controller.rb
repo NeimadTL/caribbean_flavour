@@ -4,6 +4,7 @@ class Consumer::LineItemsController < ApplicationController
   before_action :set_stock, only: [:new, :create, :edit, :update]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
   before_action :item_in_cart_already, only: [:new]
+  rescue_from ActiveRecord::RecordNotUnique, with: :invalid_cart
 
 
 
@@ -89,6 +90,11 @@ class Consumer::LineItemsController < ApplicationController
           alert: 'This product is already in your cart. If you want more,
           please go to your cart and increase the quantity for it'
       end
+    end
+
+    def invalid_cart
+      logger.error "User ##{current_user.id} attempts to add item #{@stock.product.reference} twice in cart ##{@cart.id}"
+      redirect_to consumer_shop_path(@stock.shop), notice: 'Invalid cart'
     end
 
 
