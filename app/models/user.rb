@@ -16,7 +16,7 @@ class User < ApplicationRecord
   has_one :shop
   has_one :cart
 
-  after_save :initialize_cart
+  after_create :initialize_cart
 
   private
 
