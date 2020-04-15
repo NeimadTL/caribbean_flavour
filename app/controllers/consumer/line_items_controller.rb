@@ -38,7 +38,6 @@ class Consumer::LineItemsController < ApplicationController
         format.html { redirect_to consumer_cart_path(@line_item.cart), notice: 'Line item was successfully created.' }
         format.json { render :show, status: :created, location: @line_item }
       else
-        puts @line_item.errors.inspect
         format.html { render :new }
         format.json { render json: @line_item.errors, status: :unprocessable_entity }
       end
@@ -94,7 +93,7 @@ class Consumer::LineItemsController < ApplicationController
 
     def invalid_cart
       logger.error "User ##{current_user.id} attempts to add item #{@stock.product.reference} twice in cart ##{@cart.id}"
-      redirect_to consumer_shop_path(@stock.shop), notice: 'Invalid cart'
+      redirect_to consumer_shop_path(@stock.shop), alert: 'Something went wrong : invalid cart'
     end
 
 

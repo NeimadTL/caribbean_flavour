@@ -1,6 +1,8 @@
 class Partner::StocksController < ApplicationController
   before_action :set_stock, only: [:show, :edit, :update, :destroy]
   before_action :set_products, only: [:new, :create, :edit, :update]
+  before_action :product_in_shop_already, only: [:create]
+  rescue_from ActiveRecord::RecordNotUnique, with: :invalid_shop
 
   # GET /stocks
   # GET /stocks.json
@@ -32,6 +34,7 @@ class Partner::StocksController < ApplicationController
         format.html { redirect_to partner_shop_path(current_user.shop), notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @stock }
       else
+        puts @stock.errors.inspect
         format.html { render :new }
         format.json { render json: @stock.errors, status: :unprocessable_entity }
       end
@@ -76,5 +79,18 @@ class Partner::StocksController < ApplicationController
     # Only allow a list of trusted parameters through.
     def stock_params
       params.require(:stock).permit(:product_reference, :price)
+    end
+
+    def product_in_shop_already
+      shop = Shop.find(params[:shop_id])
+      if shop.products.find_by(reference: params[:stock][:product_reference])
+        redirect_to new_partner_shop_stock_path(shop), alert: 'This product is already in your shop.'
+      end
+    end
+
+    def invalid_shop
+      logger.error "User ##{current_user.id} attempts to add product
+        #{params[:stock][:product_reference]} twice in shop ##{params[:shop_id]}"
+      redirect_to new_partner_shop_stock_path(params[:shop_id]), alert: 'Something went wrong : invalid shop'
     end
 end
