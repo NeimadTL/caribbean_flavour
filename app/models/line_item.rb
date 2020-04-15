@@ -7,4 +7,12 @@ class LineItem < ApplicationRecord
   belongs_to :cart
   belongs_to :stock
 
+  def price
+    self.stock.price
+  end
+
+  def total_price
+    self.price * self.quantity
+  end
+
 end

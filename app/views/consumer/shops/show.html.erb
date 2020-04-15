@@ -24,7 +24,7 @@
         <tr>
           <td><%= stock.product.reference %></td>
           <td><%= stock.product.name %></td>
-          <td><%= number_to_currency(number_to_human(stock.price)) %></td>
+          <td><%= number_to_currency(stock.price) %></td>
           <td>
             <%= link_to new_consumer_stock_line_item_path(stock), class: 'btn transparent pt-0 pb-0' do %>
               <%= image_tag "cart-outline.svg", size: "24" %>

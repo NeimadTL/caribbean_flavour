@@ -4,7 +4,7 @@
       <tr>
         <th scope="col">Name</th>
         <th scope="col">Unit Price</th>
-        <th scope="col">Qty</th>
+        <th scope="col">Qty (Kgs)</th>
         <th scope="col">Price</th>
         <th scope="col">Actions</th>
       </tr>
@@ -13,9 +13,9 @@
       <% @cart.line_items.each do |item| %>
         <tr>
           <td><%= item.stock.product.name %></td>
-          <td><%= number_to_currency(number_to_human(item.stock.price)) %></td>
+          <td><%= number_to_currency(item.price) %></td>
           <td><%= item.quantity %></td>
-          <td><%= number_to_currency(number_to_human(item.quantity * item.stock.price)) %></td>
+          <td><%= number_to_currency(item.total_price) %></td>
           <td>
             <div class="dropdown">
               <button class="btn transparent-btn" type="button" id="dropdownMenu2"
@@ -31,6 +31,10 @@
           </td>
         </tr>
       <% end %>
+      <tr>
+        <td colspan="4">Total</td>
+        <td class="total_cell"><%= number_to_currency(@cart.total_price) %></td>
+      </tr>
     </tbody>
 </table>
 
