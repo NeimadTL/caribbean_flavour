@@ -1,6 +1,5 @@
 class LineItem < ApplicationRecord
 
-  # validates :cart_id, presence: true
   validates :stock_id, presence: true
   validates :quantity, presence: true
 
