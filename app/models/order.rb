@@ -1,4 +1,5 @@
 class Order < ApplicationRecord
+  extend Priceable
 
   validates :delivery_option_code, presence: true
 
@@ -9,6 +10,10 @@ class Order < ApplicationRecord
       item.cart_id = nil
       self.line_items << item
     end
+  end
+
+  def shop
+    self.line_items.first.stock.shop
   end
 
 end
