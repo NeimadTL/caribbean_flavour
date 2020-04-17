@@ -38,6 +38,7 @@ class Consumer::LineItemsController < ApplicationController
         format.html { redirect_to consumer_cart_path(@line_item.cart), notice: 'Line item was successfully created.' }
         format.json { render :show, status: :created, location: @line_item }
       else
+        puts @line_item.errors.inspect
         format.html { render :new }
         format.json { render json: @line_item.errors, status: :unprocessable_entity }
       end

@@ -8,6 +8,7 @@
 
 ProductCategory.delete_all
 DeliveryOption.delete_all
+Product.delete_all
 
 
 ProductCategory.create!(code: ProductCategory::FARMING_CATEGORY_CODE, name: 'Farming')
@@ -18,3 +19,7 @@ DeliveryOption.create!(code: DeliveryOption::CUSTOMER_PLACE_OPTION_CODE, option:
 DeliveryOption.create!(code: DeliveryOption::SHOP_OWNER_PLACE_OPTION_CODE, option: "My place")
 DeliveryOption.create!(code: DeliveryOption::PARCEL_PICKUP_POINT_OPTION_CODE, option: "Parcel pick-up point")
 DeliveryOption.create!(code: DeliveryOption::MARKET_PLACE_OPTION_CODE, option: "Marketplace")
+
+Product.create!(reference: 'poyo_ref', name: 'pôyô', product_category_id: ProductCategory::FARMING_CATEGORY_CODE)
+Product.create!(reference: 'igname_ref', name: 'igname', product_category_id: ProductCategory::FARMING_CATEGORY_CODE)
+Product.create!(reference: 'banana_ref', name: 'banana', product_category_id: ProductCategory::FARMING_CATEGORY_CODE)

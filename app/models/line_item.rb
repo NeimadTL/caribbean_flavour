@@ -1,11 +1,12 @@
 class LineItem < ApplicationRecord
 
-  validates :cart_id, presence: true
+  # validates :cart_id, presence: true
   validates :stock_id, presence: true
   validates :quantity, presence: true
 
-  belongs_to :cart
+  belongs_to :cart,optional: true
   belongs_to :stock
+  belongs_to :order, optional: true
 
   def price
     self.stock.price

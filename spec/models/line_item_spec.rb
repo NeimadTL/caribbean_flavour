@@ -8,5 +8,6 @@ RSpec.describe LineItem, type: :model do
 
   it { should belong_to :cart }
   it { should belong_to :stock }
+  it { should belong_to :order }
 
 end

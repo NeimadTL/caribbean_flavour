@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Delivery option code:</strong>
+  <%= @order.delivery_option_code %>
+</p>
+
+<%= link_to 'Edit', edit_consumer_order_path(@order) %> |
+<%= link_to 'Back', consumer_orders_path %>
