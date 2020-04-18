@@ -14,5 +14,6 @@ RSpec.describe User, type: :model do
 
   it { should have_one :shop }
   it { should have_one :cart }
+  it { should have_many :orders }
 
 end

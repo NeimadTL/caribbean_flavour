@@ -7,7 +7,7 @@ class Consumer::OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    @orders = Order.where(user_id: current_user.id)
   end
 
   # GET /orders/1
@@ -27,7 +27,7 @@ class Consumer::OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.new(order_params)
+    @order = Order.new(order_params.merge(user: current_user))
     @order.add_line_item(@cart.line_items_of(@shop))
 
     respond_to do |format|
