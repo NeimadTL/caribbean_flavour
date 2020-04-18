@@ -1,5 +1,4 @@
 class Order < ApplicationRecord
-  extend Priceable
 
   validates :delivery_option_code, presence: true
 
@@ -15,6 +14,10 @@ class Order < ApplicationRecord
 
   def shop
     self.line_items.first.stock.shop
+  end
+
+  def total_price
+    self.line_items.to_a.sum { |item| item.total_price }
   end
 
 end

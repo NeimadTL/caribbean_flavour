@@ -35,7 +35,7 @@
         <% end %>
         <tr>
           <td colspan="4">Total</td>
-          <td class="total_cell"><%= number_to_currency(Cart::total_price_for(items)) %></td>
+          <td class="total_cell"><%= number_to_currency(@cart.total_price_for(items)) %></td>
         </tr>
       </tbody>
   </table>

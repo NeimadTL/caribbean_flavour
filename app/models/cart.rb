@@ -1,11 +1,10 @@
 class Cart < ApplicationRecord
-  extend Priceable
-
+  
   has_many :line_items
   belongs_to :user
 
-  def total_price
-    self.line_items.to_a.sum { |item| item.total_price }
+  def total_price_for(items)
+    items.sum { |item| item.total_price }
   end
 
   def line_items_by_shop

@@ -23,7 +23,7 @@
       <% end %>
       <tr>
         <td colspan="3">Total</td>
-        <td class="total_cell"><%= number_to_currency(Order::total_price_for(@order.line_items)) %></td>
+        <td class="total_cell"><%= number_to_currency(@order.total_price) %></td>
       </tr>
     </tbody>
 </table>

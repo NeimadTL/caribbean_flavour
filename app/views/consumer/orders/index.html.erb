@@ -18,7 +18,7 @@
       <tr>
         <td><%= order.shop.name %></td>
         <td><%= DeliveryOption.find(order.delivery_option_code).option %></td>
-        <td><%= number_to_currency(Order::total_price_for(order.line_items)) %></td>
+        <td><%= number_to_currency(order.total_price) %></td>
         <td>
           <%= link_to 'Show', consumer_order_path(order) %>
           <%= link_to 'Edit', edit_consumer_order_path(order) %>
