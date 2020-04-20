@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h5>Order#<%= @order.id %></h5>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Unit Price</th>
+        <th scope="col">Qty (Kgs)</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @order.line_items.each do |item| %>
+        <tr>
+          <td><%= item.stock.product.name %></td>
+          <td><%= number_to_currency(item.price) %></td>
+          <td><%= item.quantity %></td>
+          <td><%= number_to_currency(item.total_price) %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <td colspan="3">Total</td>
+        <td class="total_cell"><%= number_to_currency(@order.total_price) %></td>
+      </tr>
+    </tbody>
+</table>
+
+
+<p>
+  <strong>Customer:</strong><%= @order.user.firstname %> <%= @order.user.lastname %><br>
+  <strong>Delivery option code:</strong>
+  <%= DeliveryOption.find(@order.delivery_option_code).option %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_partner_order_path(@order) %> |
+<%= link_to 'Back', partner_orders_path %>

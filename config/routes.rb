@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :shops, only: [:index, :new, :create, :show, :edit, :update] do
       resources :stocks
     end
+    resources :orders
   end
 
   namespace :consumer do
