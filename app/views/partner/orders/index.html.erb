@@ -2,14 +2,13 @@
 
 <h1>Partner Orders</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Customer</th>
       <th>Delivery option</th>
       <th>Total</th>
       <th>Action</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
 
@@ -19,9 +18,12 @@
         <td><%= order.user.username %></td>
         <td><%= DeliveryOption.find(order.delivery_option_code).option %></td>
         <td><%= number_to_currency(order.total_price) %></td>
-        <td><%= link_to 'Show', partner_order_path(order) %></td>
-        <td><%= link_to 'Edit', edit_partner_order_path(order) %></td>
-        <td><%= link_to 'Destroy', partner_order_path(order), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to 'Show', partner_order_path(order) %>
+          <%= link_to 'Edit', edit_partner_order_path(order) %>
+          <%= link_to 'Destroy', partner_order_path(order), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+        <td></td>
       </tr>
     <% end %>
   </tbody>

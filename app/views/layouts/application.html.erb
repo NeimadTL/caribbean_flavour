@@ -21,9 +21,21 @@
           <li class="nav-item">
             <a class="nav-link" href="<%= root_path %>">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Partners</a>
-          </li>
+          <% if user_signed_in? %>
+            <% if current_user.cart %>
+              <li class="nav-item">
+                <%= link_to 'All Shops', consumer_shops_path, class: 'nav-link' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'My Orders', consumer_orders_path, class: 'nav-link' %>
+              </li>
+            <% elsif current_user.shop %>
+              <li class="nav-item">
+                <%= link_to 'My Orders', partner_orders_path, class: 'nav-link' %>
+              </li>
+            <% end %>
+          <% end %>
+
           <li class="nav-item">
             <a class="nav-link" href="#">Features</a>
           </li>
