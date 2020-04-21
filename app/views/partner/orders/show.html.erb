@@ -11,10 +11,10 @@
       </tr>
     </thead>
     <tbody>
-      <% @order.line_items.each do |item| %>
+      <% @order.order_line_items.each do |item| %>
         <tr>
-          <td><%= item.stock.product.name %></td>
-          <td><%= number_to_currency(item.price) %></td>
+          <td><%= item.name %></td>
+          <td><%= number_to_currency(item.unit_price) %></td>
           <td><%= item.quantity %></td>
           <td><%= number_to_currency(item.total_price) %></td>
         </tr>

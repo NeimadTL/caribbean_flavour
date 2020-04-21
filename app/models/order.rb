@@ -2,22 +2,25 @@ class Order < ApplicationRecord
 
   validates :delivery_option_code, presence: true
 
-  has_many :line_items, dependent: :destroy
+  has_many :order_line_items, dependent: :destroy
   belongs_to :user
 
   def add_line_item(items)
     items.each do |item|
-      item.cart_id = nil
-      self.line_items << item
+      self.order_line_items.build(name: item.stock.product.name,
+                                  unit_price: item.stock.price,
+                                  quantity: item.quantity,
+                                  shop_id: item.stock.shop.id)
+     item.delete
     end
   end
 
   def shop
-    self.line_items.first.stock.shop
+    Shop.find(self.order_line_items.first.shop_id)
   end
 
   def total_price
-    self.line_items.to_a.sum { |item| item.total_price }
+    self.order_line_items.to_a.sum { |item| item.total_price }
   end
 
 end

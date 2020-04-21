@@ -4,9 +4,8 @@ class Partner::OrdersController < ApplicationController
   # GET /partner/orders
   # GET /partner/orders.json
   def index
-    @orders = Order.joins("LEFT OUTER JOIN line_items ON line_items.order_id = orders.id
-                           LEFT OUTER JOIN stocks ON line_items.stock_id = stocks.id")
-                           .where("stocks.shop_id = #{current_user.shop.id}").distinct
+    @orders = Order.left_outer_joins(:order_line_items)
+                .where("order_line_items.shop_id = #{current_user.shop.id}").distinct
   end
 
   # GET /partner/orders/1
