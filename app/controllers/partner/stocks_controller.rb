@@ -34,7 +34,6 @@ class Partner::StocksController < ApplicationController
         format.html { redirect_to partner_shop_path(current_user.shop), notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @stock }
       else
-        puts @stock.errors.inspect
         format.html { render :new }
         format.json { render json: @stock.errors, status: :unprocessable_entity }
       end
