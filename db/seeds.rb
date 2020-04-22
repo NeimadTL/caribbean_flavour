@@ -23,3 +23,5 @@ DeliveryOption.create!(code: DeliveryOption::MARKET_PLACE_OPTION_CODE, option: "
 Product.create!(reference: 'poyo_ref', name: 'pôyô', product_category_id: ProductCategory::FARMING_CATEGORY_CODE)
 Product.create!(reference: 'igname_ref', name: 'igname', product_category_id: ProductCategory::FARMING_CATEGORY_CODE)
 Product.create!(reference: 'banana_ref', name: 'banana', product_category_id: ProductCategory::FARMING_CATEGORY_CODE)
+Product.create!(reference: 'pork_sausage_ref', name: 'pork sausage', product_category_id: ProductCategory::CATERING_CATEGORY_CODE)
+Product.create!(reference: 'beef_sausage_ref', name: 'beef sausage', product_category_id: ProductCategory::CATERING_CATEGORY_CODE)
