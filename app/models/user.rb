@@ -16,6 +16,7 @@ class User < ApplicationRecord
   has_one :shop
   has_one :cart
   has_many :orders
+  belongs_to :role, foreign_key: "role_code"
 
   after_create :initialize_cart
 

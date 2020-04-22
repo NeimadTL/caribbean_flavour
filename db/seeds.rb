@@ -9,6 +9,7 @@
 ProductCategory.delete_all
 DeliveryOption.delete_all
 Product.delete_all
+Role.delete_all
 
 
 ProductCategory.create!(code: ProductCategory::FARMING_CATEGORY_CODE, name: 'Farming')
@@ -25,3 +26,7 @@ Product.create!(reference: 'igname_ref', name: 'igname', product_category_id: Pr
 Product.create!(reference: 'banana_ref', name: 'banana', product_category_id: ProductCategory::FARMING_CATEGORY_CODE)
 Product.create!(reference: 'pork_sausage_ref', name: 'pork sausage', product_category_id: ProductCategory::CATERING_CATEGORY_CODE)
 Product.create!(reference: 'beef_sausage_ref', name: 'beef sausage', product_category_id: ProductCategory::CATERING_CATEGORY_CODE)
+
+Role.create!(code: Role::ADMIN_ROLE_CODE, name: 'ADMIN')
+Role.create!(code: Role::PARTNER_ROLE_CODE, name: 'PARTNER')
+Role.create!(code: Role::CONSUMER_ROLE_CODE, name: 'CONSUMER')
