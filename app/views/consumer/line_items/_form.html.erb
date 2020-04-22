@@ -1,6 +1,15 @@
-<p>
-<%= @stock.shop.name %> | <%= @stock.product.name %> | <%= number_to_currency(number_to_human(@stock.price)) %>
-</p>
+<br>
+<div class="col-sm-12 col-md-9 col-lg-6 col-xl-3">
+  <div class="card" style="">
+    <div class="card-header"><%= @stock.shop.name %></div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <%= @stock.product.name %> : <%= number_to_currency(number_to_human(@stock.price)) %>
+      </li>
+    </ul>
+  </div>
+</div>
+<br>
 
 
 <%= simple_form_for(@line_item, url: @line_item.persisted? ? consumer_stock_line_item_path :
