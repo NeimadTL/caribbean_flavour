@@ -35,7 +35,6 @@ class Consumer::OrdersController < ApplicationController
         format.html { redirect_to consumer_order_path(@order), notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
-        puts @order.errors.inspect
         format.html { render :new }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
