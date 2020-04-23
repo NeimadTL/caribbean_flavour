@@ -1,7 +1,7 @@
 class Shop < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
-  validates :delivery_options, acceptance: true, unless: -> { delivery_options.count > 0 }
+  validates :delivery_options, presence: true, unless: -> { delivery_options.count > 0 }
 
   has_many :stocks, dependent: :destroy
   has_many :products, through: :stocks, dependent: :destroy

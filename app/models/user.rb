@@ -19,11 +19,16 @@ class User < ApplicationRecord
   belongs_to :role, foreign_key: "role_code"
 
   after_create :initialize_cart
+  after_create :setup_partner_role
 
   private
 
     def initialize_cart
       self.create_cart unless self.is_partner
+    end
+
+    def setup_partner_role
+      self.update(role_code: Role::PARTNER_ROLE_CODE) if self.is_partner
     end
 
 end

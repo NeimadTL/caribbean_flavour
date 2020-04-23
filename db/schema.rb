@@ -131,7 +131,7 @@ ActiveRecord::Schema.define(version: 2020_04_22_205612) do
     t.string "postcode", default: "", null: false
     t.string "country", default: "", null: false
     t.boolean "is_partner", default: false, null: false
-    t.integer "role_code", null: false
+    t.integer "role_code", default: 3, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role_code"], name: "index_users_on_role_code"

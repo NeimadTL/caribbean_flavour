@@ -57,7 +57,7 @@
               </li>
             <% elsif current_user.shop %>
               <li class="nav-item">
-                <%= link_to partner_shop_path(current_user.shop), class: 'btn transparent-btn' do %>
+                <%= link_to partner_shops_path, class: 'btn transparent-btn' do %>
                   <%= image_tag("home-outline.svg", size: "24") %>
                 <% end %>
               </li>
