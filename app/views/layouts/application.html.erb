@@ -29,7 +29,7 @@
               <li class="nav-item">
                 <%= link_to 'My Orders', consumer_orders_path, class: 'nav-link' %>
               </li>
-            <% elsif current_user.shop %>
+            <% elsif current_user.role.code == Role::PARTNER_ROLE_CODE %>
               <li class="nav-item">
                 <%= link_to 'My Orders', partner_orders_path, class: 'nav-link' %>
               </li>
@@ -58,7 +58,7 @@
                   <%= image_tag("basket-outline.svg", size: "24") %>
                 <% end %>
               </li>
-            <% elsif current_user.shop %>
+            <% elsif current_user.role.code == Role::PARTNER_ROLE_CODE %>
               <li class="nav-item">
                 <%= link_to partner_shops_path, class: 'btn transparent-btn' do %>
                   <%= image_tag("home-outline.svg", size: "24") %>

@@ -1,4 +1,6 @@
 class Partner::StocksController < ApplicationController
+  before_action :authenticate_user!
+  before_action PartnerFilter
   before_action :set_stock, only: [:show, :edit, :update, :destroy]
   before_action :set_products, only: [:new, :create, :edit, :update]
   before_action :product_in_shop_already, only: [:create]
