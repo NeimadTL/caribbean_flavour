@@ -19,9 +19,8 @@
         <td><%= DeliveryOption.find(order.delivery_option_code).option %></td>
         <td><%= number_to_currency(order.total_price) %></td>
         <td>
-          <%= link_to 'Show', partner_order_path(order) %>
-          <%= link_to 'Edit', edit_partner_order_path(order) %>
-          <%= link_to 'Destroy', partner_order_path(order), method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Show', partner_shop_order_path(order.shop, order) %>
+          <%= link_to 'Edit', edit_partner_shop_order_path(order.shop, order) %>
         </td>
         <td></td>
       </tr>

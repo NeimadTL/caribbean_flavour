@@ -10,7 +10,6 @@ Rails.application.routes.draw do
       resources :stocks
       resources :orders, only: [:index, :show, :edit, :update]
     end
-    # resources :orders
   end
 
   namespace :consumer do

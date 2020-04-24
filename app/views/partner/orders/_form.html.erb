@@ -1,5 +1,5 @@
 
-<%= simple_form_for(@partner_order) do |f| %>
+<%= simple_form_for(@order, url: partner_shop_order_path(@order.shop, @order)) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
