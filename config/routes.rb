@@ -8,8 +8,9 @@ Rails.application.routes.draw do
   namespace :partner do
     resources :shops, only: [:index, :new, :create, :show, :edit, :update] do
       resources :stocks
+      resources :orders, only: [:index, :show, :edit, :update]
     end
-    resources :orders
+    # resources :orders
   end
 
   namespace :consumer do

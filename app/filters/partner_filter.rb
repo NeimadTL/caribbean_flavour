@@ -8,6 +8,10 @@ module PartnerFilter
   end
 
   def require_to_be_shop_owner
+    if current_user.shop.nil?
+      redirect_to partner_shops_url
+      return
+    end
     id = params[:shop_id] || params[:id]
     unless current_user.shop.id == id.to_i
       flash[:alert] = "You are not the owner of this shop"

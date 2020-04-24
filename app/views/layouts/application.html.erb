@@ -30,9 +30,11 @@
                 <%= link_to 'My Orders', consumer_orders_path, class: 'nav-link' %>
               </li>
             <% elsif current_user.role.code == Role::PARTNER_ROLE_CODE %>
-              <li class="nav-item">
-                <%= link_to 'My Orders', partner_orders_path, class: 'nav-link' %>
-              </li>
+              <% if current_user.shop %>
+                <li class="nav-item">
+                  <%= link_to 'My Orders', partner_shop_orders_path(current_user.shop), class: 'nav-link' %>
+                </li>
+              <% end %>
               <li class="nav-item">
                 <%= link_to 'My Shop', partner_shops_path, class: 'nav-link' %>
               </li>
