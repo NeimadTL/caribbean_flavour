@@ -1,6 +1,7 @@
 class Partner::ShopsController < ApplicationController
+  include PartnerFilter
   before_action :authenticate_user!
-  before_action PartnerFilter
+  before_action :require_to_be_partner
   before_action :require_to_be_shop_owner, only: [:show, :edit, :update]
   before_action :set_shop, only: [:show, :edit, :update]
   before_action :allow_one_shop_only, only: [:new, :create]
@@ -54,20 +55,6 @@ class Partner::ShopsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def shop_params
       params.require(:shop).permit(:name, :product_category_code, delivery_option_ids: [])
-    end
-
-    def require_to_be_shop_owner
-      unless current_user.shop.id == params[:id].to_i
-        flash[:alert] = "You are not the owner of this shop"
-        redirect_to root_url
-      end
-    end
-
-    def allow_one_shop_only
-      unless current_user.shop.nil?
-        flash[:alert] = "You already have a shop"
-        redirect_to root_url
-      end
     end
 
 end

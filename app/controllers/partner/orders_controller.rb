@@ -1,6 +1,7 @@
 class Partner::OrdersController < ApplicationController
+  include PartnerFilter
   before_action :authenticate_user!
-  before_action PartnerFilter
+  before_action :require_to_be_partner
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # GET /partner/orders
