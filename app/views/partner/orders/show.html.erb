@@ -29,8 +29,7 @@
 
 <p>
   <strong>Customer:</strong><%= @order.user.firstname %> <%= @order.user.lastname %><br>
-  <strong>Delivery option code:</strong>
-  <%= DeliveryOption.find(@order.delivery_option_code).option %>
+  <strong>Delivery option code:</strong> <%= @order.delivery_option %>
 </p>
 
 

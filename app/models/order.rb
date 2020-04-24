@@ -23,4 +23,8 @@ class Order < ApplicationRecord
     self.order_line_items.to_a.sum { |item| item.total_price }
   end
 
+  def delivery_option
+    DeliveryOption.find(self.delivery_option_code).option
+  end
+
 end

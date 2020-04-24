@@ -16,7 +16,7 @@
     <% @orders.each do |order| %>
       <tr>
         <td><%= order.user.username %></td>
-        <td><%= DeliveryOption.find(order.delivery_option_code).option %></td>
+        <td><%= order.delivery_option %></td>
         <td><%= number_to_currency(order.total_price) %></td>
         <td>
           <%= link_to 'Show', partner_shop_order_path(order.shop, order) %>
@@ -29,5 +29,3 @@
 </table>
 
 <br>
-
-<!--  <%# <%= link_to 'New Partner Order', new_partner_order_path %> %> -->
