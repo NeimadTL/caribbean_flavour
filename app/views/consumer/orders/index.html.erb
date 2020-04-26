@@ -21,7 +21,7 @@
         <td><%= number_to_currency(order.total_price) %></td>
         <td>
           <%= link_to 'Show', consumer_order_path(order) %>
-          <%= link_to 'Edit', edit_consumer_order_path(order) %>
+          <%= link_to 'Edit', '#' %> <!-- edit_consumer_order_path(order)-->
           <%= link_to 'Destroy', consumer_order_path(order), method: :delete,
               data: { confirm: 'Are you sure?' } %>
         </td>
@@ -32,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Order', new_consumer_order_path %>
+<!--  <%# <%= link_to 'New Order', new_consumer_order_path %> %> -->

@@ -39,9 +39,7 @@
         </tr>
       </tbody>
   </table>
-  <%= link_to 'Keep shopping', consumer_shops_path, class: 'btn btn-sm btn-primary float-left' %>
-  <%= button_to new_consumer_order_path, method: :get, class: 'btn btn-sm btn-primary float-right' do %>
-    Order <%= hidden_field_tag :shop_id, shop.id %>
-  <% end %>
+  <%= link_to 'Keep shopping', consumer_shop_path(shop), class: 'btn btn-sm btn-primary float-left' %>
+  <%= link_to 'Order', new_consumer_cart_shop_order_path(current_user.cart, shop), class: 'btn btn-sm btn-primary float-right' %>
   <br><br><br>
 <% end %>

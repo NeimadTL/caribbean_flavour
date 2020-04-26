@@ -17,7 +17,13 @@ Rails.application.routes.draw do
     resources :stocks, only:[] do
       resources :line_items
     end
-    resources :carts
-    resources :orders
+    resources :carts, only: [:show] do
+      resources :shops, only: [] do
+        resources :orders, only: [:new, :create]
+      end
+    end
+    # :edit and :updates may need to be added below if we decide that a consumer
+    # can update and order till the status passes from 'ordered' to 'packing'
+    resources :orders, only: [:index, :show, :destroy]
   end
 end

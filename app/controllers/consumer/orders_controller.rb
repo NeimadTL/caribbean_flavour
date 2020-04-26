@@ -1,8 +1,12 @@
 class Consumer::OrdersController < ApplicationController
   include CurrentCart
+  include ConsumerFilter
+  before_action :authenticate_user!
+  before_action :require_to_be_cart_owner, only: [:new, :create]
+  before_action :require_to_be_order_owner, only: [:show, :destroy] # :edit and :update may need to be added (see routes comment)
   before_action :set_cart, only: [:new, :create]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-  before_action :set_shop, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_shop, only: [:new, :create]
 
   # GET /orders
   # GET /orders.json
@@ -60,7 +64,7 @@ class Consumer::OrdersController < ApplicationController
   def destroy
     @order.destroy
     respond_to do |format|
-      format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
+      format.html { redirect_to consumer_orders_url, notice: 'Order was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
