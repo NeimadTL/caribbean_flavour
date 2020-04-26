@@ -2,6 +2,7 @@ class Consumer::OrdersController < ApplicationController
   include CurrentCart
   include ConsumerFilter
   before_action :authenticate_user!
+  before_action :require_to_be_consumer
   before_action :require_to_be_cart_owner, only: [:new, :create]
   before_action :require_to_be_order_owner, only: [:show, :destroy] # :edit and :update may need to be added (see routes comment)
   before_action :set_cart, only: [:new, :create]
