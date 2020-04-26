@@ -25,8 +25,8 @@
                 <%= image_tag("ellipsis-horizontal-outline.svg", size: "24") %>
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <%= link_to 'Update', edit_consumer_stock_line_item_path(item.stock, item), class: 'dropdown-item' %>
-                <%= link_to 'Delete', consumer_stock_line_item_path(item.stock, item), method: :delete,
+                <%= link_to 'Update', edit_consumer_cart_stock_line_item_path(current_user.cart, item.stock, item), class: 'dropdown-item' %>
+                <%= link_to 'Delete', consumer_cart_stock_line_item_path(current_user.cart, item.stock, item), method: :delete,
                     data: { confirm: 'Are you sure?' }, class: 'dropdown-item' %>
               </div>
             </div>

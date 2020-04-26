@@ -8,7 +8,7 @@ module ConsumerFilter
   end
 
   def require_to_be_cart_owner
-    id = params[:id] || params[:cart_id]
+    id = params[:cart_id] || params[:id]
     unless current_user.cart.id == id.to_i
       flash[:alert] = "You are not the owner of this cart"
       redirect_to root_url

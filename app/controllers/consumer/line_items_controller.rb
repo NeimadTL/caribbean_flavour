@@ -1,5 +1,9 @@
 class Consumer::LineItemsController < ApplicationController
   include CurrentCart
+  include ConsumerFilter
+  before_action :authenticate_user!
+  before_action :require_to_be_consumer
+  before_action :require_to_be_cart_owner, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_cart, only: [:new, :create]
   before_action :set_stock, only: [:new, :create, :edit, :update]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
