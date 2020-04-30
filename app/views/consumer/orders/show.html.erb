@@ -30,8 +30,8 @@
 
 
 <p>
-  <strong>Delivery option code:</strong>
-  <%= DeliveryOption.find(@order.delivery_option_code).option %>
+  <strong>Delivery option code:</strong> <%= @order.delivery_option %><br>
+  <strong>Status:</strong> <%= @order.status %>
 </p>
 
 <!--  <%# <%= link_to 'Edit', edit_consumer_order_path(@order) %> | %> -->

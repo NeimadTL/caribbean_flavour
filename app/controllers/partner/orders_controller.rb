@@ -26,7 +26,7 @@ class Partner::OrdersController < ApplicationController
   def update
     respond_to do |format|
       if @order.update(order_params)
-        format.html { redirect_to partner_shop_orders(@order.shop, @order), notice: 'Order was successfully updated.' }
+        format.html { redirect_to partner_shop_orders_url(@order.shop, @order), notice: 'Order was successfully updated.' }
         format.json { render :show, status: :ok, location: @order }
       else
         format.html { render :edit }
@@ -43,6 +43,6 @@ class Partner::OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.fetch(:order, {})
+      params.require(:order).permit(:status)
     end
 end

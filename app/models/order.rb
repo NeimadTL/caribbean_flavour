@@ -1,6 +1,9 @@
 class Order < ApplicationRecord
 
+  STATUS = ["Ordered", "Packed", "Shipped", "Delivered"]
+
   validates :delivery_option_code, presence: true
+  validates :status, inclusion: { in: STATUS }
 
   has_many :order_line_items, dependent: :destroy
   belongs_to :user
