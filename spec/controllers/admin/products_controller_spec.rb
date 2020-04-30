@@ -29,11 +29,11 @@ RSpec.describe Admin::ProductsController, type: :controller do
   # Product. As you add validations to Product, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    { reference: 'yam_ref', name: 'yam', product_category_id: 1 }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { name: 'yam' }
   }
 
   # This should return the minimal set of values that should be in the session
@@ -82,7 +82,7 @@ RSpec.describe Admin::ProductsController, type: :controller do
 
       it "redirects to the created product" do
         post :create, params: {product: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(Product.last)
+        expect(response).to redirect_to admin_product_url(Product.last)
       end
     end
 
@@ -97,20 +97,22 @@ RSpec.describe Admin::ProductsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        { name: 'product', product_category_id: 2 }
       }
 
       it "updates the requested product" do
         product = Product.create! valid_attributes
         put :update, params: {id: product.to_param, product: new_attributes}, session: valid_session
         product.reload
-        skip("Add assertions for updated state")
+        expect(product.reference).to eql "yam_ref"
+        expect(product.name).to eql "product"
+        expect(product.product_category_id).to eql 2
       end
 
       it "redirects to the product" do
         product = Product.create! valid_attributes
         put :update, params: {id: product.to_param, product: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(product)
+        expect(response).to redirect_to admin_product_url(product)
       end
     end
 
@@ -118,7 +120,8 @@ RSpec.describe Admin::ProductsController, type: :controller do
       it "returns a success response (i.e. to display the 'edit' template)" do
         product = Product.create! valid_attributes
         put :update, params: {id: product.to_param, product: invalid_attributes}, session: valid_session
-        expect(response).to be_successful
+        # expect(response).to be_successful <- was that before
+        expect(response).to be_redirect
       end
     end
   end
@@ -134,7 +137,7 @@ RSpec.describe Admin::ProductsController, type: :controller do
     it "redirects to the products list" do
       product = Product.create! valid_attributes
       delete :destroy, params: {id: product.to_param}, session: valid_session
-      expect(response).to redirect_to(products_url)
+      expect(response).to redirect_to(admin_products_url)
     end
   end
 
