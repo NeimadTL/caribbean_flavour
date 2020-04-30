@@ -1,4 +1,7 @@
 class Admin::ProductsController < ApplicationController
+  include AdminFilter
+  before_action :authenticate_user!
+  before_action :require_to_be_admin
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products
