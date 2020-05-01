@@ -9,5 +9,4 @@ $(function () {
     container: 'body',
     trigger: 'focus'
   })
-
 })

@@ -31,10 +31,10 @@
                 <% end %>
               <% end %>
             <% else %>
-              <a tabindex="0" class="btn transparent pt-0 pb-0" role="button" data-toggle="popover"
-                 data-trigger="focus" title="Sign up" data-content="You must be connected to buy products.">
-                <%= image_tag "cart-outline.svg", size: "24" %>
-              </a>
+            <%= link_to "javascript:void(0);", class: 'btn transparent pt-0 pb-0', tabindex: "0", title: "Sign up",
+                data: { toggle: "popover", content: "You must be connected to buy products.", container: "body", placement: "bottom" } do %>
+              <%= image_tag "cart-outline.svg", size: "24" %>
+            <% end %>
             <% end %>
           </td>
         </tr>
