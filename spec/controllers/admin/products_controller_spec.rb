@@ -36,108 +36,313 @@ RSpec.describe Admin::ProductsController, type: :controller do
     { name: 'yam' }
   }
 
+  let(:admin) {
+    User.create!(username: "admin", firstname: "admin_firstname", lastname: "admin_lastname",
+    city: "city", email: "admin@gmail.com", phone_number: "0394274839", street: "street",
+    additional_address_information: "additional address", postcode: "97119",
+    country: "country", is_partner: false, role_code: Role::ADMIN_ROLE_CODE,
+    password: "12345678", password_confirmation: "12345678")
+  }
+
+  let(:consumer) {
+    User.create!(username: "consu", firstname: "consu_firstname", lastname: "consu_lastname",
+    city: "city", email: "consu@gmail.com", phone_number: "0394274839", street: "street",
+    additional_address_information: "additional address", postcode: "97119",
+    country: "country", is_partner: false, role_code: Role::CONSUMER_ROLE_CODE,
+    password: "12345678", password_confirmation: "12345678")
+  }
+
+
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # ProductsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
   describe "GET #index" do
-    it "returns a success response" do
-      Product.create! valid_attributes
-      get :index, params: {}, session: valid_session
-      expect(response).to be_successful
+    context "when admin is signed in" do
+      before do
+        sign_in(admin, nil)
+      end
+      it "returns a success response" do
+        # Product.create! valid_attributes
+        get :index, params: {}, session: valid_session
+        expect(response).to be_successful
+      end
+    end
+
+    context "when signed in user is not an admin" do
+      before do
+        sign_in(consumer, nil)
+      end
+      it "returns a redirect response and redirects to root path" do
+        # Product.create! valid_attributes
+        get :index, params: {}, session: valid_session
+        expect(response).to be_redirect
+        expect(response).to redirect_to(root_path)
+        expect(flash[:alert]).to match('The page you were looking for requires admin access rights')
+      end
+    end
+
+    context "when no user is signed in" do
+      it "returns a redirect response and redirects to sign in path" do
+        # Product.create! valid_attributes
+        get :index, params: {}, session: valid_session
+        expect(response).to be_redirect
+        expect(response).to redirect_to(new_user_session_path)
+      end
     end
   end
 
   describe "GET #show" do
-    it "returns a success response" do
-      product = Product.create! valid_attributes
-      get :show, params: {id: product.to_param}, session: valid_session
-      expect(response).to be_successful
+    context "when admin is signed in" do
+      before do
+        sign_in(admin, nil)
+      end
+      it "returns a success response" do
+        product = Product.create! valid_attributes
+        get :show, params: {id: product.to_param}, session: valid_session
+        expect(response).to be_successful
+      end
     end
+
+    context "when signed in user is not an admin" do
+      before do
+        sign_in(consumer, nil)
+      end
+      it "returns a success response and redirects to root path" do
+        product = Product.create! valid_attributes
+        get :show, params: {id: product.to_param}, session: valid_session
+        expect(response).to be_redirect
+        expect(response).to redirect_to(root_path)
+        expect(flash[:alert]).to match('The page you were looking for requires admin access rights')
+      end
+    end
+
+    context "when no user is signed in" do
+      it "returns a redirect response and redirects to sign in path" do
+        product = Product.create! valid_attributes
+        get :show, params: {id: product.to_param}, session: valid_session
+        expect(response).to be_redirect
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+
   end
 
   describe "GET #new" do
-    it "returns a success response" do
-      get :new, params: {}, session: valid_session
-      expect(response).to be_successful
+    context "when admin is signed in" do
+      before do
+        sign_in(admin, nil)
+      end
+      it "returns a success response" do
+        get :new, params: {}, session: valid_session
+        expect(response).to be_successful
+      end
     end
+
+    context "when signed in user is not an admin" do
+      before do
+        sign_in(consumer, nil)
+      end
+      it "returns a redirect response and redirects to root path" do
+        get :new, params: {}, session: valid_session
+        expect(response).to be_redirect
+        expect(response).to redirect_to(root_path)
+        expect(flash[:alert]).to match('The page you were looking for requires admin access rights')
+      end
+    end
+
+    context "when no user is signed in" do
+      it "returns a redirect response and redirects to sign in path" do
+        get :new, params: {}, session: valid_session
+        expect(response).to be_redirect
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+
   end
 
   describe "GET #edit" do
-    it "returns a success response" do
-      product = Product.create! valid_attributes
-      get :edit, params: {id: product.to_param}, session: valid_session
-      expect(response).to be_successful
+    context "when signed in user is not an admin" do
+      before do
+        sign_in(admin, nil)
+      end
+      it "returns a success response" do
+        product = Product.create! valid_attributes
+        get :edit, params: {id: product.to_param}, session: valid_session
+        expect(response).to be_successful
+      end
     end
+
+    context "when signed in user is not an admin" do
+      before do
+        sign_in(consumer, nil)
+      end
+      it "returns a redirect response and redirects to root path" do
+        product = Product.create! valid_attributes
+        get :edit, params: {id: product.to_param}, session: valid_session
+        expect(response).to be_redirect
+        expect(response).to redirect_to(root_path)
+        expect(flash[:alert]).to match('The page you were looking for requires admin access rights')
+      end
+    end
+
+    context "when no user is signed in" do
+      it "returns a redirect response and redirects to sign in" do
+        product = Product.create! valid_attributes
+        get :edit, params: {id: product.to_param}, session: valid_session
+        expect(response).to be_redirect
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+
   end
 
   describe "POST #create" do
-    context "with valid params" do
-      it "creates a new Product" do
-        expect {
+    context "when signed in user is not an admin" do
+      before do
+        sign_in(admin, nil)
+      end
+      context "with valid params" do
+        it "creates a new Product" do
+          expect {
+            post :create, params: {product: valid_attributes}, session: valid_session
+          }.to change(Product, :count).by(1)
+        end
+
+        it "redirects to the created product" do
           post :create, params: {product: valid_attributes}, session: valid_session
-        }.to change(Product, :count).by(1)
+          expect(response).to redirect_to admin_product_url(Product.last)
+        end
       end
 
-      it "redirects to the created product" do
-        post :create, params: {product: valid_attributes}, session: valid_session
-        expect(response).to redirect_to admin_product_url(Product.last)
+      context "with invalid params" do
+        it "returns a success response (i.e. to display the 'new' template)" do
+          post :create, params: {product: invalid_attributes}, session: valid_session
+          expect(response).to be_successful
+        end
       end
     end
 
-    context "with invalid params" do
-      it "returns a success response (i.e. to display the 'new' template)" do
-        post :create, params: {product: invalid_attributes}, session: valid_session
-        expect(response).to be_successful
+    context "when signed in user is not an admin" do
+      before do
+        sign_in(consumer, nil)
+      end
+      it "returns a redirect response and redirects to root path" do
+        post :create, params: {product: valid_attributes}, session: valid_session
+        expect(response).to be_redirect
+        expect(response).to redirect_to(root_path)
+        expect(flash[:alert]).to match('The page you were looking for requires admin access rights')
+      end
+    end
+
+    context "when no user is signed in" do
+      it "returns a redirect response and redirects to sign in" do
+        post :create, params: {product: valid_attributes}, session: valid_session
+        expect(response).to be_redirect
+        expect(response).to redirect_to(new_user_session_path)
       end
     end
   end
 
   describe "PUT #update" do
-    context "with valid params" do
-      let(:new_attributes) {
-        { name: 'product', product_category_id: 2 }
-      }
+    let(:new_attributes) {
+      { name: 'product', product_category_id: 2 }
+    }
+    context "when signed in user is not an admin" do
+      before do
+        sign_in(admin, nil)
+      end
+      context "with valid params" do
 
-      it "updates the requested product" do
-        product = Product.create! valid_attributes
-        put :update, params: {id: product.to_param, product: new_attributes}, session: valid_session
-        product.reload
-        expect(product.reference).to eql "yam_ref"
-        expect(product.name).to eql "product"
-        expect(product.product_category_id).to eql 2
+        it "updates the requested product" do
+          product = Product.create! valid_attributes
+          put :update, params: {id: product.to_param, product: new_attributes}, session: valid_session
+          product.reload
+          expect(product.reference).to eql "yam_ref"
+          expect(product.name).to eql "product"
+          expect(product.product_category_id).to eql 2
+        end
+
+        it "redirects to the product" do
+          product = Product.create! valid_attributes
+          put :update, params: {id: product.to_param, product: valid_attributes}, session: valid_session
+          expect(response).to redirect_to admin_product_url(product)
+        end
       end
 
-      it "redirects to the product" do
-        product = Product.create! valid_attributes
-        put :update, params: {id: product.to_param, product: valid_attributes}, session: valid_session
-        expect(response).to redirect_to admin_product_url(product)
+      context "with invalid params" do
+        it "returns a success response (i.e. to display the 'edit' template)" do
+          product = Product.create! valid_attributes
+          put :update, params: {id: product.to_param, product: invalid_attributes}, session: valid_session
+          # expect(response).to be_successful <- was that before
+          expect(response).to be_redirect
+        end
       end
     end
 
-    context "with invalid params" do
-      it "returns a success response (i.e. to display the 'edit' template)" do
+    context "when signed in user is not an admin" do
+      before do
+        sign_in(consumer, nil)
+      end
+      it "returns a redirect response and redirects to root path" do
         product = Product.create! valid_attributes
-        put :update, params: {id: product.to_param, product: invalid_attributes}, session: valid_session
-        # expect(response).to be_successful <- was that before
+        put :update, params: {id: product.to_param, product: new_attributes}, session: valid_session
         expect(response).to be_redirect
+        expect(response).to redirect_to(root_path)
+        expect(flash[:alert]).to match('The page you were looking for requires admin access rights')
+      end
+    end
+
+    context "when no user is signed in" do
+      it "returns a redirect response and redirects to sign in" do
+        product = Product.create! valid_attributes
+        put :update, params: {id: product.to_param, product: new_attributes}, session: valid_session
+        expect(response).to be_redirect
+        expect(response).to redirect_to(new_user_session_path)
       end
     end
   end
 
   describe "DELETE #destroy" do
-    it "destroys the requested product" do
-      product = Product.create! valid_attributes
-      expect {
+    context "when signed in user is not an admin" do
+      before do
+        sign_in(admin, nil)
+      end
+      it "destroys the requested product" do
+        product = Product.create! valid_attributes
+        expect {
+          delete :destroy, params: {id: product.to_param}, session: valid_session
+        }.to change(Product, :count).by(-1)
+      end
+
+      it "redirects to the products list" do
+        product = Product.create! valid_attributes
         delete :destroy, params: {id: product.to_param}, session: valid_session
-      }.to change(Product, :count).by(-1)
+        expect(response).to redirect_to(admin_products_url)
+      end
     end
 
-    it "redirects to the products list" do
-      product = Product.create! valid_attributes
-      delete :destroy, params: {id: product.to_param}, session: valid_session
-      expect(response).to redirect_to(admin_products_url)
+    context "when signed in user is not an admin" do
+      before do
+        sign_in(consumer, nil)
+      end
+      it "returns a redirect response and redirects to root path" do
+        product = Product.create! valid_attributes
+        delete :destroy, params: {id: product.to_param}, session: valid_session
+        expect(response).to be_redirect
+        expect(response).to redirect_to(root_path)
+        expect(flash[:alert]).to match('The page you were looking for requires admin access rights')
+      end
+    end
+
+    context "when no user is signed in" do
+      it "returns a redirect response and redirects to sign in" do
+        product = Product.create! valid_attributes
+        delete :destroy, params: {id: product.to_param}, session: valid_session
+        expect(response).to be_redirect
+        expect(response).to redirect_to(new_user_session_path)
+      end
     end
   end
 
