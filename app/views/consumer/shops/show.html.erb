@@ -13,7 +13,6 @@
 <table class="table">
     <thead>
       <tr>
-        <th scope="col">Reference</th>
         <th scope="col">Name</th>
         <th scope="col">Price</th>
         <th scope="col">Actions</th>
@@ -22,12 +21,20 @@
     <tbody>
       <% @shop.stocks.each do |stock| %>
         <tr>
-          <td><%= stock.product.reference %></td>
           <td><%= stock.product.name %></td>
           <td><%= number_to_currency(stock.price) %></td>
           <td>
-            <%= link_to new_consumer_cart_stock_line_item_path(current_user.cart, stock), class: 'btn transparent pt-0 pb-0' do %>
-              <%= image_tag "cart-outline.svg", size: "24" %>
+            <% if user_signed_in? %>
+              <% if current_user.role.code == Role::CONSUMER_ROLE_CODE %>
+                <%= link_to new_consumer_cart_stock_line_item_path(current_user.cart, stock), class: 'btn transparent pt-0 pb-0' do %>
+                  <%= image_tag "cart-outline.svg", size: "24" %>
+                <% end %>
+              <% end %>
+            <% else %>
+              <a tabindex="0" class="btn transparent pt-0 pb-0" role="button" data-toggle="popover"
+                 data-trigger="focus" title="Sign up" data-content="You must be connected to buy products.">
+                <%= image_tag "cart-outline.svg", size: "24" %>
+              </a>
             <% end %>
           </td>
         </tr>
