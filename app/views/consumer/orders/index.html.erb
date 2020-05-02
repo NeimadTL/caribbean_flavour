@@ -1,34 +1,32 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Orders</h1>
+<h1>My Orders</h1><br>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Shop</th>
-      <th>Delivery option</th>
-      <th>Total</th>
-      <th>Action</th>
-      <th colspan=""></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @orders.each do |order| %>
-      <tr>
-        <td><%= order.shop.name %></td>
-        <td><%= DeliveryOption.find(order.delivery_option_code).option %></td>
-        <td><%= number_to_currency(order.total_price) %></td>
-        <td>
-          <%= link_to 'Show', consumer_order_path(order) %>
+<div class="row">
+  <% @orders.each do |order| %>
+    <div class="col-sm-12 col-md-9 col-lg-6 col-xl-3">
+      <div class="card mb-4" style="">
+        <div class="card-header">
+          <h5 class="card-title">
+            <%= image_tag "home-outline.svg", size: "24" %> <%= order.shop.name %>
+          </h5>
+          <h6 class="card-subtitle mb-2 text-muted"><%= order.created_at %></h6>
+        </div>
+        <div class="card-body">
+          <p class="card-text">
+            <%= image_tag "bicycle-outline.svg", size: "24" %> <%= order.delivery_option %>
+          </p>
+          <p class="card-text"><%= number_to_currency(order.total_price) %></p>
+          <p class="card-text"><strong>Status:</strong> <%= order.status %><p>
+          <%= link_to 'Details', consumer_order_path(order) %>
           <%= link_to 'Edit', '#' %> <!-- edit_consumer_order_path(order)-->
-          <%= link_to 'Destroy', consumer_order_path(order), method: :delete,
+          <%= link_to 'Cancel', consumer_order_path(order), method: :delete,
               data: { confirm: 'Are you sure?' } %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 
 <br>
 

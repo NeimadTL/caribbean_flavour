@@ -2,30 +2,29 @@
 
 <h1>Partner Orders</h1>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Customer</th>
-      <th>Delivery option</th>
-      <th>Total</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @orders.each do |order| %>
-      <tr>
-        <td><%= order.user.username %></td>
-        <td><%= order.delivery_option %></td>
-        <td><%= number_to_currency(order.total_price) %></td>
-        <td>
-          <%= link_to 'Show', partner_shop_order_path(order.shop, order) %>
-          <%= link_to 'Edit', edit_partner_shop_order_path(order.shop, order) %>
-        </td>
-        <td></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="row">
+  <% @orders.each do |order| %>
+    <div class="col-sm-12 col-md-9 col-lg-6 col-xl-3">
+      <div class="card mb-4" style="">
+        <div class="card-header">
+          <h5 class="card-title">
+            <%= image_tag "person-circle-outline.svg", size: "24" %>
+            <%= order.user.firstname %> <%= order.user.lastname %>
+          </h5>
+          <h6 class="card-subtitle mb-2 text-muted"><%= order.created_at %></h6>
+        </div>
+        <div class="card-body">
+          <p class="card-text">
+            <%= image_tag "bicycle-outline.svg", size: "24" %> <%= order.delivery_option %>
+          </p>
+          <p class="card-text"><%= number_to_currency(order.total_price) %></p>
+          <p class="card-text"><strong>Status:</strong> <%= order.status %><p>
+          <%= link_to 'Details', partner_shop_order_path(order.shop, order), class: 'btn btn-primary btn-sm' %>
+          <%= link_to 'Change Status', edit_partner_shop_order_path(order.shop, order), class: 'btn btn-primary btn-sm' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 
 <br>
