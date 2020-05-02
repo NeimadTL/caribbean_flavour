@@ -35,7 +35,7 @@ class Partner::StocksController < ApplicationController
 
     respond_to do |format|
       if @stock.save
-        format.html { redirect_to partner_shop_path(current_user.shop), notice: 'Product was successfully created.' }
+        format.html { redirect_to partner_shop_url(current_user.shop), notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @stock }
       else
         format.html { render :new }
@@ -49,7 +49,7 @@ class Partner::StocksController < ApplicationController
   def update
     respond_to do |format|
       if @stock.update(stock_params)
-        format.html { redirect_to partner_shop_path(current_user.shop), notice: 'Product was successfully updated.' }
+        format.html { redirect_to partner_shop_url(current_user.shop), notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @stock }
       else
         format.html { render :edit }
@@ -63,7 +63,7 @@ class Partner::StocksController < ApplicationController
   def destroy
     @stock.destroy
     respond_to do |format|
-      format.html { redirect_to partner_shop_path(current_user.shop), notice: 'Product was successfully destroyed.' }
+      format.html { redirect_to partner_shop_url(current_user.shop), notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -87,13 +87,13 @@ class Partner::StocksController < ApplicationController
     def product_in_shop_already
       shop = Shop.find(params[:shop_id])
       if shop.products.find_by(reference: params[:stock][:product_reference])
-        redirect_to new_partner_shop_stock_path(shop), alert: 'This product is already in your shop.'
+        redirect_to new_partner_shop_stock_url(shop), alert: 'This product is already in your shop.'
       end
     end
 
     def invalid_shop
       logger.error "User ##{current_user.id} attempts to add product
         #{params[:stock][:product_reference]} twice in shop ##{params[:shop_id]}"
-      redirect_to new_partner_shop_stock_path(params[:shop_id]), alert: 'Something went wrong : invalid shop'
+      redirect_to new_partner_shop_stock_url(params[:shop_id]), alert: 'Something went wrong : invalid shop'
     end
 end
