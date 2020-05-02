@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
 
-  STATUS = ["Ordered", "Packed", "Shipped", "Delivered"]
+  STATUS = ["ordered", "packed", "shipped", "delivered"]
 
   validates :delivery_option_code, presence: true
   validates :status, inclusion: { in: STATUS }
