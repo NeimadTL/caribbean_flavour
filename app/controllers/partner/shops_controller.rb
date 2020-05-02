@@ -7,7 +7,7 @@ class Partner::ShopsController < ApplicationController
   before_action :allow_one_shop_only, only: [:new, :create]
 
   def index
-    redirect_to partner_shop_path(current_user.shop) unless current_user.shop.nil?
+    redirect_to partner_shop_url(current_user.shop) unless current_user.shop.nil?
   end
 
   def new
@@ -18,7 +18,7 @@ class Partner::ShopsController < ApplicationController
     @shop = Shop.new(shop_params.merge(user: current_user))
     respond_to do |format|
       if @shop.save
-        format.html { redirect_to partner_shop_path(@shop), notice: 'Shop was successfully created.' }
+        format.html { redirect_to partner_shop_url(@shop), notice: 'Shop was successfully created.' }
         format.json { render :show, status: :created, location: @shop }
       else
         format.html { render :new }
@@ -36,7 +36,7 @@ class Partner::ShopsController < ApplicationController
   def update
     respond_to do |format|
       if @shop.update(shop_params)
-        format.html { redirect_to partner_shop_path(@shop), notice: 'Shop was successfully updated.' }
+        format.html { redirect_to partner_shop_url(@shop), notice: 'Shop was successfully updated.' }
         format.json { render :show, status: :ok, location: @shop }
       else
         format.html { render :edit }

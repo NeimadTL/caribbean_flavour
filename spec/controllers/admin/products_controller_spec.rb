@@ -163,7 +163,7 @@ RSpec.describe Admin::ProductsController, type: :controller do
   end
 
   describe "GET #edit" do
-    context "when signed in user is not an admin" do
+    context "when admin is signed in" do
       before do
         sign_in(admin, nil)
       end
@@ -199,7 +199,7 @@ RSpec.describe Admin::ProductsController, type: :controller do
   end
 
   describe "POST #create" do
-    context "when signed in user is not an admin" do
+    context "when admin is signed in" do
       before do
         sign_in(admin, nil)
       end
@@ -249,7 +249,7 @@ RSpec.describe Admin::ProductsController, type: :controller do
     let(:new_attributes) {
       { name: 'product', product_category_id: 2 }
     }
-    context "when signed in user is not an admin" do
+    context "when admin signed in" do
       before do
         sign_in(admin, nil)
       end
@@ -305,7 +305,7 @@ RSpec.describe Admin::ProductsController, type: :controller do
   end
 
   describe "DELETE #destroy" do
-    context "when signed in user is not an admin" do
+    context "when admin is signed in" do
       before do
         sign_in(admin, nil)
       end
