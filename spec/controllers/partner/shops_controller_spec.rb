@@ -23,7 +23,7 @@ RSpec.describe Partner::ShopsController, type: :controller do
   }
 
   let(:invalid_attributes) {
-    { name: 'new shop' }
+    { name: "" }
   }
 
   let(:valid_session) { {} }
@@ -239,7 +239,7 @@ RSpec.describe Partner::ShopsController, type: :controller do
         it "returns a success response (i.e. to display the 'edit' template)" do
           shop = Shop.create! valid_attributes
           put :update, params: {id: shop.to_param, shop: invalid_attributes}, session: valid_session
-          expect(response).to be_redirect
+          expect(response).to be_successful
         end
       end
     end

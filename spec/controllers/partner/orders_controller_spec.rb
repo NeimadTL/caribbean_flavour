@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Partner::StocksController, type: :controller do
+RSpec.describe Partner::OrdersController, type: :controller do
 
   let(:partner) {
     User.create!(username: "partner", firstname: "partner_firstname", lastname: "partner_lastname",
@@ -18,33 +18,27 @@ RSpec.describe Partner::StocksController, type: :controller do
     password: "12345678", password_confirmation: "12345678")
   }
 
-
   let(:shop) {
     Shop.create!(name: 'new shop', product_category_code: 1, delivery_option_ids: [1, 2], user_id: partner.id)
   }
 
-  let(:product) {
-    Product.create!(reference: 'dummy_ref', name: 'dummy_product', product_category_id: ProductCategory::FARMING_CATEGORY_CODE)
-  }
-
   let(:valid_attributes) {
-    { product_reference: product.reference, price: 1, shop_id: shop.id }
+    { delivery_option_code: 1, user_id: consumer.id }
   }
 
   let(:invalid_attributes) {
-    { price: "" }
+    { status: 'deliver' }
   }
 
   let(:valid_session) { {} }
 
-
-  describe "GET #new" do
+  describe "GET #index" do
     context "when partner is signed in" do
       before do
         sign_in(partner, nil)
       end
       it "returns a success response" do
-        get :new, params: {shop_id: shop.id}, session: valid_session
+        get :index, params: {shop_id: shop.id}, session: valid_session
         expect(response).to be_successful
       end
     end
@@ -54,7 +48,7 @@ RSpec.describe Partner::StocksController, type: :controller do
         sign_in(consumer, nil)
       end
       it "returns a redirect response and redirects to root path" do
-        get :new, params: {shop_id: shop.id}, session: valid_session
+        get :index, params: {shop_id: shop.id}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
         expect(flash[:alert]).to match('The page you were looking for requires partner access rights')
@@ -63,36 +57,22 @@ RSpec.describe Partner::StocksController, type: :controller do
 
     context "when no user is signed in" do
       it "returns a redirect response and redirects to sign in path" do
-        get :new, params: {shop_id: shop.id}, session: valid_session
+        get :index, params: {shop_id: shop.id}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(new_user_session_path)
       end
     end
   end
 
-  describe "POST #create" do
+  describe "GET #show" do
     context "when partner is signed in" do
       before do
         sign_in(partner, nil)
       end
-      context "with valid params" do
-        it "creates a new Stock" do
-          expect {
-            post :create, params: {shop_id: shop.id, stock: valid_attributes}, session: valid_session
-          }.to change(Stock, :count).by(1)
-        end
-
-        it "redirects to the created product" do
-          post :create, params: {shop_id: shop.id, stock: valid_attributes}, session: valid_session
-          expect(response).to redirect_to partner_shop_url(shop)
-        end
-      end
-
-      context "with invalid params" do
-        it "returns a success response (i.e. to display the 'new' template)" do
-          post :create, params: {shop_id: shop.id, stock: invalid_attributes}, session: valid_session
-          expect(response).to be_successful
-        end
+      it "returns a success response" do
+        order = Order.create! valid_attributes
+        get :show, params: {shop_id: shop.id, id: order.to_param}, session: valid_session
+        expect(response).to be_successful
       end
     end
 
@@ -100,8 +80,9 @@ RSpec.describe Partner::StocksController, type: :controller do
       before do
         sign_in(consumer, nil)
       end
-      it "returns a redirect response and redirects to root path" do
-        post :create, params: {shop_id: shop.id, stock: valid_attributes}, session: valid_session
+      it "returns a success response and redirects to root path" do
+        order = Order.create! valid_attributes
+        get :show, params: {shop_id: shop.id, id: order.to_param}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
         expect(flash[:alert]).to match('The page you were looking for requires partner access rights')
@@ -109,8 +90,9 @@ RSpec.describe Partner::StocksController, type: :controller do
     end
 
     context "when no user is signed in" do
-      it "returns a redirect response and redirects to sign in" do
-        post :create, params: {shop_id: shop.id, stock: valid_attributes}, session: valid_session
+      it "returns a redirect response and redirects to sign in path" do
+        order = Order.create! valid_attributes
+        get :show, params: {shop_id: shop.id, id: order.to_param}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(new_user_session_path)
       end
@@ -123,8 +105,8 @@ RSpec.describe Partner::StocksController, type: :controller do
         sign_in(partner, nil)
       end
       it "returns a success response" do
-        stock = Stock.create! valid_attributes
-        get :edit, params: {shop_id: shop.id, id: stock.to_param}, session: valid_session
+        order = Order.create! valid_attributes
+        get :edit, params: {shop_id: shop.id, id: order.to_param}, session: valid_session
         expect(response).to be_successful
       end
     end
@@ -134,8 +116,8 @@ RSpec.describe Partner::StocksController, type: :controller do
         sign_in(consumer, nil)
       end
       it "returns a redirect response and redirects to root path" do
-        stock = Stock.create! valid_attributes
-        get :edit, params: {shop_id: shop.id, id: stock.to_param}, session: valid_session
+        order = Order.create! valid_attributes
+        get :edit, params: {shop_id: shop.id, id: order.to_param}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
         expect(flash[:alert]).to match('The page you were looking for requires partner access rights')
@@ -144,8 +126,8 @@ RSpec.describe Partner::StocksController, type: :controller do
 
     context "when no user is signed in" do
       it "returns a redirect response and redirects to sign in" do
-        stock = Stock.create! valid_attributes
-        get :edit, params: {shop_id: shop.id, id: stock.to_param}, session: valid_session
+        order = Order.create! valid_attributes
+        get :edit, params: {shop_id: shop.id, id: order.to_param}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(new_user_session_path)
       end
@@ -153,7 +135,10 @@ RSpec.describe Partner::StocksController, type: :controller do
   end
 
   describe "PUT #update" do
-    let(:new_attributes) { { price: 9 } }
+    let(:new_attributes) { { status: 'shipped' } }
+    let(:order_line_item) {
+      OrderLineItem.create(name: 'product', unit_price: 1.5, quantity: 2, shop_id: shop.id)
+    }
     context "when partner signed in" do
       before do
         sign_in(partner, nil)
@@ -161,23 +146,25 @@ RSpec.describe Partner::StocksController, type: :controller do
       context "with valid params" do
 
         it "updates the requested stock" do
-          stock = Stock.create! valid_attributes
-          put :update, params: {shop_id: shop.id, id: stock.to_param, stock: new_attributes}, session: valid_session
-          stock.reload
-          expect(stock.price).to eql 9
+          order = Order.create! valid_attributes
+          order.order_line_items << order_line_item
+          put :update, params: {shop_id: shop.id, id: order.to_param, order: new_attributes}, session: valid_session
+          order.reload
+          expect(order.status).to eql 'shipped'
         end
 
         it "redirects to the stock" do
-          stock = Stock.create! valid_attributes
-          put :update, params: {shop_id: shop.id, id: stock.to_param, stock: valid_attributes}, session: valid_session
-          expect(response).to redirect_to partner_shop_url(shop)
+          order = Order.create! valid_attributes
+          order.order_line_items << order_line_item
+          put :update, params: {shop_id: shop.id, id: order.to_param, order: valid_attributes}, session: valid_session
+          expect(response).to redirect_to partner_shop_orders_url(shop, order)
         end
       end
 
       context "with invalid params" do
         it "returns a success response (i.e. to display the 'edit' template)" do
-          stock = Stock.create! valid_attributes
-          put :update, params: {shop_id: shop.id, id: stock.to_param, stock: invalid_attributes}, session: valid_session
+          order = Order.create! valid_attributes
+          put :update, params: {shop_id: shop.id, id: order.to_param, order: invalid_attributes}, session: valid_session
           expect(response).to be_successful
         end
       end
@@ -188,8 +175,8 @@ RSpec.describe Partner::StocksController, type: :controller do
         sign_in(consumer, nil)
       end
       it "returns a redirect response and redirects to root path" do
-        stock = Stock.create! valid_attributes
-        put :update, params: {shop_id: shop.id, id: stock.to_param, stock: new_attributes}, session: valid_session
+        order = Order.create! valid_attributes
+        put :update, params: {shop_id: shop.id, id: order.to_param, order: new_attributes}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
         expect(flash[:alert]).to match('The page you were looking for requires partner access rights')
@@ -198,13 +185,12 @@ RSpec.describe Partner::StocksController, type: :controller do
 
     context "when no user is signed in" do
       it "returns a redirect response and redirects to sign in" do
-        stock = Stock.create! valid_attributes
-        put :update, params: {shop_id: shop.id, id: stock.to_param, stock: new_attributes}, session: valid_session
+        order = Order.create! valid_attributes
+        put :update, params: {shop_id: shop.id, id: order.to_param, order: new_attributes}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(new_user_session_path)
       end
     end
   end
-
 
 end
