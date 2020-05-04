@@ -4,7 +4,7 @@ RSpec.describe Partner::OrdersController, type: :controller do
 
   let(:partner) {
     User.create!(username: "partner", firstname: "partner_firstname", lastname: "partner_lastname",
-    city: "city", email: "anotherpartner@gmail.com", phone_number: "0394274839", street: "street",
+    city: "city", email: "partner@gmail.com", phone_number: "0394274839", street: "street",
     additional_address_information: "additional address", postcode: "97119",
     country: "country", is_partner: false, role_code: Role::PARTNER_ROLE_CODE,
     password: "12345678", password_confirmation: "12345678")
@@ -12,7 +12,7 @@ RSpec.describe Partner::OrdersController, type: :controller do
 
   let(:another_partner) {
     User.create!(username: "another_partner", firstname: "another_partner_firstname",
-    lastname: "another_partner_lastname", city: "city", email: "partner@gmail.com",
+    lastname: "another_partner_lastname", city: "city", email: "anotherpartner@gmail.com",
     phone_number: "0394274839", street: "street",additional_address_information: "additional address",
     postcode: "97119", country: "country", is_partner: false, role_code: Role::PARTNER_ROLE_CODE,
     password: "87654321", password_confirmation: "87654321")
@@ -266,7 +266,6 @@ RSpec.describe Partner::OrdersController, type: :controller do
     context "when partner hasn't created his shop yet" do
       before do
         sign_in(partner, nil)
-        # partner.create_shop(name: 'test', product_category_code: 1, delivery_option_ids: [1, 2])
         another_partner.create_shop(name: 'another shop', product_category_code: 2, delivery_option_ids: [3, 4])
       end
       it "returns a redirect response" do
