@@ -10,6 +10,14 @@ RSpec.describe Partner::StocksController, type: :controller do
     password: "12345678", password_confirmation: "12345678")
   }
 
+  let(:another_partner) {
+    User.create!(username: "another_partner", firstname: "another_partner_firstname",
+    lastname: "another_partner_lastname", city: "city", email: "anotherlpartner@gmail.com",
+    phone_number: "0394274839", street: "street",additional_address_information: "additional address",
+    postcode: "97119", country: "country", is_partner: false, role_code: Role::PARTNER_ROLE_CODE,
+    password: "87654321", password_confirmation: "87654321")
+  }
+
   let(:consumer) {
     User.create!(username: "consu", firstname: "consu_firstname", lastname: "consu_lastname",
     city: "city", email: "consu@gmail.com", phone_number: "0394274839", street: "street",
@@ -42,10 +50,37 @@ RSpec.describe Partner::StocksController, type: :controller do
     context "when partner is signed in" do
       before do
         sign_in(partner, nil)
+        partner.create_shop(name: 'test', product_category_code: 1, delivery_option_ids: [1, 2])
       end
       it "returns a success response" do
-        get :new, params: {shop_id: shop.id}, session: valid_session
+        get :new, params: {shop_id: partner.shop.id}, session: valid_session
         expect(response).to be_successful
+      end
+    end
+
+    context "when partner hasn't created his shop yet" do
+      before do
+        sign_in(partner, nil)
+      end
+      it "returns a redirect response" do
+        expect(partner.shop.nil?).to be_truthy
+        get :new, params: {shop_id: Random.new.rand(2000..3000)}, session: valid_session
+        expect(response).to be_redirect
+        expect(response).to redirect_to(partner_shops_url)
+      end
+    end
+
+    context "when partner tries to add a product to the shop of another partner" do
+      before do
+        sign_in(partner, nil)
+        partner.create_shop(name: 'test', product_category_code: 1, delivery_option_ids: [1, 2])
+        another_partner.create_shop(name: 'another shop', product_category_code: 2, delivery_option_ids: [3, 4])
+      end
+      it "returns a redirect response" do
+        get :new, params: {shop_id: another_partner.shop.to_param}, session: valid_session
+        expect(response).to be_redirect
+        expect(response).to redirect_to(root_url)
+        expect(flash[:alert]).to match('You are not the owner of this shop')
       end
     end
 
@@ -74,25 +109,53 @@ RSpec.describe Partner::StocksController, type: :controller do
     context "when partner is signed in" do
       before do
         sign_in(partner, nil)
+        partner.create_shop(name: 'test', product_category_code: 1, delivery_option_ids: [1, 2])
       end
       context "with valid params" do
         it "creates a new Stock" do
           expect {
-            post :create, params: {shop_id: shop.id, stock: valid_attributes}, session: valid_session
+            post :create, params: {shop_id: partner.shop.id, stock: valid_attributes}, session: valid_session
           }.to change(Stock, :count).by(1)
         end
 
         it "redirects to the created product" do
-          post :create, params: {shop_id: shop.id, stock: valid_attributes}, session: valid_session
-          expect(response).to redirect_to partner_shop_url(shop)
+          post :create, params: {shop_id: partner.shop.id, stock: valid_attributes}, session: valid_session
+          expect(response).to redirect_to partner_shop_url(partner.shop)
         end
       end
 
       context "with invalid params" do
         it "returns a success response (i.e. to display the 'new' template)" do
-          post :create, params: {shop_id: shop.id, stock: invalid_attributes}, session: valid_session
+          post :create, params: {shop_id: partner.shop.id, stock: invalid_attributes}, session: valid_session
           expect(response).to be_successful
         end
+      end
+    end
+
+    context "when partner hasn't created his shop yet" do
+      before do
+        sign_in(partner, nil)
+      end
+      it "returns a redirect response" do
+        expect(partner.shop.nil?).to be_truthy
+        post :create, params: {shop_id: Random.new.rand(2000..3000), stock: valid_attributes}, session: valid_session
+        expect(response).to be_redirect
+        expect(response).to redirect_to(partner_shops_url)
+        expect(flash[:alert]).to match('You are not the owner of this shop') # --> shouldn't pass
+      end
+    end
+
+    context "when partner tries to access the shop of another partner" do
+      before do
+        sign_in(partner, nil)
+        partner.create_shop(name: 'test', product_category_code: 1, delivery_option_ids: [1, 2])
+        another_partner.create_shop(name: 'another shop', product_category_code: 2, delivery_option_ids: [3, 4])
+      end
+      it "returns a redirect response" do
+        post :create, params: {shop_id: another_partner.shop.to_param, stock: valid_attributes}, session: valid_session
+        expect(response).to be_redirect
+        expect(response).to redirect_to(root_url)
+        expect(flash[:alert]).to match('You are not the owner of this shop')
       end
     end
 
