@@ -159,6 +159,20 @@ RSpec.describe Partner::StocksController, type: :controller do
       end
     end
 
+    context "when partner tries to add twice a product in his shop" do
+      before do
+        sign_in(partner, nil)
+        partner.create_shop(name: 'test', product_category_code: 1, delivery_option_ids: [1, 2])
+        partner.shop.stocks << Stock.new(valid_attributes)
+      end
+      it "returns a redirect response" do
+        post :create, params: {shop_id: partner.shop.to_param, stock: valid_attributes}, session: valid_session
+        expect(response).to be_redirect
+        expect(response).to redirect_to(new_partner_shop_stock_url(partner.shop))
+        expect(flash[:alert]).to match('This product is already in your shop.')
+      end
+    end
+
     context "when signed in user is not an partner" do
       before do
         sign_in(consumer, nil)
