@@ -228,9 +228,6 @@ RSpec.describe Partner::OrdersController, type: :controller do
     let(:order_line_item) {
       OrderLineItem.create(name: 'product', unit_price: 1.5, quantity: 2, shop_id: partner.shop.id)
     }
-    # let(:another_order_line_item) {
-    #   OrderLineItem.create(name: 'another product', unit_price: 5.99, quantity: 3, shop_id: another_partner.shop.id)
-    # }
     context "when partner signed in" do
       before do
         sign_in(partner, nil)
