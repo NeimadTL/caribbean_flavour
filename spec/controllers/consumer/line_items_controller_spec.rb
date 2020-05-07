@@ -34,12 +34,16 @@ RSpec.describe Consumer::LineItemsController, type: :controller do
     Product.create!(reference: 'dummy_ref', name: 'dummy_product', product_category_id: ProductCategory::FARMING_CATEGORY_CODE)
   }
 
-  let(:valid_attributes) {
+  let(:stock_attributes) {
     { product_reference: product.reference, price: 2.2 }
   }
 
+  let(:valid_attributes) {
+    { quantity: 3 }
+  }
+
   let(:invalid_attributes) {
-    { delivery_option_code: "" }
+    { quantity: "" }
   }
 
   let(:valid_session) { {} }
@@ -49,7 +53,7 @@ RSpec.describe Consumer::LineItemsController, type: :controller do
       before do
         sign_in(consumer, nil)
         shop = partner.create_shop(shop_attributes)
-        shop.stocks << Stock.new(valid_attributes)
+        shop.stocks << Stock.new(stock_attributes)
       end
       it "returns a success response" do
         stock_id = partner.shop.stocks.first.id
@@ -62,7 +66,7 @@ RSpec.describe Consumer::LineItemsController, type: :controller do
       before do
         sign_in(consumer, nil)
         shop = partner.create_shop(shop_attributes)
-        shop.stocks << Stock.new(valid_attributes)
+        shop.stocks << Stock.new(stock_attributes)
       end
       it "returns a success response" do
         stock_id = partner.shop.stocks.first.id
@@ -77,7 +81,7 @@ RSpec.describe Consumer::LineItemsController, type: :controller do
       before do
         sign_in(consumer, nil)
         shop = partner.create_shop(shop_attributes)
-        shop.stocks << Stock.new(valid_attributes)
+        shop.stocks << Stock.new(stock_attributes)
         consumer.cart.line_items << LineItem.new(stock_id: shop.stocks.first.id, quantity: 3)
       end
       it "returns a success response" do
@@ -94,7 +98,7 @@ RSpec.describe Consumer::LineItemsController, type: :controller do
       before do
         sign_in(partner, nil)
         shop = partner.create_shop(shop_attributes)
-        shop.stocks << Stock.new(valid_attributes)
+        shop.stocks << Stock.new(stock_attributes)
       end
       it "returns a redirect response and redirects to root path" do
         stock_id = partner.shop.stocks.first.id
@@ -108,7 +112,7 @@ RSpec.describe Consumer::LineItemsController, type: :controller do
     context "when no user is signed in" do
       before do
         shop = partner.create_shop(shop_attributes)
-        shop.stocks << Stock.new(valid_attributes)
+        shop.stocks << Stock.new(stock_attributes)
       end
       it "returns a redirect response and redirects to sign in path" do
         stock_id = partner.shop.stocks.first.id
@@ -118,6 +122,88 @@ RSpec.describe Consumer::LineItemsController, type: :controller do
       end
     end
   end
+
+  describe "POST #create" do
+    context "when consumer is signed in" do
+      before do
+        sign_in(consumer, nil)
+        shop = partner.create_shop(shop_attributes)
+        shop.stocks << Stock.new(stock_attributes)
+      end
+      context "with valid params" do
+        it "creates a new Stock" do
+          stock_id = partner.shop.stocks.first.id
+          valid_attributes['stock_id'] = stock_id
+          expect {
+            post :create, params: {cart_id: consumer.cart.id, stock_id: stock_id, line_item: valid_attributes}, session: valid_session
+          }.to change(LineItem, :count).by(1)
+        end
+
+        it "redirects to the created product" do
+          stock_id = partner.shop.stocks.first.id
+          valid_attributes['stock_id'] = stock_id
+          post :create, params: {cart_id: consumer.cart.id, stock_id: stock_id, line_item: valid_attributes}, session: valid_session
+          expect(response).to redirect_to consumer_cart_url(consumer.cart)
+        end
+      end
+
+      context "with invalid params" do
+        it "returns a success response (i.e. to display the 'new' template)" do
+          stock_id = partner.shop.stocks.first.id
+          valid_attributes['stock_id'] = stock_id
+          post :create, params: {cart_id: consumer.cart.id, stock_id: stock_id, line_item: invalid_attributes}, session: valid_session
+          expect(response).to be_successful
+        end
+      end
+    end
+
+    context "when consumer tries to create an order for another one consumer" do
+      before do
+        sign_in(consumer, nil)
+        shop = partner.create_shop(shop_attributes)
+        shop.stocks << Stock.new(stock_attributes)
+      end
+      it "returns a success response" do
+        stock_id = partner.shop.stocks.first.id
+        valid_attributes['stock_id'] = stock_id
+        post :create, params: {cart_id: another_consumer.cart.id, stock_id: stock_id, order: valid_attributes}, session: valid_session
+        expect(response).to be_redirect
+        expect(response).to redirect_to(root_path)
+        expect(flash[:alert]).to match('You are not the owner of this cart')
+      end
+    end
+
+    context "when signed in user is not an consumer" do
+      before do
+        sign_in(partner, nil)
+        shop = partner.create_shop(shop_attributes)
+        shop.stocks << Stock.new(stock_attributes)
+      end
+      it "returns a redirect response and redirects to root path" do
+        stock_id = partner.shop.stocks.first.id
+        valid_attributes['stock_id'] = stock_id
+        post :create, params: {cart_id: consumer.cart.id, stock_id: stock_id}, session: valid_session
+        expect(response).to be_redirect
+        expect(response).to redirect_to(root_path)
+        expect(flash[:alert]).to match('The page you were looking for requires consumer access rights')
+      end
+    end
+
+    context "when no user is signed in" do
+      before do
+        shop = partner.create_shop(shop_attributes)
+        shop.stocks << Stock.new(stock_attributes)
+      end
+      it "returns a redirect response and redirects to sign in" do
+        stock_id = partner.shop.stocks.first.id
+        valid_attributes['stock_id'] = stock_id
+        post :create, params: {cart_id: consumer.cart.id, stock_id: stock_id}, session: valid_session
+        expect(response).to be_redirect
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+  end
+
 
 
 end
