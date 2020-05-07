@@ -157,7 +157,7 @@ RSpec.describe Consumer::LineItemsController, type: :controller do
       end
     end
 
-    context "when consumer tries to create an order for another one consumer" do
+    context "when consumer tries to create an item for another one consumer" do
       before do
         sign_in(consumer, nil)
         shop = partner.create_shop(shop_attributes)
@@ -166,7 +166,7 @@ RSpec.describe Consumer::LineItemsController, type: :controller do
       it "returns a success response" do
         stock_id = partner.shop.stocks.first.id
         valid_attributes['stock_id'] = stock_id
-        post :create, params: {cart_id: another_consumer.cart.id, stock_id: stock_id, order: valid_attributes}, session: valid_session
+        post :create, params: {cart_id: another_consumer.cart.id, stock_id: stock_id, line_item: valid_attributes}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
         expect(flash[:alert]).to match('You are not the owner of this cart')
@@ -268,6 +268,89 @@ RSpec.describe Consumer::LineItemsController, type: :controller do
     end
   end
 
+  describe "PUT #update" do
+    let(:new_attributes) { { quantity: 2 } }
+    context "when consumer signed in" do
+      before do
+        sign_in(consumer, nil)
+        shop = partner.create_shop(shop_attributes)
+        shop.stocks << Stock.new(stock_attributes)
+        consumer.cart.line_items << LineItem.new(stock_id: shop.stocks.first.id, quantity: 3)
+      end
+      context "with valid params" do
 
+        it "updates the requested item" do
+          stock_id = partner.shop.stocks.first.id
+          item = consumer.cart.line_items.first
+          put :update, params: {cart_id: consumer.cart.id , stock_id: stock_id, id: item.id, line_item: new_attributes}, session: valid_session
+          item.reload
+          expect(item.quantity).to eql 2
+        end
+
+        it "redirects to the consumer's cart" do
+          stock_id = partner.shop.stocks.first.id
+          item = consumer.cart.line_items.first
+          put :update, params: {cart_id: consumer.cart.id , stock_id: stock_id, id: item.id, line_item: new_attributes}, session: valid_session
+          expect(response).to redirect_to consumer_cart_url(consumer.cart)
+        end
+      end
+
+      context "with invalid params" do
+        it "returns a success response (i.e. to display the 'edit' template)" do
+          stock_id = partner.shop.stocks.first.id
+          item = consumer.cart.line_items.first
+          put :update, params: {cart_id: consumer.cart.id , stock_id: stock_id, id: item.id, line_item: invalid_attributes}, session: valid_session
+          expect(response).to be_successful
+        end
+      end
+    end
+
+    context "when consumer tries to update item in the cart of another consumer" do
+      before do
+        sign_in(consumer, nil)
+        shop = partner.create_shop(shop_attributes)
+        shop.stocks << Stock.new(stock_attributes)
+        another_consumer.cart.line_items << LineItem.new(stock_id: shop.stocks.first.id, quantity: 3)
+      end
+      it "returns a redirect response" do
+        stock_id = partner.shop.stocks.first.id
+        item = another_consumer.cart.line_items.first
+        put :update, params: {cart_id: another_consumer.cart.id , stock_id: stock_id, id: item.id, line_item: new_attributes}, session: valid_session
+        expect(response).to be_redirect
+        expect(response).to redirect_to(root_url)
+        expect(flash[:alert]).to match('You are not the owner of this cart')
+      end
+    end
+
+    context "when signed in user is not an consumer" do
+      before do
+        sign_in(partner, nil)
+        shop = partner.create_shop(shop_attributes)
+        shop.stocks << Stock.new(stock_attributes)
+        consumer.cart.line_items << LineItem.new(stock_id: shop.stocks.first.id, quantity: 3)
+      end
+      it "returns a redirect response and redirects to root path" do
+        stock_id = partner.shop.stocks.first.id
+        item = consumer.cart.line_items.first
+        put :update, params: {cart_id: consumer.cart.id , stock_id: stock_id, id: item.id, line_item: new_attributes}, session: valid_session
+        expect(response).to be_redirect
+        expect(response).to redirect_to(root_path)
+        expect(flash[:alert]).to match('The page you were looking for requires consumer access rights')
+      end
+    end
+
+    context "when no user is signed in" do
+      it "returns a redirect response and redirects to sign in" do
+        shop = partner.create_shop(shop_attributes)
+        shop.stocks << Stock.new(stock_attributes)
+        consumer.cart.line_items << LineItem.new(stock_id: shop.stocks.first.id, quantity: 3)
+        stock_id = partner.shop.stocks.first.id
+        item = consumer.cart.line_items.first
+        put :update, params: {cart_id: consumer.cart.id , stock_id: stock_id, id: item.id, line_item: new_attributes}, session: valid_session
+        expect(response).to be_redirect
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+  end
 
 end
