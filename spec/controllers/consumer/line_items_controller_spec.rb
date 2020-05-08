@@ -237,6 +237,23 @@ RSpec.describe Consumer::LineItemsController, type: :controller do
       end
     end
 
+    context "when partner tries to edit cart of another consumer by using its cart and another consumer's item" do
+      before do
+        sign_in(consumer, nil)
+        shop = partner.create_shop(shop_attributes)
+        shop.stocks << Stock.new(stock_attributes)
+        another_consumer.cart.line_items << LineItem.new(stock_id: shop.stocks.first.id, quantity: 3)
+      end
+      it "returns a redirect response" do
+        stock_id = partner.shop.stocks.first.id
+        item = another_consumer.cart.line_items.first
+        get :edit, params: {cart_id: consumer.cart.id , stock_id: stock_id, id: item.to_param}, session: valid_session
+        expect(response).to be_redirect
+        expect(response).to redirect_to(root_url)
+        expect(flash[:alert]).to match('This product is not in your cart')
+      end
+    end
+
     context "when signed in user is not an consumer" do
       before do
         sign_in(partner, nil)
@@ -319,6 +336,23 @@ RSpec.describe Consumer::LineItemsController, type: :controller do
         expect(response).to be_redirect
         expect(response).to redirect_to(root_url)
         expect(flash[:alert]).to match('You are not the owner of this cart')
+      end
+    end
+
+    context "when consumer tries to update item in the cart of another consumer by using its cart and another consumer's item" do
+      before do
+        sign_in(consumer, nil)
+        shop = partner.create_shop(shop_attributes)
+        shop.stocks << Stock.new(stock_attributes)
+        another_consumer.cart.line_items << LineItem.new(stock_id: shop.stocks.first.id, quantity: 3)
+      end
+      it "returns a redirect response" do
+        stock_id = partner.shop.stocks.first.id
+        item = another_consumer.cart.line_items.first
+        put :update, params: {cart_id: consumer.cart.id , stock_id: stock_id, id: item.id, line_item: new_attributes}, session: valid_session
+        expect(response).to be_redirect
+        expect(response).to redirect_to(root_url)
+        expect(flash[:alert]).to match('This product is not in your cart')
       end
     end
 
