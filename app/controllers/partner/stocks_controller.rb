@@ -3,6 +3,7 @@ class Partner::StocksController < ApplicationController
   before_action :authenticate_user!
   before_action :require_to_be_partner
   before_action :require_to_be_shop_owner
+  before_action :require_to_be_shop_owner_product, only: [:edit, :update, :destroy]
   before_action :set_stock, only: [:show, :edit, :update, :destroy]
   before_action :set_products, only: [:new, :create, :edit, :update]
   before_action :product_in_shop_already, only: [:create]
