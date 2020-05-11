@@ -19,37 +19,37 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="<%= root_path %>">Home</a>
+            <a class="nav-link" href="<%= root_path %>"><%= t('.home_link') %></a>
           </li>
           <% if user_signed_in? %>
             <% if current_user.role.code == Role::CONSUMER_ROLE_CODE %>
               <li class="nav-item">
-                <%= link_to 'All Shops', consumer_shops_path, class: 'nav-link' %>
+                <%= link_to t('.all_shops_link'), consumer_shops_path, class: 'nav-link' %>
               </li>
               <li class="nav-item">
-                <%= link_to 'My Orders', consumer_orders_path, class: 'nav-link' %>
+                <%= link_to t('.my_orders_link'), consumer_orders_path, class: 'nav-link' %>
               </li>
             <% elsif current_user.role.code == Role::PARTNER_ROLE_CODE %>
               <% if current_user.shop %>
                 <li class="nav-item">
-                  <%= link_to 'My Orders', partner_shop_orders_path(current_user.shop), class: 'nav-link' %>
+                  <%= link_to t('.my_orders_link'), partner_shop_orders_path(current_user.shop), class: 'nav-link' %>
                 </li>
               <% end %>
               <li class="nav-item">
-                <%= link_to 'My Shop', partner_shops_path, class: 'nav-link' %>
+                <%= link_to t('.my_shop_link'), partner_shops_path, class: 'nav-link' %>
               </li>
             <% elsif current_user.role.code == Role::ADMIN_ROLE_CODE %>
               <li class="nav-item">
-                <%= link_to 'All Produts', admin_products_path, class: 'nav-link' %>
+                <%= link_to t('.products_link'), admin_products_path, class: 'nav-link' %>
               </li>
             <% end %>
           <% end %>
 
           <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
+            <a class="nav-link" href="#"><%= t('.features_link') %></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
+            <a class="nav-link" href="#"><%= t('.pricing_link') %></a>
           </li>
           <li class="nav-item">
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
@@ -77,14 +77,14 @@
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to 'sign out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+              <%= link_to t('.sign_out_link'), destroy_user_session_path, method: :delete, class: 'nav-link' %>
             </li>
           <% else %>
             <li class="nav-item">
-              <%= link_to 'sign in', new_user_session_path, class: 'nav-link' %>
+              <%= link_to t('.sign_in_link'), new_user_session_path, class: 'nav-link' %>
             </li>
             <li class="nav-item">
-              <%= link_to 'sign up', new_user_registration_path, class: 'nav-link' %>
+              <%= link_to t('.sign_up_link'), new_user_registration_path, class: 'nav-link' %>
             </li>
           <% end %>
           <li class="nav-item">

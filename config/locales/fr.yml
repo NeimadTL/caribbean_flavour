@@ -21,3 +21,18 @@ fr:
                          nés et par la suite étendre la plateforme à toutes les
                          iles des Caraïbes."
       all_shops_btn: "Jettez un oeil aux magasins"
+
+
+
+  layouts:
+    application:
+      home_link: "Accueil"
+      all_shops_link: "Magasins"
+      my_orders_link: "Mes Commandes"
+      my_shop_link: "Mon Magasin"
+      all_products_link: "Produits"
+      features_link: "Fonctionnalités"
+      pricing_link: "Tarification"
+      sign_out_link: "Déconnexion"
+      sign_in_link: "Connnexion"
+      sign_up_link: "S'enregistrer"

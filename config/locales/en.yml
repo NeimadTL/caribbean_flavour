@@ -51,3 +51,17 @@ en:
                          members are coming from and then expand it to all the
                          Caribbean islands."
       all_shops_btn: "Check out all the shops"
+
+
+  layouts:
+    application:
+      home_link: "Home"
+      all_shops_link: "Shops"
+      my_orders_link: "My Orders"
+      my_shop_link: "My Shop"
+      all_products_link: "Produts"
+      features_link: "Features"
+      pricing_link: "Pricing"
+      sign_out_link: "Sign Out"
+      sign_in_link: "Sign In"
+      sign_up_link: "Sign Up"
