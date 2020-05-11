@@ -86,3 +86,12 @@ en:
         customer: "Customer:"
         delivery_option: "Delivery option:"
         status: "Status:"
+    shops:
+      form:
+        create_shop: "Create Shop"
+      edit:
+        treak_shop_header: "Treak your shop settings"
+      index:
+        create_shop_phrase: "You haven't created your shop yet. PLease create your shop based on the category of product you want to sell."
+      new:
+        set_up_shop_header: "Set up your shop"
