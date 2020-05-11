@@ -1,4 +1,23 @@
 fr:
   welcome:
     index:
-      welcome_p_head: "Ce projet est né à cause des deux raisons suivantes :"
+      welcome_phrase : Bienvenue sur Caribbean Flavour!
+      welcome_p_lead: "C'est où vous trouverez les produits locaux des iles des
+                      Caraïbes(Guadeloupe, Martinique, Guyane, Reunion, etc.)"
+      welcome_p_head: "Ce projet est né pour les raisons suivantes :"
+      welcome_first_li: "Pour aider les agriculteurs à fournir des fruits et
+                        légumes directement aux consommateurs. Les agriculteurs
+                        ont été le catalyseur pour le lancement de ce projet car
+                        nous pensons que sont eux qui souffrent le plus pendant
+                        cette pandémie du COVID-19. Cependant, les pécheurs et
+                        bouchers peuvent aussi utiliser cette plateforme afin de
+                        vendre leur marchandise ! Par la suite, nous permettrons
+                        à n'importe quel service de restauration, fleuriste,
+                        herboriste et autres de vendre aux consommateurs."
+      welcome_second_li: "Pour créer un service de livraison caraïbéen de vente
+                         directe à travers le globe étant donné que celui-ci est
+                         quasi inexistant. Le but est de commencer en Guadeloupe
+                         compte tenu du fait que les membres de l'équipe y sont
+                         nés et par la suite étendre la plateforme à toutes les
+                         iles des Caraïbes."
+      all_shops_btn: "Jettez un oeil aux magasins"

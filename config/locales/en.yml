@@ -32,4 +32,22 @@
 en:
   welcome:
     index:
-      welcome_p_head: "This project has started because of the two following reasons :"
+      welcome_phrase: "Welcome to Caribbean Flavour!"
+      welcome_p_lead: "This is where you will find local food from all the
+                      Caribbean islands (Guadeloupe, Martinique, Guyane,
+                      Reunion,etc.)"
+      welcome_p_head: "This project has started for the following reasons :"
+      welcome_first_li: "To help farmers to provide fruits and vegetables
+                        directly to consumers. Farmers have been the catalyst
+                        for getting this project started as we believe they are
+                        the ones suffuring the most during the COVID-19
+                        pandemic. However, fishermen and butchers can also use
+                        this platform to sell their goods too! Later, we'll
+                        allow any food services, florists, herbalists and others
+                        to sell to consumers."
+      welcome_second_li: "To create a global, direct to consumer, caribbean
+                         delivery service as it is almost nonexistent. The goal
+                         is to start in Guadeloupe as this is where the team
+                         members are coming from and then expand it to all the
+                         Caribbean islands."
+      all_shops_btn: "Check out all the shops"

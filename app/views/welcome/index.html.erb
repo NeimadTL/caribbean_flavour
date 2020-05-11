@@ -1,30 +1,18 @@
 <br><br>
 <div class="jumbotron">
-  <h1 class="display-4">Welcome to Caribbean Flavour!</h1>
+  <h1 class="display-4"><%= t('.welcome_phrase') %></h1>
   <p class="lead">
-    This is the place where you can find local food from all the
-    Caribbean islands (Guadeloupe, Martinique, Guyane, Reunion, etc.)
+    <%= t('.welcome_p_lead') %>
   </p>
   <hr class="my-4">
   <p>
     <%= t('.welcome_p_head') %>
     <ul>
-      <li>
-        To help farmers to provide fruits and vegetables directly to consumers.
-        Farmers have been the catalyst for getting this project started as we
-        believe they are the ones suffuring the most during the COVID-19 pandemic.
-        That being said, fishermen and butchers can also use this platform to sell
-        their goods too! Later, we'll allow any food services, florists, herbalists
-        and others to sell to consumers.
-      </li>
-      <li>
-        To create a global, direct to consumer, caribbean delivery service as it
-        is almost nonexistent. The goal is to start in Guadeloupe as this is where
-        the team is coming from and then expand it to all the Caribbean islands.
-      </li>
+      <li><%= t('.welcome_first_li') %></li>
+      <li><%= t('.welcome_second_li') %></li>
     </ul>
   </p>
   <p class="lead">
-    <%= link_to 'Check out all the shops', consumer_shops_path, class: 'btn btn-success btn-lg' %>
+    <%= link_to t('.all_shops_btn'), consumer_shops_path, class: 'btn btn-success btn-lg' %>
   </p>
 </div>
