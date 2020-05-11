@@ -36,3 +36,25 @@ fr:
       sign_out_link: "Déconnexion"
       sign_in_link: "Connnexion"
       sign_up_link: "S'enregistrer"
+
+
+  partner:
+    orders:
+      form:
+        orders_form_status: "Statut"
+        orders_form_submit: "Changer le statut"
+      edit:
+        orders_edit_header: "Mettre à jour le statut"
+      index:
+        orders_index_status: "Statut:"
+        details_link: "Détail"
+        change_status_link: "Changer le statut"
+      show:
+        order_number: "Commande"
+        name_col: "Nom"
+        unit_price_col: "Prix Unitaire"
+        qty_col: "Qté (Kgs)"
+        price_col: "Prix"
+        customer: "Client:"
+        delivery_option: "Moyen de livraison:"
+        status: "Statut:"

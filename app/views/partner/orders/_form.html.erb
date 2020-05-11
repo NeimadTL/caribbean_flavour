@@ -4,11 +4,11 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.label :status %>
+    <%= f.label t('.orders_form_status') %>
     <%= f.select :status, Order::STATUS, { prompt: 'Select status' }, class: 'form-control' %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, t('.orders_form_submit') %>
   </div>
 <% end %>

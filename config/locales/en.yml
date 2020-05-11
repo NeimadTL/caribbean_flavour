@@ -65,3 +65,24 @@ en:
       sign_out_link: "Sign Out"
       sign_in_link: "Sign In"
       sign_up_link: "Sign Up"
+
+  partner:
+    orders:
+      form:
+        orders_form_status: "Status"
+        orders_form_submit: "Update Status"
+      edit:
+        orders_edit_header: "Editing Partner Order"
+      index:
+        orders_index_status: "Statut"
+        details_link: "Details"
+        change_status_link: "Update status"
+      show:
+        order_number: "Order"
+        name_col: "Name"
+        unit_price_col: "Unit Price"
+        qty_col: "Qty (Kgs)"
+        price_col: "Price"
+        customer: "Customer:"
+        delivery_option: "Delivery option:"
+        status: "Status:"

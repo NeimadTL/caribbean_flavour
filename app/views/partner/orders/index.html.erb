@@ -18,9 +18,9 @@
             <%= image_tag "bicycle-outline.svg", size: "24" %> <%= order.delivery_option %>
           </p>
           <p class="card-text"><%= number_to_currency(order.total_price) %></p>
-          <p class="card-text"><strong>Status:</strong> <%= order.status %><p>
-          <%= link_to 'Details', partner_shop_order_path(order.shop, order), class: 'btn btn-primary btn-sm' %>
-          <%= link_to 'Change Status', edit_partner_shop_order_path(order.shop, order), class: 'btn btn-primary btn-sm' %>
+          <p class="card-text"><strong><%= t('.orders_index_status') %></strong> <%= order.status %><p>
+          <%= link_to t('.details_link'), partner_shop_order_path(order.shop, order), class: 'btn btn-primary btn-sm' %>
+          <%= link_to t('.change_status_link'), edit_partner_shop_order_path(order.shop, order), class: 'btn btn-primary btn-sm' %>
         </div>
       </div>
     </div>

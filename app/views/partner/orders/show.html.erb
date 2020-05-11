@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h5>Order#<%= @order.id %></h5>
+<h5><%= t('.order_number') %>#<%= @order.id %></h5>
 <table class="table">
     <thead>
       <tr>
-        <th scope="col">Name</th>
-        <th scope="col">Unit Price</th>
-        <th scope="col">Qty (Kgs)</th>
-        <th scope="col">Price</th>
+        <th scope="col"><%= t('.name_col') %></th>
+        <th scope="col"><%= t('.unit_price_col') %></th>
+        <th scope="col"><%= t('.qty_col') %></th>
+        <th scope="col"><%= t('.price_col') %></th>
       </tr>
     </thead>
     <tbody>
@@ -28,9 +28,9 @@
 
 
 <p>
-  <strong>Customer:</strong> <%= @order.user.firstname %> <%= @order.user.lastname %><br>
-  <strong>Delivery option code:</strong> <%= @order.delivery_option %><br>
-  <strong>Status:</strong> <%= @order.status %>
+  <strong><%= t('.customer')%></strong> <%= @order.user.firstname %> <%= @order.user.lastname %><br>
+  <strong><%= t('.delivery_option') %></strong> <%= @order.delivery_option %><br>
+  <strong><%= t('.status') %></strong> <%= @order.status %>
 </p>
 
 
