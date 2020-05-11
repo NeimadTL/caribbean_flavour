@@ -1,6 +1,6 @@
-<br><h1>Welcome to <%= current_user.shop.name %></h1><br>
+<br><h1><%= t('.welcome' )%> <%= current_user.shop.name %></h1><br>
 
-<h5>Delivery Options</h5>
+<h5><%= t('.delivery_option') %></h5>
 <div class="" style="margin-bottom:16px;">
   <% current_user.shop.delivery_options.each do |delivery_option| %>
     <span class="badge badge-info"><%= delivery_option.option %></span>
@@ -10,14 +10,14 @@
   <%= image_tag("build-outline.svg", size: "24") %>
 <% end %><br><br>
 
-<h5>Products</h5>
+<h5><%= t('.products') %></h5>
 <table class="table">
     <thead>
       <tr>
-        <th scope="col">Reference</th>
-        <th scope="col">Name</th>
-        <th scope="col">Price</th>
-        <th scope="col">Actions</th>
+        <th scope="col"><%= t('.reference') %></th>
+        <th scope="col"><%= t('.name') %></th>
+        <th scope="col"><%= t('.price') %></th>
+        <th scope="col"><%= t('.actions') %></th>
       </tr>
     </thead>
     <tbody>
@@ -33,8 +33,8 @@
                 <%= image_tag("ellipsis-horizontal-outline.svg", size: "24") %>
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <%= link_to 'Update', edit_partner_shop_stock_path(current_user.shop, stock), class: 'dropdown-item' %>
-                <%= link_to 'Delete', partner_shop_stock_path(current_user.shop, stock), method: :delete,
+                <%= link_to t('.update'), edit_partner_shop_stock_path(current_user.shop, stock), class: 'dropdown-item' %>
+                <%= link_to t('.delete'), partner_shop_stock_path(current_user.shop, stock), method: :delete,
                     data: { confirm: 'Are you sure?' }, class: 'dropdown-item' %>
               </div>
             </div>

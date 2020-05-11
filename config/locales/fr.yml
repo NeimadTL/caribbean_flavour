@@ -67,3 +67,13 @@ fr:
         create_shop_phrase: "Vous n'avez pas encore crée votre magasin. Merci de créer votre magasin en fonction de la catégorie de produits que vous voulez vendre."
       new:
         set_up_shop_header: "Configurez votre magasin"
+      show:
+        welcome: "Bienvenue sur"
+        delivery_option: "Moyens de livraison"
+        products: "Produits"
+        reference: "Reference"
+        name: "Nom"
+        price: "Prix"
+        actions: "Actions"
+        update: "Modifier"
+        delete: "Supprimer"

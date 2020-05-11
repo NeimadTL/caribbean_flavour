@@ -95,3 +95,13 @@ en:
         create_shop_phrase: "You haven't created your shop yet. PLease create your shop based on the category of product you want to sell."
       new:
         set_up_shop_header: "Set up your shop"
+      show:
+        welcome: "Welcome to"
+        delivery_option: "Delivery Options"
+        products: "Products"
+        reference: "Reference"
+        name: "Name"
+        price: "Price"
+        actions: "Actions"
+        update: "Update"
+        delete: "Delete"
