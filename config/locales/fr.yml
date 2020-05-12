@@ -108,3 +108,15 @@ fr:
         update_product_qty: "Modifier la quantity du produit"
       new:
         add_product_to_cart_header: "Ajouter ce produit à votre panier"
+    carts:
+      show:
+        name_col: "Nom"
+        unit_price_col: "Prix Unitaire"
+        qty_col: "Qté (Kgs)"
+        price_col: "Prix"
+        action_col: "Actions"
+        update_link: "Modifier"
+        delete_link: "Supprimer"
+        are_you_sure: "Êtes-vous sûr?"
+        keep_shopping_link: "Continuer les achats"
+        order_link: "Commander"

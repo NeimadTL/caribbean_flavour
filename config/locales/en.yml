@@ -136,3 +136,15 @@ en:
         update_product_qty: "Edit product's quantity"
       new:
         add_product_to_cart_header: "Add this product to your cart"
+    carts:
+      show:
+        name_col: "Name"
+        unit_price_col: "Unit Price"
+        qty_col: "Qty (Kgs)"
+        price_col: "Price"
+        action_col: "Actions"
+        update_link: "Update"
+        delete_link: "Delete"
+        are_you_sure: "Are you sure?"
+        keep_shopping_link: "Keep shopping"
+        order_link: "Order"
