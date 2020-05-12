@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<br><h1>Welcome to <%= @shop.name %></h1><br>
+<br><h1><%= t('.welcome') %>  <%= @shop.name %></h1><br>
 
-<h5>Delivery Options</h5>
+<h5><%= t('.delivery_options') %></h5>
 <div class="" style="margin-bottom:16px;">
   <% @shop.delivery_options.each do |delivery_option| %>
     <span class="badge badge-info"><%= delivery_option.option %></span>
@@ -13,9 +13,9 @@
 <table class="table">
     <thead>
       <tr>
-        <th scope="col">Name</th>
-        <th scope="col">Price</th>
-        <th scope="col">Actions</th>
+        <th scope="col"><%= t('.name_col') %></th>
+        <th scope="col"><%= t('.price_col') %></th>
+        <th scope="col"><%= t('.actions_col') %></th>
       </tr>
     </thead>
     <tbody>
@@ -44,5 +44,5 @@
 
 
 <%= link_to consumer_shops_path, class: 'btn transparent float-right' do %>
-  Exit <%= image_tag "exit-outline.svg", size: "24" %>
+  <%= t('.exit_btn') %> <%= image_tag "exit-outline.svg", size: "24" %>
 <% end %>

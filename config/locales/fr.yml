@@ -87,3 +87,16 @@ fr:
         edit_stock_header: "Modifier votre produit"
       new:
         add_new_stock_header: "Ajouter un nouveau produit"
+
+  consumer:
+    shops:
+      index:
+        shops_header: "Les magasins"
+        enter_btn: "Entrez"
+      show:
+        welcome: "Bienvenue à"
+        delivery_options: "Moyens de livraison"
+        name_col: "Nom"
+        price_col: "Prix"
+        actions_col: "Actions"
+        exit_btn: "Sortir"

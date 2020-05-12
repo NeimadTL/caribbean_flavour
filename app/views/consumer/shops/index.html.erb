@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Shops</h1>
+<h1><%= t('.shops_header') %></h1>
 
 <div class="row">
   <% @shops.each do |shop| %>
@@ -19,7 +19,7 @@
               <% end %>
             </p>
             <%= link_to consumer_shop_path(shop), class: 'btn transparent float-right' do %>
-              Enter <%= image_tag "enter-outline.svg", size: "24" %>
+              <%= t('.enter_btn') %> <%= image_tag "enter-outline.svg", size: "24" %>
             <% end %>
           </div>
         </div>
