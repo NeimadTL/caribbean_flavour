@@ -15,9 +15,9 @@
       <% @cart.line_items_of(@shop).each do |item| %>
         <tr>
           <td><%= item.stock.product.name %></td>
-          <td><%= number_to_currency(item.price) %></td>
+          <td><%= number_to_currency(item.price, locale: I18n.locale) %></td>
           <td><%= item.quantity %></td>
-          <td><%= number_to_currency(item.total_price) %></td>
+          <td><%= number_to_currency(item.total_price, locale: I18n.locale) %></td>
           <td>
             <div class="dropdown">
               <button class="btn transparent-btn" type="button" id="dropdownMenu2"
@@ -35,7 +35,7 @@
       <% end %>
       <tr>
         <td colspan="4">Total</td>
-        <td class="total_cell"><%= number_to_currency(@cart.total_price_for(@cart.line_items_of(@shop))) %></td>
+        <td class="total_cell"><%= number_to_currency(@cart.total_price_for(@cart.line_items_of(@shop)), locale: I18n.locale) %></td>
       </tr>
     </tbody>
 </table>

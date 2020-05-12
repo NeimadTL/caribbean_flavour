@@ -12,14 +12,14 @@
       <% @order.order_line_items.each do |item| %>
         <tr>
           <td><%= item.name %></td>
-          <td><%= number_to_currency(item.unit_price) %></td>
+          <td><%= number_to_currency(item.unit_price, locale: I18n.locale) %></td>
           <td><%= item.quantity %></td>
-          <td><%= number_to_currency(item.total_price) %></td>
+          <td><%= number_to_currency(item.total_price, locale: I18n.locale) %></td>
         </tr>
       <% end %>
       <tr>
         <td colspan="3">Total</td>
-        <td class="total_cell"><%= number_to_currency(@order.total_price) %></td>
+        <td class="total_cell"><%= number_to_currency(@order.total_price, locale: I18n.locale) %></td>
       </tr>
     </tbody>
 </table>

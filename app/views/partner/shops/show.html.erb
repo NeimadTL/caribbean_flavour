@@ -25,7 +25,7 @@
         <tr>
           <td><%= stock.product.reference %></td>
           <td><%= stock.product.name %></td>
-          <td><%= number_to_currency(stock.price) %></td>
+          <td><%= number_to_currency(stock.price, locale: I18n.locale) %></td>
           <td>
             <div class="dropdown">
               <button class="btn transparent-btn" type="button" id="dropdownMenu2"

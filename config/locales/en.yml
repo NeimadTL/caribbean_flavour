@@ -30,6 +30,12 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  number:
+    currency:
+      format:
+        unit: "$"
+        format: "%u %n"
+
   welcome:
     index:
       welcome_phrase: "Welcome to Caribbean Flavour!"

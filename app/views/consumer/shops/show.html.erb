@@ -20,7 +20,7 @@
       <% @shop.stocks.each do |stock| %>
         <tr>
           <td><%= stock.product.name %></td>
-          <td><%= number_to_currency(stock.price) %></td>
+          <td><%= number_to_currency(stock.price, locale: I18n.locale) %></td>
           <td>
             <% if user_signed_in? %>
               <% if current_user.role.code == Role::CONSUMER_ROLE_CODE %>
