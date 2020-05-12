@@ -71,7 +71,7 @@ fr:
         welcome: "Bienvenue sur"
         delivery_option: "Moyens de livraison"
         products: "Produits"
-        reference: "Reference"
+        reference: "Référence"
         name: "Nom"
         price: "Prix"
         actions: "Actions"
@@ -81,7 +81,7 @@ fr:
       form:
         product_label: "Produit"
         product_reference_prompt: "Selectionnez un produit s'il vous plaît"
-        add_product_btn: "Add product"
+        add_product_btn: "Ajouter le produit"
         price_label: "Prix"
       edit:
         edit_stock_header: "Modifier votre produit"
