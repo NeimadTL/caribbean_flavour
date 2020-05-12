@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>My Orders</h1><br>
+<h1><%= t('.my_orders_hearder')%></h1><br>
 
 <div class="row">
   <% @orders.each do |order| %>
@@ -17,11 +17,11 @@
             <%= image_tag "bicycle-outline.svg", size: "24" %> <%= order.delivery_option %>
           </p>
           <p class="card-text"><%= number_to_currency(order.total_price) %></p>
-          <p class="card-text"><strong>Status:</strong> <%= order.status %><p>
-          <%= link_to 'Details', consumer_order_path(order) %>
-          <%= link_to 'Edit', '#' %> <!-- edit_consumer_order_path(order)-->
-          <%= link_to 'Cancel', consumer_order_path(order), method: :delete,
-              data: { confirm: 'Are you sure?' } %>
+          <p class="card-text"><strong><%= t('.order_status') %></strong> <%= order.status %><p>
+          <%= link_to t('.details'), consumer_order_path(order), class: "btn btn-primary btn-sm" %>
+          <!-- <%# <%= link_to 'Edit', edit_consumer_order_path(order) %> %> -->
+          <%= link_to t('.cancel'), consumer_order_path(order), method: :delete,
+              data: { confirm: t('.are_you_sure') }, class: "btn btn-danger btn-sm" %>
         </div>
       </div>
     </div>

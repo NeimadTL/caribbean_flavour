@@ -4,11 +4,11 @@
 <table class="table">
     <thead>
       <tr>
-        <th scope="col">Name</th>
-        <th scope="col">Unit Price</th>
-        <th scope="col">Qty (Kgs)</th>
-        <th scope="col">Price</th>
-        <th scope="col">Actions</th>
+        <th scope="col"><%= t('.name_col') %></th>
+        <th scope="col"><%= t('.unit_price_col') %></th>
+        <th scope="col"><%= t('.qty_col') %></th>
+        <th scope="col"><%= t('.price_col') %></th>
+        <th scope="col"><%= t('.actions_col') %></th>
       </tr>
     </thead>
     <tbody>
@@ -25,9 +25,9 @@
                 <%= image_tag("ellipsis-horizontal-outline.svg", size: "24") %>
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <%= link_to 'Update', edit_consumer_cart_stock_line_item_path(current_user.cart, item.stock, item), class: 'dropdown-item' %>
-                <%= link_to 'Delete', consumer_cart_stock_line_item_path(current_user.cart, item.stock, item), method: :delete,
-                    data: { confirm: 'Are you sure?' }, class: 'dropdown-item' %>
+                <%= link_to t('.update_link'), edit_consumer_cart_stock_line_item_path(current_user.cart, item.stock, item), class: 'dropdown-item' %>
+                <%= link_to t('.delete_link'), consumer_cart_stock_line_item_path(current_user.cart, item.stock, item), method: :delete,
+                    data: { confirm: t('.are_you_sure') }, class: 'dropdown-item' %>
               </div>
             </div>
           </td>
@@ -46,13 +46,13 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.input :delivery_option_code, as: :radio_buttons,
+    <%= f.input :delivery_option_code, as: :radio_buttons, label: t('.delivery_option'),
         collection: @shop.delivery_options, label_method: :option,
         value_method: :code %>
   </div>
 
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, t('.place_order_btn'), class: "btn btn-primary" %>
   </div>
 <% end %>

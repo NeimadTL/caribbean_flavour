@@ -6,10 +6,10 @@
 <table class="table">
     <thead>
       <tr>
-        <th scope="col">Name</th>
-        <th scope="col">Unit Price</th>
-        <th scope="col">Qty (Kgs)</th>
-        <th scope="col">Price</th>
+        <th scope="col"><%= t('.name_col') %></th>
+        <th scope="col"><%= t('.unit_price_col') %></th>
+        <th scope="col"><%= t('.qty_col') %></th>
+        <th scope="col"><%= t('.price_col') %></th>
       </tr>
     </thead>
     <tbody>
@@ -30,9 +30,13 @@
 
 
 <p>
-  <strong>Delivery option code:</strong> <%= @order.delivery_option %><br>
-  <strong>Status:</strong> <%= @order.status %>
+  <strong><%= t('.delivery_option') %></strong> <%= @order.delivery_option %><br>
+  <strong><%= t('.order_status') %></strong> <%= @order.status %>
 </p>
+
+<%= link_to t('.cancel'), consumer_order_path(@order), method: :delete,
+    data: { confirm: t('.are_you_sure') }, class: "btn btn-danger btn-sm float-right" %>
+
 
 <!--  <%# <%= link_to 'Edit', edit_consumer_order_path(@order) %> | %> -->
 <%= link_to 'Back', consumer_orders_path %>
