@@ -77,3 +77,13 @@ fr:
         actions: "Actions"
         update: "Modifier"
         delete: "Supprimer"
+    stocks:
+      form:
+        product_label: "Produit"
+        product_reference_prompt: "Selectionnez un produit s'il vous plaît"
+        add_product_btn: "Add product"
+        price_label: "Prix"
+      edit:
+        edit_stock_header: "Modifier votre produit"
+      new:
+        add_new_stock_header: "Ajouter un nouveau produit"

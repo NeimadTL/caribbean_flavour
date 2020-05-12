@@ -105,3 +105,13 @@ en:
         actions: "Actions"
         update: "Update"
         delete: "Delete"
+    stocks:
+      form:
+        product_label: "Product"
+        product_reference_prompt: "Please select a product"
+        add_product_btn: "Add product"
+        price_label: "Price"
+      edit:
+        edit_stock_header: "Edit your product"
+      new:
+        add_new_stock_header: "Add a new product"

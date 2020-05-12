@@ -4,13 +4,13 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.label :product_reference, 'Product' %>
+    <%= f.label :product_reference, t('.product_label') %>
     <%= f.select :product_reference, @products.collect {|p| [ p.name, p.reference ] },
-      { :prompt => "Please select a product" }, class: 'form-control' %><br>
-    <%= f.input :price, required: true, autofocus: true, input_html: { autocomplete: "price" } %>
+      { :prompt => t('.product_reference_prompt') }, class: 'form-control' %><br>
+    <%= f.input :price, label: t('.price_label'), required: true, autofocus: true, input_html: { autocomplete: "price" } %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Add product", class: 'btn btn-primary' %>
+    <%= f.button :submit, t('.add_product_btn'), class: 'btn btn-primary' %>
   </div>
 <% end %>
