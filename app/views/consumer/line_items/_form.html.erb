@@ -19,11 +19,12 @@
 
 
   <div class="form-inputs">
-    <%= f.input :quantity, required: true, autofocus: true, input_html: { autocomplete: "quantity" } %>
+    <%= f.input :quantity, label: t('.qty_label'), required: true, autofocus: true,
+        input_html: { autocomplete: "quantity" } %>
     <%= f.hidden_field :stock_id, value: @stock.id %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, t('.add_to_cart_btn'), class: 'btn btn-primary' %>
   </div>
 <% end %>

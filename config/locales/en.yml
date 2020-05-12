@@ -128,3 +128,11 @@ en:
         price_col: "Price"
         actions_col: "Actions"
         exit_btn: "Exit"
+    line_items:
+      form:
+        qty_label: "Quantity"
+        add_to_cart_btn: "Add to cart"
+      edit:
+        update_product_qty: "Edit product's quantity"
+      new:
+        add_product_to_cart_header: "Add this product to your cart"

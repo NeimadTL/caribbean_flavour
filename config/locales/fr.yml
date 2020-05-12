@@ -100,3 +100,11 @@ fr:
         price_col: "Prix"
         actions_col: "Actions"
         exit_btn: "Sortir"
+    line_items:
+      form:
+        qty_label: "Quantité"
+        add_to_cart_btn: "Ajouter au panier"
+      edit:
+        update_product_qty: "Modifier la quantity du produit"
+      new:
+        add_product_to_cart_header: "Ajouter ce produit à votre panier"
