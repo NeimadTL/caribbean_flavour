@@ -48,10 +48,14 @@ fr:
     orders:
       form:
         orders_form_status: "Statut"
+        status_prompt: "Selectionnez un statut"
         orders_form_submit: "Changer le statut"
       edit:
-        orders_edit_header: "Mettre à jour le statut"
+        order_edit_header: "Mettre à jour le statut"
+        order_detail_link: "Détail de la commande"
+        back_link: "Précédent"
       index:
+        my_orders_hearder: "Mes commandes"
         orders_index_status: "Statut:"
         details_link: "Détail"
         change_status_link: "Changer le statut"
@@ -64,15 +68,23 @@ fr:
         customer: "Client:"
         delivery_option: "Moyen de livraison:"
         status: "Statut:"
+        edit_status_link: "Changer le statut"
+        back_link: "Précédent"
     shops:
       form:
+        shop_name: "Nom de votre magasin"
+        delivery_options: "Vos moyens de livraison"
+        product_category: "La catégorie de vos produits"
         create_shop: "Créer votre magasin"
       edit:
         treak_shop_header: "Réglez les paramètres de votre magasin"
+        back_link: "Précédent"
       index:
         create_shop_phrase: "Vous n'avez pas encore crée votre magasin. Merci de créer votre magasin en fonction de la catégorie de produits que vous voulez vendre."
+        set_up_shop_link: "Configurez votre magasin"
       new:
         set_up_shop_header: "Configurez votre magasin"
+        back_link: "Précédent"
       show:
         welcome: "Bienvenue sur"
         delivery_option: "Moyens de livraison"
@@ -83,6 +95,7 @@ fr:
         actions: "Actions"
         update: "Modifier"
         delete: "Supprimer"
+        are_you_sure: "Êtes-vous sûr ?"
     stocks:
       form:
         product_label: "Produit"
@@ -91,8 +104,10 @@ fr:
         price_label: "Prix"
       edit:
         edit_stock_header: "Modifier votre produit"
+        back_link: "Précédent"
       new:
         add_new_stock_header: "Ajouter un nouveau produit"
+        back_link: "Précédent"
 
   consumer:
     shops:
@@ -101,10 +116,13 @@ fr:
         enter_btn: "Entrez"
       show:
         welcome: "Bienvenue à"
+        products_header: "Produits"
         delivery_options: "Moyens de livraison"
         name_col: "Nom"
         price_col: "Prix"
         actions_col: "Actions"
+        popover_title: "Créez votre compte"
+        popover_content: "Vous devez être connecté pour acheter des produits."
         exit_btn: "Sortir"
     line_items:
       form:
@@ -112,6 +130,7 @@ fr:
         add_to_cart_btn: "Ajouter au panier"
       edit:
         update_product_qty: "Modifier la quantity du produit"
+        back_btn: "Précédent"
       new:
         add_product_to_cart_header: "Ajouter ce produit à votre panier"
     carts:
@@ -146,6 +165,7 @@ fr:
         are_you_sure: "Êtes-vous sûr ?"
       new:
         order_recap_header: "Récapitulatif de votre commande"
+        back_btn: "Précédent"
       show:
         name_col: "Nom"
         unit_price_col: "Prix unitaire"
@@ -153,3 +173,4 @@ fr:
         price_col: "Prix"
         delivery_option: "Moyen de livraison choisi:"
         order_status: "Statut:"
+        back_btn: "Back"

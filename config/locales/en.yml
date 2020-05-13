@@ -76,10 +76,14 @@ en:
     orders:
       form:
         orders_form_status: "Status"
+        status_prompt: "Select a status"
         orders_form_submit: "Update Status"
       edit:
-        orders_edit_header: "Editing Partner Order"
+        order_edit_header: "Update order's status"
+        order_detail_link: "Order's details"
+        back_link: "Back"
       index:
+        my_orders_hearder: "My Orders"
         orders_index_status: "Statut"
         details_link: "Details"
         change_status_link: "Update status"
@@ -92,15 +96,23 @@ en:
         customer: "Customer:"
         delivery_option: "Delivery option:"
         status: "Status:"
+        edit_status_link: "Update Status"
+        back_link: "Back"
     shops:
       form:
+        shop_name: "Name of your shop"
+        delivery_options: "Your delivery options"
+        product_category: "Your products' category"
         create_shop: "Create Shop"
       edit:
         treak_shop_header: "Treak your shop settings"
+        back_link: "Back"
       index:
         create_shop_phrase: "You haven't created your shop yet. PLease create your shop based on the category of product you want to sell."
+        set_up_shop_link: "Set Up Your Shop"
       new:
         set_up_shop_header: "Set up your shop"
+        back_link: "Back"
       show:
         welcome: "Welcome to"
         delivery_option: "Delivery Options"
@@ -111,6 +123,7 @@ en:
         actions: "Actions"
         update: "Update"
         delete: "Delete"
+        are_you_sure: "Are you sure ?"
     stocks:
       form:
         product_label: "Product"
@@ -119,8 +132,10 @@ en:
         price_label: "Price"
       edit:
         edit_stock_header: "Edit your product"
+        back_link: "Back"
       new:
         add_new_stock_header: "Add a new product"
+        back_link: "back"
 
   consumer:
     shops:
@@ -129,10 +144,13 @@ en:
         enter_btn: "Enter"
       show:
         welcome: "Welcome to"
+        products_header: "Products"
         delivery_options: "Delivery Options"
         name_col: "Name"
         price_col: "Price"
         actions_col: "Actions"
+        popover_title: "Create your account"
+        popover_content: "You must be connected to buy products."
         exit_btn: "Exit"
     line_items:
       form:
@@ -140,6 +158,7 @@ en:
         add_to_cart_btn: "Add to cart"
       edit:
         update_product_qty: "Edit product's quantity"
+        back_btn: "Back"
       new:
         add_product_to_cart_header: "Add this product to your cart"
     carts:
@@ -174,6 +193,7 @@ en:
         are_you_sure: "Are you sure ?"
       new:
         order_recap_header: "Your order's recap"
+        back_btn: "Back"
       show:
         name_col: "Name"
         unit_price_col: "Unit Price"
@@ -181,3 +201,4 @@ en:
         price_col: "Price"
         delivery_option: "Chosen delivery option:"
         order_status: "Status:"
+        back_btn: "Back"

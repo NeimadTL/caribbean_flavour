@@ -7,7 +7,7 @@
   <% end %>
 </div>
 
-<h5>Products</h5>
+<h5><%= t('.products_header') %></h5>
 <table class="table">
     <thead>
       <tr>
@@ -29,8 +29,8 @@
                 <% end %>
               <% end %>
             <% else %>
-            <%= link_to "javascript:void(0);", class: 'btn transparent pt-0 pb-0', tabindex: "0", title: "Sign up",
-                data: { toggle: "popover", content: "You must be connected to buy products.", container: "body", placement: "bottom" } do %>
+            <%= link_to "javascript:void(0);", class: 'btn transparent pt-0 pb-0', tabindex: "0", title: t('.popover_title'),
+                data: { toggle: "popover", content: t('.popover_content'), container: "body", placement: "bottom" } do %>
               <%= image_tag "cart-outline.svg", size: "24" %>
             <% end %>
             <% end %>

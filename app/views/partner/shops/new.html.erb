@@ -1,6 +1,6 @@
-<h1><%= t('.set_up_shop_header') %>Set up your shop</h1>
+<h1><%= t('.set_up_shop_header') %></h1>
 
 
 <%= render 'form', shop: @shop %>
 
-<%= link_to 'Back', partner_shops_path(@shop) %>
+<%= link_to t('.back_link'), partner_shops_path(@shop) %>

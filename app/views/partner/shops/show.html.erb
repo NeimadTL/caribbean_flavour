@@ -35,7 +35,7 @@
               <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                 <%= link_to t('.update'), edit_partner_shop_stock_path(current_user.shop, stock), class: 'dropdown-item' %>
                 <%= link_to t('.delete'), partner_shop_stock_path(current_user.shop, stock), method: :delete,
-                    data: { confirm: 'Are you sure?' }, class: 'dropdown-item' %>
+                    data: { confirm: t('.are_you_sure') }, class: 'dropdown-item' %>
               </div>
             </div>
 

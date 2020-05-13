@@ -2,4 +2,4 @@
 
 <%= render 'form', order: @order %>
 
-<%= link_to 'Back', consumer_cart_path(current_user.cart)%>
+<%= link_to t('.back_btn'), consumer_cart_path(current_user.cart)%>
