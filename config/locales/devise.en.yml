@@ -6,6 +6,10 @@ en:
       confirmed: "Your email address has been successfully confirmed."
       send_instructions: "You will receive an email with instructions for how to confirm your email address in a few minutes."
       send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes."
+      new:
+        resend_confirmation_instructions_header: "Resend confirmation instructions"
+        email_input: "Email"
+        resend_confirmation_instructions_btn: "Resend confirmation instructions"
     failure:
       already_authenticated: "You are already signed in."
       inactive: "Your account is not activated yet."
@@ -19,14 +23,31 @@ en:
     mailer:
       confirmation_instructions:
         subject: "Confirmation instructions"
+        welcome: "Welcome"
+        confirm_phrase: "You can confirm your account email through the link below:"
+        confirm_account_link: "Confirm my account"
       reset_password_instructions:
         subject: "Reset password instructions"
+        hello: "Hello"
+        change_your_password_txt: "Someone has requested a link to change your password. You can do this through the link below."
+        change_password_link: "Change my password"
+        ignore_email_txt: "If you didn't request this, please ignore this email."
+        password_wont_change_txt: "Your password won't change until you access the link above and create a new one."
       unlock_instructions:
         subject: "Unlock instructions"
+        hello: "Hello"
+        account_locked_txt: "Your account has been locked due to an excessive number of unsuccessful sign in attempts."
+        unlock_text: "Click the link below to unlock your account:"
+        unlock_my_account_link: "Unlock my account"
       email_changed:
         subject: "Email Changed"
+        hello: "Hello"
+        email_is_being_changed: "We're contacting you to notify you that your email is being changed to"
+        email_has_been_changed: "We're contacting you to notify you that your email has been changed to"
       password_change:
         subject: "Password Changed"
+        hello: Hello
+        password_has_been_changed: "We're contacting you to notify you that your password has been changed."
     omniauth_callbacks:
       failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
       success: "Successfully authenticated from %{kind} account."
@@ -36,6 +57,14 @@ en:
       send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
       updated: "Your password has been changed successfully. You are now signed in."
       updated_not_active: "Your password has been changed successfully."
+      edit:
+        change_your_pwd_header: "Change your password"
+        new_password: "New password"
+        confirm_new_password: "Confirm your new password"
+        change_my_password: "Change my password"
+      new:
+        forgot_pwd_hearder: "Forgot your password?"
+        send_me_reset_pwd_instruction: "Send me reset password instructions"
     registrations:
       destroyed: "Bye! Your account has been successfully cancelled. We hope to see you again soon."
       signed_up: "Welcome! You have signed up successfully."
@@ -45,6 +74,40 @@ en:
       update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and follow the confirmation link to confirm your new email address."
       updated: "Your account has been updated successfully."
       updated_but_not_signed_in: "Your account has been updated successfully, but since your password was changed, you need to sign in again"
+      edit:
+        username: "Username"
+        firstname: "Firstname"
+        lastname: "Lastname"
+        street: "Address"
+        additional_address_information: "Additional address information"
+        city: "City"
+        postcode: "Postcode"
+        country: "Country"
+        phone_number: "Phone number"
+        is_partner: "Become a partner"
+        password: "Password"
+        password_confirmation: "Password confirmation"
+        current_password: "Current password"
+        update_btn: "Update"
+        cancel_account_header: "Cancel my account"
+        unhappy_txt: "Unhappy?"
+        cancel_my_account_link: "Cancel my account"
+        back_link: "Back"
+      new:
+        username: "Username"
+        firstname: "Firstname"
+        lastname: "Lastname"
+        street: "Address"
+        additional_address_information: "Additional address information"
+        city: "City"
+        postcode: "Postcode"
+        country: "Country"
+        phone_number: "Phone number"
+        is_partner: "Become a partner"
+        password: "Password"
+        characters_min: "characters minimum"
+        password_confirmation: "Password confirmation"
+        sign_up: "Sign up"
     sessions:
       signed_in: "Signed in successfully."
       signed_out: "Signed out successfully."

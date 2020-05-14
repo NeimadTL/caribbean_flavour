@@ -5,59 +5,70 @@
 
   <div class="form-inputs">
     <%= f.input :username,
+                label: t('.username'),
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "username" }%>
     <%= f.input :firstname,
+                label: t('.firstname'),
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "firstname" }%>
     <%= f.input :lastname,
+                label: t('.lastname'),
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "lastname" }%>
     <%= f.input :street,
+                label: t('.street'),
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "street" }%>
     <%= f.input :additional_address_information,
+                label: t('.additional_address_information'),
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "additional_address_information" }%>
     <%= f.input :city,
+                label: t('.city'),
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "city" }%>
     <%= f.input :postcode,
+                label: t('.postcode'),
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "postcode" }%>
     <%= f.input :country,
+                label: t('.country'),
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "country" }%>
     <%= f.input :phone_number,
+                label: t('.phone_number'),
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "phone_number" }%>
     <%= f.input :is_partner,
                 as: :boolean,
-                label: 'Become a partner' %>
+                label: t('.is_partner') %>
     <%= f.input :email,
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "email" }%>
     <%= f.input :password,
+                label: t('.password'),
                 required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                hint: ("#{@minimum_password_length} #{t('.characters_min')}" if @minimum_password_length),
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :password_confirmation,
+                label: t('.password_confirmation'),
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Sign up", class: 'btn btn-primary' %>
+    <%= f.button :submit, t('.sign_up'), class: 'btn btn-primary' %>
   </div>
 <% end %>
 

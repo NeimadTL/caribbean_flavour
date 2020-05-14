@@ -6,6 +6,10 @@ fr:
       confirmed: "Votre compte a été validé."
       send_instructions: "Vous allez recevoir les instructions nécessaires à la confirmation de votre compte dans quelques minutes."
       send_paranoid_instructions: "Si votre e-mail existe dans notre base de données, vous allez bientôt recevoir un e-mail contenant les instructions de confirmation de votre compte."
+      new:
+        resend_confirmation_instructions_header: "Renvoyer les instructions de confirmation"
+        email_input: "Email"
+        resend_confirmation_instructions_btn: "Renvoyer les instructions de confirmation"
     failure:
       already_authenticated: "Vous êtes déjà connecté"
       inactive: "Votre compte n'est pas encore activé."
@@ -19,12 +23,32 @@ fr:
     mailer:
       confirmation_instructions:
         subject: "Instructions de confirmation"
+        welcome: "Bienvenue"
+        confirm_phrase: "Vous pouvez confirmer l'email de votre compte avec lien ci-dessous:"
+        confirm_account_link: "Confirmer mon compte"
       reset_password_instructions:
         subject: "Instructions pour changer le mot de passe"
+        hello: "Bonjour"
+        change_your_password_txt: "Quelqu'un a demandé pour changer votre mot de passe. Vous pouvez le faire avec le lien ci-dessous."
+        change_password_link: "Changer mon mot de passe"
+        ignore_email_txt: "Si vous n'avez pas cette requête, merci d'ignorer ce mail."
+        password_wont_change_txt: "Votre mot de passe ne changera pas tant que vous n'accedrez pas au lien ci-dessus et en créez un nouveau."
+        hello: "Bonjour"
       unlock_instructions:
         subject: "Instructions pour déverrouiller le compte"
+        hello: "Bonjour"
+        account_locked_txt: "Votre compte a été bloqué dû à nombre excessif de tentatives connexions échouées."
+        unlock_text: "Cliquez sur le lien ci-dessous pour débloquer votre compte:"
+        unlock_my_account_link: "Débloquer votre compte"
+      email_changed:
+        subject: "Email Changed"
+        hello: "Bonjour"
+        email_is_being_changed: "Nous vous contactons pour vous notifier que votre email est en train d'être changer en"
+        email_has_been_changed: "Nous vous contactons pour vous notifier que votre email a été changé en"
       password_change:
         subject: "Votre mot de passe a été modifié avec succés."
+        hello: Bonjour
+        password_has_been_changed: "Nous vous contactons pour vous notifier que votre motde passe a été changé."
     omniauth_callbacks:
       failure: "Nous n'avons pas pu vous authentifier via %{kind} : '%{reason}'."
       success: "Authentifié avec succès via %{kind}."
@@ -34,6 +58,14 @@ fr:
       send_paranoid_instructions: "Si votre e-mail existe dans notre base de données, vous allez recevoir un lien de réinitialisation par e-mail"
       updated: "Votre mot de passe a été édité avec succès, vous êtes maintenant connecté"
       updated_not_active: "Votre mot de passe a été changé avec succès."
+      edit:
+        change_your_pwd_header: "Changez votre mot de passe"
+        new_password: "Nouveau mot de passe"
+        confirm_new_password: "Confirmez votre nouveau mot de passe"
+        change_my_password: "Changer mon mot de passe"
+      new:
+        forgot_pwd_hearder: "Vous avez oublié votre mot de passe ?"
+        send_me_reset_pwd_instruction: "M'envoyer les instructions de réinitialisation de mot de passe"
     registrations:
       destroyed: "Votre compte a été supprimé avec succès. Nous espérons vous revoir bientôt."
       signed_up: "Bienvenue, vous êtes connecté."
@@ -42,6 +74,40 @@ fr:
       signed_up_but_unconfirmed: "Un message contenant un lien de confirmation a été envoyé à votre adresse email. Ouvrez ce lien pour activer votre compte."
       update_needs_confirmation: "Votre compte a bien été mis à jour mais nous devons vérifier votre nouvelle adresse email. Merci de vérifier vos emails et de cliquer sur le lien de confirmation pour finaliser la validation de votre nouvelle adresse."
       updated: "Votre compte a été modifié avec succès."
+      edit:
+        username: "Nom d'utilisateur"
+        firstname: "Prénom"
+        lastname: "Nom"
+        street: "Adresse"
+        additional_address_information: "Complément d'adresse"
+        city: "Ville"
+        postcode: "code postal"
+        country: "Pays"
+        phone_number: "Numéro de téléphone"
+        is_partner: "Devenir un partenaire"
+        password: "Mot de passe"
+        password_confirmation: "Confirmation de mot de passe"
+        current_password: "Mot de passe actuel"
+        update_btn: "Mettre à jour"
+        cancel_account_header: "Supprimer mon compte"
+        unhappy_txt: "Insatisfait?"
+        cancel_my_account_link: "Supprimer mon compte"
+        back_link: "Précédent"
+      new:
+        username: "Nom d'utilisateur"
+        firstname: "Prénom"
+        lastname: "Nom"
+        street: "Adresse"
+        additional_address_information: "Complément d'adresse"
+        city: "Ville"
+        postcode: "Code postal"
+        country: "Pays"
+        phone_number: "Numéro de téléphone"
+        is_partner: "Devenir un partenaire"
+        password: "Mot de passe"
+        characters_min: "caractères minimum"
+        password_confirmation: "Confirmation de mot de passe"
+        sign_up: "S'enregistrer"
     sessions:
       signed_in: "Connecté."
       signed_out: "Déconnecté."
