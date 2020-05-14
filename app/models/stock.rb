@@ -13,13 +13,13 @@ class Stock < ApplicationRecord
 
     def presence_of_product_reference
       if product_reference.blank?
-        errors[:base] << "Please select product to add to your shop"
+        errors[:base] << "#{I18n.t('.blank_product_ref_error')}"
       end
     end
 
     def presence_of_price
       if price.blank?
-        errors[:base] << "Please choose a price for this product"
+        errors[:base] << "#{I18n.t('.blank_price_error')}"
       end
     end
 

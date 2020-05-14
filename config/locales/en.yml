@@ -202,3 +202,6 @@ en:
         delivery_option: "Chosen delivery option:"
         order_status: "Status:"
         back_btn: "Back"
+
+  blank_product_ref_error: "Please select a product to add to your shop"
+  blank_price_error: "Please choose a price for this product"

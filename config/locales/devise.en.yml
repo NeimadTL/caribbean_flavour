@@ -113,6 +113,7 @@ en:
       signed_out: "Signed out successfully."
       already_signed_out: "Signed out successfully."
       new:
+        log_in_header: "Log in"
         password: "Password"
         remember_me: "Remember me"
         log_in_btn: "Log in"

@@ -113,6 +113,7 @@ fr:
       signed_out: "Déconnecté."
       already_signed_out: "Déconnecté."
       new:
+        log_in_header: "Connectez vous"
         password: "Mot de passe"
         remember_me: "Se souvenir de moi"
         log_in_btn: "Se connecter"

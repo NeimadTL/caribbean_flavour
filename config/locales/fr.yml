@@ -174,3 +174,59 @@ fr:
         delivery_option: "Moyen de livraison choisi:"
         order_status: "Statut:"
         back_btn: "Back"
+
+  activerecord:
+    models:
+      user:
+      shop:
+    attributes:
+      user:
+        username: "Nom d'utilisateur"
+        firstname: "Prénom"
+        lastname: "Nom"
+        street: "Adresse"
+        city: "Ville"
+        postcode: "Code postal"
+        country: "Pays"
+        phone_number: "Numéro de téléphone"
+        email: "Email"
+        password: "Mot de passe"
+        password_confirmation: "Confirmation de mot de passe"
+      shop:
+        name: "Nom de votre magasin"
+        delivery_options: ""
+    errors:
+      models:
+        user:
+          attributes:
+            username:
+              blank: "ne peut être vide"
+            firstname:
+              blank: "ne peut être vide"
+            lastname:
+              blank: "ne peut être vide"
+            street:
+              blank: "ne peut être vide"
+            city:
+              blank: "ne peut être vide"
+            postcode:
+              blank: "ne peut être vide"
+            country:
+              blank: "ne peut être vide"
+            phone_number:
+              blank: "ne peut être vide"
+            email:
+              blank: "ne peut être vide"
+            password:
+              blank: "ne peut être vide"
+            password_confirmation:
+              blank: "ne peut être vide"
+        shop:
+          attributes:
+            name:
+              blank: "ne peut être vide"
+            delivery_options:
+              blank: "Au moins un moyen de livraison doit être sélectionné"
+
+  blank_product_ref_error: "Merci de selectionner un produit à ajouter à votre magasin"
+  blank_price_error: "Merci de choisir un prix pour ce produit"
