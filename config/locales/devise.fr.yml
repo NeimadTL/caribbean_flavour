@@ -112,6 +112,20 @@ fr:
       signed_in: "Connecté."
       signed_out: "Déconnecté."
       already_signed_out: "Déconnecté."
+      new:
+        password: "Mot de passe"
+        remember_me: "Se souvenir de moi"
+        log_in_btn: "Se connecter"
+    shared:
+      links:
+        log_in: "Se connecter"
+        sign_up: "S'enregistrer"
+        forgot_password: "Mot de passe oublié?"
+        didnt_rec_conf_inst: "Vous n'avez pas reçu les instructions de confirmation?"
+        didnt_rec_unlock_inst: "Vous n'avez pas reçu les instructions de déblocage?"
+    unlocks:
+      new:
+        resend_unlock_instructions: "Revenvoyer les instructions de débloquage"
     unlocks:
       send_instructions: "Vous allez recevoir les instructions nécessaires au déverrouillage de votre compte dans quelques instants"
       send_paranoid_instructions: "Si votre compte existe, vous allez bientôt recevoir un email contenant les instructions pour le déverrouiller."

@@ -112,6 +112,20 @@ en:
       signed_in: "Signed in successfully."
       signed_out: "Signed out successfully."
       already_signed_out: "Signed out successfully."
+      new:
+        password: "Password"
+        remember_me: "Remember me"
+        log_in_btn: "Log in"
+    shared:
+      links:
+        log_in: "Login in"
+        sign_up: "Sign up"
+        forgot_password: "Forgot your password?"
+        didnt_rec_conf_inst: "Didn't receive confirmation instructions?"
+        didnt_rec_unlock_inst: "Didn't receive unlock instructions?"
+    unlocks:
+      new:
+        resend_unlock_instructions: "Resend unlock instructions"
     unlocks:
       send_instructions: "You will receive an email with instructions for how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions for how to unlock it in a few minutes."
