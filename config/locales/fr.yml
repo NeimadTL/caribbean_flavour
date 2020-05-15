@@ -179,6 +179,7 @@ fr:
     models:
       user:
       shop:
+      stock:
     attributes:
       user:
         username: "Nom d'utilisateur"
@@ -195,6 +196,9 @@ fr:
       shop:
         name: "Nom de votre magasin"
         delivery_options: ""
+      stock:
+        product: "Produit"
+        price: "Prix"
     errors:
       models:
         user:
@@ -227,6 +231,9 @@ fr:
               blank: "ne peut être vide"
             delivery_options:
               blank: "Au moins un moyen de livraison doit être sélectionné"
-
-  blank_product_ref_error: "Merci de selectionner un produit à ajouter à votre magasin"
-  blank_price_error: "Merci de choisir un prix pour ce produit"
+        stock:
+          attributes:
+            product:
+              required: "doit être sélectionné"
+            price:
+              blank: "ne peut être vide"

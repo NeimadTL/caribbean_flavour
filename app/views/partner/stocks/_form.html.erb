@@ -4,9 +4,8 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.label :product_reference, t('.product_label') %>
-    <%= f.select :product_reference, @products.collect {|p| [ p.name, p.reference ] },
-      { :prompt => t('.product_reference_prompt') }, class: 'form-control' %><br>
+    <%= f.association :product, label: t('.product_label'), collection: @products, prompt: t('.product_reference_prompt'),
+        label_method: :name, value_method: :reference, as: :select %>
     <%= f.input :price, label: t('.price_label'), required: true, autofocus: true, input_html: { autocomplete: "price" } %>
   </div>
 
