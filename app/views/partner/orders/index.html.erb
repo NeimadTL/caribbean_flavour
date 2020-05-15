@@ -1,4 +1,4 @@
-<h1><%= '.my_orders_hearder' %></h1>
+<h1><%= t('.my_orders_hearder') %></h1>
 
 <div class="row">
   <% @orders.each do |order| %>
@@ -17,8 +17,8 @@
           </p>
           <p class="card-text"><%= number_to_currency(order.total_price, locale: I18n.locale) %></p>
           <p class="card-text"><strong><%= t('.orders_index_status') %></strong> <%= order.status %><p>
-          <%= link_to t('.details_link'), partner_shop_order_path(order.shop, order), class: 'btn btn-primary btn-sm' %>
-          <%= link_to t('.change_status_link'), edit_partner_shop_order_path(order.shop, order), class: 'btn btn-primary btn-sm' %>
+          <%= link_to t('.details_link'), partner_order_path(order), class: 'btn btn-primary btn-sm' %>
+          <%= link_to t('.change_status_link'), edit_partner_order_path(order), class: 'btn btn-primary btn-sm' %>
         </div>
       </div>
     </div>

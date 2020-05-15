@@ -124,6 +124,8 @@ en:
         update: "Update"
         delete: "Delete"
         are_you_sure: "Are you sure ?"
+      create:
+        shop_successfully_created: "Shop was successfully created."
     stocks:
       form:
         product_label: "Product"

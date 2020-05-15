@@ -30,9 +30,9 @@
                 <%= link_to t('.my_orders_link'), consumer_orders_path, class: 'nav-link' %>
               </li>
             <% elsif current_user.role.code == Role::PARTNER_ROLE_CODE %>
-              <% if current_user.shop %>
+              <% unless current_user.shop.nil? %>
                 <li class="nav-item">
-                  <%= link_to t('.my_orders_link'), partner_shop_orders_path(current_user.shop), class: 'nav-link' %>
+                  <%= link_to t('.my_orders_link'), partner_orders_path, class: 'nav-link' %>
                 </li>
               <% end %>
               <li class="nav-item">

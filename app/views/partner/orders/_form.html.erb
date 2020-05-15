@@ -1,14 +1,14 @@
 
-<%= simple_form_for(@order, url: partner_shop_order_path(@order.shop, @order)) do |f| %>
+<%= simple_form_for(@order, url: partner_order_path(@order)) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
     <%= f.label t('.orders_form_status') %>
     <%= f.select :status, Order::STATUS, { prompt: t('.status_prompt') }, class: 'form-control' %>
-  </div>
+  </div><br>
 
   <div class="form-actions">
-    <%= f.button :submit, t('.orders_form_submit') %>
+    <%= f.button :submit, t('.orders_form_submit'), class: 'btn btn-primary' %>
   </div>
 <% end %>

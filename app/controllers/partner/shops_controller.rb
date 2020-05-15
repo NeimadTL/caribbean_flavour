@@ -2,6 +2,7 @@ class Partner::ShopsController < ApplicationController
   include PartnerFilter
   before_action :authenticate_user!
   before_action :require_to_be_partner
+  before_action :require_to_have_shop, only: [:show, :edit, :update]
   before_action :require_to_be_shop_owner, only: [:show, :edit, :update]
   before_action :set_shop, only: [:show, :edit, :update]
   before_action :allow_one_shop_only, only: [:new, :create]
@@ -18,7 +19,7 @@ class Partner::ShopsController < ApplicationController
     @shop = Shop.new(shop_params.merge(user: current_user))
     respond_to do |format|
       if @shop.save
-        format.html { redirect_to partner_shop_url(@shop), notice: 'Shop was successfully created.' }
+        format.html { redirect_to partner_shop_url(@shop), notice: t('.shop_successfully_created') }
         format.json { render :show, status: :created, location: @shop }
       else
         format.html { render :new }

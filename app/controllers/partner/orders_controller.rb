@@ -2,7 +2,9 @@ class Partner::OrdersController < ApplicationController
   include PartnerFilter
   before_action :authenticate_user!
   before_action :require_to_be_partner
-  before_action :require_to_be_shop_owner
+  # before_action :require_to_be_shop_owner
+  before_action :require_to_have_shop
+  before_action :require_to_be_shop_order, only: [:show, :edit, :update]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # GET /partner/orders
@@ -26,7 +28,7 @@ class Partner::OrdersController < ApplicationController
   def update
     respond_to do |format|
       if @order.update(order_params)
-        format.html { redirect_to partner_shop_orders_url(@order.shop, @order), notice: 'Order was successfully updated.' }
+        format.html { redirect_to partner_orders_url(@order), notice: 'Order was successfully updated.' }
         format.json { render :show, status: :ok, location: @order }
       else
         format.html { render :edit }

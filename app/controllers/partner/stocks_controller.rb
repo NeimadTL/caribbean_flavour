@@ -2,6 +2,7 @@ class Partner::StocksController < ApplicationController
   include PartnerFilter
   before_action :authenticate_user!
   before_action :require_to_be_partner
+  before_action :require_to_have_shop
   before_action :require_to_be_shop_owner
   before_action :require_to_be_shop_owner_product, only: [:edit, :update, :destroy]
   before_action :set_stock, only: [:show, :edit, :update, :destroy]

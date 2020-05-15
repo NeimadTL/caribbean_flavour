@@ -96,6 +96,8 @@ fr:
         update: "Modifier"
         delete: "Supprimer"
         are_you_sure: "Êtes-vous sûr ?"
+      create:
+        shop_successfully_created: "Magasin crée avec succès."
     stocks:
       form:
         product_label: "Produit"
@@ -205,6 +207,7 @@ fr:
           attributes:
             username:
               blank: "ne peut être vide"
+              taken: "est déjà utilisé"
             firstname:
               blank: "ne peut être vide"
             lastname:
@@ -237,3 +240,6 @@ fr:
               required: "doit être sélectionné"
             price:
               blank: "ne peut être vide"
+
+  # controllers translations
+  shop_successfully_created: "Magasin crée avec succès"
