@@ -94,6 +94,7 @@ fr:
         cancel_my_account_link: "Supprimer mon compte"
         back_link: "Précédent"
       new:
+        sign_up_header: "Enregistrez vous"
         username: "Nom d'utilisateur"
         firstname: "Prénom"
         lastname: "Nom"

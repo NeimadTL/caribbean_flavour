@@ -94,6 +94,7 @@ en:
         cancel_my_account_link: "Cancel my account"
         back_link: "Back"
       new:
+        sign_up_header: "Sign up"
         username: "Username"
         firstname: "Firstname"
         lastname: "Lastname"
