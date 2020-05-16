@@ -188,6 +188,12 @@ en:
         require_to_be_shop_owner_product: "This product is not in your shop"
       product_in_shop_already: "This product is already in your shop."
   invalid_shop: "Something went wrong : invalid shop"
+  requires_partner_access_rights: "The page you were looking for requires partner access rights"
+  require_to_be_shop_order: "This order does not belong to your shop"
+  allow_one_shop_only: "You already have a shop"
+  require_to_be_shop_owner: "You are not the owner of this shop"
+  require_to_be_shop_owner_product: "This product is not in your shop"
+  product_in_shop_already: "This product is already in your shop."
 
 
   consumer:

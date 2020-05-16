@@ -55,7 +55,7 @@ RSpec.describe Partner::ShopsController, type: :controller do
         get :index, params: {}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
-        expect(flash[:alert]).to match('The page you were looking for requires partner access rights')
+        expect(flash[:alert]).to match I18n.t('.requires_partner_access_rights')
       end
     end
 
@@ -88,7 +88,7 @@ RSpec.describe Partner::ShopsController, type: :controller do
         get :new, params: {}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
-        expect(flash[:alert]).to match('You already have a shop')
+        expect(flash[:alert]).to match I18n.t('.allow_one_shop_only')
       end
     end
 
@@ -100,7 +100,7 @@ RSpec.describe Partner::ShopsController, type: :controller do
         get :new, params: {}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
-        expect(flash[:alert]).to match('The page you were looking for requires partner access rights')
+        expect(flash[:alert]).to match I18n.t('.requires_partner_access_rights')
       end
     end
 
@@ -148,7 +148,7 @@ RSpec.describe Partner::ShopsController, type: :controller do
         post :create, params: {shop: valid_attributes}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
-        expect(flash[:alert]).to match('You already have a shop')
+        expect(flash[:alert]).to match I18n.t('.allow_one_shop_only')
       end
     end
 
@@ -160,7 +160,7 @@ RSpec.describe Partner::ShopsController, type: :controller do
         post :create, params: {shop: valid_attributes}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
-        expect(flash[:alert]).to match('The page you were looking for requires partner access rights')
+        expect(flash[:alert]).to match I18n.t('.requires_partner_access_rights')
       end
     end
 
@@ -207,7 +207,7 @@ RSpec.describe Partner::ShopsController, type: :controller do
         get :show, params: {id: another_partner.shop.to_param}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_url)
-        expect(flash[:alert]).to match('You are not the owner of this shop')
+        expect(flash[:alert]).to match I18n.t('.require_to_be_shop_owner')
       end
     end
 
@@ -220,7 +220,7 @@ RSpec.describe Partner::ShopsController, type: :controller do
         get :show, params: {id: shop.to_param}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
-        expect(flash[:alert]).to match('The page you were looking for requires partner access rights')
+        expect(flash[:alert]).to match I18n.t('.requires_partner_access_rights')
       end
     end
 
@@ -268,7 +268,7 @@ RSpec.describe Partner::ShopsController, type: :controller do
         get :show, params: {id: another_partner.shop.to_param}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_url)
-        expect(flash[:alert]).to match('You are not the owner of this shop')
+        expect(flash[:alert]).to match I18n.t('.require_to_be_shop_owner')
       end
     end
 
@@ -281,7 +281,7 @@ RSpec.describe Partner::ShopsController, type: :controller do
         get :edit, params: {id: shop.to_param}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
-        expect(flash[:alert]).to match('The page you were looking for requires partner access rights')
+        expect(flash[:alert]).to match I18n.t('.requires_partner_access_rights')
       end
     end
 
@@ -352,7 +352,7 @@ RSpec.describe Partner::ShopsController, type: :controller do
         put :update, params: {id: another_partner.shop.to_param, shop: new_attributes}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_url)
-        expect(flash[:alert]).to match('You are not the owner of this shop')
+        expect(flash[:alert]).to match I18n.t('.require_to_be_shop_owner')
       end
     end
 
@@ -365,7 +365,7 @@ RSpec.describe Partner::ShopsController, type: :controller do
         put :update, params: {id: shop.to_param, shop: new_attributes}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
-        expect(flash[:alert]).to match('The page you were looking for requires partner access rights')
+        expect(flash[:alert]).to match I18n.t('.requires_partner_access_rights')
       end
     end
 

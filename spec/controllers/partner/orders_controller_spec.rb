@@ -82,7 +82,8 @@ RSpec.describe Partner::OrdersController, type: :controller do
         get :index, params: {}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
-        expect(flash[:alert]).to match('The page you were looking for requires partner access rights')
+        expect(flash[:alert]).to match I18n.t('.requires_partner_access_rights')
+
       end
     end
 
@@ -134,7 +135,7 @@ RSpec.describe Partner::OrdersController, type: :controller do
         get :show, params: {id: order.to_param}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_url)
-        expect(flash[:alert]).to match('This order does not belong to your shop')
+        expect(flash[:alert]).to match I18n.t('.require_to_be_shop_order')
       end
     end
 
@@ -149,7 +150,7 @@ RSpec.describe Partner::OrdersController, type: :controller do
         get :show, params: {id: order.to_param}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
-        expect(flash[:alert]).to match('The page you were looking for requires partner access rights')
+        expect(flash[:alert]).to match I18n.t('.requires_partner_access_rights')
       end
     end
 
@@ -204,7 +205,7 @@ RSpec.describe Partner::OrdersController, type: :controller do
         get :edit, params: {id: order.to_param}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_url)
-        expect(flash[:alert]).to match('This order does not belong to your shop')
+        expect(flash[:alert]).to match I18n.t('.require_to_be_shop_order')
       end
     end
 
@@ -219,7 +220,7 @@ RSpec.describe Partner::OrdersController, type: :controller do
         get :edit, params: {id: order.to_param}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
-        expect(flash[:alert]).to match('The page you were looking for requires partner access rights')
+        expect(flash[:alert]).to match I18n.t('.requires_partner_access_rights')
       end
     end
 
@@ -302,7 +303,7 @@ RSpec.describe Partner::OrdersController, type: :controller do
         put :update, params: {id: order.to_param, order: valid_attributes}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_url)
-        expect(flash[:alert]).to match('This order does not belong to your shop')
+        expect(flash[:alert]).to match I18n.t('.require_to_be_shop_order')
       end
     end
 
@@ -312,17 +313,17 @@ RSpec.describe Partner::OrdersController, type: :controller do
       end
       it "returns a redirect response and redirects to root path" do
         order = Order.create! valid_attributes
-        put :update, params: {shop_id: Random.new.rand(2000..3000), id: order.to_param, order: new_attributes}, session: valid_session
+        put :update, params: {id: order.to_param, order: new_attributes}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
-        expect(flash[:alert]).to match('The page you were looking for requires partner access rights')
+        expect(flash[:alert]).to match I18n.t('.requires_partner_access_rights')
       end
     end
 
     context "when no user is signed in" do
       it "returns a redirect response and redirects to sign in" do
         order = Order.create! valid_attributes
-        put :update, params: {shop_id: Random.new.rand(2000..3000), id: order.to_param, order: new_attributes}, session: valid_session
+        put :update, params: {id: order.to_param, order: new_attributes}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(new_user_session_path)
       end

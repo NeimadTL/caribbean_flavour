@@ -87,7 +87,7 @@ RSpec.describe Partner::StocksController, type: :controller do
         get :new, params: {shop_id: another_partner.shop.to_param}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_url)
-        expect(flash[:alert]).to match('You are not the owner of this shop')
+        expect(flash[:alert]).to match I18n.t('.require_to_be_shop_owner')
       end
     end
 
@@ -100,7 +100,7 @@ RSpec.describe Partner::StocksController, type: :controller do
         get :new, params: {shop_id: partner.shop.to_param}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
-        expect(flash[:alert]).to match('The page you were looking for requires partner access rights')
+        expect(flash[:alert]).to match I18n.t('.requires_partner_access_rights')
       end
     end
 
@@ -163,7 +163,7 @@ RSpec.describe Partner::StocksController, type: :controller do
         post :create, params: {shop_id: another_partner.shop.to_param, stock: valid_attributes}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_url)
-        expect(flash[:alert]).to match('You are not the owner of this shop')
+        expect(flash[:alert]).to match I18n.t('.require_to_be_shop_owner')
       end
     end
 
@@ -177,7 +177,7 @@ RSpec.describe Partner::StocksController, type: :controller do
         post :create, params: {shop_id: partner.shop.to_param, stock: valid_attributes}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(new_partner_shop_stock_url(partner.shop))
-        expect(flash[:alert]).to match('This product is already in your shop.')
+        expect(flash[:alert]).to match I18n.t('.product_in_shop_already')
       end
     end
 
@@ -190,7 +190,7 @@ RSpec.describe Partner::StocksController, type: :controller do
         post :create, params: {shop_id: partner.shop.to_param, stock: valid_attributes}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
-        expect(flash[:alert]).to match('The page you were looking for requires partner access rights')
+        expect(flash[:alert]).to match I18n.t('.requires_partner_access_rights')
       end
     end
 
@@ -242,7 +242,7 @@ RSpec.describe Partner::StocksController, type: :controller do
         get :edit, params: {shop_id: another_partner.shop.to_param, id: stock.to_param}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_url)
-        expect(flash[:alert]).to match('You are not the owner of this shop')
+        expect(flash[:alert]).to match I18n.t('.require_to_be_shop_owner')
       end
     end
 
@@ -258,7 +258,7 @@ RSpec.describe Partner::StocksController, type: :controller do
         get :edit, params: {shop_id: partner.shop.to_param, id: stock.to_param}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_url)
-        expect(flash[:alert]).to match('This product is not in your shop')
+        expect(flash[:alert]).to match I18n.t('.require_to_be_shop_owner_product')
       end
     end
 
@@ -273,7 +273,7 @@ RSpec.describe Partner::StocksController, type: :controller do
         get :edit, params: {shop_id: partner.shop.to_param, id: stock.to_param}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
-        expect(flash[:alert]).to match('The page you were looking for requires partner access rights')
+        expect(flash[:alert]).to match I18n.t('.requires_partner_access_rights')
       end
     end
 
@@ -347,7 +347,7 @@ RSpec.describe Partner::StocksController, type: :controller do
         put :update, params: {shop_id: another_partner.shop.to_param, id: stock.to_param, stock: valid_attributes}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_url)
-        expect(flash[:alert]).to match('You are not the owner of this shop')
+        expect(flash[:alert]).to match I18n.t('.require_to_be_shop_owner')
       end
     end
 
@@ -363,7 +363,7 @@ RSpec.describe Partner::StocksController, type: :controller do
         put :update, params: {shop_id: partner.shop.to_param, id: stock.to_param, stock: valid_attributes}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_url)
-        expect(flash[:alert]).to match('This product is not in your shop')
+        expect(flash[:alert]).to match I18n.t('.require_to_be_shop_owner_product')
       end
     end
 
@@ -378,7 +378,7 @@ RSpec.describe Partner::StocksController, type: :controller do
         put :update, params: {shop_id: partner.shop.to_param, id: stock.to_param, stock: new_attributes}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
-        expect(flash[:alert]).to match('The page you were looking for requires partner access rights')
+        expect(flash[:alert]).to match I18n.t('.requires_partner_access_rights')
       end
     end
 
@@ -429,7 +429,7 @@ RSpec.describe Partner::StocksController, type: :controller do
         delete :destroy, params: {shop_id: another_partner.cart.id, id: stock.id}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_url)
-        expect(flash[:alert]).to match('You are not the owner of this shop')
+        expect(flash[:alert]).to match I18n.t('.require_to_be_shop_owner')
       end
     end
 
@@ -445,7 +445,7 @@ RSpec.describe Partner::StocksController, type: :controller do
         delete :destroy, params: {shop_id: partner.shop.to_param, id: stock.id}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_url)
-        expect(flash[:alert]).to match('This product is not in your shop')
+        expect(flash[:alert]).to match I18n.t('.require_to_be_shop_owner_product')
       end
     end
 
@@ -460,7 +460,7 @@ RSpec.describe Partner::StocksController, type: :controller do
         delete :destroy, params: {shop_id: partner.shop.to_param, id: stock.id}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
-        expect(flash[:alert]).to match('The page you were looking for requires partner access rights')
+        expect(flash[:alert]).to match I18n.t('.requires_partner_access_rights')
       end
     end
 
