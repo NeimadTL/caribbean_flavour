@@ -44,7 +44,7 @@ module PartnerFilter
   def require_to_be_shop_order
     order = Order.find(params[:id])
     unless current_user.shop.id == order.order_line_items.first.shop.id
-      flash[:alert] = "This order does not belong to your shop"
+      flash[:alert] = t('.require_to_be_shop_order')
       redirect_to root_url
     end
   end

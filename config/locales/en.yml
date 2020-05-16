@@ -113,11 +113,13 @@ en:
         create_shop: "Create Shop"
         requires_partner_access_rights: "The page you were looking for requires partner access rights"
         allow_one_shop_only: "You already have a shop"
+        require_to_be_shop_order: "This order does not belong to your shop"
       edit:
         treak_shop_header: "Treak your shop settings"
         back_link: "Back"
         requires_partner_access_rights: "The page you were looking for requires partner access rights"
         require_to_be_shop_owner: "You are not the owner of this shop"
+        require_to_be_shop_order: "This order does not belong to your shop"
       index:
         create_shop_phrase: "You haven't created your shop yet. PLease create your shop based on the category of product you want to sell."
         set_up_shop_link: "Set Up Your Shop"
@@ -140,6 +142,7 @@ en:
         are_you_sure: "Are you sure ?"
         requires_partner_access_rights: "The page you were looking for requires partner access rights"
         require_to_be_shop_owner: "You are not the owner of this shop"
+        require_to_be_shop_order: "This order does not belong to your shop"
       create:
         shop_successfully_created: "Shop was successfully created."
         requires_partner_access_rights: "The page you were looking for requires partner access rights"
@@ -148,6 +151,7 @@ en:
         shop_successfully_updated: "Shop was successfully updated."
         requires_partner_access_rights: "The page you were looking for requires partner access rights"
         require_to_be_shop_owner: "You are not the owner of this shop"
+        require_to_be_shop_order: "This order does not belong to your shop"
     stocks:
       form:
         product_label: "Product"

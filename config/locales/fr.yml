@@ -51,11 +51,13 @@ fr:
         status_prompt: "Selectionnez un statut"
         orders_form_submit: "Changer le statut"
         requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
+        require_to_be_shop_order: "Cette commande n'appartient pas à votre magasin"
       edit:
         order_edit_header: "Mettre à jour le statut"
         order_detail_link: "Détail de la commande"
         back_link: "Précédent"
         requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
+        require_to_be_shop_order: "Cette commande n'appartient pas à votre magasin"
       index:
         my_orders_hearder: "Mes commandes"
         orders_index_status: "Statut:"
@@ -74,9 +76,11 @@ fr:
         edit_status_link: "Changer le statut"
         back_link: "Précédent"
         requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
+        require_to_be_shop_order: "Cette commande n'appartient pas à votre magasin"
       update:
         order_successfully_updated: "Statut de la commande mis à jour avec succès"
         requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
+        require_to_be_shop_order: "Cette commande n'appartient pas à votre magasin"
     shops:
       form:
         shop_name: "Nom de votre magasin"
