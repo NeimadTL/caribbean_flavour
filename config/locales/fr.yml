@@ -197,7 +197,8 @@ fr:
         password_confirmation: "Confirmation de mot de passe"
       shop:
         name: "Nom de votre magasin"
-        delivery_options: ""
+        delivery_options: "Moyens de livraison"
+        product_category: "Catégorie de produit"
       stock:
         product: "Produit"
         price: "Prix"
@@ -233,7 +234,9 @@ fr:
             name:
               blank: "ne peut être vide"
             delivery_options:
-              blank: "Au moins un moyen de livraison doit être sélectionné"
+              blank: "au moins un doit être sélectionné"
+            product_category:
+              required: "une doit être sélectionnée"
         stock:
           attributes:
             product:
