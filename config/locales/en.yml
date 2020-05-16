@@ -156,11 +156,13 @@ en:
         price_label: "Price"
         requires_partner_access_rights: "The page you were looking for requires partner access rights"
         require_to_be_shop_owner: "You are not the owner of this shop"
+        require_to_be_shop_owner_product: "This product is not in your shop"
       edit:
         edit_stock_header: "Edit your product"
         back_link: "Back"
         requires_partner_access_rights: "The page you were looking for requires partner access rights"
         require_to_be_shop_owner: "You are not the owner of this shop"
+        require_to_be_shop_owner_product: "This product is not in your shop"
       new:
         add_new_stock_header: "Add a new product"
         back_link: "back"
@@ -174,10 +176,12 @@ en:
         product_succesfully_updated: "Product was successfully updated."
         requires_partner_access_rights: "The page you were looking for requires partner access rights"
         require_to_be_shop_owner: "You are not the owner of this shop"
+        require_to_be_shop_owner_product: "This product is not in your shop"
       destroy:
         product_succesfully_destroyed: "Product was successfully destroyed."
         requires_partner_access_rights: "The page you were looking for requires partner access rights"
         require_to_be_shop_owner: "You are not the owner of this shop"
+        require_to_be_shop_owner_product: "This product is not in your shop"
       product_in_shop_already: "This product is already in your shop."
   invalid_shop: "Something went wrong : invalid shop"
 

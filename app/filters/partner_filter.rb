@@ -36,7 +36,7 @@ module PartnerFilter
   def require_to_be_shop_owner_product
     stock = Stock.find(params[:id])
     unless current_user.shop.id == stock.shop.id
-      flash[:alert] = "This product is not in your shop"
+      flash[:alert] = t('.require_to_be_shop_owner_product')
       redirect_to root_url
     end
   end
