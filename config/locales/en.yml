@@ -112,6 +112,7 @@ en:
         product_category: "Your products' category"
         create_shop: "Create Shop"
         requires_partner_access_rights: "The page you were looking for requires partner access rights"
+        allow_one_shop_only: "You already have a shop"
       edit:
         treak_shop_header: "Treak your shop settings"
         back_link: "Back"
@@ -125,6 +126,7 @@ en:
         set_up_shop_header: "Set up your shop"
         back_link: "Back"
         requires_partner_access_rights: "The page you were looking for requires partner access rights"
+        allow_one_shop_only: "You already have a shop"
       show:
         welcome: "Welcome to"
         delivery_option: "Delivery Options"
@@ -141,6 +143,7 @@ en:
       create:
         shop_successfully_created: "Shop was successfully created."
         requires_partner_access_rights: "The page you were looking for requires partner access rights"
+        allow_one_shop_only: "You already have a shop"
       update:
         shop_successfully_updated: "Shop was successfully updated."
         requires_partner_access_rights: "The page you were looking for requires partner access rights"

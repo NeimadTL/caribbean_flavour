@@ -84,6 +84,7 @@ fr:
         product_category: "La catégorie de vos produits"
         create_shop: "Créer votre magasin"
         requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
+        allow_one_shop_only: "Vous avez déjà un magasin"
       edit:
         treak_shop_header: "Réglez les paramètres de votre magasin"
         back_link: "Précédent"
@@ -97,6 +98,7 @@ fr:
         set_up_shop_header: "Configurez votre magasin"
         back_link: "Précédent"
         requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
+        allow_one_shop_only: "Vous avez déjà un magasin"
       show:
         welcome: "Bienvenue sur"
         delivery_option: "Moyens de livraison"
@@ -113,6 +115,7 @@ fr:
       create:
         shop_successfully_created: "Magasin crée avec succès."
         requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
+        allow_one_shop_only: "Vous avez déjà un magasin"
       update:
         shop_successfully_updated: "Magasin mis à jour avec succès."
         requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."

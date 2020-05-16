@@ -28,7 +28,7 @@ module PartnerFilter
 
   def allow_one_shop_only
     unless current_user.shop.nil?
-      flash[:alert] = "You already have a shop"
+      flash[:alert] = t('.allow_one_shop_only')
       redirect_to root_url
     end
   end
