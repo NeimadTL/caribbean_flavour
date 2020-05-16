@@ -78,15 +78,18 @@ en:
         orders_form_status: "Status"
         status_prompt: "Select a status"
         orders_form_submit: "Update Status"
+        requires_partner_access_rights: "The page you were looking for requires partner access rights"
       edit:
         order_edit_header: "Update order's status"
         order_detail_link: "Order's details"
         back_link: "Back"
+        requires_partner_access_rights: "The page you were looking for requires partner access rights"
       index:
         my_orders_hearder: "My Orders"
         orders_index_status: "Statut"
         details_link: "Details"
         change_status_link: "Update status"
+        requires_partner_access_rights: "The page you were looking for requires partner access rights"
       show:
         order_number: "Order"
         name_col: "Name"
@@ -98,23 +101,29 @@ en:
         status: "Status:"
         edit_status_link: "Update Status"
         back_link: "Back"
+        requires_partner_access_rights: "The page you were looking for requires partner access rights"
       update:
         order_successfully_updated: "Order's status was successfully updated."
+        requires_partner_access_rights: "The page you were looking for requires partner access rights"
     shops:
       form:
         shop_name: "Name of your shop"
         delivery_options: "Your delivery options"
         product_category: "Your products' category"
         create_shop: "Create Shop"
+        requires_partner_access_rights: "The page you were looking for requires partner access rights"
       edit:
         treak_shop_header: "Treak your shop settings"
         back_link: "Back"
+        requires_partner_access_rights: "The page you were looking for requires partner access rights"
       index:
         create_shop_phrase: "You haven't created your shop yet. PLease create your shop based on the category of product you want to sell."
         set_up_shop_link: "Set Up Your Shop"
+        requires_partner_access_rights: "The page you were looking for requires partner access rights"
       new:
         set_up_shop_header: "Set up your shop"
         back_link: "Back"
+        requires_partner_access_rights: "The page you were looking for requires partner access rights"
       show:
         welcome: "Welcome to"
         delivery_option: "Delivery Options"
@@ -126,30 +135,40 @@ en:
         update: "Update"
         delete: "Delete"
         are_you_sure: "Are you sure ?"
+        requires_partner_access_rights: "The page you were looking for requires partner access rights"
       create:
         shop_successfully_created: "Shop was successfully created."
+        requires_partner_access_rights: "The page you were looking for requires partner access rights"
       update:
         shop_successfully_updated: "Shop was successfully updated."
+        requires_partner_access_rights: "The page you were looking for requires partner access rights"
     stocks:
       form:
         product_label: "Product"
         product_reference_prompt: "Please select a product"
         add_product_btn: "Add product"
         price_label: "Price"
+        requires_partner_access_rights: "The page you were looking for requires partner access rights"
       edit:
         edit_stock_header: "Edit your product"
         back_link: "Back"
+        requires_partner_access_rights: "The page you were looking for requires partner access rights"
       new:
         add_new_stock_header: "Add a new product"
         back_link: "back"
+        requires_partner_access_rights: "The page you were looking for requires partner access rights"
       create:
         product_succesfully_created: "Product was successfully created."
+        requires_partner_access_rights: "The page you were looking for requires partner access rights"
       update:
         product_succesfully_updated: "Product was successfully updated."
+        requires_partner_access_rights: "The page you were looking for requires partner access rights"
       destroy:
         product_succesfully_destroyed: "Product was successfully destroyed."
+        requires_partner_access_rights: "The page you were looking for requires partner access rights"
       product_in_shop_already: "This product is already in your shop."
   invalid_shop: "Something went wrong : invalid shop"
+
 
   consumer:
     shops:

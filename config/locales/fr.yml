@@ -50,15 +50,18 @@ fr:
         orders_form_status: "Statut"
         status_prompt: "Selectionnez un statut"
         orders_form_submit: "Changer le statut"
+        requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
       edit:
         order_edit_header: "Mettre à jour le statut"
         order_detail_link: "Détail de la commande"
         back_link: "Précédent"
+        requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
       index:
         my_orders_hearder: "Mes commandes"
         orders_index_status: "Statut:"
         details_link: "Détail"
         change_status_link: "Changer le statut"
+        requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
       show:
         order_number: "Commande"
         name_col: "Nom"
@@ -70,23 +73,29 @@ fr:
         status: "Statut:"
         edit_status_link: "Changer le statut"
         back_link: "Précédent"
+        requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
       update:
         order_successfully_updated: "Statut de la commande mis à jour avec succès"
+        requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
     shops:
       form:
         shop_name: "Nom de votre magasin"
         delivery_options: "Vos moyens de livraison"
         product_category: "La catégorie de vos produits"
         create_shop: "Créer votre magasin"
+        requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
       edit:
         treak_shop_header: "Réglez les paramètres de votre magasin"
         back_link: "Précédent"
+        requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
       index:
         create_shop_phrase: "Vous n'avez pas encore crée votre magasin. Merci de créer votre magasin en fonction de la catégorie de produits que vous voulez vendre."
         set_up_shop_link: "Configurez votre magasin"
+        requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
       new:
         set_up_shop_header: "Configurez votre magasin"
         back_link: "Précédent"
+        requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
       show:
         welcome: "Bienvenue sur"
         delivery_option: "Moyens de livraison"
@@ -98,30 +107,40 @@ fr:
         update: "Modifier"
         delete: "Supprimer"
         are_you_sure: "Êtes-vous sûr ?"
+        requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
       create:
         shop_successfully_created: "Magasin crée avec succès."
+        requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
       update:
         shop_successfully_updated: "Magasin mis à jour avec succès."
+        requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
     stocks:
       form:
         product_label: "Produit"
         product_reference_prompt: "Selectionnez un produit s'il vous plaît"
         add_product_btn: "Ajouter le produit"
         price_label: "Prix"
+        requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
       edit:
         edit_stock_header: "Modifier votre produit"
         back_link: "Précédent"
+        requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
       new:
         add_new_stock_header: "Ajouter un nouveau produit"
         back_link: "Précédent"
+        requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
       create:
         product_succesfully_created: "Produit crée avec succès"
+        requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
       update:
         product_succesfully_updated: "Produit mis à jour avec succès"
+        requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
       destroy:
         product_succesfully_destroyed: "Produit supprimé avec succès."
+        requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
       product_in_shop_already: "Ce produit est déjà dans votre magasin."
   invalid_shop: "Une erreur s'est produite : magasin invalide"
+
 
   consumer:
     shops:

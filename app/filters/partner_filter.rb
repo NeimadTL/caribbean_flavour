@@ -2,7 +2,7 @@ module PartnerFilter
 
   def require_to_be_partner
     unless current_user.role.code == Role::PARTNER_ROLE_CODE
-      flash[:alert] = 'The page you were looking for requires partner access rights'
+      flash[:alert] = t('.requires_partner_access_rights')
       redirect_to root_path
     end
   end
