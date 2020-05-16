@@ -21,7 +21,7 @@ module PartnerFilter
     # end
     id = params[:shop_id] || params[:id]
     unless current_user.shop.id == id.to_i
-      flash[:alert] = "You are not the owner of this shop"
+      flash[:alert] = t('.require_to_be_shop_owner')
       redirect_to root_url
     end
   end
