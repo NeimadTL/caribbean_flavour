@@ -40,7 +40,7 @@ class Consumer::LineItemsController < ApplicationController
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to consumer_cart_url(@line_item.cart), notice: 'Line item was successfully created.' }
+        format.html { redirect_to consumer_cart_url(@line_item.cart), notice: t('.line_item_successfully_created') }
         format.json { render :show, status: :created, location: @line_item }
       else
         format.html { render :new }
@@ -54,7 +54,7 @@ class Consumer::LineItemsController < ApplicationController
   def update
     respond_to do |format|
       if @line_item.update(line_item_params)
-        format.html { redirect_to consumer_cart_url(@line_item.cart), notice: 'Line item was successfully updated.' }
+        format.html { redirect_to consumer_cart_url(@line_item.cart), notice: t('.line_item_successfully_updated') }
         format.json { render :show, status: :ok, location: @line_item }
       else
         format.html { render :edit }
@@ -68,7 +68,7 @@ class Consumer::LineItemsController < ApplicationController
   def destroy
     @line_item.destroy
     respond_to do |format|
-      format.html { redirect_to consumer_cart_url(@line_item.cart), notice: 'Line item was successfully destroyed.' }
+      format.html { redirect_to consumer_cart_url(@line_item.cart), notice: t('.line_item_successfully_destroyed') }
       format.json { head :no_content }
     end
   end
@@ -90,15 +90,13 @@ class Consumer::LineItemsController < ApplicationController
 
     def item_in_cart_already
       if @cart.line_items.find_by(stock: @stock)
-        redirect_to consumer_shop_url(@stock.shop),
-          alert: 'This product is already in your cart. If you want more,
-          please go to your cart and increase the quantity for it'
+        redirect_to consumer_shop_url(@stock.shop), alert: t('.item_in_cart_already')
       end
     end
 
     def invalid_cart
       logger.error "User ##{current_user.id} attempts to add item #{@stock.product.reference} twice in cart ##{@cart.id}"
-      redirect_to consumer_shop_url(@stock.shop), alert: 'Something went wrong : invalid cart'
+      redirect_to consumer_shop_url(@stock.shop), alert: t('.invalid_cart')
     end
 
 
