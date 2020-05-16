@@ -98,6 +98,8 @@ fr:
         are_you_sure: "Êtes-vous sûr ?"
       create:
         shop_successfully_created: "Magasin crée avec succès."
+      update:
+        shop_successfully_updated: "Magasin mis à jour avec succès."
     stocks:
       form:
         product_label: "Produit"
@@ -243,6 +245,3 @@ fr:
               required: "doit être sélectionné"
             price:
               blank: "ne peut être vide"
-
-  # controllers translations
-  shop_successfully_created: "Magasin crée avec succès"

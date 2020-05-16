@@ -126,6 +126,8 @@ en:
         are_you_sure: "Are you sure ?"
       create:
         shop_successfully_created: "Shop was successfully created."
+      update:
+        shop_successfully_updated: "Shop was successfully updated."
     stocks:
       form:
         product_label: "Product"
