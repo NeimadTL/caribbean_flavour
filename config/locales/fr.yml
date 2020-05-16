@@ -70,6 +70,8 @@ fr:
         status: "Statut:"
         edit_status_link: "Changer le statut"
         back_link: "Précédent"
+      update:
+        order_successfully_updated: "Statut de la commande mis à jour avec succès"
     shops:
       form:
         shop_name: "Nom de votre magasin"

@@ -98,6 +98,8 @@ en:
         status: "Status:"
         edit_status_link: "Update Status"
         back_link: "Back"
+      update:
+        order_successfully_updated: "Order's status was successfully updated."
     shops:
       form:
         shop_name: "Name of your shop"
