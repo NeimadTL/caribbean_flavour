@@ -37,7 +37,7 @@ class Consumer::OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
-        format.html { redirect_to consumer_order_url(@order), notice: 'Order was successfully created.' }
+        format.html { redirect_to consumer_order_url(@order), notice: t('.order_successfully_created') }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }
@@ -65,7 +65,7 @@ class Consumer::OrdersController < ApplicationController
   def destroy
     @order.destroy
     respond_to do |format|
-      format.html { redirect_to consumer_orders_url, notice: 'Order was successfully destroyed.' }
+      format.html { redirect_to consumer_orders_url, notice: t('.order_successfully_destroyed') }
       format.json { head :no_content }
     end
   end

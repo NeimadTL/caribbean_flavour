@@ -240,7 +240,12 @@ fr:
         price_col: "Prix"
         delivery_option: "Moyen de livraison choisi:"
         order_status: "Statut:"
+        are_you_sure: "Are you sure ?"
         back_btn: "Back"
+      create:
+        order_successfully_created: "Commande créée avec succès."
+      destroy:
+        order_successfully_destroyed: "Commande annulée avec succès"
 
   activerecord:
     models:

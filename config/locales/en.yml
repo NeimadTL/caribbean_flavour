@@ -268,4 +268,9 @@ en:
         price_col: "Price"
         delivery_option: "Chosen delivery option:"
         order_status: "Status:"
+        are_you_sure: "Are you sure ?"
         back_btn: "Back"
+      create:
+        order_successfully_created: "Order was successfully created."
+      destroy:
+        order_successfully_destroyed: "Order was successfully destroyed."
