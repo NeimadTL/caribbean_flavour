@@ -2,14 +2,14 @@ module ConsumerFilter
 
   def require_to_be_consumer
     unless current_user.role.code == Role::CONSUMER_ROLE_CODE
-      redirect_with_alert("The page you were looking for requires consumer access rights", root_url)
+      redirect_with_alert(t('.requires_consumer_access_rights'), root_url)
     end
   end
 
   def require_to_be_cart_owner
     id = params[:cart_id] || params[:id]
     unless current_user.cart.id == id.to_i
-      redirect_with_alert("You are not the owner of this cart", root_url)
+      redirect_with_alert(t('.require_to_be_cart_owner'), root_url)
     end
   end
 
@@ -28,7 +28,7 @@ module ConsumerFilter
   end
 
   private
-  
+
     def redirect_with_alert(msg, url)
       flash[:alert] = msg
       redirect_to url

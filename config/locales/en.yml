@@ -240,6 +240,8 @@ en:
         are_you_sure: "Are you sure ?"
         keep_shopping_link: "Keep shopping"
         order_link: "Order"
+        requires_consumer_access_rights: "The page you were looking for requires consumer access rights"
+        require_to_be_cart_owner: "You are not the owner of this cart"
     orders:
       form:
         name_col: "Name"
@@ -274,3 +276,5 @@ en:
         order_successfully_created: "Order was successfully created."
       destroy:
         order_successfully_destroyed: "Order was successfully destroyed."
+  requires_consumer_access_rights: "The page you were looking for requires consumer access rights"
+  require_to_be_cart_owner: "You are not the owner of this cart"
