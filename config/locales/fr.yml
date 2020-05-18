@@ -187,19 +187,35 @@ fr:
       form:
         qty_label: "Quantité"
         add_to_cart_btn: "Ajouter au panier"
+        requires_consumer_access_rights: "La page que vous recherchez requiert un droit d'accès consommateur."
+        require_to_be_cart_owner: "Vous n'est pas propriétaire de ce panier"
+        require_to_be_cart_owner_item: "Ce produit n'est pas dans votre panier"
       edit:
         update_product_qty: "Modifier la quantity du produit"
         back_btn: "Précédent"
+        requires_consumer_access_rights: "La page que vous recherchez requiert un droit d'accès consommateur."
+        require_to_be_cart_owner: "Vous n'est pas propriétaire de ce panier"
+        require_to_be_cart_owner_item: "Ce produit n'est pas dans votre panier"
       new:
         add_product_to_cart_header: "Ajouter ce produit à votre panier"
         item_in_cart_already: "Ce produit est déjà dans votre parnier. Si vous en voulez plus, merci d'aller dans votre panier et d'en augmenter la quantité."
+        requires_consumer_access_rights: "La page que vous recherchez requiert un droit d'accès consommateur."
+        require_to_be_cart_owner: "Vous n'est pas propriétaire de ce panier"
       create:
         line_item_successfully_created: "Produit ajouté à votre panier avec succès"
         invalid_cart: "Une erreur s'est produite : panier invalide"
+        requires_consumer_access_rights: "La page que vous recherchez requiert un droit d'accès consommateur."
+        require_to_be_cart_owner: "Vous n'est pas propriétaire de ce panier"
       update:
         line_item_successfully_updated: "Quantité du produit mise jour avec succès"
+        requires_consumer_access_rights: "La page que vous recherchez requiert un droit d'accès consommateur."
+        require_to_be_cart_owner: "Vous n'est pas propriétaire de ce panier"
+        require_to_be_cart_owner_item: "Ce produit n'est pas dans votre panier"
       destroy:
         line_item_successfully_destroyed: "Produit supprimé de votre panier avec succès"
+        requires_consumer_access_rights: "La page que vous recherchez requiert un droit d'accès consommateur."
+        require_to_be_cart_owner: "Vous n'est pas propriétaire de ce panier"
+        require_to_be_cart_owner_item: "Ce produit n'est pas dans votre panier"
     carts:
       show:
         name_col: "Nom"
@@ -250,6 +266,8 @@ fr:
         order_successfully_destroyed: "Commande annulée avec succès"
   requires_consumer_access_rights: "La page que vous recherchez requiert un droit d'accès consommateur."
   require_to_be_cart_owner: "Vous n'est pas propriétaire de ce panier"
+  item_in_cart_already: "Ce produit est déjà dans votre parnier. Si vous en voulez plus, merci d'aller dans votre panier et d'en augmenter la quantité."
+  require_to_be_cart_owner_item: "Ce produit n'est pas dans votre panier"
 
   activerecord:
     models:

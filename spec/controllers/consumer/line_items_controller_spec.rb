@@ -73,7 +73,7 @@ RSpec.describe Consumer::LineItemsController, type: :controller do
         get :new, params: {cart_id: another_consumer.cart.id, stock_id: stock_id}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
-        expect(flash[:alert]).to match('You are not the owner of this cart')
+        expect(flash[:alert]).to match I18n.t('.require_to_be_cart_owner')
       end
     end
 
@@ -89,8 +89,7 @@ RSpec.describe Consumer::LineItemsController, type: :controller do
         get :new, params: {cart_id: consumer.cart.id, stock_id: stock_id}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(consumer_shop_url(partner.shop))
-        expect(flash[:alert]).to match('This product is already in your cart. If you want more,
-          please go to your cart and increase the quantity for it')
+        expect(flash[:alert]).to match I18n.t('.item_in_cart_already')
       end
     end
 
@@ -105,7 +104,7 @@ RSpec.describe Consumer::LineItemsController, type: :controller do
         get :new, params: {cart_id: consumer.cart.id, stock_id: stock_id}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
-        expect(flash[:alert]).to match('The page you were looking for requires consumer access rights')
+        expect(flash[:alert]).to match I18n.t('.requires_consumer_access_rights')
       end
     end
 
@@ -169,7 +168,7 @@ RSpec.describe Consumer::LineItemsController, type: :controller do
         post :create, params: {cart_id: another_consumer.cart.id, stock_id: stock_id, line_item: valid_attributes}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
-        expect(flash[:alert]).to match('You are not the owner of this cart')
+        expect(flash[:alert]).to match I18n.t('.require_to_be_cart_owner')
       end
     end
 
@@ -185,7 +184,7 @@ RSpec.describe Consumer::LineItemsController, type: :controller do
         post :create, params: {cart_id: consumer.cart.id, stock_id: stock_id}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
-        expect(flash[:alert]).to match('The page you were looking for requires consumer access rights')
+        expect(flash[:alert]).to match I18n.t('.requires_consumer_access_rights')
       end
     end
 
@@ -233,7 +232,7 @@ RSpec.describe Consumer::LineItemsController, type: :controller do
         get :edit, params: {cart_id: another_consumer.cart.id , stock_id: stock_id, id: item.to_param}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_url)
-        expect(flash[:alert]).to match('You are not the owner of this cart')
+        expect(flash[:alert]).to match I18n.t('.require_to_be_cart_owner')
       end
     end
 
@@ -250,7 +249,7 @@ RSpec.describe Consumer::LineItemsController, type: :controller do
         get :edit, params: {cart_id: consumer.cart.id , stock_id: stock_id, id: item.to_param}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_url)
-        expect(flash[:alert]).to match('This product is not in your cart')
+        expect(flash[:alert]).to match I18n.t('.require_to_be_cart_owner_item')
       end
     end
 
@@ -267,7 +266,7 @@ RSpec.describe Consumer::LineItemsController, type: :controller do
         get :edit, params: {cart_id: another_consumer.cart.id , stock_id: stock_id, id: item.to_param}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
-        expect(flash[:alert]).to match('The page you were looking for requires consumer access rights')
+        expect(flash[:alert]).to match I18n.t('.requires_consumer_access_rights')
       end
     end
 
@@ -335,7 +334,7 @@ RSpec.describe Consumer::LineItemsController, type: :controller do
         put :update, params: {cart_id: another_consumer.cart.id , stock_id: stock_id, id: item.id, line_item: new_attributes}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_url)
-        expect(flash[:alert]).to match('You are not the owner of this cart')
+        expect(flash[:alert]).to match I18n.t('.require_to_be_cart_owner')
       end
     end
 
@@ -352,7 +351,7 @@ RSpec.describe Consumer::LineItemsController, type: :controller do
         put :update, params: {cart_id: consumer.cart.id , stock_id: stock_id, id: item.id, line_item: new_attributes}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_url)
-        expect(flash[:alert]).to match('This product is not in your cart')
+        expect(flash[:alert]).to match I18n.t('.require_to_be_cart_owner_item')
       end
     end
 
@@ -369,7 +368,7 @@ RSpec.describe Consumer::LineItemsController, type: :controller do
         put :update, params: {cart_id: consumer.cart.id , stock_id: stock_id, id: item.id, line_item: new_attributes}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
-        expect(flash[:alert]).to match('The page you were looking for requires consumer access rights')
+        expect(flash[:alert]).to match I18n.t('.requires_consumer_access_rights')
       end
     end
 
@@ -424,7 +423,7 @@ RSpec.describe Consumer::LineItemsController, type: :controller do
         delete :destroy, params: {cart_id: another_consumer.cart.id, stock_id: stock_id, id: item.id}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_url)
-        expect(flash[:alert]).to match('You are not the owner of this cart')
+        expect(flash[:alert]).to match I18n.t('.require_to_be_cart_owner')
       end
     end
 
@@ -441,7 +440,7 @@ RSpec.describe Consumer::LineItemsController, type: :controller do
         delete :destroy, params: {cart_id: consumer.cart.id, stock_id: stock_id, id: item.id}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_url)
-        expect(flash[:alert]).to match('This product is not in your cart')
+        expect(flash[:alert]).to match I18n.t('.require_to_be_cart_owner_item')
       end
     end
 
@@ -458,7 +457,7 @@ RSpec.describe Consumer::LineItemsController, type: :controller do
         delete :destroy, params: {cart_id: consumer.cart.id, stock_id: stock_id, id: item.id}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
-        expect(flash[:alert]).to match('The page you were looking for requires consumer access rights')
+        expect(flash[:alert]).to match I18n.t('.requires_consumer_access_rights')
       end
     end
 

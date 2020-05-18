@@ -23,7 +23,7 @@ module ConsumerFilter
   def require_to_be_cart_owner_item
     line_item = LineItem.find(params[:id])
     unless current_user.cart.id == line_item.cart.id
-      redirect_with_alert("This product is not in your cart", root_url)
+      redirect_with_alert(t('.require_to_be_cart_owner_item'), root_url)
     end
   end
 
