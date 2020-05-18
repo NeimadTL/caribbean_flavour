@@ -1,4 +1,4 @@
-<h1>Cart</h1><br>
+<h1><%= t('.cart_header') %></h1><br>
 <% @cart.line_items_by_shop.each do |shop, items| %>
   <h5><%= shop.name %></h5>
   <table class="table">

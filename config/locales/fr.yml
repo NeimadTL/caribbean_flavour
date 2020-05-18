@@ -218,6 +218,7 @@ fr:
         require_to_be_cart_owner_item: "Ce produit n'est pas dans votre panier"
     carts:
       show:
+        cart_header: "Panier"
         name_col: "Nom"
         unit_price_col: "Prix Unitaire"
         qty_col: "Qté (Kgs)"
@@ -263,8 +264,8 @@ fr:
         price_col: "Prix"
         delivery_option: "Moyen de livraison choisi:"
         order_status: "Statut:"
-        are_you_sure: "Are you sure ?"
-        back_btn: "Back"
+        are_you_sure: "Êtes-vous sûr ?"
+        back_btn: "Précédent"
         requires_consumer_access_rights: "La page que vous recherchez requiert un droit d'accès consommateur."
         require_to_be_order_owner: "Vous n'êtes pas le propriétaire de cette commande"
       create:
