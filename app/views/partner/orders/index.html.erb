@@ -13,7 +13,7 @@
         </div>
         <div class="card-body">
           <p class="card-text">
-            <%= image_tag "bicycle-outline.svg", size: "24" %> <%= order.delivery_option %>
+            <%= image_tag "bicycle-outline.svg", size: "24" %> <%= order.delivery_option.option %>
           </p>
           <p class="card-text"><%= number_to_currency(order.total_price, locale: I18n.locale) %></p>
           <p class="card-text"><strong><%= t('.orders_index_status') %></strong> <%= order.status %><p>

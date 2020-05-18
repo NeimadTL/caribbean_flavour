@@ -5,9 +5,10 @@ class Order < ApplicationRecord
   validates :delivery_option_code, presence: true
   validates :status, inclusion: { in: STATUS }
   validates :user_id, presence: true
-  
+
   has_many :order_line_items, dependent: :destroy
   belongs_to :user
+  belongs_to :delivery_option, foreign_key: "delivery_option_code"
 
   def add_line_item(items)
     items.each do |item|
@@ -25,10 +26,6 @@ class Order < ApplicationRecord
 
   def total_price
     self.order_line_items.to_a.sum { |item| item.total_price }
-  end
-
-  def delivery_option
-    DeliveryOption.find(self.delivery_option_code).option
   end
 
 end
