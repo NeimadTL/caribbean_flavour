@@ -1,5 +1,8 @@
 class OrderLineItem < ApplicationRecord
 
+  validates :order_id, presence: true
+  validates :shop_id, presence: true
+
   belongs_to :order
   belongs_to :shop
 

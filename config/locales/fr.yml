@@ -185,7 +185,7 @@ fr:
         exit_btn: "Sortir"
     line_items:
       form:
-        qty_label: "Quantité"
+        qty_label: "Quantité (Kgs)"
         add_to_cart_btn: "Ajouter au panier"
         requires_consumer_access_rights: "La page que vous recherchez requiert un droit d'accès consommateur."
         require_to_be_cart_owner: "Vous n'est pas propriétaire de ce panier"

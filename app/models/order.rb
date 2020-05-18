@@ -4,17 +4,18 @@ class Order < ApplicationRecord
 
   validates :delivery_option_code, presence: true
   validates :status, inclusion: { in: STATUS }
-
+  validates :user_id, presence: true
+  
   has_many :order_line_items, dependent: :destroy
   belongs_to :user
 
   def add_line_item(items)
     items.each do |item|
-      self.order_line_items.build(name: item.stock.product.name,
-                                  unit_price: item.stock.price,
-                                  quantity: item.quantity,
-                                  shop_id: item.stock.shop.id)
-     item.delete
+      saved = self.order_line_items.create(name: item.stock.product.name,
+                                           unit_price: item.stock.price,
+                                           quantity: item.quantity,
+                                           shop_id: item.stock.shop.id)
+      item.delete if saved
     end
   end
 

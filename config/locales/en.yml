@@ -213,7 +213,7 @@ en:
         exit_btn: "Exit"
     line_items:
       form:
-        qty_label: "Quantity"
+        qty_label: "Quantity (Kgs)"
         add_to_cart_btn: "Add to cart"
         requires_consumer_access_rights: "The page you were looking for requires consumer access rights"
         require_to_be_cart_owner: "You are not the owner of this cart"
@@ -302,7 +302,7 @@ en:
         requires_consumer_access_rights: "The page you were looking for requires consumer access rights"
         require_to_be_cart_owner: "You are not the owner of this cart"
       destroy:
-        order_successfully_destroyed: "Order was successfully destroyed."
+        order_successfully_destroyed: "Order was successfully canceled."
         requires_consumer_access_rights: "The page you were looking for requires consumer access rights"
         require_to_be_order_owner: "You are not the owner of this order"
   requires_consumer_access_rights: "The page you were looking for requires consumer access rights"
