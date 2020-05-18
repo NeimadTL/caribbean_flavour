@@ -294,6 +294,7 @@ en:
         order_status: "Status:"
         are_you_sure: "Are you sure ?"
         back_btn: "Back"
+        cancel: "Cancel"
         requires_consumer_access_rights: "The page you were looking for requires consumer access rights"
         require_to_be_order_owner: "You are not the owner of this order"
       create:

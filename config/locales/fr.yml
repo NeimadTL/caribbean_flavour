@@ -266,6 +266,7 @@ fr:
         order_status: "Statut:"
         are_you_sure: "Êtes-vous sûr ?"
         back_btn: "Précédent"
+        cancel: "Annuler"
         requires_consumer_access_rights: "La page que vous recherchez requiert un droit d'accès consommateur."
         require_to_be_order_owner: "Vous n'êtes pas le propriétaire de cette commande"
       create:
