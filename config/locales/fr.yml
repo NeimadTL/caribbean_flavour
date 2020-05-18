@@ -242,15 +242,20 @@ fr:
         are_you_sure: "Êtes-vous sûr ?"
         delivery_option: "Choisissez un moyen de livraison"
         place_order_btn: "Passer la commande"
+        requires_consumer_access_rights: "La page que vous recherchez requiert un droit d'accès consommateur."
+        require_to_be_cart_owner: "Vous n'est pas propriétaire de ce panier"
       index:
         my_orders_hearder: "Mes commandes"
         order_status: "Statut:"
         details: "Détails"
         cancel: "Annuler"
         are_you_sure: "Êtes-vous sûr ?"
+        requires_consumer_access_rights: "La page que vous recherchez requiert un droit d'accès consommateur."
       new:
         order_recap_header: "Récapitulatif de votre commande"
         back_btn: "Précédent"
+        requires_consumer_access_rights: "La page que vous recherchez requiert un droit d'accès consommateur."
+        require_to_be_cart_owner: "Vous n'est pas propriétaire de ce panier"
       show:
         name_col: "Nom"
         unit_price_col: "Prix unitaire"
@@ -260,14 +265,21 @@ fr:
         order_status: "Statut:"
         are_you_sure: "Are you sure ?"
         back_btn: "Back"
+        requires_consumer_access_rights: "La page que vous recherchez requiert un droit d'accès consommateur."
+        require_to_be_order_owner: "Vous n'êtes pas le propriétaire de cette commande"
       create:
         order_successfully_created: "Commande créée avec succès."
+        requires_consumer_access_rights: "La page que vous recherchez requiert un droit d'accès consommateur."
+        require_to_be_cart_owner: "Vous n'est pas propriétaire de ce panier"
       destroy:
         order_successfully_destroyed: "Commande annulée avec succès"
+        requires_consumer_access_rights: "La page que vous recherchez requiert un droit d'accès consommateur."
+        require_to_be_order_owner: "Vous n'êtes pas le propriétaire de cette commande"
   requires_consumer_access_rights: "La page que vous recherchez requiert un droit d'accès consommateur."
   require_to_be_cart_owner: "Vous n'est pas propriétaire de ce panier"
   item_in_cart_already: "Ce produit est déjà dans votre parnier. Si vous en voulez plus, merci d'aller dans votre panier et d'en augmenter la quantité."
   require_to_be_cart_owner_item: "Ce produit n'est pas dans votre panier"
+  require_to_be_order_owner: "Vous n'êtes pas le propriétaire de cette commande"
 
   activerecord:
     models:

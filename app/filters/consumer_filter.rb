@@ -16,7 +16,7 @@ module ConsumerFilter
   def require_to_be_order_owner
     order = Order.find(params[:id])
     unless current_user.id == order.user.id
-      redirect_with_alert("You are not the owner of this order", root_url)
+      redirect_with_alert(t('.require_to_be_order_owner'), root_url)
     end
   end
 

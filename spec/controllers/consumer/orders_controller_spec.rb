@@ -61,7 +61,7 @@ RSpec.describe Consumer::OrdersController, type: :controller do
         get :new, params: {cart_id: another_consumer.cart.id, shop_id: partner.shop.id}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
-        expect(flash[:alert]).to match('You are not the owner of this cart')
+        expect(flash[:alert]).to match I18n.t('.require_to_be_cart_owner')
       end
     end
 
@@ -74,7 +74,7 @@ RSpec.describe Consumer::OrdersController, type: :controller do
         get :new, params: {cart_id: consumer.cart.id, shop_id: partner.shop.id}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
-        expect(flash[:alert]).to match('The page you were looking for requires consumer access rights')
+        expect(flash[:alert]).to match I18n.t('.requires_consumer_access_rights')
       end
     end
 
@@ -124,7 +124,7 @@ RSpec.describe Consumer::OrdersController, type: :controller do
         get :new, params: {cart_id: another_consumer.cart.id, shop_id: partner.shop.id, order: valid_attributes}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
-        expect(flash[:alert]).to match('You are not the owner of this cart')
+        expect(flash[:alert]).to match I18n.t('.require_to_be_cart_owner')
       end
     end
 
@@ -137,7 +137,7 @@ RSpec.describe Consumer::OrdersController, type: :controller do
         post :create, params: {cart_id: consumer.cart.id, shop_id: partner.shop.id}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
-        expect(flash[:alert]).to match('The page you were looking for requires consumer access rights')
+        expect(flash[:alert]).to match I18n.t('.requires_consumer_access_rights')
       end
     end
 
@@ -170,7 +170,7 @@ RSpec.describe Consumer::OrdersController, type: :controller do
         get :index, params: {}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
-        expect(flash[:alert]).to match('The page you were looking for requires consumer access rights')
+        expect(flash[:alert]).to match I18n.t('.requires_consumer_access_rights')
       end
     end
 
@@ -201,7 +201,7 @@ RSpec.describe Consumer::OrdersController, type: :controller do
         get :show, params: {id: order.to_param}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_url)
-        expect(flash[:alert]).to match('You are not the owner of this order')
+        expect(flash[:alert]).to match I18n.t('.require_to_be_order_owner')
       end
     end
 
@@ -214,7 +214,7 @@ RSpec.describe Consumer::OrdersController, type: :controller do
         get :show, params: {id: order.to_param}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
-        expect(flash[:alert]).to match('The page you were looking for requires consumer access rights')
+        expect(flash[:alert]).to match I18n.t('.requires_consumer_access_rights')
       end
     end
 
@@ -253,7 +253,7 @@ RSpec.describe Consumer::OrdersController, type: :controller do
         delete :destroy, params: {id: order.to_param}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_url)
-        expect(flash[:alert]).to match('You are not the owner of this order')
+        expect(flash[:alert]).to match I18n.t('.require_to_be_order_owner')
       end
     end
 
@@ -266,7 +266,7 @@ RSpec.describe Consumer::OrdersController, type: :controller do
         delete :destroy, params: {id: order.to_param}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
-        expect(flash[:alert]).to match('The page you were looking for requires consumer access rights')
+        expect(flash[:alert]).to match I18n.t('.requires_consumer_access_rights')
       end
     end
 
