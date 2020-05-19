@@ -282,7 +282,18 @@ fr:
   item_in_cart_already: "Ce produit est déjà dans votre parnier. Si vous en voulez plus, merci d'aller dans votre panier et d'en augmenter la quantité."
   require_to_be_cart_owner_item: "Ce produit n'est pas dans votre panier"
   require_to_be_order_owner: "Vous n'êtes pas le propriétaire de cette commande"
-
+  farming_category: "Agriculture"
+  fishing_category: "Pêche"
+  catering_category: "Restauration"
+  customer_place: "Chez le client"
+  shop_owner_place: "En magasin"
+  parcel_pickup_point: "Dans un point relais"
+  market_place: "Sur le marché"
+  ordered_status: "Commandée"
+  packed_status: "Prête"
+  shipped_status: "En cours de livraison"
+  delivered_status: "Livrée"
+  
   activerecord:
     models:
       user:

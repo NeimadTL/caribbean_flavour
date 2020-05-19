@@ -3,7 +3,7 @@
 <h5><%= t('.delivery_option') %></h5>
 <div class="" style="margin-bottom:16px;">
   <% current_user.shop.delivery_options.each do |delivery_option| %>
-    <span class="badge badge-info"><%= delivery_option.option %></span>
+    <span class="badge badge-info"><%= delivery_option.to_option %></span>
   <% end %>
 </div>
 <%= link_to edit_partner_shop_path(current_user.shop), class: 'btn btn-sm transparent-btn' do %>

@@ -5,7 +5,7 @@
 
   <div class="form-inputs">
     <%= f.label t('.orders_form_status') %>
-    <%= f.select :status, Order::STATUS, { prompt: t('.status_prompt') }, class: 'form-control' %>
+    <%= f.select :status, Order::STATUS.map {|s| t(s+"_status")}, { prompt: t('.status_prompt') }, class: 'form-control' %>
   </div><br>
 
   <div class="form-actions">

@@ -27,8 +27,8 @@
 
 <p>
   <strong><%= t('.customer')%></strong> <%= @order.user.firstname %> <%= @order.user.lastname %><br>
-  <strong><%= t('.delivery_option') %></strong> <%= @order.delivery_option.option %><br>
-  <strong><%= t('.status') %></strong> <%= @order.status %>
+  <strong><%= t('.delivery_option') %></strong> <%= @order.delivery_option.to_option %><br>
+  <strong><%= t('.status') %></strong> <%= @order.to_status %>
 </p>
 
 

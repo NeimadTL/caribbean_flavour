@@ -13,7 +13,7 @@
             <p class="">
               <%= image_tag "bicycle-outline.svg", size: "24" %>
               <% shop.delivery_options.each do |delivery_option| %>
-                <span class="badge badge-info"><%= delivery_option.option %></span>
+                <span class="badge badge-info"><%= delivery_option.to_option %></span>
               <% end %>
             </p>
             <%= link_to consumer_shop_path(shop), class: 'btn transparent float-right' do %>
