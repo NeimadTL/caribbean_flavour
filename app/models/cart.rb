@@ -1,7 +1,9 @@
 class Cart < ApplicationRecord
-  
+
+  validates :user_id, presence: true
   has_many :line_items
   belongs_to :user
+
 
   def total_price_for(items)
     items.sum { |item| item.total_price }
