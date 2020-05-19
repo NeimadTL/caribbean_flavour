@@ -305,6 +305,7 @@ fr:
       shop:
       stock:
       order:
+      line_item:
     attributes:
       user:
         username: "Nom d'utilisateur"
@@ -327,6 +328,8 @@ fr:
         price: "Prix"
       order:
         delivery_option_code: "Moyen de livraison"
+      line_item:
+        quantity: "Quantité"
     errors:
       models:
         user:
@@ -369,8 +372,15 @@ fr:
             price:
               blank: "ne peut être vide"
               not_a_number: "doit être une valeur numérique"
-              greater_than: "doit être une valeure supérieure à zéro"
+              greater_than: "doit être une valeur supérieure à zéro"
         order:
           attributes:
             delivery_option_code:
               blank: "au moins un doit être sélectionné"
+        line_item:
+          attributes:
+            quantity:
+              blank: "ne peut être vide"
+              not_a_number: "doit être une valeur numérique"
+              greater_than: "doit être une valeur supérieure à zéro"
+              not_an_integer: "doit être une valeur entière"
