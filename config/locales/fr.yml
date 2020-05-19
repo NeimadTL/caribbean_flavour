@@ -293,12 +293,13 @@ fr:
   packed_status: "Prête"
   shipped_status: "En cours de livraison"
   delivered_status: "Livrée"
-  
+
   activerecord:
     models:
       user:
       shop:
       stock:
+      order:
     attributes:
       user:
         username: "Nom d'utilisateur"
@@ -319,6 +320,8 @@ fr:
       stock:
         product: "Produit"
         price: "Prix"
+      order:
+        delivery_option_code: "Moyen de livraison"
     errors:
       models:
         user:
@@ -360,3 +363,7 @@ fr:
               required: "doit être sélectionné"
             price:
               blank: "ne peut être vide"
+        order:
+          attributes:
+            delivery_option_code:
+              blank: "au moins un doit être sélectionné"

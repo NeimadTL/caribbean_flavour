@@ -47,7 +47,7 @@
 
   <div class="form-inputs">
     <%= f.input :delivery_option_code, as: :radio_buttons, label: t('.delivery_option'),
-        collection: @shop.delivery_options, label_method: :option,
+        collection: @shop.delivery_options, label_method: :to_option,
         value_method: :code %>
   </div>
 
