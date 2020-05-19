@@ -61,7 +61,7 @@
             <% if current_user.role.code == Role::CONSUMER_ROLE_CODE %>
               <li class="nav-item">
                 <%= link_to consumer_cart_path(current_user.cart), class: 'btn transparent-btn' do %>
-                  <%= image_tag("basket-outline.svg", size: "24") %>
+                  <%= image_tag("cart-outline.svg", size: "24") %>
                 <% end %>
               </li>
             <% elsif current_user.role.code == Role::PARTNER_ROLE_CODE %>
