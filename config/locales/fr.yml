@@ -293,6 +293,11 @@ fr:
   packed_status: "Prête"
   shipped_status: "En cours de livraison"
   delivered_status: "Livrée"
+  support:
+    array:
+      words_connector: " et "
+      two_words_connector: " et "
+      last_word_connector: " et "
 
   activerecord:
     models:
@@ -363,6 +368,8 @@ fr:
               required: "doit être sélectionné"
             price:
               blank: "ne peut être vide"
+              not_a_number: "doit être une valeur numérique"
+              greater_than: "doit être une valeure supérieure à zéro"
         order:
           attributes:
             delivery_option_code:
