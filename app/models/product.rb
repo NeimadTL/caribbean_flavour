@@ -4,6 +4,7 @@ class Product < ApplicationRecord
 
   validates :reference, presence: true, uniqueness: true
   validates :name, presence: true
+  validates :product_category_id, presence: true
 
   belongs_to :product_category
 
