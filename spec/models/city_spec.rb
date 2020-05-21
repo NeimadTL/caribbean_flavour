@@ -16,4 +16,6 @@ RSpec.describe City, type: :model do
     it { should validate_uniqueness_of(:name) }
   end
 
+  it { should belong_to :country }
+
 end
