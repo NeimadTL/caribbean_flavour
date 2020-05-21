@@ -89,6 +89,7 @@ fr:
         create_shop: "Créer votre magasin"
         requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
         allow_one_shop_only: "Vous avez déjà un magasin"
+        delivery_coverage: "Votre couveture de livraison"
       edit:
         treak_shop_header: "Réglez les paramètres de votre magasin"
         back_link: "Précédent"
@@ -116,6 +117,7 @@ fr:
         are_you_sure: "Êtes-vous sûr ?"
         requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
         require_to_be_shop_owner: "Vous n'êtes pas le propriétaire de ce magasin"
+        delivery_coverage: "Couverture de livraison"
       create:
         shop_successfully_created: "Magasin crée avec succès."
         requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
@@ -323,6 +325,7 @@ fr:
         name: "Nom de votre magasin"
         delivery_options: "Moyens de livraison"
         product_category: "Catégorie de produit"
+        cities: "Couverture de livraison"
       stock:
         product: "Produit"
         price: "Prix"
@@ -365,6 +368,8 @@ fr:
               blank: "au moins un doit être sélectionné"
             product_category:
               required: "une doit être sélectionnée"
+            cities:
+              blank: "au moins une ville doit être sélectionnée"
         stock:
           attributes:
             product:

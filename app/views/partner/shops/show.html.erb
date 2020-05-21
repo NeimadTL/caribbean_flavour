@@ -6,6 +6,14 @@
     <span class="badge badge-info"><%= delivery_option.to_option %></span>
   <% end %>
 </div>
+
+<h5><%= t('.delivery_coverage') %></h5>
+<div class="" style="margin-bottom:16px;">
+  <% current_user.shop.cities.each do |city| %>
+    <span class="badge badge-primary"><%= city.name %></span>
+  <% end %>
+</div>
+
 <%= link_to edit_partner_shop_path(current_user.shop), class: 'btn btn-sm transparent-btn' do %>
   <%= image_tag("build-outline.svg", size: "24") %>
 <% end %><br><br>
