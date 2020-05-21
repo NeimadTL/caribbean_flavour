@@ -16,4 +16,7 @@ class Shop < ApplicationRecord
 
   belongs_to :product_category, foreign_key: "product_category_code"
 
+  has_many :shop_delivery_coverages, dependent: :destroy
+  has_many :cities, through: :shop_delivery_coverages, dependent: :destroy
+
 end

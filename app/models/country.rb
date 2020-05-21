@@ -1,5 +1,7 @@
 class Country < ApplicationRecord
 
+  self.primary_key = 'code'
+
   validates :code, presence: true, uniqueness: true, case_sensitive: false
   validates :name, presence: true, uniqueness: true
 

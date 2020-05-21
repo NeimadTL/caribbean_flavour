@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_21_174251) do
+ActiveRecord::Schema.define(version: 2020_05_21_211318) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,6 +96,16 @@ ActiveRecord::Schema.define(version: 2020_05_21_174251) do
     t.string "name", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "shop_delivery_coverages", force: :cascade do |t|
+    t.integer "shop_id", null: false
+    t.integer "city_postcode", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["city_postcode"], name: "index_shop_delivery_coverages_on_city_postcode"
+    t.index ["shop_id", "city_postcode"], name: "index_shop_delivery_coverages_on_shop_id_and_city_postcode", unique: true
+    t.index ["shop_id"], name: "index_shop_delivery_coverages_on_shop_id"
   end
 
   create_table "shop_delivery_options", force: :cascade do |t|

@@ -18,4 +18,7 @@ RSpec.describe City, type: :model do
 
   it { should belong_to :country }
 
+  it { should have_many :shop_delivery_coverages }
+  it { should have_many :shops }
+  
 end

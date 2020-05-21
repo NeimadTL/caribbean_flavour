@@ -18,4 +18,8 @@ RSpec.describe Shop, type: :model do
   it { should have_many :delivery_options }
 
   it { should belong_to :product_category }
+
+  it { should have_many :shop_delivery_coverages }
+  it { should have_many :cities }
+
 end
