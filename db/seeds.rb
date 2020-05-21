@@ -30,3 +30,9 @@ Product.create!(reference: 'beef_sausage_ref', name: 'beef sausage', product_cat
 Role.create!(code: Role::ADMIN_ROLE_CODE, name: 'ADMIN')
 Role.create!(code: Role::PARTNER_ROLE_CODE, name: 'PARTNER')
 Role.create!(code: Role::CONSUMER_ROLE_CODE, name: 'CONSUMER')
+
+Country.create!(code: '971', name: "Guadeloupe")
+City.create!(postcode: "97100", name: "Basse-Terre", country_code: "971")
+City.create!(postcode: "97139", name: "Les Abymes", country_code: "971")
+City.create!(postcode: "97121", name: "Anse-Bertrand", country_code: "971")
+City.create!(postcode: "97122", name: "Baie-Mahault", country_code: "971")
