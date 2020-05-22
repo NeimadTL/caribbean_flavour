@@ -3,8 +3,6 @@ require 'rails_helper'
 RSpec.describe Shop, type: :model do
 
   it { should validate_presence_of :name }
-  it { should validate_presence_of :country_code }
-  it { should validate_presence_of :city_postcode }
   it { should validate_presence_of :phone_number }
   it { should validate_presence_of :street }
 

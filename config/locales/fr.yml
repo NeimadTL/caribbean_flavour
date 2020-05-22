@@ -329,6 +329,12 @@ fr:
         password_confirmation: "Confirmation de mot de passe"
       shop:
         name: "Nom de votre magasin"
+
+        phone_number: "Numéro de téléphone"
+        street: "Adresse"
+        country: "Pays"
+        city: "Ville"
+
         delivery_options: "Moyens de livraison"
         product_category: "Catégorie de produit"
         cities: "Couverture de livraison"
@@ -376,6 +382,15 @@ fr:
               required: "une doit être sélectionnée"
             cities:
               blank: "au moins une ville doit être sélectionnée"
+            phone_number:
+              blank: "ne peut être vide"
+            street:
+              blank: "ne peut être vide"
+            country:
+              required: "un doit être sélectionné"
+            city:
+              required: "une doit être sélectionnée"
+
         stock:
           attributes:
             product:
