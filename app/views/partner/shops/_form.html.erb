@@ -4,8 +4,12 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.input :name, label: t('.shop_name'), required: true, autofocus: true, input_html: { autocomplete: "name" }%>
+    <%= f.input :name, label: t('.shop_name'), required: true, autofocus: true, input_html: { autocomplete: "name" } %>
+    <%= f.input :phone_number, label: t('.shop_phone_number'), required: true, autofocus: true, input_html: { autocomplete: "phone_number" } %>
+    <%= f.input :street, label: t('.shop_street'), required: true, autofocus: true, input_html: { autocomplete: "adresse" } %>
+    <%= f.input :additional_address_information, label: t('.additional_address_information'), required: true, autofocus: true, input_html: { autocomplete: "additional_address_information" } %>
     <%= f.association :country, label: t('.shop_country'), label_method: :name, value_method: :code, as: :select %>
+    <%= f.association :city, label: t('.shop_city'), label_method: :name, value_method: :postcode, as: :select %>
     <%= f.association :delivery_options, label: t('.delivery_options'), label_method: :to_option, value_method: :code, as: :check_boxes %>
     <%= f.association :cities, label: t('.delivery_coverage'), label_method: :name, value_method: :postcode, as: :check_boxes %>
     <%= f.association :product_category, label: t('.product_category'), label_method: :to_name, value_method: :code, as: :radio_buttons %>

@@ -116,6 +116,10 @@ en:
         require_to_be_shop_order: "This order does not belong to your shop"
         delivery_coverage: "Your delivery coverage"
         shop_country: "Country"
+        shop_phone_number: "Phone number"
+        shop_street: "Street"
+        additional_address_information: "Additional address information"
+        shop_city: "City"
       edit:
         treak_shop_header: "Treak your shop settings"
         back_link: "Back"

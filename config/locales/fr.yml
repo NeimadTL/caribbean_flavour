@@ -91,6 +91,10 @@ fr:
         allow_one_shop_only: "Vous avez déjà un magasin"
         delivery_coverage: "Votre couveture de livraison"
         shop_country: "Pays"
+        shop_phone_number: "Numéro de Téléphone"
+        shop_street: "Addresse"
+        additional_address_information: "Complément d'adresse"
+        shop_city: "Ville"
       edit:
         treak_shop_header: "Réglez les paramètres de votre magasin"
         back_link: "Précédent"
