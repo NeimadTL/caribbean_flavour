@@ -213,6 +213,7 @@ en:
         popover_title: "Create your account"
         popover_content: "You must be connected to buy products."
         exit_btn: "Exit"
+        delivery_coverage: "Delivery Coverage"
     line_items:
       form:
         qty_label: "Quantity (Kgs)"

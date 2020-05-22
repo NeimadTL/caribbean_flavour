@@ -26,7 +26,7 @@ fr:
                          compte tenu du fait que les membres de l'équipe y sont
                          nés et par la suite étendre la plateforme à toutes les
                          iles des Caraïbes."
-      all_shops_btn: "Jettez un oeil aux magasins"
+      all_shops_btn: "Jetez un oeil aux magasins"
 
 
 
@@ -185,6 +185,7 @@ fr:
         popover_title: "Créez votre compte"
         popover_content: "Vous devez être connecté pour acheter des produits."
         exit_btn: "Sortir"
+        delivery_coverage: "Couverture de livraison"
     line_items:
       form:
         qty_label: "Quantité (Kgs)"

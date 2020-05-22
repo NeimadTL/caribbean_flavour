@@ -16,6 +16,12 @@
                 <span class="badge badge-info"><%= delivery_option.to_option %></span>
               <% end %>
             </p>
+            <p class="">
+              <%= image_tag "pin-outline.svg", size: "24" %>
+              <% shop.cities.each do |city| %>
+                <span class="badge badge-primary"><%= city.name %></span>
+              <% end %>
+            </p>
             <%= link_to consumer_shop_path(shop), class: 'btn transparent float-right' do %>
               <%= t('.enter_btn') %> <%= image_tag "enter-outline.svg", size: "24" %>
             <% end %>

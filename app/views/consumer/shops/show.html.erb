@@ -7,6 +7,13 @@
   <% end %>
 </div>
 
+<h5><%= t('.delivery_coverage') %></h5>
+<div class="" style="margin-bottom:16px;">
+  <% @shop.cities.each do |city| %>
+    <span class="badge badge-primary"><%= city.name %></span>
+  <% end %>
+</div>
+
 <h5><%= t('.products_header') %></h5>
 <table class="table">
     <thead>
