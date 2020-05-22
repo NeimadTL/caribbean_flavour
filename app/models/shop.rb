@@ -12,8 +12,8 @@ class Shop < ApplicationRecord
 
   belongs_to :user
 
-  has_many :shop_delivery_options
-  has_many :delivery_options, through: :shop_delivery_options
+  has_many :shop_delivery_options, dependent: :destroy
+  has_many :delivery_options, through: :shop_delivery_options, dependent: :destroy
 
   belongs_to :product_category, foreign_key: "product_category_code"
 
