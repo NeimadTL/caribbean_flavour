@@ -9,6 +9,7 @@ class ProductCategory < ApplicationRecord
   validates :code, presence: true
   validates :name, presence: true, uniqueness: true
 
+  # TODO: both of below associations should be changed into has_many
   has_one :product
   has_one :shop, foreign_key: "product_category_code"
 
