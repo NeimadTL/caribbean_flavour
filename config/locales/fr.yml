@@ -90,6 +90,7 @@ fr:
         requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
         allow_one_shop_only: "Vous avez déjà un magasin"
         delivery_coverage: "Votre couveture de livraison"
+        shop_country: "Pays"
       edit:
         treak_shop_header: "Réglez les paramètres de votre magasin"
         back_link: "Précédent"

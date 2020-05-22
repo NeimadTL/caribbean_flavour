@@ -55,7 +55,7 @@ class Partner::ShopsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def shop_params
-      params.require(:shop).permit(:name, :product_category_code, delivery_option_ids: [], city_ids: [])
+      params.require(:shop).permit(:name, :product_category_code, :country_code, delivery_option_ids: [], city_ids: [])
     end
 
 end

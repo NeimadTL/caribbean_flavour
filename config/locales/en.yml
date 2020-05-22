@@ -115,6 +115,7 @@ en:
         allow_one_shop_only: "You already have a shop"
         require_to_be_shop_order: "This order does not belong to your shop"
         delivery_coverage: "Your delivery coverage"
+        shop_country: "Country"
       edit:
         treak_shop_header: "Treak your shop settings"
         back_link: "Back"

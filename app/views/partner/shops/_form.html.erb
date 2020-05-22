@@ -5,6 +5,7 @@
 
   <div class="form-inputs">
     <%= f.input :name, label: t('.shop_name'), required: true, autofocus: true, input_html: { autocomplete: "name" }%>
+    <%= f.association :country, label: t('.shop_country'), label_method: :name, value_method: :code, as: :select %>
     <%= f.association :delivery_options, label: t('.delivery_options'), label_method: :to_option, value_method: :code, as: :check_boxes %>
     <%= f.association :cities, label: t('.delivery_coverage'), label_method: :name, value_method: :postcode, as: :check_boxes %>
     <%= f.association :product_category, label: t('.product_category'), label_method: :to_name, value_method: :code, as: :radio_buttons %>
