@@ -4,6 +4,9 @@ class Shop < ApplicationRecord
   validates :delivery_options, presence: true, unless: -> { delivery_options.count > 0 }
   validates :cities, presence: true, unless: -> { cities.count > 0 }
   validates :country_code, presence: true
+  validates :city_postcode, presence: true
+  validates :phone_number, presence: true
+  validates :street, presence: true
 
   has_many :stocks, dependent: :destroy
   has_many :products, through: :stocks, dependent: :destroy
@@ -22,5 +25,6 @@ class Shop < ApplicationRecord
   has_many :cities, through: :shop_delivery_coverages, dependent: :destroy
 
   belongs_to :country, foreign_key: "country_code"
+  belongs_to :city, foreign_key: "city_postcode"
 
 end

@@ -4,9 +4,14 @@ RSpec.describe Shop, type: :model do
 
   it { should validate_presence_of :name }
   it { should validate_presence_of :country_code }
+  it { should validate_presence_of :city_postcode }
+  it { should validate_presence_of :phone_number }
+  it { should validate_presence_of :street }
 
   describe "name uniqueness validation" do
-    subject { Shop.create(name: 'shop', user_id: 1, product_category_code: 1, country_code: "971") }
+    subject { Shop.create(name: 'shop', user_id: 1, product_category_code: 1,
+      country_code: "971", city_postcode: "97119")
+    }
     it { should validate_uniqueness_of(:name) }
   end
 
@@ -24,5 +29,6 @@ RSpec.describe Shop, type: :model do
   it { should have_many :cities }
 
   it { should belong_to :country }
+  it { should belong_to :city }
 
 end
