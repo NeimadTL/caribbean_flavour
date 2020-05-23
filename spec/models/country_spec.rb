@@ -12,5 +12,6 @@ RSpec.describe Country, type: :model do
 
   it { should have_many :cities }
   it { should have_many :shops }
+  it { should have_many :users }
 
 end

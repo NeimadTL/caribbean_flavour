@@ -10,54 +10,7 @@
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
-    <%= f.input :username,
-                label: t('.username'),
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "username" }%>
-    <%= f.input :firstname,
-                label: t('.firstname'),
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "firstname" }%>
-    <%= f.input :lastname,
-                label: t('.lastname'),
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "lastname" }%>
-    <%= f.input :street,
-                label: t('.street'),
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "street" }%>
-    <%= f.input :additional_address_information,
-                label: t('.additional_address_information'),
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "additional_address_information" }%>
-    <%= f.input :city,
-                label: t('.city'),
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "city" }%>
-    <%= f.input :postcode,
-                label: t('.postcode'),
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "postcode" }%>
-    <%= f.input :country,
-                label: t('.country'),
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "country" }%>
-    <%= f.input :phone_number,
-                label: t('.phone_number'),
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "phone_number" }%>
-    <%= f.input :is_partner,
-                as: :boolean,
-                label: t('.is_partner') %>
+    <%= render 'form', f: f %>
     <%= f.input :password,
                 label: t('.password'),
                 hint: "leave it blank if you don't want to change it",

@@ -327,7 +327,6 @@ fr:
         lastname: "Nom"
         street: "Adresse"
         city: "Ville"
-        postcode: "Code postal"
         country: "Pays"
         phone_number: "Numéro de téléphone"
         email: "Email"
@@ -335,12 +334,10 @@ fr:
         password_confirmation: "Confirmation de mot de passe"
       shop:
         name: "Nom de votre magasin"
-
         phone_number: "Numéro de téléphone"
         street: "Adresse"
         country: "Pays"
         city: "Ville"
-
         delivery_options: "Moyens de livraison"
         product_category: "Catégorie de produit"
         cities: "Couverture de livraison"
@@ -365,11 +362,9 @@ fr:
             street:
               blank: "ne peut être vide"
             city:
-              blank: "ne peut être vide"
-            postcode:
-              blank: "ne peut être vide"
+              required: "une doit être sélectionnée"
             country:
-              blank: "ne peut être vide"
+              required: "un doit être sélectionné"
             phone_number:
               blank: "ne peut être vide"
             email:

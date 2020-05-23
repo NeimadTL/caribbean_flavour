@@ -22,5 +22,6 @@ RSpec.describe City, type: :model do
   it { should have_many :coverages }
 
   it { should have_many :shops }
+  it { should have_many :users }
 
 end

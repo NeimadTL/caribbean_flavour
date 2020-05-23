@@ -2,9 +2,9 @@ class CustomisedRegistrationsController < Devise::RegistrationsController
 
   @@user_symbols = [
     :username, :firstname, :lastname,
-    :phone_number, :city, :street,
+    :phone_number, :street,
     :additional_address_information,
-    :postcode, :country, :email,
+    :country_code, :city_postcode, :email,
     :password, :password_confirmation,
     :is_partner
   ]

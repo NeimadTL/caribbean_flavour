@@ -14,5 +14,6 @@ class City < ApplicationRecord
 
   # returns all localized in this city
   has_many :shops, foreign_key: "city_postcode"
+  has_many :users, foreign_key: "city_postcode"
 
 end

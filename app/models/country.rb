@@ -7,5 +7,6 @@ class Country < ApplicationRecord
 
   has_many :cities, foreign_key: "country_code"
   has_many :shops, foreign_key: "country_code"
+  has_many :users, foreign_key: "country_code"
 
 end

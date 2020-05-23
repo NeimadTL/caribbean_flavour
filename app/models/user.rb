@@ -8,15 +8,14 @@ class User < ApplicationRecord
   validates :firstname, presence: true
   validates :lastname, presence: true
   validates :phone_number, presence: true
-  validates :city, presence: true
   validates :street, presence: true
-  validates :postcode, presence: true
-  validates :country, presence: true
 
   has_one :shop
   has_one :cart
   has_many :orders
   belongs_to :role, foreign_key: "role_code"
+  belongs_to :country, foreign_key: "country_code"
+  belongs_to :city, foreign_key: "city_postcode"
 
   after_create :initialize_cart
   after_create :setup_partner_role

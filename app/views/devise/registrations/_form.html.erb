@@ -1,0 +1,35 @@
+<%= f.input :username,
+            label: t('.username'),
+            required: true,
+            autofocus: true,
+            input_html: { autocomplete: "username" }%>
+<%= f.input :firstname,
+            label: t('.firstname'),
+            required: true,
+            autofocus: true,
+            input_html: { autocomplete: "firstname" }%>
+<%= f.input :lastname,
+            label: t('.lastname'),
+            required: true,
+            autofocus: true,
+            input_html: { autocomplete: "lastname" }%>
+<%= f.input :street,
+            label: t('.street'),
+            required: true,
+            autofocus: true,
+            input_html: { autocomplete: "street" }%>
+<%= f.input :additional_address_information,
+            label: t('.additional_address_information'),
+            required: true,
+            autofocus: true,
+            input_html: { autocomplete: "additional_address_information" }%>
+<%= f.association :country, label: t('.country'), label_method: :name, value_method: :code, as: :select %>
+<%= f.association :city, label: t('.city'), label_method: :name, value_method: :postcode, as: :select %>
+<%= f.input :phone_number,
+            label: t('.phone_number'),
+            required: true,
+            autofocus: true,
+            input_html: { autocomplete: "phone_number" }%>
+<%= f.input :is_partner,
+            as: :boolean,
+            label: t('.is_partner') %>
