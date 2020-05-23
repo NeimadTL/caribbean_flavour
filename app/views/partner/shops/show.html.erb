@@ -1,59 +1,104 @@
-<br><h1><%= t('.welcome' )%> <%= current_user.shop.name %></h1><br>
-
-<h5><%= t('.delivery_option') %></h5>
-<div class="" style="margin-bottom:16px;">
-  <% current_user.shop.delivery_options.each do |delivery_option| %>
-    <span class="badge badge-info"><%= delivery_option.to_option %></span>
-  <% end %>
+<div class="row mb-2">
+  <div class="col-sm">
+    <div class="card text-center mt-3 mb-3">
+      <div class="card-body">
+        <h1><%= t('.welcome' )%> <%= current_user.shop.name %></h1>
+      </div>
+    </div>
+  </div>
 </div>
 
-<h5><%= t('.delivery_coverage') %></h5>
-<div class="" style="margin-bottom:16px;">
-  <% current_user.shop.cities.each do |city| %>
-    <span class="badge badge-primary"><%= city.name %></span>
-  <% end %>
+<div class="row mb-2">
+  <div class="col-sm">
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5><%= t('.contact_details')%></h5>
+        <div>
+          <p><%= current_user.shop.street %></p>
+          <% if current_user.shop.additional_address_information.present? %>
+            <p><%= current_user.shop.additional_address_information %></p>
+          <% end %>
+          <p><%= current_user.shop.city.postcode %> <%= current_user.shop.city.name %></p>
+          <p><%= current_user.shop.country.name %></p>
+          <p><%= current_user.shop.phone_number %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm">
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5><%= t('.delivery_option') %></h5>
+        <div>
+          <% current_user.shop.delivery_options.each do |delivery_option| %>
+            <span class="badge badge-info"><%= delivery_option.to_option %></span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm mb-3">
+    <div class="card">
+      <div class="card-body">
+        <h5><%= t('.delivery_coverage') %></h5>
+        <div>
+          <% current_user.shop.cities.each do |city| %>
+            <span class="badge badge-primary"><%= city.name %></span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<%= link_to edit_partner_shop_path(current_user.shop), class: 'btn btn-sm transparent-btn' do %>
-  <%= image_tag("build-outline.svg", size: "24") %>
-<% end %><br><br>
-
-<h5><%= t('.products') %></h5>
-<table class="table">
-    <thead>
-      <tr>
-        <th scope="col"><%= t('.reference') %></th>
-        <th scope="col"><%= t('.name') %></th>
-        <th scope="col"><%= t('.price') %></th>
-        <th scope="col"><%= t('.actions') %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% current_user.shop.stocks.each do |stock| %>
-        <tr>
-          <td><%= stock.product.reference %></td>
-          <td><%= stock.product.name %></td>
-          <td><%= number_to_currency(stock.price, locale: I18n.locale) %></td>
-          <td>
-            <div class="dropdown">
-              <button class="btn transparent-btn" type="button" id="dropdownMenu2"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <%= image_tag("ellipsis-horizontal-outline.svg", size: "24") %>
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <%= link_to t('.update'), edit_partner_shop_stock_path(current_user.shop, stock), class: 'dropdown-item' %>
-                <%= link_to t('.delete'), partner_shop_stock_path(current_user.shop, stock), method: :delete,
-                    data: { confirm: t('.are_you_sure') }, class: 'dropdown-item' %>
-              </div>
-            </div>
+<%= link_to edit_partner_shop_path(current_user.shop), class: 'btn btn-primary btn-lg btn-block mb-5' do %>
+  <%= t('.tweak_shop_btn') %> <%= image_tag("build-outline.svg", size: "24") %>
+<% end %>
 
 
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-</table>
 
-<%= link_to new_partner_shop_stock_path(current_user.shop), class: 'btn btn-sm transparent-btn' do %>
-  <%= image_tag("add-outline.svg", size: "24") %>
+<div class="row mb-2">
+  <div class="col-sm">
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5><%= t('.products') %></h5>
+        <table class="table">
+            <thead>
+              <tr>
+                <!-- <th scope="col"><%= t('.reference') %></th> -->
+                <th scope="col"><%= t('.name') %></th>
+                <th scope="col"><%= t('.price') %></th>
+                <th scope="col"><%= t('.actions') %></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% current_user.shop.stocks.each do |stock| %>
+                <tr>
+                  <!-- <td><%= stock.product.reference %></td> -->
+                  <td><%= stock.product.name %></td>
+                  <td><%= number_to_currency(stock.price, locale: I18n.locale) %></td>
+                  <td>
+                    <div class="dropdown">
+                      <button class="btn transparent-btn" type="button" id="dropdownMenu2"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <%= image_tag("ellipsis-horizontal-outline.svg", size: "24") %>
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <%= link_to t('.update'), edit_partner_shop_stock_path(current_user.shop, stock), class: 'dropdown-item' %>
+                        <%= link_to t('.delete'), partner_shop_stock_path(current_user.shop, stock), method: :delete,
+                            data: { confirm: t('.are_you_sure') }, class: 'dropdown-item' %>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= link_to new_partner_shop_stock_path(current_user.shop), class: 'btn btn-primary btn-lg btn-block mb-5' do %>
+  <%= t('.add_product_btn') %> <%= image_tag("add-outline.svg", size: "24") %>
 <% end %>

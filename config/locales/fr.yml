@@ -123,6 +123,9 @@ fr:
         requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
         require_to_be_shop_owner: "Vous n'êtes pas le propriétaire de ce magasin"
         delivery_coverage: "Couverture de livraison"
+        contact_details: "Coordonnées"
+        tweak_shop_btn: "Paramétrer mon magasin"
+        add_product_btn: "Ajouter un produit"
       create:
         shop_successfully_created: "Magasin crée avec succès."
         requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."

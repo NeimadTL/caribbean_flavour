@@ -150,6 +150,9 @@ en:
         require_to_be_shop_owner: "You are not the owner of this shop"
         require_to_be_shop_order: "This order does not belong to your shop"
         delivery_coverage: "Delivery Coverage"
+        contact_details: "Contact details"
+        tweak_shop_btn: "Tweak my shop"
+        add_product_btn: "Add a product"
       create:
         shop_successfully_created: "Shop was successfully created."
         requires_partner_access_rights: "The page you were looking for requires partner access rights"
