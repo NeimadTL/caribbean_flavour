@@ -196,6 +196,7 @@ fr:
         popover_content: "Vous devez être connecté pour acheter des produits."
         exit_btn: "Sortir"
         delivery_coverage: "Couverture de livraison"
+        contact_details: "Coordonnées"
     line_items:
       form:
         qty_label: "Quantité (Kgs)"
