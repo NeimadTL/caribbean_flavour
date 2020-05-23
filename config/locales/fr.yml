@@ -183,6 +183,8 @@ fr:
       index:
         shops_header: "Les magasins"
         enter_btn: "Entrez"
+        delivery_option_link: "Moyens de livraison"
+        delivery_coverage_link: "Couverture de livraison"
       show:
         welcome: "Bienvenue à"
         products_header: "Produits"

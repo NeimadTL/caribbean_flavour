@@ -7,6 +7,7 @@ $(document).ready(function () {
 $(function () {
   $('[data-toggle="popover"]').popover({
     container: 'body',
-    trigger: 'focus'
+    trigger: 'focus',
+    html: true
   })
 })

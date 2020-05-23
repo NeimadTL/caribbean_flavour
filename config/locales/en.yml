@@ -211,6 +211,8 @@ en:
       index:
         shops_header: "Shops"
         enter_btn: "Enter"
+        delivery_option_link: "Delivery Options"
+        delivery_coverage_link: "Delivery Coverage"
       show:
         welcome: "Welcome to"
         products_header: "Products"
