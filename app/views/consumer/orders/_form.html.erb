@@ -40,6 +40,15 @@
     </tbody>
 </table>
 
+<% if @outside_shop_coverage_fee_msg %>
+  <div class="card">
+    <div class="card-body text-info">
+      <%= @outside_shop_coverage_fee_msg %>
+    </div>
+  </div>
+<% end %>
+<br>
+
 
 <%= simple_form_for(@order, url: consumer_cart_shop_orders_path(current_user.cart, @shop)) do |f| %>
   <%= f.error_notification %>

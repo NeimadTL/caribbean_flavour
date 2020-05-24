@@ -271,6 +271,9 @@ fr:
         back_btn: "Précédent"
         requires_consumer_access_rights: "La page que vous recherchez requiert un droit d'accès consommateur."
         require_to_be_cart_owner: "Vous n'est pas propriétaire de ce panier"
+        outside_shop_coverage_fee_msg: "Si vous choisissez de vous faire livrer chez vous, des frais de
+                                        livraison hors couverture seront ajoutés à votre commande. Ces
+                                        frais seront décidés par le magasin très bientôt."
       show:
         name_col: "Nom"
         unit_price_col: "Prix unitaire"
@@ -283,6 +286,9 @@ fr:
         cancel: "Annuler"
         requires_consumer_access_rights: "La page que vous recherchez requiert un droit d'accès consommateur."
         require_to_be_order_owner: "Vous n'êtes pas le propriétaire de cette commande"
+        outside_shop_coverage_fee_msg: "Si vous choisissez de vous faire livrer chez vous, des frais de
+                                        livraison hors couverture seront ajouté à votre commande. Ces
+                                        frais seront décidés par le magasin très bientôt."
       create:
         order_successfully_created: "Commande créée avec succès."
         requires_consumer_access_rights: "La page que vous recherchez requiert un droit d'accès consommateur."

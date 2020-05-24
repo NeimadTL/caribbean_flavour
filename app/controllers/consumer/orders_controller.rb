@@ -8,6 +8,7 @@ class Consumer::OrdersController < ApplicationController
   before_action :set_cart, only: [:new, :create]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :set_shop, only: [:new, :create]
+  before_action :does_shop_cover_user_city, only: [:new]
 
   # GET /orders
   # GET /orders.json
@@ -33,7 +34,10 @@ class Consumer::OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(order_params.merge(user: current_user))
-    
+    unless @shop.cities.include?(current_user.city)
+      @order.with_outside_shop_coverage_fee = true
+    end
+
     respond_to do |format|
       if @order.save
         @order.add_line_item(@cart.line_items_of(@shop))
@@ -84,4 +88,5 @@ class Consumer::OrdersController < ApplicationController
     def order_params
       params.require(:order).permit(:delivery_option_code)
     end
+
 end

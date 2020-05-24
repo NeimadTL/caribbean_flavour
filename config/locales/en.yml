@@ -299,6 +299,9 @@ en:
         back_btn: "Back"
         requires_consumer_access_rights: "The page you were looking for requires consumer access rights"
         require_to_be_cart_owner: "You are not the owner of this cart"
+        outside_shop_coverage_fee_msg: "If you decide to be delivered home, an outside shop coverage fee
+                                        will be added on your order. This fee will be decided by the shop
+                                        very soon."
       show:
         name_col: "Name"
         unit_price_col: "Unit Price"
@@ -311,6 +314,7 @@ en:
         cancel: "Cancel"
         requires_consumer_access_rights: "The page you were looking for requires consumer access rights"
         require_to_be_order_owner: "You are not the owner of this order"
+        outside_shop_coverage_fee_msg: "If you decide to be delivered home, an outside shop coverage fee will be added on your order. This fee will be decided by the shop very soon."
       create:
         order_successfully_created: "Order was successfully created."
         requires_consumer_access_rights: "The page you were looking for requires consumer access rights"

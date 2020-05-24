@@ -24,6 +24,15 @@
     </tbody>
 </table>
 
+<% if @order.with_outside_shop_coverage_fee && @order.delivery_option_code == DeliveryOption::CUSTOMER_PLACE_OPTION_CODE %>
+  <div class="card">
+    <div class="card-body text-info">
+      <%= t('.outside_shop_coverage_fee_msg') %>
+    </div>
+  </div>
+<% end %>
+<br>
+
 
 <p>
   <strong><%= t('.delivery_option') %></strong> <%= @order.delivery_option.to_option %><br>

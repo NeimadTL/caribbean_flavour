@@ -27,6 +27,17 @@ module ConsumerFilter
     end
   end
 
+  def does_shop_cover_user_city
+    if params[:shop_id] # when in new action
+      shop = Shop.find(params[:shop_id])
+    else # when show action
+      shop = Order.find(params[:id]).shop
+    end
+    unless shop.cities.include?(current_user.city)
+      @outside_shop_coverage_fee_msg = t('.outside_shop_coverage_fee_msg')
+    end
+  end
+
   private
 
     def redirect_with_alert(msg, url)
