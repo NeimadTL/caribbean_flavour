@@ -17,6 +17,22 @@
           <td><%= number_to_currency(item.total_price, locale: I18n.locale) %></td>
         </tr>
       <% end %>
+      <% if @order.delivery_option_code == DeliveryOption::CUSTOMER_PLACE_OPTION_CODE %>
+        <tr>
+          <td colspan="3"><%= t('.standard_delivery_fee') %></td>
+          <td class="total_cell">
+            <%= number_to_currency(Order::STANDARD_DELIVERY_FEE, locale: I18n.locale) %>
+          </td>
+        </tr>
+      <% end %>
+      <% if @order.with_outside_shop_coverage_fee? && @order.delivery_option_code == DeliveryOption::CUSTOMER_PLACE_OPTION_CODE %>
+        <tr>
+          <td colspan="3"><%= t('.outside_coverage_delivery_fee') %></td>
+          <td class="total_cell">
+            <%= number_to_currency(@order.outside_shop_coverage_fee, locale: I18n.locale) %>
+          </td>
+        </tr>
+      <% end %>
       <tr>
         <td colspan="3">Total</td>
         <td class="total_cell"><%= number_to_currency(@order.total_price, locale: I18n.locale) %></td>
@@ -28,7 +44,7 @@
 <p>
   <strong><%= t('.customer')%></strong> <%= @order.user.firstname %> <%= @order.user.lastname %><br>
   <strong><%= t('.delivery_option') %></strong> <%= @order.delivery_option.to_option %><br>
-  <strong><%= t('.status') %></strong> <%= @order.to_status %>
+  <strong><%= t('.status') %></strong> <%= @order.status %>
 </p>
 
 

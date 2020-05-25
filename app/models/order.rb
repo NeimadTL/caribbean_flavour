@@ -1,6 +1,13 @@
 class Order < ApplicationRecord
 
-  STATUS = ["ordered", "packed", "shipped", "delivered"]
+  STATUS = [
+    I18n.t('.ordered_status'),
+    I18n.t('.packed_status'),
+    I18n.t('.shipped_status'),
+    I18n.t('.delivered_status')
+  ]
+
+  STANDARD_DELIVERY_FEE = 2.5
 
   validates :delivery_option_code, presence: true
   validates :status, inclusion: { in: STATUS }
@@ -25,20 +32,26 @@ class Order < ApplicationRecord
   end
 
   def total_price
+    self.order_line_items.to_a.sum { |item| item.total_price } + outside_shop_coverage_fee + STANDARD_DELIVERY_FEE
+  end
+
+  def items_total_price
     self.order_line_items.to_a.sum { |item| item.total_price }
   end
 
-  def to_status
-    case self.status
-    when "ordered"
-      I18n.t('ordered_status')
-    when "packed"
-      I18n.t('packed_status')
-    when "shipped"
-      I18n.t('shipped_status')
-    when "delivered"
-      I18n.t('delivered_status')
-    end
-  end
+
+
+  # def to_status
+  #   case self.status
+  #   when "ordered"
+  #     I18n.t('ordered_status')
+  #   when "packed"
+  #     I18n.t('packed_status')
+  #   when "shipped"
+  #     I18n.t('shipped_status')
+  #   when "delivered"
+  #     I18n.t('delivered_status')
+  #   end
+  # end
 
 end

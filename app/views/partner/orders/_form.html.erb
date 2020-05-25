@@ -4,8 +4,11 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
+    <% if @order.with_outside_shop_coverage_fee? && @order.delivery_option_code == DeliveryOption::CUSTOMER_PLACE_OPTION_CODE %>
+      <%= f.input :outside_shop_coverage_fee %>
+    <% end %>
     <%= f.label t('.orders_form_status') %>
-    <%= f.select :status, Order::STATUS.map {|s| t(s+"_status")}, { prompt: t('.status_prompt') }, class: 'form-control' %>
+    <%= f.select :status, Order::STATUS, { prompt: t('.status_prompt') }, class: 'form-control' %>
   </div><br>
 
   <div class="form-actions">

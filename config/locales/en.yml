@@ -86,10 +86,13 @@ en:
         requires_partner_access_rights: "The page you were looking for requires partner access rights"
       index:
         my_orders_hearder: "My Orders"
-        orders_index_status: "Statut"
+        order_status: "Statut"
         details_link: "Details"
         change_status_link: "Update status"
         requires_partner_access_rights: "The page you were looking for requires partner access rights"
+        items_total_price: "Order price:"
+        standard_delivery_fee: "Standard delivery fee:"
+        outside_coverage_delivery_fee: "Outside coverage delivery fee:"
       show:
         order_number: "Order"
         name_col: "Name"
@@ -102,6 +105,8 @@ en:
         edit_status_link: "Update Status"
         back_link: "Back"
         requires_partner_access_rights: "The page you were looking for requires partner access rights"
+        standard_delivery_fee: "Standard delivery fee"
+        outside_coverage_delivery_fee: "Outside coverage delivery fee"
       update:
         order_successfully_updated: "Order's status was successfully updated."
         requires_partner_access_rights: "The page you were looking for requires partner access rights"

@@ -36,7 +36,7 @@
 
 <p>
   <strong><%= t('.delivery_option') %></strong> <%= @order.delivery_option.to_option %><br>
-  <strong><%= t('.order_status') %></strong> <%= @order.to_status %>
+  <strong><%= t('.order_status') %></strong> <%= @order.status %>
 </p>
 
 <%= link_to t('.cancel'), consumer_order_path(@order), method: :delete,
