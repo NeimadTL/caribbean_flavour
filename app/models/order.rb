@@ -1,16 +1,16 @@
 class Order < ApplicationRecord
 
-  STATUS = [
-    I18n.t('.ordered_status'),
-    I18n.t('.packed_status'),
-    I18n.t('.shipped_status'),
-    I18n.t('.delivered_status')
-  ]
+  STATUS = {
+    0 => 'ordered_status',
+    1 => 'packed_status',
+    2 => 'shipped_status',
+    3 => 'delivered_status'
+  }
 
   STANDARD_DELIVERY_FEE = 2.5
 
   validates :delivery_option_code, presence: true
-  validates :status, inclusion: { in: STATUS }
+  validates :status_id, inclusion: { in: STATUS.keys }
   validates :user_id, presence: true
 
   has_many :order_line_items, dependent: :destroy

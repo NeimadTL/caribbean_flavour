@@ -46,6 +46,6 @@ class Partner::OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.require(:order).permit(:status, :outside_shop_coverage_fee)
+      params.require(:order).permit(:status_id, :outside_shop_coverage_fee)
     end
 end

@@ -8,7 +8,7 @@
       <%= f.input :outside_shop_coverage_fee %>
     <% end %>
     <%= f.label t('.orders_form_status') %>
-    <%= f.select :status, Order::STATUS, { prompt: t('.status_prompt') }, class: 'form-control' %>
+    <%= f.select :status_id, Order::STATUS.map { |k,v| [t(v),k] }, { prompt: t('.status_prompt') }, class: 'form-control' %>
   </div><br>
 
   <div class="form-actions">
