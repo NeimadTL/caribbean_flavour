@@ -91,8 +91,6 @@ en:
         change_status_link: "Update status"
         requires_partner_access_rights: "The page you were looking for requires partner access rights"
         items_total_price: "Order price:"
-        standard_delivery_fee: "Standard delivery fee:"
-        outside_coverage_delivery_fee: "Outside coverage delivery fee:"
       show:
         order_number: "Order"
         name_col: "Name"
@@ -105,8 +103,7 @@ en:
         edit_status_link: "Update Status"
         back_link: "Back"
         requires_partner_access_rights: "The page you were looking for requires partner access rights"
-        standard_delivery_fee: "Standard delivery fee"
-        outside_coverage_delivery_fee: "Outside coverage delivery fee"
+        subtotal: "Subtotal"
       update:
         order_successfully_updated: "Order's status was successfully updated."
         requires_partner_access_rights: "The page you were looking for requires partner access rights"
@@ -320,6 +317,7 @@ en:
         requires_consumer_access_rights: "The page you were looking for requires consumer access rights"
         require_to_be_order_owner: "You are not the owner of this order"
         outside_shop_coverage_fee_msg: "If you decide to be delivered home, an outside shop coverage fee will be added on your order. This fee will be decided by the shop very soon."
+        subtotal: "Subtotal"
       create:
         order_successfully_created: "Order was successfully created."
         requires_consumer_access_rights: "The page you were looking for requires consumer access rights"
@@ -344,3 +342,12 @@ en:
   packed_status: "Packed"
   shipped_status: "Delivery in progress"
   delivered_status: "Delivered"
+
+  shared:
+    orders:
+      index_order_fees:
+        standard_delivery_fee: "Standard delivery fee"
+        outside_coverage_delivery_fee: "Outside coverage delivery fee"
+      show_order_fees:
+        standard_delivery_fee: "Standard delivery fee"
+        outside_coverage_delivery_fee: "Outside coverage delivery fee"

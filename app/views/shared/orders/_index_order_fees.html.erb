@@ -1,0 +1,10 @@
+<% if order.delivery_option_code == DeliveryOption::CUSTOMER_PLACE_OPTION_CODE %>
+  <p class="card-text">
+    <%= t('.standard_delivery_fee') %> <%= number_to_currency(Order::STANDARD_DELIVERY_FEE, locale: I18n.locale) %>
+  </p>
+  <% if order.with_outside_shop_coverage_fee? %>
+    <p class="card-text">
+      <%= t('.outside_coverage_delivery_fee') %> <%= number_to_currency(order.outside_shop_coverage_fee, locale: I18n.locale) %>
+    </p>
+  <% end %>
+<% end %>

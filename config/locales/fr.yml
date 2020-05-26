@@ -65,8 +65,6 @@ fr:
         change_status_link: "Changer le statut"
         requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
         items_total_price: "Prix de la commande:"
-        standard_delivery_fee: "Frais standard de livraison:"
-        outside_coverage_delivery_fee: "Frais de livraison hors couverture:"
       show:
         order_number: "Commande"
         name_col: "Nom"
@@ -80,8 +78,7 @@ fr:
         back_link: "Précédent"
         requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
         require_to_be_shop_order: "Cette commande n'appartient pas à votre magasin"
-        standard_delivery_fee: "Frais standard de livraison"
-        outside_coverage_delivery_fee: "Frais de livraison hors couverture"
+        subtotal: "Sous-total"
       update:
         order_successfully_updated: "Statut de la commande mis à jour avec succès"
         requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
@@ -294,6 +291,7 @@ fr:
         outside_shop_coverage_fee_msg: "Si vous choisissez de vous faire livrer chez vous, des frais de
                                         livraison hors couverture seront ajouté à votre commande. Ces
                                         frais seront décidés par le magasin très bientôt."
+        subtotal: "Sous-total"
       create:
         order_successfully_created: "Commande créée avec succès."
         requires_consumer_access_rights: "La page que vous recherchez requiert un droit d'accès consommateur."
@@ -323,6 +321,15 @@ fr:
       words_connector: " et "
       two_words_connector: " et "
       last_word_connector: " et "
+
+  shared:
+    orders:
+      index_order_fees:
+        standard_delivery_fee: "Frais standard de livraison"
+        outside_coverage_delivery_fee: "Frais de livraison hors couverture"
+      show_order_fees:
+        standard_delivery_fee: "Frais standard de livraison"
+        outside_coverage_delivery_fee: "Frais de livraison hors couverture"
 
   activerecord:
     models:
