@@ -1,4 +1,5 @@
-<% if @order.delivery_option_code == DeliveryOption::CUSTOMER_PLACE_OPTION_CODE %>
+<% if @order.delivery_option_code == DeliveryOption::CUSTOMER_PLACE_OPTION_CODE ||
+      @order.delivery_option_code == DeliveryOption::PARCEL_PICKUP_POINT_OPTION_CODE %>
   <tr>
     <td colspan="3"><%= t('.standard_delivery_fee') %></td>
     <td class="total_cell">

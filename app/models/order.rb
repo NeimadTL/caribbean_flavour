@@ -12,10 +12,12 @@ class Order < ApplicationRecord
   validates :delivery_option_code, presence: true
   validates :status_id, inclusion: { in: STATUS.keys }
   validates :user_id, presence: true
+  validates :outside_shop_coverage_fee, numericality: { greater_than_or_equal_to: 1 }
 
   has_many :order_line_items, dependent: :destroy
   belongs_to :user
   belongs_to :delivery_option, foreign_key: "delivery_option_code"
+
 
   def add_line_item(items)
     items.each do |item|

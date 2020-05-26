@@ -22,8 +22,6 @@
         <td class="total_cell"><%= number_to_currency(@order.items_total_price, locale: I18n.locale) %></td>
       </tr>
       <%= render 'shared/orders/show_order_fees', order: @order %>
-
-
       <tr>
         <td colspan="3">Total</td>
         <td class="total_cell"><%= number_to_currency(@order.total_price, locale: I18n.locale) %></td>
