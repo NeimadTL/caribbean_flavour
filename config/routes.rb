@@ -25,8 +25,8 @@ Rails.application.routes.draw do
         resources :orders, only: [:new, :create]
       end
     end
-    # :edit and :updates may need to be added below if we decide that a consumer
+    # :edit may need to be added below if we decide that a consumer
     # can update and order till the status passes from 'ordered' to 'packing'
-    resources :orders, only: [:index, :show, :destroy]
+    resources :orders, only: [:index, :show, :update, :destroy]
   end
 end

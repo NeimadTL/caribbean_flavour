@@ -4,7 +4,7 @@ class Consumer::OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :require_to_be_consumer
   before_action :require_to_be_cart_owner, only: [:new, :create]
-  before_action :require_to_be_order_owner, only: [:show, :destroy] # :edit and :update may need to be added (see routes comment)
+  before_action :require_to_be_order_owner, only: [:show, :destroy, :update] # :edit may need to be added (see routes comment)
   before_action :set_cart, only: [:new, :create]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :set_shop, only: [:new, :create]
@@ -55,7 +55,7 @@ class Consumer::OrdersController < ApplicationController
   def update
     respond_to do |format|
       if @order.update(order_params)
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
+        format.html { redirect_to consumer_order_url(@order), notice: 'Order was successfully updated.' }
         format.json { render :show, status: :ok, location: @order }
       else
         format.html { render :edit }
@@ -86,7 +86,7 @@ class Consumer::OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.require(:order).permit(:delivery_option_code)
+      params.require(:order).permit(:delivery_option_code, :ocd_fee_accepted)
     end
 
 end

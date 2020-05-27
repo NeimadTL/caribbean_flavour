@@ -7,11 +7,22 @@
     <% if @order.delivery_option_code == DeliveryOption::CUSTOMER_PLACE_OPTION_CODE ||
           @order.delivery_option_code == DeliveryOption::PARCEL_PICKUP_POINT_OPTION_CODE %>
       <% if @order.with_outside_shop_coverage_fee? %>
-        <%= f.input :outside_shop_coverage_fee %>
+        <% if @order.ocd_fee_accepted? %>
+          <%= f.input :outside_shop_coverage_fee, disabled: true %>
+        <% else %>
+          <%= f.input :outside_shop_coverage_fee %>
+        <% end %>
+        <%= f.label t('.orders_form_status') %>
+        <% unless @order.outside_shop_coverage_fee >= 1 && @order.ocd_fee_accepted? %>
+          <%= f.select :status_id, Order::STATUS.map { |k,v| [t(v),k] }, { prompt: t('.status_prompt') }, class: 'form-control', disabled: true %>
+        <% else %>
+          <%= f.select :status_id, Order::STATUS.map { |k,v| [t(v),k] }, { prompt: t('.status_prompt') }, class: 'form-control' %>
+        <% end %>
       <% end %>
+    <% else %>
+      <%= f.label t('.orders_form_status') %>
+      <%= f.select :status_id, Order::STATUS.map { |k,v| [t(v),k] }, { prompt: t('.status_prompt') }, class: 'form-control' %>
     <% end %>
-    <%= f.label t('.orders_form_status') %>
-    <%= f.select :status_id, Order::STATUS.map { |k,v| [t(v),k] }, { prompt: t('.status_prompt') }, class: 'form-control' %>
   </div><br>
 
   <div class="form-actions">

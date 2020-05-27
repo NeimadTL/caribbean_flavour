@@ -1,0 +1,7 @@
+<% if order.with_outside_shop_coverage_fee? %>
+  <% if order.outside_shop_coverage_fee >= 1 && !order.ocd_fee_accepted? %>
+    <%= button_to 'accept',consumer_order_path(order),
+        method: :patch, params: { "order[ocd_fee_accepted]" =>  true },
+        class: "btn btn-success btn-sm float-right" %>
+  <% end %>
+<% end %>
