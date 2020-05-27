@@ -8,7 +8,7 @@
   </tr>
   <% if @order.is_ocd? %>
     <tr>
-      <td colspan="3"><%= t('.outside_coverage_delivery_fee') %></td>
+      <td colspan="3"><%= t('.ocd_fee') %></td>
       <td class="total_cell">
         <%= number_to_currency(@order.ocd_fee, locale: I18n.locale) %>
       </td>

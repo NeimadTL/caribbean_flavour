@@ -34,7 +34,7 @@ module ConsumerFilter
       shop = Order.find(params[:id]).shop
     end
     unless shop.cities.include?(current_user.city)
-      @ocd_fee_msg = t('.new_order_outside_shop_coverage_fee_msg')
+      @ocd_fee_msg = t('.new_order_ocd_fee_msg')
     end
   end
 

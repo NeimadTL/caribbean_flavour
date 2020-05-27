@@ -5,7 +5,7 @@
   </p>
   <% if order.is_ocd? %>
     <p class="card-text">
-      <%= t('.outside_coverage_delivery_fee') %> <%= number_to_currency(order.ocd_fee, locale: I18n.locale) %>
+      <%= t('.ocd_fee') %> <%= number_to_currency(order.ocd_fee, locale: I18n.locale) %>
     </p>
   <% end %>
 <% end %>
