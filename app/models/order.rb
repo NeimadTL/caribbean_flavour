@@ -12,7 +12,8 @@ class Order < ApplicationRecord
   validates :delivery_option_code, presence: true
   validates :status_id, inclusion: { in: STATUS.keys }
   validates :user_id, presence: true
-  validates :outside_shop_coverage_fee, numericality: { greater_than_or_equal_to: 1 }, on: [:update]
+  validates :outside_shop_coverage_fee, numericality: { greater_than_or_equal_to: 1 },
+            on: [:update], if: :with_outside_shop_coverage_fee?
 
   has_many :order_line_items, dependent: :destroy
   belongs_to :user
@@ -34,7 +35,11 @@ class Order < ApplicationRecord
   end
 
   def total_price
-    self.order_line_items.to_a.sum { |item| item.total_price } + outside_shop_coverage_fee + STANDARD_DELIVERY_FEE
+    total = items_total_price
+    if delivery_option_code == (DeliveryOption::CUSTOMER_PLACE_OPTION_CODE || DeliveryOption::PARCEL_PICKUP_POINT_OPTION_CODE)
+      total += outside_shop_coverage_fee + STANDARD_DELIVERY_FEE
+    end
+    total
   end
 
   def items_total_price
