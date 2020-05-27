@@ -79,6 +79,7 @@ en:
         status_prompt: "Select a status"
         orders_form_submit: "Update Status"
         requires_partner_access_rights: "The page you were looking for requires partner access rights"
+        ocd_fee: "Outside coverage delivery fee"
       edit:
         order_edit_header: "Update order's status"
         order_detail_link: "Order's details"

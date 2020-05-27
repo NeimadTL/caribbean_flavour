@@ -52,6 +52,7 @@ fr:
         orders_form_submit: "Changer le statut"
         requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
         require_to_be_shop_order: "Cette commande n'appartient pas à votre magasin"
+        ocd_fee: "Frais de livraison hors couverture"
       edit:
         order_edit_header: "Mettre à jour le statut"
         order_detail_link: "Détail de la commande"

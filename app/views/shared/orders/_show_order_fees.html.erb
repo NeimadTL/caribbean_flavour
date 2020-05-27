@@ -6,11 +6,11 @@
       <%= number_to_currency(Order::STANDARD_DELIVERY_FEE, locale: I18n.locale) %>
     </td>
   </tr>
-  <% if @order.with_outside_shop_coverage_fee? %>
+  <% if @order.is_ocd? %>
     <tr>
       <td colspan="3"><%= t('.outside_coverage_delivery_fee') %></td>
       <td class="total_cell">
-        <%= number_to_currency(@order.outside_shop_coverage_fee, locale: I18n.locale) %>
+        <%= number_to_currency(@order.ocd_fee, locale: I18n.locale) %>
       </td>
     </tr>
   <% end %>

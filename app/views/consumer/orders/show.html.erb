@@ -31,8 +31,8 @@
 
 <% if @order.delivery_option_code == DeliveryOption::CUSTOMER_PLACE_OPTION_CODE ||
       @order.delivery_option_code == DeliveryOption::PARCEL_PICKUP_POINT_OPTION_CODE %>
-  <% if @order.with_outside_shop_coverage_fee? %>
-    <% if @order.outside_shop_coverage_fee < 1 %>
+  <% if @order.is_ocd? %>
+    <% if @order.ocd_fee < 1 %>
       <div class="card">
         <div class="card-body text-info">
           <%= t('.placed_order_outside_shop_coverage_fee_msg') %>

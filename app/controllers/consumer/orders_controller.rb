@@ -35,7 +35,7 @@ class Consumer::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params.merge(user: current_user))
     unless @shop.cities.include?(current_user.city)
-      @order.with_outside_shop_coverage_fee = true
+      @order.is_ocd = true
     end
 
     respond_to do |format|
