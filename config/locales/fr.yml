@@ -84,6 +84,10 @@ fr:
         order_successfully_updated: "Statut de la commande mis à jour avec succès"
         requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
         require_to_be_shop_order: "Cette commande n'appartient pas à votre magasin"
+        cant_change_ocd_fee_msg: "Vous ne pouvez pas changer les frais de livraison hors couverture car ils
+                                  ont déjà été acceptés"
+        cant_change_status_msg: "Vous ne pouvez pas changer le status car les les frais de livraison hors
+                                 couverture n'ont pas encore été acceptés"
     shops:
       form:
         shop_name: "Nom de votre magasin"

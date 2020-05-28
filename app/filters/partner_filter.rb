@@ -53,7 +53,7 @@ module PartnerFilter
     order = Order.find(params[:id])
     if order.is_ocd?
       if order.ocd_fee_accepted? && params[:order][:ocd_fee].present?
-        flash[:alert] = "can't change ocd fee as they've been accepted"
+        flash[:alert] = t('.cant_change_ocd_fee_msg')
         redirect_to partner_order_url(order)
       end
     end
@@ -63,7 +63,7 @@ module PartnerFilter
     order = Order.find(params[:id])
     if order.is_ocd?
       if order.ocd_fee < 1 && !order.ocd_fee_accepted? && params[:order][:status_id].present?
-        flash[:alert] = "can't change status as ocd fee hasn't been accepted yet"
+        flash[:alert] = t('.cant_change_status_msg')
         redirect_to partner_order_url(order)
       end
     end

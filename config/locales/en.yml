@@ -108,6 +108,8 @@ en:
       update:
         order_successfully_updated: "Order's status was successfully updated."
         requires_partner_access_rights: "The page you were looking for requires partner access rights"
+        cant_change_ocd_fee_msg: "You can't change outside coverage delivery fee as they've been accepted already"
+        cant_change_status_msg: "You can't change status as outside coverage delivery fee hasn't been accepted yet"
     shops:
       form:
         shop_name: "Name of your shop"
