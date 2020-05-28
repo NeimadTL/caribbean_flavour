@@ -4,25 +4,25 @@ RSpec.describe Consumer::CartsController, type: :controller do
 
   let(:consumer) {
     User.create!(username: "consu", firstname: "consu_firstname", lastname: "consu_lastname",
-    city: "city", email: "consu@gmail.com", phone_number: "0394274839", street: "street",
-    additional_address_information: "additional address", postcode: "97119",
-    country: "country", is_partner: false, role_code: Role::CONSUMER_ROLE_CODE,
+    email: "consu@gmail.com", phone_number: "0394274839", street: "street",
+    additional_address_information: "additional address", city_postcode: "97119",
+    country_code: "971", is_partner: false, role_code: Role::CONSUMER_ROLE_CODE,
     password: "12345678", password_confirmation: "12345678")
   }
 
   let(:another_consumer) {
     User.create!(username: "another_consu", firstname: "another_consu_firstname",
-    lastname: "another_consu_lastname", city: "city", email: "another_consu@gmail.com",
+    lastname: "another_consu_lastname", email: "another_consu@gmail.com",
     phone_number: "0394274839", street: "street", additional_address_information: "additional address",
-    postcode: "97119", country: "country", is_partner: false, role_code: Role::CONSUMER_ROLE_CODE,
+    city_postcode: "97119", country_code: "971", is_partner: false, role_code: Role::CONSUMER_ROLE_CODE,
     password: "12345678", password_confirmation: "12345678")
   }
 
   let(:partner) {
     User.create!(username: "partner", firstname: "partner_firstname", lastname: "partner_lastname",
-    city: "city", email: "partner@gmail.com", phone_number: "0394274839", street: "street",
-    additional_address_information: "additional address", postcode: "97119",
-    country: "country", is_partner: false, role_code: Role::PARTNER_ROLE_CODE,
+    email: "partner@gmail.com", phone_number: "0394274839", street: "street",
+    additional_address_information: "additional address", city_postcode: "97119",
+    country_code: "971", is_partner: false, role_code: Role::PARTNER_ROLE_CODE,
     password: "12345678", password_confirmation: "12345678")
   }
 
