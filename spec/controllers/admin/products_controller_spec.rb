@@ -38,17 +38,17 @@ RSpec.describe Admin::ProductsController, type: :controller do
 
   let(:admin) {
     User.create!(username: "admin", firstname: "admin_firstname", lastname: "admin_lastname",
-    city: "city", email: "admin@gmail.com", phone_number: "0394274839", street: "street",
-    additional_address_information: "additional address", postcode: "97119",
-    country: "country", is_partner: false, role_code: Role::ADMIN_ROLE_CODE,
+    email: "admin@gmail.com", phone_number: "0394274839", street: "street",
+    additional_address_information: "additional address", city_postcode: "97119",
+    country_code: "971", is_partner: false, role_code: Role::ADMIN_ROLE_CODE,
     password: "12345678", password_confirmation: "12345678")
   }
 
   let(:consumer) {
     User.create!(username: "consu", firstname: "consu_firstname", lastname: "consu_lastname",
-    city: "city", email: "consu@gmail.com", phone_number: "0394274839", street: "street",
-    additional_address_information: "additional address", postcode: "97119",
-    country: "country", is_partner: false, role_code: Role::CONSUMER_ROLE_CODE,
+    email: "consu@gmail.com", phone_number: "0394274839", street: "street",
+    additional_address_information: "additional address", city_postcode: "97119",
+    country_code: "971", is_partner: false, role_code: Role::CONSUMER_ROLE_CODE,
     password: "12345678", password_confirmation: "12345678")
   }
 

@@ -4,34 +4,38 @@ RSpec.describe Partner::StocksController, type: :controller do
 
   let(:partner) {
     User.create!(username: "partner", firstname: "partner_firstname", lastname: "partner_lastname",
-    city: "city", email: "partner@gmail.com", phone_number: "0394274839", street: "street",
-    additional_address_information: "additional address", postcode: "97119",
-    country: "country", is_partner: false, role_code: Role::PARTNER_ROLE_CODE,
+    email: "partner@gmail.com", phone_number: "0394274839", street: "street",
+    additional_address_information: "additional address", city_postcode: "97119",
+    country_code: "971", is_partner: false, role_code: Role::PARTNER_ROLE_CODE,
     password: "12345678", password_confirmation: "12345678")
   }
 
   let(:another_partner) {
     User.create!(username: "another_partner", firstname: "another_partner_firstname",
-    lastname: "another_partner_lastname", city: "city", email: "anotherlpartner@gmail.com",
+    lastname: "another_partner_lastname", email: "anotherlpartner@gmail.com",
     phone_number: "0394274839", street: "street",additional_address_information: "additional address",
-    postcode: "97119", country: "country", is_partner: false, role_code: Role::PARTNER_ROLE_CODE,
+    city_postcode: "97119", country_code: "971", is_partner: false, role_code: Role::PARTNER_ROLE_CODE,
     password: "87654321", password_confirmation: "87654321")
   }
 
   let(:consumer) {
     User.create!(username: "consu", firstname: "consu_firstname", lastname: "consu_lastname",
-    city: "city", email: "consu@gmail.com", phone_number: "0394274839", street: "street",
-    additional_address_information: "additional address", postcode: "97119",
-    country: "country", is_partner: false, role_code: Role::CONSUMER_ROLE_CODE,
+    email: "consu@gmail.com", phone_number: "0394274839", street: "street",
+    additional_address_information: "additional address", city_postcode: "97119",
+    country_code: "971", is_partner: false, role_code: Role::CONSUMER_ROLE_CODE,
     password: "12345678", password_confirmation: "12345678")
   }
 
   let(:shop_attributes) {
-    { name: 'new shop', product_category_code: 1, delivery_option_ids: [1, 2] }
+    { name: 'new shop', product_category_code: 1, delivery_option_ids: [1, 2],
+      country_code: "971", city_postcode: "97119", city_ids: ["97119", "97123"],
+      phone_number: "0590772266", street: "some street" }
   }
 
   let(:another_shop_attributes) {
-    { name: 'another shop', product_category_code: 2, delivery_option_ids: [3, 4] }
+    { name: 'another_shop', product_category_code: 2, delivery_option_ids: [3, 4],
+      country_code: "971", city_postcode: "97119", city_ids: ["97119", "97123"],
+      phone_number: "0590772266", street: "some street" }
   }
 
   let(:product) {

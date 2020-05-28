@@ -4,30 +4,38 @@ RSpec.describe Partner::ShopsController, type: :controller do
 
   let(:partner) {
     User.create!(username: "partner", firstname: "partner_firstname", lastname: "partner_lastname",
-    city: "city", email: "partner@gmail.com", phone_number: "0394274839", street: "street",
-    additional_address_information: "additional address", postcode: "97119",
-    country: "country", is_partner: false, role_code: Role::PARTNER_ROLE_CODE,
+    email: "partner@gmail.com", phone_number: "0394274839", street: "street",
+    additional_address_information: "additional address", city_postcode: "97119",
+    country_code: "971", is_partner: false, role_code: Role::PARTNER_ROLE_CODE,
     password: "12345678", password_confirmation: "12345678")
   }
 
   let(:another_partner) {
     User.create!(username: "another_partner", firstname: "another_partner_firstname",
-    lastname: "another_partner_lastname", city: "city", email: "anotherlpartner@gmail.com",
+    lastname: "another_partner_lastname", email: "anotherlpartner@gmail.com",
     phone_number: "0394274839", street: "street",additional_address_information: "additional address",
-    postcode: "97119", country: "country", is_partner: false, role_code: Role::PARTNER_ROLE_CODE,
+    city_postcode: "97119", country_code: "971", is_partner: false, role_code: Role::PARTNER_ROLE_CODE,
     password: "87654321", password_confirmation: "87654321")
   }
 
   let(:consumer) {
     User.create!(username: "consu", firstname: "consu_firstname", lastname: "consu_lastname",
-    city: "city", email: "consu@gmail.com", phone_number: "0394274839", street: "street",
-    additional_address_information: "additional address", postcode: "97119",
-    country: "country", is_partner: false, role_code: Role::CONSUMER_ROLE_CODE,
+    email: "consu@gmail.com", phone_number: "0394274839", street: "street",
+    additional_address_information: "additional address", city_postcode: "97119",
+    country_code: "971", is_partner: false, role_code: Role::CONSUMER_ROLE_CODE,
     password: "12345678", password_confirmation: "12345678")
   }
 
   let(:valid_attributes) {
-    { name: 'new shop', product_category_code: 1, delivery_option_ids: [1, 2], user_id: partner.id }
+    { name: 'new shop', product_category_code: 1, delivery_option_ids: [1, 2],
+      country_code: "971", city_postcode: "97119", city_ids: ["97119", "97123"],
+      phone_number: "0590772266", street: "some street" }
+  }
+
+  let(:another_shop_attributes) {
+    { name: 'another_shop', product_category_code: 2, delivery_option_ids: [3, 4],
+      country_code: "971", city_postcode: "97119", city_ids: ["97119", "97123"],
+      phone_number: "0590772266", street: "some street" }
   }
 
   let(:invalid_attributes) {
@@ -82,7 +90,7 @@ RSpec.describe Partner::ShopsController, type: :controller do
     context "when partner has a shop and tries to create another one" do
       before do
         sign_in(partner, nil)
-        partner.create_shop(name: 'test', product_category_code: 1, delivery_option_ids: [1, 2])
+        partner.create_shop(valid_attributes)
       end
       it "returns a success response" do
         get :new, params: {}, session: valid_session
@@ -142,7 +150,7 @@ RSpec.describe Partner::ShopsController, type: :controller do
     context "when partner has a shop and tries to create another one" do
       before do
         sign_in(partner, nil)
-        partner.create_shop(name: 'test', product_category_code: 1, delivery_option_ids: [1, 2])
+        partner.create_shop(valid_attributes)
       end
       it "returns a success response" do
         post :create, params: {shop: valid_attributes}, session: valid_session
@@ -177,10 +185,10 @@ RSpec.describe Partner::ShopsController, type: :controller do
     context "when partner is signed in" do
       before do
         sign_in(partner, nil)
+        partner.create_shop(valid_attributes)
       end
       it "returns a success response" do
-        shop = Shop.create! valid_attributes
-        get :show, params: {id: shop.to_param}, session: valid_session
+        get :show, params: {id: partner.shop.to_param}, session: valid_session
         expect(response).to be_successful
       end
     end
@@ -200,10 +208,10 @@ RSpec.describe Partner::ShopsController, type: :controller do
     context "when partner tries to access the shop of another partner" do
       before do
         sign_in(partner, nil)
-        another_partner.create_shop(name: 'another shop', product_category_code: 2, delivery_option_ids: [3, 4])
+        partner.create_shop(valid_attributes)
+        another_partner.create_shop(another_shop_attributes)
       end
       it "returns a redirect response" do
-        shop = Shop.create! valid_attributes
         get :show, params: {id: another_partner.shop.to_param}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_url)
@@ -214,10 +222,10 @@ RSpec.describe Partner::ShopsController, type: :controller do
     context "when signed in user is not an partner" do
       before do
         sign_in(consumer, nil)
+        partner.create_shop(valid_attributes)
       end
       it "returns a success response and redirects to root path" do
-        shop = Shop.create! valid_attributes
-        get :show, params: {id: shop.to_param}, session: valid_session
+        get :show, params: {id: partner.shop.to_param}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
         expect(flash[:alert]).to match I18n.t('.requires_partner_access_rights')
@@ -226,8 +234,8 @@ RSpec.describe Partner::ShopsController, type: :controller do
 
     context "when no user is signed in" do
       it "returns a redirect response and redirects to sign in path" do
-        shop = Shop.create! valid_attributes
-        get :show, params: {id: shop.to_param}, session: valid_session
+        partner.create_shop(valid_attributes)
+        get :show, params: {id: partner.shop.to_param}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(new_user_session_path)
       end
@@ -238,10 +246,10 @@ RSpec.describe Partner::ShopsController, type: :controller do
     context "when partner is signed in" do
       before do
         sign_in(partner, nil)
+        partner.create_shop(valid_attributes)
       end
       it "returns a success response" do
-        shop = Shop.create! valid_attributes
-        get :edit, params: {id: shop.to_param}, session: valid_session
+        get :edit, params: {id: partner.shop.to_param}, session: valid_session
         expect(response).to be_successful
       end
     end
@@ -261,10 +269,10 @@ RSpec.describe Partner::ShopsController, type: :controller do
     context "when partner tries to access the shop of another partner" do
       before do
         sign_in(partner, nil)
-        another_partner.create_shop(name: 'another shop', product_category_code: 2, delivery_option_ids: [3, 4])
+        partner.create_shop(valid_attributes)
+        another_partner.create_shop(another_shop_attributes)
       end
       it "returns a redirect response" do
-        shop = Shop.create! valid_attributes
         get :show, params: {id: another_partner.shop.to_param}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_url)
@@ -275,10 +283,10 @@ RSpec.describe Partner::ShopsController, type: :controller do
     context "when signed in user is not an partner" do
       before do
         sign_in(consumer, nil)
+        partner.create_shop(valid_attributes)
       end
       it "returns a redirect response and redirects to root path" do
-        shop = Shop.create! valid_attributes
-        get :edit, params: {id: shop.to_param}, session: valid_session
+        get :edit, params: {id: partner.shop.to_param}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
         expect(flash[:alert]).to match I18n.t('.requires_partner_access_rights')
@@ -287,8 +295,8 @@ RSpec.describe Partner::ShopsController, type: :controller do
 
     context "when no user is signed in" do
       it "returns a redirect response and redirects to sign in" do
-        shop = Shop.create! valid_attributes
-        get :edit, params: {id: shop.to_param}, session: valid_session
+        partner.create_shop(valid_attributes)
+        get :edit, params: {id: partner.shop.to_param}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(new_user_session_path)
       end
@@ -297,34 +305,35 @@ RSpec.describe Partner::ShopsController, type: :controller do
 
   describe "PUT #update" do
     let(:new_attributes) {
-      { name: 'the best shop', product_category_code: 2, delivery_option_ids: [3, 4], user_id: partner.id }
+      { name: 'the best shop', product_category_code: 2, delivery_option_ids: [3, 4],
+        country_code: "971", city_postcode: "97119", city_ids: ["97119", "97123"],
+        phone_number: "0590772266", street: "some street" }
     }
     context "when partner signed in" do
       before do
         sign_in(partner, nil)
+        partner.create_shop(valid_attributes)
       end
       context "with valid params" do
 
         it "updates the requested shop" do
-          shop = Shop.create! valid_attributes
-          put :update, params: {id: shop.to_param, shop: new_attributes}, session: valid_session
-          shop.reload
-          expect(shop.name).to eql "the best shop"
-          expect(shop.product_category_code).to eql 2
-          expect(shop.delivery_option_ids).to eql [3, 4]
+          put :update, params: {id: partner.shop.to_param, shop: new_attributes}, session: valid_session
+          partner.shop.reload
+          expect(partner.shop.name).to eql "the best shop"
+          expect(partner.shop.product_category_code).to eql 2
+          expect(partner.shop.delivery_option_ids).to eql [3, 4]
         end
 
         it "redirects to the shop" do
-          shop = Shop.create! valid_attributes
-          put :update, params: {id: shop.to_param, shop: valid_attributes}, session: valid_session
-          expect(response).to redirect_to partner_shop_url(shop)
+          put :update, params: {id: partner.shop.to_param, shop: valid_attributes}, session: valid_session
+          expect(response).to redirect_to partner_shop_url(partner.shop)
         end
       end
 
       context "with invalid params" do
         it "returns a success response (i.e. to display the 'edit' template)" do
-          shop = Shop.create! valid_attributes
-          put :update, params: {id: shop.to_param, shop: invalid_attributes}, session: valid_session
+
+          put :update, params: {id: partner.shop.to_param, shop: invalid_attributes}, session: valid_session
           expect(response).to be_successful
         end
       end
@@ -345,10 +354,10 @@ RSpec.describe Partner::ShopsController, type: :controller do
     context "when partner tries to access the shop of another partner" do
       before do
         sign_in(partner, nil)
-        another_partner.create_shop(name: 'another shop', product_category_code: 2, delivery_option_ids: [3, 4])
+        partner.create_shop(valid_attributes)
+        another_partner.create_shop(another_shop_attributes)
       end
       it "returns a redirect response" do
-        shop = Shop.create! valid_attributes
         put :update, params: {id: another_partner.shop.to_param, shop: new_attributes}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_url)
@@ -359,10 +368,10 @@ RSpec.describe Partner::ShopsController, type: :controller do
     context "when signed in user is not an partner" do
       before do
         sign_in(consumer, nil)
+        partner.create_shop(valid_attributes)
       end
       it "returns a redirect response and redirects to root path" do
-        shop = Shop.create! valid_attributes
-        put :update, params: {id: shop.to_param, shop: new_attributes}, session: valid_session
+        put :update, params: {id: partner.shop.to_param, shop: new_attributes}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
         expect(flash[:alert]).to match I18n.t('.requires_partner_access_rights')
@@ -371,8 +380,8 @@ RSpec.describe Partner::ShopsController, type: :controller do
 
     context "when no user is signed in" do
       it "returns a redirect response and redirects to sign in" do
-        shop = Shop.create! valid_attributes
-        put :update, params: {id: shop.to_param, shop: new_attributes}, session: valid_session
+        partner.create_shop(valid_attributes)
+        put :update, params: {id: partner.shop.to_param, shop: new_attributes}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(new_user_session_path)
       end
