@@ -49,4 +49,24 @@ module PartnerFilter
     end
   end
 
+  def require_unaccepted_ocd_fee_to_change_ocd_fee
+    order = Order.find(params[:id])
+    if order.is_ocd?
+      if order.ocd_fee_accepted? && params[:order][:ocd_fee].present?
+        flash[:alert] = "can't change ocd fee as they've been accepted"
+        redirect_to partner_order_url(order)
+      end
+    end
+  end
+
+  def require_accepted_ocd_fee_to_change_status
+    order = Order.find(params[:id])
+    if order.is_ocd?
+      unless order.ocd_fee >= 1 && order.ocd_fee_accepted? && params[:order][:status_id].blank?
+        flash[:alert] = "can't change status as ocd fee hasn't been accepted yet"
+        redirect_to partner_order_url(order)
+      end
+    end
+  end
+
 end

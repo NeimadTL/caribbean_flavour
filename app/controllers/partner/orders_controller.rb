@@ -6,6 +6,8 @@ class Partner::OrdersController < ApplicationController
   before_action :require_to_have_shop
   before_action :require_to_be_shop_order, only: [:show, :edit, :update]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :require_unaccepted_ocd_fee_to_change_ocd_fee, only: [:update]
+  before_action :require_accepted_ocd_fee_to_change_status, only: [:update]
 
   # GET /partner/orders
   # GET /partner/orders.json
