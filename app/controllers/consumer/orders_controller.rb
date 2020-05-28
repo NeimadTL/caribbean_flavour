@@ -34,9 +34,7 @@ class Consumer::OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(order_params.merge(user: current_user))
-    unless @shop.cities.include?(current_user.city)
-      @order.is_ocd = true
-    end
+    @order.is_ocd = true unless @shop.cities.include?(current_user.city)
 
     respond_to do |format|
       if @order.save
