@@ -62,7 +62,7 @@ module PartnerFilter
   def require_accepted_ocd_fee_to_change_status
     order = Order.find(params[:id])
     if order.is_ocd?
-      if order.ocd_fee < 1 && !order.ocd_fee_accepted? && params[:order][:status_id].present?
+      if !order.ocd_fee_accepted? && params[:order][:status_id].present?
         flash[:alert] = t('.cant_change_status_msg')
         redirect_to partner_order_url(order)
       end

@@ -183,6 +183,10 @@ fr:
   require_to_be_shop_owner: "Vous n'êtes pas le propriétaire de ce magasin"
   require_to_be_shop_owner_product: "Ce produit n'est pas dans votre magasin"
   product_in_shop_already: "Ce produit est déjà dans votre magasin."
+  cant_change_ocd_fee_msg: "Vous ne pouvez pas changer les frais de livraison hors couverture car ils
+                            ont déjà été acceptés"
+  cant_change_status_msg: "Vous ne pouvez pas changer le status car les les frais de livraison hors
+                           couverture n'ont pas encore été acceptés"
 
 
   consumer:

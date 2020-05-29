@@ -260,7 +260,7 @@ RSpec.describe Partner::OrdersController, type: :controller do
       end
       context "with valid params" do
 
-        it "updates the requested stock" do
+        it "updates the requested order" do
           order = Order.create! valid_attributes
           order.order_line_items << order_line_item
           put :update, params: {id: order.to_param, order: new_attributes}, session: valid_session
@@ -271,8 +271,8 @@ RSpec.describe Partner::OrdersController, type: :controller do
         it "redirects to the stock" do
           order = Order.create! valid_attributes
           order.order_line_items << order_line_item
-          put :update, params: {id: order.to_param, order: valid_attributes}, session: valid_session
-          expect(response).to redirect_to partner_orders_url(order)
+          put :update, params: {id: order.to_param, order: new_attributes}, session: valid_session
+          expect(response).to redirect_to partner_orders_url
         end
       end
 
@@ -296,7 +296,7 @@ RSpec.describe Partner::OrdersController, type: :controller do
         another_order_line_item = OrderLineItem.create(name: 'another product', unit_price: 5.99, quantity: 3, shop_id: another_partner.shop.id)
         order.order_line_items << another_order_line_item
         expect(partner.shop.nil?).to be_truthy
-        put :update, params: {id: order.to_param, order: valid_attributes}, session: valid_session
+        put :update, params: {id: order.to_param, order: new_attributes}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(partner_shops_url)
       end
@@ -312,10 +312,68 @@ RSpec.describe Partner::OrdersController, type: :controller do
         order = Order.create! valid_attributes
         another_order_line_item = OrderLineItem.create(name: 'another product', unit_price: 5.99, quantity: 3, shop_id: another_partner.shop.id)
         order.order_line_items << another_order_line_item
-        put :update, params: {id: order.to_param, order: valid_attributes}, session: valid_session
+        put :update, params: {id: order.to_param, order: new_attributes}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_url)
         expect(flash[:alert]).to match I18n.t('.require_to_be_shop_order')
+      end
+    end
+
+    context "when partner has received an ocd order and tries to change status
+            while the consummer hasn't accepted the ocd fee yet" do
+      before do
+        sign_in(partner, nil)
+        partner.create_shop(shop_attributes)
+      end
+
+      it "returns a redirect response and status should not change" do
+        order = Order.create! valid_attributes.merge(is_ocd: true, ocd_fee: 10)
+        order_line_item = OrderLineItem.create(name: 'product', unit_price: 5.99, quantity: 3, shop_id: partner.shop.id)
+        order.order_line_items << order_line_item
+        put :update, params: {id: order.to_param, order: new_attributes}, session: valid_session
+        expect(order.status_id).to eql 0 # for ordered_status
+        expect(response).to be_redirect
+        expect(response).to redirect_to(partner_order_url(order))
+        expect(flash[:alert]).to match I18n.t('.cant_change_status_msg')
+      end
+    end
+
+    context "when partner has received an ocd order and tries to change ocd
+            fee while the consummer has accepted the ocd fee already" do
+      before do
+        sign_in(partner, nil)
+        partner.create_shop(shop_attributes)
+      end
+
+      it "returns a redirect response and ocd fee should not change" do
+        order = Order.create! valid_attributes.merge(is_ocd: true, ocd_fee: 10, ocd_fee_accepted: true)
+        order_line_item = OrderLineItem.create(name: 'product', unit_price: 5.99, quantity: 3, shop_id: partner.shop.id)
+        order.order_line_items << order_line_item
+        put :update, params: {id: order.to_param, order: new_attributes.merge(ocd_fee: 20)}, session: valid_session
+        expect(order.ocd_fee).to eql 10
+        expect(response).to be_redirect
+        expect(response).to redirect_to(partner_order_url(order))
+        expect(flash[:alert]).to match I18n.t('.cant_change_ocd_fee_msg')
+      end
+    end
+
+    context "when partner has received an ocd order and tries to change status
+            while the consummer has accepted the ocd fee already" do
+      before do
+        sign_in(partner, nil)
+        partner.create_shop(shop_attributes)
+      end
+
+      it "updates the requested order status" do
+        order = Order.create! valid_attributes.merge(is_ocd: true, ocd_fee: 10, ocd_fee_accepted: true)
+        order_line_item = OrderLineItem.create(name: 'product', unit_price: 5.99, quantity: 3, shop_id: partner.shop.id)
+        order.order_line_items << order_line_item
+        put :update, params: {id: order.to_param, order: new_attributes}, session: valid_session
+        order.reload
+        expect(order.ocd_fee).to eql 10
+        expect(order.status_id).to eql 2 # for 'shipped_status'
+        expect(response).to be_redirect
+        expect(response).to redirect_to partner_orders_url
       end
     end
 

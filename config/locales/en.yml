@@ -209,6 +209,8 @@ en:
   require_to_be_shop_owner: "You are not the owner of this shop"
   require_to_be_shop_owner_product: "This product is not in your shop"
   product_in_shop_already: "This product is already in your shop."
+  cant_change_ocd_fee_msg: "You can't change outside coverage delivery fee as they've been accepted already"
+  cant_change_status_msg: "You can't change status as outside coverage delivery fee hasn't been accepted yet"
 
 
   consumer:
