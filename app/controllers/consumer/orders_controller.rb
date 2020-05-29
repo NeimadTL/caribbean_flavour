@@ -14,7 +14,7 @@ class Consumer::OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.where(user_id: current_user.id)
+    @orders = Order.where(user_id: current_user.id).order(created_at: :desc)
   end
 
   # GET /orders/1

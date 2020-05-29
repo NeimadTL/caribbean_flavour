@@ -14,7 +14,7 @@ class Partner::OrdersController < ApplicationController
   def index
     # @orders = Order.left_outer_joins(:order_line_items)
     #             .where("order_line_items.shop_id = #{current_user.shop.id}").distinct
-    @orders = current_user.shop.orders.distinct
+    @orders = current_user.shop.orders.distinct.order(created_at: :desc)
   end
 
   # GET /partner/orders/1
