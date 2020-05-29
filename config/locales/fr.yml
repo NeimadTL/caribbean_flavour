@@ -308,6 +308,7 @@ fr:
         order_successfully_destroyed: "Commande annulée avec succès"
         requires_consumer_access_rights: "La page que vous recherchez requiert un droit d'accès consommateur."
         require_to_be_order_owner: "Vous n'êtes pas le propriétaire de cette commande"
+        require_ordered_status: "Vous ne pouvez pas annuler cette commande car elle n'est plus au status 'commandée'"
   requires_consumer_access_rights: "La page que vous recherchez requiert un droit d'accès consommateur."
   require_to_be_cart_owner: "Vous n'est pas propriétaire de ce panier"
   item_in_cart_already: "Ce produit est déjà dans votre parnier. Si vous en voulez plus, merci d'aller dans votre panier et d'en augmenter la quantité."
@@ -329,6 +330,7 @@ fr:
       words_connector: " et "
       two_words_connector: " et "
       last_word_connector: " et "
+  require_ordered_status: "Vous ne pouvez plus annuler cette commande car elle n'est plus au status 'commandée'"
 
   shared:
     orders:

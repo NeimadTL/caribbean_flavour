@@ -331,6 +331,7 @@ en:
         order_successfully_destroyed: "Order was successfully canceled."
         requires_consumer_access_rights: "The page you were looking for requires consumer access rights"
         require_to_be_order_owner: "You are not the owner of this order"
+        require_ordered_status: "You can't cancel this order as it's not in 'ordered' status anymore"
   requires_consumer_access_rights: "The page you were looking for requires consumer access rights"
   require_to_be_cart_owner: "You are not the owner of this cart"
   item_in_cart_already: "This product is already in your cart. If you want more, please go to your cart and increase the quantity for it"
@@ -347,6 +348,7 @@ en:
   packed_status: "Packed"
   shipped_status: "Delivery in progress"
   delivered_status: "Delivered"
+  require_ordered_status: "You can't cancel this order as it's not in 'ordered' status anymore"
 
   shared:
     orders:

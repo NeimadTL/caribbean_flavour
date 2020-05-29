@@ -52,9 +52,10 @@
 <%= render 'accept_ocd_fee', order: @order %>
 
 
-
-<%= link_to t('.cancel'), consumer_order_path(@order), method: :delete,
-    data: { confirm: t('.are_you_sure') }, class: "btn btn-danger btn-sm float-right" %>
+<% if @order.status_id == 0 %>
+  <%= link_to t('.cancel'), consumer_order_path(@order), method: :delete,
+      data: { confirm: t('.are_you_sure') }, class: "btn btn-danger btn-sm float-right" %>
+<% end %>
 
 
 <!--  <%# <%= link_to 'Edit', edit_consumer_order_path(@order) %> | %> -->

@@ -22,8 +22,10 @@
           <p class="card-text"><strong><%= t('.order_status') %></strong> <%= t(Order::STATUS[order.status_id]) %><p>
           <%= link_to t('.details'), consumer_order_path(order), class: "btn btn-primary btn-sm" %>
           <!-- <%# <%= link_to 'Edit', edit_consumer_order_path(order) %> %> -->
-          <%= link_to t('.cancel'), consumer_order_path(order), method: :delete,
-              data: { confirm: t('.are_you_sure') }, class: "btn btn-danger btn-sm" %>
+          <% if order.status_id == 0 %>
+            <%= link_to t('.cancel'), consumer_order_path(order), method: :delete,
+                data: { confirm: t('.are_you_sure') }, class: "btn btn-danger btn-sm" %>
+          <% end %>
           <%= render 'accept_ocd_fee', order: order, class: "btn btn-success btn-sm" %>
         </div>
       </div>

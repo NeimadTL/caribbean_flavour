@@ -9,6 +9,7 @@ class Consumer::OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :set_shop, only: [:new, :create]
   before_action :does_shop_cover_user_city, only: [:new]
+  before_action :require_ordered_status, only: [:destroy]
 
   # GET /orders
   # GET /orders.json

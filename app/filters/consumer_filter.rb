@@ -38,6 +38,14 @@ module ConsumerFilter
     end
   end
 
+  def require_ordered_status
+    order = Order.find(params[:id])
+    unless order.status_id == 0
+      redirect_with_alert(t('.require_ordered_status'), consumer_order_url(order))
+    end
+
+  end
+
   private
 
     def redirect_with_alert(msg, url)
