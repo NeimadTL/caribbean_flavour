@@ -329,10 +329,10 @@ fr:
   shared:
     orders:
       index_order_fees:
-        standard_delivery_fee: "Frais standard de livraison"
+        standard_delivery_fee: "Frais de livraison standard"
         ocd_fee: "Frais de livraison hors couverture"
       show_order_fees:
-        standard_delivery_fee: "Frais standard de livraison"
+        standard_delivery_fee: "Frais de livraison standard"
         ocd_fee: "Frais de livraison hors couverture"
 
   activerecord:
