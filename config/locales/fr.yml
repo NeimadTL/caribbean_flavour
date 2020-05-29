@@ -330,7 +330,7 @@ fr:
       words_connector: " et "
       two_words_connector: " et "
       last_word_connector: " et "
-  require_ordered_status: "Vous ne pouvez plus annuler cette commande car elle n'est plus au status 'commandée'"
+  require_ordered_status: "Vous ne pouvez pas annuler cette commande car elle n'est plus au status 'commandée'"
 
   shared:
     orders:

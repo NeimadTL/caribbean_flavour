@@ -198,8 +198,7 @@ RSpec.describe Consumer::OrdersController, type: :controller do
     context "when consumer tries to access an order of another consumer" do
       before { sign_in(consumer, nil) }
       it "returns a redirect response" do
-        valid_attributes['user_id'] = partner.id
-        order = Order.create! valid_attributes
+        order = Order.create! valid_attributes.merge(user_id: partner.id)
         get :show, params: {id: order.to_param}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_url)
@@ -250,12 +249,22 @@ RSpec.describe Consumer::OrdersController, type: :controller do
     context "when consumer tries to cancel an order of another consumer" do
       before { sign_in(consumer, nil) }
       it "returns a redirect response" do
-        valid_attributes['user_id'] = partner.id
-        order = Order.create! valid_attributes
+        order = Order.create! valid_attributes.merge(user_id: partner.id)
         delete :destroy, params: {id: order.to_param}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_url)
         expect(flash[:alert]).to match I18n.t('.require_to_be_order_owner')
+      end
+    end
+
+    context "when consumer tries to cancel an order which is not in ordered status anymore" do
+      before { sign_in(consumer, nil) }
+      it "returns a redirect response" do
+        order = Order.create! valid_attributes.merge(user_id: consumer.id, status_id: 1)
+        delete :destroy, params: {id: order.to_param}, session: valid_session
+        expect(response).to be_redirect
+        expect(response).to redirect_to consumer_order_url(order)
+        expect(flash[:alert]).to match I18n.t('.require_ordered_status')
       end
     end
 
