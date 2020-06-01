@@ -233,6 +233,7 @@ en:
         exit_btn: "Exit"
         delivery_coverage: "Delivery Coverage"
         contact_details: "Contact Details"
+        no_delivery_msg: "Unfortunately, this shop doesn't deliver in your city"
     line_items:
       form:
         qty_label: "Quantity (Kgs)"

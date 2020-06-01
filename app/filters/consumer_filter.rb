@@ -27,6 +27,15 @@ module ConsumerFilter
     end
   end
 
+  def require_delivery_in_user_city
+    if user_signed_in?
+      shop = Shop.find(params[:id])
+      unless shop.cities.include?(current_user.city)
+        @no_delivery_msg = t('.no_delivery_msg')
+      end
+    end
+  end
+
   def does_shop_cover_user_city
     if params[:shop_id] # when in new action
       shop = Shop.find(params[:shop_id])

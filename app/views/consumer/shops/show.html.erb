@@ -51,6 +51,14 @@
   </div>
 </div>
 
+<% if @no_delivery_msg %>
+  <div class="card mb-3">
+    <div class="card-body text-info">
+      <%= @no_delivery_msg %>
+    </div>
+  </div>
+<% end %>
+
 <div class="row mb-2">
   <div class="col-sm">
     <div class="card mb-3">
@@ -72,8 +80,10 @@
                   <td>
                     <% if user_signed_in? %>
                       <% if current_user.role.code == Role::CONSUMER_ROLE_CODE %>
-                        <%= link_to new_consumer_cart_stock_line_item_path(current_user.cart, stock), class: 'btn transparent pt-0 pb-0' do %>
-                          <%= image_tag "cart-outline.svg", size: "24" %>
+                        <% unless @no_delivery_msg %>
+                          <%= link_to new_consumer_cart_stock_line_item_path(current_user.cart, stock), class: 'btn transparent pt-0 pb-0' do %>
+                            <%= image_tag "cart-outline.svg", size: "24" %>
+                          <% end %>
                         <% end %>
                       <% end %>
                     <% else %>

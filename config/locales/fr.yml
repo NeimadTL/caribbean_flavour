@@ -209,6 +209,7 @@ fr:
         exit_btn: "Sortir"
         delivery_coverage: "Couverture de livraison"
         contact_details: "Coordonnées"
+        no_delivery_msg: "Malheureusement, ce magasin ne livre pas dans votre ville"
     line_items:
       form:
         qty_label: "Quantité (Kgs)"
