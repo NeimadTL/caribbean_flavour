@@ -5,6 +5,8 @@ class Shop < ApplicationRecord
   validates :cities, presence: true, unless: -> { cities.count > 0 }
   validates :phone_number, presence: true
   validates :street, presence: true
+  validates :minimum_delivery_price, presence: true,
+            numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   has_many :stocks, dependent: :destroy
   has_many :products, through: :stocks, dependent: :destroy

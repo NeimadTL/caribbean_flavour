@@ -125,6 +125,7 @@ en:
         shop_street: "Street"
         additional_address_information: "Additional address information"
         shop_city: "City"
+        minimum_delivery_price: "Minimum price for delivery"
       edit:
         treak_shop_header: "Treak your shop settings"
         back_link: "Back"

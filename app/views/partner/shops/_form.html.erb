@@ -12,6 +12,7 @@
     <%= f.association :city, label: t('.shop_city'), label_method: :name, value_method: :postcode, as: :select %>
     <%= f.association :delivery_options, label: t('.delivery_options'), label_method: :to_option, value_method: :code, as: :check_boxes %>
     <%= f.association :cities, label: t('.delivery_coverage'), label_method: :name, value_method: :postcode, as: :check_boxes %>
+    <%= f.input :minimum_delivery_price, label: t('.minimum_delivery_price'), required: true, autofocus: true, input_html: { autocomplete: "minimum_delivery_price" } %>
     <%= f.association :product_category, label: t('.product_category'), label_method: :to_name, value_method: :code, as: :radio_buttons %>
   </div>
 

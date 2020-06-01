@@ -102,6 +102,7 @@ fr:
         shop_street: "Addresse"
         additional_address_information: "Complément d'adresse"
         shop_city: "Ville"
+        minimum_delivery_price: "Prix minimum pour livraison"
       edit:
         treak_shop_header: "Réglez les paramètres de votre magasin"
         back_link: "Précédent"
@@ -368,7 +369,7 @@ fr:
         city: "Ville"
         delivery_options: "Moyens de livraison"
         product_category: "Catégorie de produit"
-        cities: "Couverture de livraison"
+        minimum_delivery_price: "Prix minimum de livraison"
       stock:
         product: "Produit"
         price: "Prix"
@@ -419,6 +420,9 @@ fr:
               required: "un doit être sélectionné"
             city:
               required: "une doit être sélectionnée"
+            minimum_delivery_price:
+              greater_than_or_equal_to: "doit être supérieur ou égale à zéro"
+              not_an_integer: "doit être un chiffre entier"
 
         stock:
           attributes:

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_27_203635) do
+ActiveRecord::Schema.define(version: 2020_06_01_154005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -132,6 +132,7 @@ ActiveRecord::Schema.define(version: 2020_05_27_203635) do
     t.string "street", default: "", null: false
     t.string "additional_address_information", default: ""
     t.string "city_postcode", null: false
+    t.integer "minimum_delivery_price", default: 0, null: false
     t.index ["city_postcode"], name: "index_shops_on_city_postcode"
     t.index ["country_code"], name: "index_shops_on_country_code"
     t.index ["product_category_code"], name: "index_shops_on_product_category_code"
