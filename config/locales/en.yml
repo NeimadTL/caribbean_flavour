@@ -252,11 +252,13 @@ en:
         item_in_cart_already: "This product is already in your cart. If you want more, please go to your cart and increase the quantity for it"
         requires_consumer_access_rights: "The page you were looking for requires consumer access rights"
         require_to_be_cart_owner: "You are not the owner of this cart"
+        no_delivery_msg: "Unfortunately, this shop doesn't deliver in your city"
       create:
         line_item_successfully_created: "Product was successfully added to your cart"
         invalid_cart: "Something went wrong : invalid cart"
         requires_consumer_access_rights: "The page you were looking for requires consumer access rights"
         require_to_be_cart_owner: "You are not the owner of this cart"
+        no_delivery_msg: "Unfortunately, this shop doesn't deliver in your city"
       update:
         line_item_successfully_updated: "Product's quantity was successfully updated"
         requires_consumer_access_rights: "The page you were looking for requires consumer access rights"
@@ -351,6 +353,7 @@ en:
   shipped_status: "Delivery in progress"
   delivered_status: "Delivered"
   require_ordered_status: "You can't cancel this order as it's not in 'ordered' status anymore"
+  no_delivery_msg: "Unfortunately, this shop doesn't deliver in your city"
 
   shared:
     orders:

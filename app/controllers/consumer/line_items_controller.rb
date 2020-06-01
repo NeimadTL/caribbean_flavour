@@ -10,6 +10,7 @@ class Consumer::LineItemsController < ApplicationController
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
   before_action :item_in_cart_already, only: [:new]
   rescue_from ActiveRecord::RecordNotUnique, with: :invalid_cart
+  before_action :check_if_delivery_allowed, only: [:new, :create]
 
 
 
@@ -97,6 +98,12 @@ class Consumer::LineItemsController < ApplicationController
     def invalid_cart
       logger.error "User ##{current_user.id} attempts to add item #{@stock.product.reference} twice in cart ##{@cart.id}"
       redirect_to consumer_shop_url(@stock.shop), alert: t('.invalid_cart')
+    end
+
+    def check_if_delivery_allowed
+      unless @stock.shop.cities.include?(current_user.city)
+        redirect_to consumer_shop_url(@stock.shop), alert: t('.no_delivery_msg')
+      end
     end
 
 

@@ -95,6 +95,22 @@ RSpec.describe Consumer::LineItemsController, type: :controller do
       end
     end
 
+    context "when consumer tries to buy from a that doen't deliver in his city" do
+      before do
+        sign_in(consumer, nil)
+        shop_attributes[:city_ids].delete("97119")
+        shop = partner.create_shop(shop_attributes)
+        shop.stocks << Stock.new(stock_attributes)
+      end
+      it "returns a success response" do
+        stock_id = partner.shop.stocks.first.id
+        get :new, params: {cart_id: consumer.cart.id, stock_id: stock_id}, session: valid_session
+        expect(response).to be_redirect
+        expect(response).to redirect_to(consumer_shop_url(partner.shop))
+        expect(flash[:alert]).to match I18n.t('.no_delivery_msg')
+      end
+    end
+
     context "when signed in user is not an consumer" do
       before do
         sign_in(partner, nil)
@@ -158,7 +174,7 @@ RSpec.describe Consumer::LineItemsController, type: :controller do
       end
     end
 
-    context "when consumer tries to create an item for another one consumer" do
+    context "when consumer tries to create an item for another consumer" do
       before do
         sign_in(consumer, nil)
         shop = partner.create_shop(shop_attributes)
@@ -171,6 +187,23 @@ RSpec.describe Consumer::LineItemsController, type: :controller do
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
         expect(flash[:alert]).to match I18n.t('.require_to_be_cart_owner')
+      end
+    end
+
+    context "when consumer tries to buy from a that doen't deliver in his city" do
+      before do
+        sign_in(consumer, nil)
+        shop_attributes[:city_ids].delete("97119")
+        shop = partner.create_shop(shop_attributes)
+        shop.stocks << Stock.new(stock_attributes)
+      end
+      it "returns a success response" do
+        stock_id = partner.shop.stocks.first.id
+        valid_attributes['stock_id'] = stock_id
+        post :create, params: {cart_id: consumer.cart.id, stock_id: stock_id, line_item: valid_attributes}, session: valid_session
+        expect(response).to be_redirect
+        expect(response).to redirect_to(consumer_shop_url(partner.shop))
+        expect(flash[:alert]).to match I18n.t('.no_delivery_msg')
       end
     end
 

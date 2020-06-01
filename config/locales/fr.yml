@@ -228,11 +228,13 @@ fr:
         item_in_cart_already: "Ce produit est déjà dans votre parnier. Si vous en voulez plus, merci d'aller dans votre panier et d'en augmenter la quantité."
         requires_consumer_access_rights: "La page que vous recherchez requiert un droit d'accès consommateur."
         require_to_be_cart_owner: "Vous n'est pas propriétaire de ce panier"
+        no_delivery_msg: "Malheureusement, ce magasin ne livre pas dans votre ville"
       create:
         line_item_successfully_created: "Produit ajouté à votre panier avec succès"
         invalid_cart: "Une erreur s'est produite : panier invalide"
         requires_consumer_access_rights: "La page que vous recherchez requiert un droit d'accès consommateur."
         require_to_be_cart_owner: "Vous n'est pas propriétaire de ce panier"
+        no_delivery_msg: "Malheureusement, ce magasin ne livre pas dans votre ville"
       update:
         line_item_successfully_updated: "Quantité du produit mise jour avec succès"
         requires_consumer_access_rights: "La page que vous recherchez requiert un droit d'accès consommateur."
@@ -333,6 +335,7 @@ fr:
       two_words_connector: " et "
       last_word_connector: " et "
   require_ordered_status: "Vous ne pouvez pas annuler cette commande car elle n'est plus au status 'commandée'"
+  no_delivery_msg: "Malheureusement, ce magasin ne livre pas dans votre ville"
 
   shared:
     orders:
