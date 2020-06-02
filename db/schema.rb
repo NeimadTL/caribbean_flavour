@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_02_011622) do
+ActiveRecord::Schema.define(version: 2020_06_02_211437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -165,6 +165,10 @@ ActiveRecord::Schema.define(version: 2020_06_02_011622) do
     t.integer "role_code", default: 3, null: false
     t.string "country_code", default: "", null: false
     t.string "city_postcode", default: "", null: false
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
     t.index ["city_postcode"], name: "index_users_on_city_postcode"
     t.index ["country_code"], name: "index_users_on_country_code"
     t.index ["email"], name: "index_users_on_email", unique: true

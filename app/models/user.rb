@@ -2,7 +2,8 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :confirmable
 
   validates :username, presence: true, uniqueness: true
   validates :firstname, presence: true
@@ -19,6 +20,7 @@ class User < ApplicationRecord
 
   after_create :initialize_cart
   after_create :setup_partner_role
+  after_create :welcome_new_user
 
   private
 
@@ -28,6 +30,10 @@ class User < ApplicationRecord
 
     def setup_partner_role
       self.update(role_code: Role::PARTNER_ROLE_CODE) if self.is_partner
+    end
+
+    def welcome_new_user
+      UserMailer.confirmation_instructions(self, self.confirmation_token, {}).deliver_now
     end
 
 end
