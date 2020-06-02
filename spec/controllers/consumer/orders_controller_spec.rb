@@ -42,6 +42,14 @@ RSpec.describe Consumer::OrdersController, type: :controller do
 
   let(:valid_session) { {} }
 
+  let(:product) {
+    Product.create!(reference: 'dummy_ref', name: 'dummy_product', product_category_id: ProductCategory::FARMING_CATEGORY_CODE)
+  }
+
+  let(:stock_attributes) {
+    { product_reference: product.reference, price: 2.2 }
+  }
+
   describe "GET #new" do
     context "when partner is signed in" do
       before do
@@ -123,10 +131,40 @@ RSpec.describe Consumer::OrdersController, type: :controller do
         partner.create_shop(shop_attributes)
       end
       it "returns a success response" do
-        get :new, params: {cart_id: another_consumer.cart.id, shop_id: partner.shop.id, order: valid_attributes}, session: valid_session
+        post :create, params: {cart_id: another_consumer.cart.id, shop_id: partner.shop.id, order: valid_attributes}, session: valid_session
         expect(response).to be_redirect
         expect(response).to redirect_to(root_path)
         expect(flash[:alert]).to match I18n.t('.require_to_be_cart_owner')
+      end
+    end
+
+    context "when consumer tries create an delivery home order of less than shop's minimum delivery price " do
+      before do
+        sign_in(consumer, nil)
+        shop = partner.create_shop(shop_attributes.merge(minimum_delivery_price: 10))
+        shop.stocks << Stock.new(stock_attributes)
+        consumer.cart.line_items << LineItem.new(stock_id: shop.stocks.first.id, quantity: 3)
+      end
+      it "returns a success response" do
+        post :create, params: {cart_id: consumer.cart.id, shop_id: partner.shop.id, order: valid_attributes}, session: valid_session
+        expect(response).to be_redirect
+        expect(response).to redirect_to(new_consumer_cart_shop_order_url(consumer.cart, partner.shop))
+        expect(flash[:alert]).to match I18n.t('.home_delivery_mininum_amount_msg', min_amount: partner.shop.minimum_delivery_price)
+      end
+    end
+
+    context "when consumer tries create an order other than delivery home of less than shop's minimum delivery price " do
+      before do
+        sign_in(consumer, nil)
+        shop = partner.create_shop(shop_attributes.merge(minimum_delivery_price: 10))
+        shop.stocks << Stock.new(stock_attributes)
+        consumer.cart.line_items << LineItem.new(stock_id: shop.stocks.first.id, quantity: 3)
+      end
+      it "returns a success response" do
+        valid_attributes['delivery_option_code'] = DeliveryOption::SHOP_OWNER_PLACE_OPTION_CODE
+        expect {
+          post :create, params: {cart_id: consumer.cart.id, shop_id: partner.shop.id, order: valid_attributes}, session: valid_session
+        }.to change(Order, :count).by(1)
       end
     end
 

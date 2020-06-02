@@ -289,6 +289,7 @@ fr:
         require_to_be_cart_owner: "Vous n'est pas propriétaire de ce panier"
         new_order_ocd_fee_msg: "Si vous choisissez de vous faire livrer chez vous ou dans un point relais,
                                 des frais de livraison hors couverture seront ajoutés à votre commande."
+        home_delivery_mininum_amount_msg: "Votre commande doit être d'une valeur minimum de %{min_amount}€ pour vous faire livrer chez vous"
       show:
         name_col: "Nom"
         unit_price_col: "Prix unitaire"
@@ -308,6 +309,7 @@ fr:
         order_successfully_created: "Commande créée avec succès."
         requires_consumer_access_rights: "La page que vous recherchez requiert un droit d'accès consommateur."
         require_to_be_cart_owner: "Vous n'est pas propriétaire de ce panier"
+        home_delivery_mininum_amount_msg: "Votre commande doit être d'une valeur minimum de %{min_amount}€ pour vous faire livrer chez vous"
       destroy:
         order_successfully_destroyed: "Commande annulée avec succès"
         requires_consumer_access_rights: "La page que vous recherchez requiert un droit d'accès consommateur."
@@ -336,6 +338,7 @@ fr:
       last_word_connector: " et "
   require_ordered_status: "Vous ne pouvez pas annuler cette commande car elle n'est plus au status 'commandée'"
   no_delivery_msg: "Malheureusement, ce magasin ne livre pas dans votre ville"
+  home_delivery_mininum_amount_msg: "Votre commande doit être d'une valeur minimum de %{min_amount}€ pour vous faire livrer chez vous"
 
   shared:
     orders:

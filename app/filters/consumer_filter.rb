@@ -36,6 +36,22 @@ module ConsumerFilter
     end
   end
 
+  def show_home_delivery_minimum_amount
+    shop = Shop.find(params[:shop_id])
+    orders_amount = @cart.total_price_for(@cart.line_items_of(shop))
+    unless orders_amount >= shop.minimum_delivery_price
+      @home_delivery_mininum_amount_msg = t('.home_delivery_mininum_amount_msg', min_amount: shop.minimum_delivery_price)
+    end
+  end
+
+  def require_minimum_amount_for_home_delivery
+    shop = Shop.find(params[:shop_id])
+    orders_amount = @cart.total_price_for(@cart.line_items_of(@shop))
+    if orders_amount < shop.minimum_delivery_price && params[:order][:delivery_option_code].to_i == 1
+      redirect_to(new_consumer_cart_shop_order_url(@cart, shop), alert: t('.home_delivery_mininum_amount_msg', min_amount: @shop.minimum_delivery_price))
+    end
+  end
+
   def does_shop_cover_user_city
     if params[:shop_id] # when in new action
       shop = Shop.find(params[:shop_id])

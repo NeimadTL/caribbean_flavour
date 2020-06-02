@@ -313,6 +313,7 @@ en:
         require_to_be_cart_owner: "You are not the owner of this cart"
         new_order_ocd_fee_msg: "If you decide to be delivered home or at a parcel pickup point, an outside
                                 coverage fee will be added on your order."
+        home_delivery_mininum_amount_msg: "Your order's amount must be at least of $%{min_amount} for home delivery"
       show:
         name_col: "Name"
         unit_price_col: "Unit Price"
@@ -331,6 +332,7 @@ en:
         order_successfully_created: "Order was successfully created."
         requires_consumer_access_rights: "The page you were looking for requires consumer access rights"
         require_to_be_cart_owner: "You are not the owner of this cart"
+        home_delivery_mininum_amount_msg: "Your order's amount must be at least of $%{min_amount} for home delivery"
       destroy:
         order_successfully_destroyed: "Order was successfully canceled."
         requires_consumer_access_rights: "The page you were looking for requires consumer access rights"
@@ -354,6 +356,7 @@ en:
   delivered_status: "Delivered"
   require_ordered_status: "You can't cancel this order as it's not in 'ordered' status anymore"
   no_delivery_msg: "Unfortunately, this shop doesn't deliver in your city"
+  home_delivery_mininum_amount_msg: "Your order's amount must be at least of $%{min_amount} for home delivery"
 
   shared:
     orders:
