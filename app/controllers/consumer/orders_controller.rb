@@ -8,7 +8,6 @@ class Consumer::OrdersController < ApplicationController
   before_action :set_cart, only: [:new, :create]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :set_shop, only: [:new, :create]
-  # before_action :does_shop_cover_user_city, only: [:new]
   before_action :show_home_delivery_minimum_amount, only: [:new]
   before_action :require_minimum_amount_for_home_delivery, only: [:create]
   before_action :require_ordered_status, only: [:destroy]
@@ -37,7 +36,6 @@ class Consumer::OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(order_params.merge(user: current_user))
-    # @order.is_ocd = true unless @shop.cities.include?(current_user.city)
 
     respond_to do |format|
       if @order.save
@@ -87,7 +85,7 @@ class Consumer::OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.require(:order).permit(:delivery_option_code, :ocd_fee_accepted)
+      params.require(:order).permit(:delivery_option_code)
     end
 
 end

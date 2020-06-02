@@ -21,7 +21,7 @@
         <td colspan="3"><%= t('.subtotal') %></td>
         <td class="total_cell"><%= number_to_currency(@order.items_total_price, locale: I18n.locale) %></td>
       </tr>
-      <%= render 'shared/orders/show_order_fees', order: @order %>
+      <!--<%# <%= render 'shared/orders/show_order_fees', order: @order %> %>-->
       <tr>
         <td colspan="3">Total</td>
         <td class="total_cell"><%= number_to_currency(@order.total_price, locale: I18n.locale) %></td>
@@ -29,30 +29,12 @@
     </tbody>
 </table>
 
-<% if @order.delivery_option_code == DeliveryOption::CUSTOMER_PLACE_OPTION_CODE ||
-      @order.delivery_option_code == DeliveryOption::PARCEL_PICKUP_POINT_OPTION_CODE %>
-  <% if @order.is_ocd? %>
-    <% if @order.ocd_fee < 1 %>
-      <div class="card">
-        <div class="card-body text-info">
-          <%= t('.placed_order_ocd_fee_msg') %>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
-<% end %>
-
-
 <p>
   <strong><%= t('.delivery_option') %></strong> <%= @order.delivery_option.to_option %><br>
   <strong><%= t('.order_status') %></strong> <%= t(Order::STATUS[@order.status_id]) %>
 </p>
 
-
-<%= render 'accept_ocd_fee', order: @order %>
-
-
-<% if @order.status_id == 0 %>
+<% if @order.status_id == Order::STATUS.key('ordered_status') %>
   <%= link_to t('.cancel'), consumer_order_path(@order), method: :delete,
       data: { confirm: t('.are_you_sure') }, class: "btn btn-danger btn-sm float-right" %>
 <% end %>

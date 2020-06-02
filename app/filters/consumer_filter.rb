@@ -58,17 +58,6 @@ module ConsumerFilter
     end
   end
 
-  def does_shop_cover_user_city
-    if params[:shop_id] # when in new action
-      shop = Shop.find(params[:shop_id])
-    else # when show action
-      shop = Order.find(params[:id]).shop
-    end
-    unless shop.cities.include?(current_user.city)
-      @ocd_fee_msg = t('.new_order_ocd_fee_msg')
-    end
-  end
-
   def require_ordered_status
     order = Order.find(params[:id])
     unless order.status_id == Order::STATUS.key('ordered_status')

@@ -40,23 +40,13 @@
     </tbody>
 </table>
 
-<% if @ocd_fee_msg %>
-  <div class="card">
-    <div class="card-body text-info">
-      <%= @ocd_fee_msg %>
-    </div>
-  </div>
-<% end %>
-
 <% if @home_delivery_mininum_amount_msg %>
-  <div class="card">
+  <div class="card mb-3">
     <div class="card-body text-info">
       <%= @home_delivery_mininum_amount_msg %>
     </div>
   </div>
 <% end %>
-<br>
-
 
 <%= simple_form_for(@order, url: consumer_cart_shop_orders_path(current_user.cart, @shop)) do |f| %>
   <%= f.error_notification %>
