@@ -27,12 +27,18 @@ module ConsumerFilter
     end
   end
 
-  def require_delivery_in_user_city
+  def show_no_delivery_message
     if user_signed_in?
       shop = Shop.find(params[:id])
       unless shop.cities.include?(current_user.city)
         @no_delivery_msg = t('.no_delivery_msg')
       end
+    end
+  end
+
+  def require_delivery_in_user_city
+    unless @stock.shop.cities.include?(current_user.city)
+      redirect_to consumer_shop_url(@stock.shop), alert: t('.no_delivery_msg')
     end
   end
 
@@ -47,7 +53,7 @@ module ConsumerFilter
   def require_minimum_amount_for_home_delivery
     shop = Shop.find(params[:shop_id])
     orders_amount = @cart.total_price_for(@cart.line_items_of(@shop))
-    if orders_amount < shop.minimum_delivery_price && params[:order][:delivery_option_code].to_i == 1
+    if orders_amount < shop.minimum_delivery_price && params[:order][:delivery_option_code].to_i == DeliveryOption::CUSTOMER_PLACE_OPTION_CODE
       redirect_to(new_consumer_cart_shop_order_url(@cart, shop), alert: t('.home_delivery_mininum_amount_msg', min_amount: @shop.minimum_delivery_price))
     end
   end
@@ -65,7 +71,7 @@ module ConsumerFilter
 
   def require_ordered_status
     order = Order.find(params[:id])
-    unless order.status_id == 0
+    unless order.status_id == Order::STATUS.key('ordered_status')
       redirect_with_alert(t('.require_ordered_status'), consumer_order_url(order))
     end
 

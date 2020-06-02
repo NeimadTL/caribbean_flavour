@@ -1,7 +1,7 @@
 class Consumer::ShopsController < ApplicationController
   include ConsumerFilter
   before_action :set_shop, only: [:show, :edit, :update, :destroy]
-  before_action :require_delivery_in_user_city, only: [:show]
+  before_action :show_no_delivery_message, only: [:show]
 
   # GET /consumer/shops
   # GET /consumer/shops.json
