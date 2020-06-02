@@ -319,64 +319,6 @@ RSpec.describe Partner::OrdersController, type: :controller do
       end
     end
 
-    context "when partner has received an ocd order and tries to change status
-            while the consummer hasn't accepted the ocd fee yet" do
-      before do
-        sign_in(partner, nil)
-        partner.create_shop(shop_attributes)
-      end
-
-      it "returns a redirect response and status should not change" do
-        order = Order.create! valid_attributes.merge(is_ocd: true, ocd_fee: 10)
-        order_line_item = OrderLineItem.create(name: 'product', unit_price: 5.99, quantity: 3, shop_id: partner.shop.id)
-        order.order_line_items << order_line_item
-        put :update, params: {id: order.to_param, order: new_attributes}, session: valid_session
-        expect(order.status_id).to eql 0 # for ordered_status
-        expect(response).to be_redirect
-        expect(response).to redirect_to(partner_order_url(order))
-        expect(flash[:alert]).to match I18n.t('.cant_change_status_msg')
-      end
-    end
-
-    context "when partner has received an ocd order and tries to change ocd
-            fee while the consummer has accepted the ocd fee already" do
-      before do
-        sign_in(partner, nil)
-        partner.create_shop(shop_attributes)
-      end
-
-      it "returns a redirect response and ocd fee should not change" do
-        order = Order.create! valid_attributes.merge(is_ocd: true, ocd_fee: 10, ocd_fee_accepted: true)
-        order_line_item = OrderLineItem.create(name: 'product', unit_price: 5.99, quantity: 3, shop_id: partner.shop.id)
-        order.order_line_items << order_line_item
-        put :update, params: {id: order.to_param, order: new_attributes.merge(ocd_fee: 20)}, session: valid_session
-        expect(order.ocd_fee).to eql 10
-        expect(response).to be_redirect
-        expect(response).to redirect_to(partner_order_url(order))
-        expect(flash[:alert]).to match I18n.t('.cant_change_ocd_fee_msg')
-      end
-    end
-
-    context "when partner has received an ocd order and tries to change status
-            while the consummer has accepted the ocd fee already" do
-      before do
-        sign_in(partner, nil)
-        partner.create_shop(shop_attributes)
-      end
-
-      it "updates the requested order status" do
-        order = Order.create! valid_attributes.merge(is_ocd: true, ocd_fee: 10, ocd_fee_accepted: true)
-        order_line_item = OrderLineItem.create(name: 'product', unit_price: 5.99, quantity: 3, shop_id: partner.shop.id)
-        order.order_line_items << order_line_item
-        put :update, params: {id: order.to_param, order: new_attributes}, session: valid_session
-        order.reload
-        expect(order.ocd_fee).to eql 10
-        expect(order.status_id).to eql 2 # for 'shipped_status'
-        expect(response).to be_redirect
-        expect(response).to redirect_to partner_orders_url
-      end
-    end
-
     context "when signed in user is not an partner" do
       before do
         sign_in(consumer, nil)

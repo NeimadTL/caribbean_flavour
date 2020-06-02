@@ -15,10 +15,6 @@ module PartnerFilter
   end
 
   def require_to_be_shop_owner
-    # if current_user.shop.nil?
-    #   redirect_to partner_shops_url
-    #   return
-    # end
     id = params[:shop_id] || params[:id]
     unless current_user.shop.id == id.to_i
       flash[:alert] = t('.require_to_be_shop_owner')
@@ -48,25 +44,4 @@ module PartnerFilter
       redirect_to root_url
     end
   end
-
-  def require_unaccepted_ocd_fee_to_change_ocd_fee
-    order = Order.find(params[:id])
-    if order.is_ocd?
-      if order.ocd_fee_accepted? && params[:order][:ocd_fee].present?
-        flash[:alert] = t('.cant_change_ocd_fee_msg')
-        redirect_to partner_order_url(order)
-      end
-    end
-  end
-
-  def require_accepted_ocd_fee_to_change_status
-    order = Order.find(params[:id])
-    if order.is_ocd?
-      if !order.ocd_fee_accepted? && params[:order][:status_id].present?
-        flash[:alert] = t('.cant_change_status_msg')
-        redirect_to partner_order_url(order)
-      end
-    end
-  end
-
 end

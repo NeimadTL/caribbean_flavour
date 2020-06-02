@@ -7,12 +7,9 @@ class Order < ApplicationRecord
     3 => 'delivered_status'
   }
 
-  STANDARD_DELIVERY_FEE = 2.5
-
   validates :delivery_option_code, presence: true
   validates :status_id, inclusion: { in: STATUS.keys }
   validates :user_id, presence: true
-  validates :ocd_fee, numericality: { greater_than_or_equal_to: 1 }, on: [:update], if: :is_ocd?
 
   has_many :order_line_items, dependent: :destroy
   belongs_to :user
@@ -34,17 +31,8 @@ class Order < ApplicationRecord
   end
 
   def total_price
-    total = items_total_price
-    if delivery_option_code == (DeliveryOption::CUSTOMER_PLACE_OPTION_CODE || DeliveryOption::PARCEL_PICKUP_POINT_OPTION_CODE)
-      total += ocd_fee + STANDARD_DELIVERY_FEE
-    end
-    total
-  end
-
-  def items_total_price
     self.order_line_items.to_a.sum { |item| item.total_price }
   end
-
 
 
   # def to_status

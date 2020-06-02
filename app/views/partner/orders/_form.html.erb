@@ -4,25 +4,8 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <!-- <%# <% if @order.delivery_option_code == DeliveryOption::CUSTOMER_PLACE_OPTION_CODE ||
-          @order.delivery_option_code == DeliveryOption::PARCEL_PICKUP_POINT_OPTION_CODE %> %> -->
-      <% if @order.is_ocd? %>
-        <% if @order.ocd_fee_accepted? %>
-          <%= f.input :ocd_fee, label: t('.ocd_fee'), disabled: true %>
-        <% else %>
-          <%= f.input :ocd_fee, label: t('.ocd_fee') %>
-        <% end %>
-        <%= f.label t('.orders_form_status') %>
-        <% unless @order.ocd_fee >= 1 && @order.ocd_fee_accepted? %>
-          <%= f.select :status_id, Order::STATUS.map { |k,v| [t(v),k] }, { prompt: t('.status_prompt') }, class: 'form-control', disabled: true %>
-        <% else %>
-          <%= f.select :status_id, Order::STATUS.map { |k,v| [t(v),k] }, { prompt: t('.status_prompt') }, class: 'form-control' %>
-        <% end %>
-      <% else %>
-        <%= f.label t('.orders_form_status') %>
-        <%= f.select :status_id, Order::STATUS.map { |k,v| [t(v),k] }, { prompt: t('.status_prompt') }, class: 'form-control' %>
-      <% end %>
-    <!-- <%# <% end %> %> -->
+    <%= f.label t('.orders_form_status') %>
+    <%= f.select :status_id, Order::STATUS.map { |k,v| [t(v),k] }, { prompt: t('.status_prompt') }, class: 'form-control' %>
   </div><br>
 
   <div class="form-actions">

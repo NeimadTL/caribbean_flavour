@@ -2,18 +2,13 @@ class Partner::OrdersController < ApplicationController
   include PartnerFilter
   before_action :authenticate_user!
   before_action :require_to_be_partner
-  # before_action :require_to_be_shop_owner
   before_action :require_to_have_shop
   before_action :require_to_be_shop_order, only: [:show, :edit, :update]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-  before_action :require_unaccepted_ocd_fee_to_change_ocd_fee, only: [:update]
-  before_action :require_accepted_ocd_fee_to_change_status, only: [:update]
 
   # GET /partner/orders
   # GET /partner/orders.json
   def index
-    # @orders = Order.left_outer_joins(:order_line_items)
-    #             .where("order_line_items.shop_id = #{current_user.shop.id}").distinct
     @orders = current_user.shop.orders.distinct.order(created_at: :desc)
   end
 
@@ -48,6 +43,6 @@ class Partner::OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.require(:order).permit(:status_id, :ocd_fee)
+      params.require(:order).permit(:status_id)
     end
 end
