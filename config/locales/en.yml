@@ -79,7 +79,6 @@ en:
         status_prompt: "Select a status"
         orders_form_submit: "Update Status"
         requires_partner_access_rights: "The page you were looking for requires partner access rights"
-        ocd_fee: "Outside coverage delivery fee"
       edit:
         order_edit_header: "Update order's status"
         order_detail_link: "Order's details"
@@ -92,6 +91,7 @@ en:
         change_status_link: "Update status"
         requires_partner_access_rights: "The page you were looking for requires partner access rights"
         items_total_price: "Order price:"
+        order_number: "Order"
       show:
         order_number: "Order"
         name_col: "Name"
@@ -104,12 +104,9 @@ en:
         edit_status_link: "Update Status"
         back_link: "Back"
         requires_partner_access_rights: "The page you were looking for requires partner access rights"
-        subtotal: "Subtotal"
       update:
         order_successfully_updated: "Order's status was successfully updated."
         requires_partner_access_rights: "The page you were looking for requires partner access rights"
-        cant_change_ocd_fee_msg: "You can't change outside coverage delivery fee as they've been accepted already"
-        cant_change_status_msg: "You can't change status as outside coverage delivery fee hasn't been accepted yet"
     shops:
       form:
         shop_name: "Name of your shop"
@@ -210,8 +207,6 @@ en:
   require_to_be_shop_owner: "You are not the owner of this shop"
   require_to_be_shop_owner_product: "This product is not in your shop"
   product_in_shop_already: "This product is already in your shop."
-  cant_change_ocd_fee_msg: "You can't change outside coverage delivery fee as they've been accepted already"
-  cant_change_status_msg: "You can't change status as outside coverage delivery fee hasn't been accepted yet"
 
 
   consumer:
@@ -306,13 +301,12 @@ en:
         are_you_sure: "Are you sure ?"
         requires_consumer_access_rights: "The page you were looking for requires consumer access rights"
         items_total_price: "Order price:"
+        order_number: "Order"
       new:
         order_recap_header: "Your order's recap"
         back_btn: "Back"
         requires_consumer_access_rights: "The page you were looking for requires consumer access rights"
         require_to_be_cart_owner: "You are not the owner of this cart"
-        new_order_ocd_fee_msg: "If you decide to be delivered home or at a parcel pickup point, an outside
-                                coverage fee will be added on your order."
         home_delivery_mininum_amount_msg: "Your order's amount must be at least of $%{min_amount} for home delivery"
       show:
         name_col: "Name"
@@ -326,8 +320,8 @@ en:
         cancel: "Cancel"
         requires_consumer_access_rights: "The page you were looking for requires consumer access rights"
         require_to_be_order_owner: "You are not the owner of this order"
-        placed_order_ocd_fee_msg: "Outside coverage delivery fees will be added on your order."
-        subtotal: "Subtotal"
+        order_number: "Order"
+        shop_name: "Shop:"
       create:
         order_successfully_created: "Order was successfully created."
         requires_consumer_access_rights: "The page you were looking for requires consumer access rights"
@@ -357,12 +351,3 @@ en:
   require_ordered_status: "You can't cancel this order as it's not in 'ordered' status anymore"
   no_delivery_msg: "Unfortunately, this shop doesn't deliver in your city"
   home_delivery_mininum_amount_msg: "Your order's amount must be at least of $%{min_amount} for home delivery"
-
-  shared:
-    orders:
-      index_order_fees:
-        standard_delivery_fee: "Standard delivery fee"
-        ocd_fee: "Outside coverage delivery fee"
-      show_order_fees:
-        standard_delivery_fee: "Standard delivery fee"
-        ocd_fee: "Outside coverage delivery fee"

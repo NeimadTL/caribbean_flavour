@@ -1,4 +1,4 @@
-<h5><%= @order.shop.name %></h5>
+<h5 class="card-title"><%= t('.order_number') %>#<%= @order.id %></h5>
 <table class="table">
     <thead>
       <tr>
@@ -25,6 +25,7 @@
 </table>
 
 <p>
+  <strong><%= t('.shop_name')%></strong> <%= @order.shop.name %><br>
   <strong><%= t('.delivery_option') %></strong> <%= @order.delivery_option.to_option %><br>
   <strong><%= t('.order_status') %></strong> <%= t(Order::STATUS[@order.status_id]) %>
 </p>

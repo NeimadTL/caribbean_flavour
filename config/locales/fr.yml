@@ -52,7 +52,6 @@ fr:
         orders_form_submit: "Changer le statut"
         requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
         require_to_be_shop_order: "Cette commande n'appartient pas à votre magasin"
-        ocd_fee: "Frais de livraison hors couverture"
       edit:
         order_edit_header: "Mettre à jour le statut"
         order_detail_link: "Détail de la commande"
@@ -66,6 +65,7 @@ fr:
         change_status_link: "Changer le statut"
         requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
         items_total_price: "Prix de la commande:"
+        order_number: "Commande"
       show:
         order_number: "Commande"
         name_col: "Nom"
@@ -79,15 +79,10 @@ fr:
         back_link: "Précédent"
         requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
         require_to_be_shop_order: "Cette commande n'appartient pas à votre magasin"
-        subtotal: "Sous-total"
       update:
         order_successfully_updated: "Statut de la commande mis à jour avec succès"
         requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
         require_to_be_shop_order: "Cette commande n'appartient pas à votre magasin"
-        cant_change_ocd_fee_msg: "Vous ne pouvez pas changer les frais de livraison hors couverture car ils
-                                  ont déjà été acceptés"
-        cant_change_status_msg: "Vous ne pouvez pas changer le status car les les frais de livraison hors
-                                 couverture n'ont pas encore été acceptés"
     shops:
       form:
         shop_name: "Nom de votre magasin"
@@ -184,11 +179,6 @@ fr:
   require_to_be_shop_owner: "Vous n'êtes pas le propriétaire de ce magasin"
   require_to_be_shop_owner_product: "Ce produit n'est pas dans votre magasin"
   product_in_shop_already: "Ce produit est déjà dans votre magasin."
-  cant_change_ocd_fee_msg: "Vous ne pouvez pas changer les frais de livraison hors couverture car ils
-                            ont déjà été acceptés"
-  cant_change_status_msg: "Vous ne pouvez pas changer le status car les les frais de livraison hors
-                           couverture n'ont pas encore été acceptés"
-
 
   consumer:
     shops:
@@ -282,13 +272,12 @@ fr:
         are_you_sure: "Êtes-vous sûr ?"
         requires_consumer_access_rights: "La page que vous recherchez requiert un droit d'accès consommateur."
         items_total_price: "Prix de la commande:"
+        order_number: "Commande"
       new:
         order_recap_header: "Récapitulatif de votre commande"
         back_btn: "Précédent"
         requires_consumer_access_rights: "La page que vous recherchez requiert un droit d'accès consommateur."
         require_to_be_cart_owner: "Vous n'est pas propriétaire de ce panier"
-        new_order_ocd_fee_msg: "Si vous choisissez de vous faire livrer chez vous ou dans un point relais,
-                                des frais de livraison hors couverture seront ajoutés à votre commande."
         home_delivery_mininum_amount_msg: "Votre commande doit être d'une valeur minimum de %{min_amount}€ pour vous faire livrer chez vous"
       show:
         name_col: "Nom"
@@ -302,9 +291,8 @@ fr:
         cancel: "Annuler"
         requires_consumer_access_rights: "La page que vous recherchez requiert un droit d'accès consommateur."
         require_to_be_order_owner: "Vous n'êtes pas le propriétaire de cette commande"
-        placed_order_ocd_fee_msg: "Des frais de livraison hors couverture seront ajoutés à votre commande.
-                                   Ces frais seront décidés par le magasin très bientôt."
-        subtotal: "Sous-total"
+        order_number: "Commande"
+        shop_name: "Magasin:"
       create:
         order_successfully_created: "Commande créée avec succès."
         requires_consumer_access_rights: "La page que vous recherchez requiert un droit d'accès consommateur."
@@ -339,15 +327,6 @@ fr:
   require_ordered_status: "Vous ne pouvez pas annuler cette commande car elle n'est plus au status 'commandée'"
   no_delivery_msg: "Malheureusement, ce magasin ne livre pas dans votre ville"
   home_delivery_mininum_amount_msg: "Votre commande doit être d'une valeur minimum de %{min_amount}€ pour vous faire livrer chez vous"
-
-  shared:
-    orders:
-      index_order_fees:
-        standard_delivery_fee: "Frais de livraison standard"
-        ocd_fee: "Frais de livraison hors couverture"
-      show_order_fees:
-        standard_delivery_fee: "Frais de livraison standard"
-        ocd_fee: "Frais de livraison hors couverture"
 
   activerecord:
     models:
