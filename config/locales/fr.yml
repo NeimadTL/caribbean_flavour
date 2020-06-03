@@ -332,11 +332,20 @@ fr:
       customer: "Client:"
       delivery_option: "Moyen de livraison:"
       order_number: "Commande"
-      new_order_text: "Vous avez eu une nouvelle commande d'un de vos clients."
-      new_order_detail: "Voici les détails:"
+      order_text: "Vous avez eu une nouvelle commande d'un de vos clients."
+      order_detail: "Voici les détails:"
       best_regards: "Cordialement,"
       caribbean_flavour_team: "l'équipe de Caribbean Flavour"
       hello: "Bonjour"
+    shipped_order:
+      hello: "Hello"
+      order_text: "We just wanted to let you know that the delivery of your order#%{order_id} is in progress."
+      order_detail: "Voici les détails:"
+      shop: "Magasin"
+      delivery_option: "Moyen de livraison:"
+      order_number: "Commande"
+      best_regards: "Cordialement,"
+      caribbean_flavour_team: "l'équipe de Caribbean Flavour"
 
   activerecord:
     models:

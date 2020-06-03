@@ -1,10 +1,10 @@
-<p><%= t('.hello') %> <%= @order.shop.user.firstname %>,</p>
+<p><%= t('.hello') %> <%= @order.user.firstname %>,</p>
 
-<p><%= t('.order_text') %></p>
+<p><%= t('.order_text', order_id: @order.id) %></p>
 
 <p><%= t('.order_detail') %></p>
 <blockquote>
-  <p><strong><%= t('.customer') %></strong> <%= @order.user.firstname %> <%= @order.user.lastname %></p>
+  <p><strong><%= t('.shop') %></strong> <%= @order.shop.name %></p>
   <p><strong><%= t('.delivery_option') %></strong> <%= @order.delivery_option.to_option %></p>
   <p><strong><%= t('.order_number') %>#<%= @order.id %>:</strong></p>
   <ul>
