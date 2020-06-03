@@ -1,6 +1,6 @@
 class UserMailer < Devise::Mailer
 
-  default :from => 'no-reply@example.com'
+  default from: 'no-reply@example.com'
 
   helper :application # gives access to all helpers defined within `application_helper`.
   include Devise::Controllers::UrlHelpers # Optional. eg. `confirmation_url`

@@ -1,0 +1,20 @@
+<p><%= t('.hello') %>Hey <%= @order.shop.user.firstname %>,</p>
+
+<p><%= t('.new_order_text') %></p>
+
+<p><%= t('.new_order_detail') %></p>
+<blockquote>
+  <p><strong><%= t('.customer') %></strong> <%= @order.user.firstname %> <%= @order.user.lastname %></p>
+  <p><strong><%= t('.delivery_option') %></strong> <%= @order.delivery_option.to_option %></p>
+  <p><strong><%= t('.order_number') %>#<%= @order.id %>:</strong></p>
+  <ul>
+    <% @order.order_line_items.each do |item| %>
+      <li><%= item.name %>: <%= item.quantity %>Kgs</li>
+    <% end %>
+  </ul>
+  <p><strong>Total:</strong> <%= number_to_currency(@order.total_price, locale: I18n.locale) %></p>
+</blockquote>
+
+
+<%= t('.best_regards') %><br>
+<%= t('.caribbean_flavour_team') %>

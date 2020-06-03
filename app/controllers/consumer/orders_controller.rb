@@ -40,6 +40,7 @@ class Consumer::OrdersController < ApplicationController
     respond_to do |format|
       if @order.save
         @order.add_line_item(@cart.line_items_of(@shop))
+        OrderMailer.new_order(@order).deliver_now
         format.html { redirect_to consumer_order_url(@order), notice: t('.order_successfully_created') }
         format.json { render :show, status: :created, location: @order }
       else

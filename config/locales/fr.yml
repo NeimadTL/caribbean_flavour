@@ -327,6 +327,16 @@ fr:
   require_ordered_status: "Vous ne pouvez pas annuler cette commande car elle n'est plus au status 'commandée'"
   no_delivery_msg: "Malheureusement, ce magasin ne livre pas dans votre ville"
   home_delivery_mininum_amount_msg: "Votre commande doit être d'une valeur minimum de %{min_amount}€ pour vous faire livrer chez vous"
+  order_mailer:
+    new_order:
+      customer: "Client:"
+      delivery_option: "Moyen de livraison:"
+      order_number: "Commande"
+      new_order_text: "Vous avez eu une nouvelle commande d'un de vos clients."
+      new_order_detail: "Voici les détails:"
+      best_regards: "Cordialement,"
+      caribbean_flavour_team: "l'équipe de Caribbean Flavour"
+      hello: "Bonjour"
 
   activerecord:
     models:

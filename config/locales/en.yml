@@ -351,3 +351,13 @@ en:
   require_ordered_status: "You can't cancel this order as it's not in 'ordered' status anymore"
   no_delivery_msg: "Unfortunately, this shop doesn't deliver in your city"
   home_delivery_mininum_amount_msg: "Your order's amount must be at least of $%{min_amount} for home delivery"
+  order_mailer:
+    new_order:
+      customer: "Customer:"
+      delivery_option: "Delivery option:"
+      order_number: "Order"
+      new_order_text: "You've got a new order from one of your customer."
+      new_order_detail: "Here are the details:"
+      best_regards: "Best regards,"
+      caribbean_flavour_team: "the Caribbean Flavour team"
+      hello: "Hello"
