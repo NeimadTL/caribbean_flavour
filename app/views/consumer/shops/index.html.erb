@@ -1,5 +1,16 @@
 <h1><%= t('.shops_header') %></h1>
 
+
+<% if user_signed_in? %>
+  <div class="mt-2 mb-2">
+    <%= form_tag consumer_shops_url, method: :get do %>
+      <%= select_tag "sort", options_for_select(Shop::SORTING_VALUES.map { |k,v| [t(v),k] },
+      params[:sort]), onchange: 'this.form.submit()', class: 'mt-2' %>
+      <%= submit_tag 'submit', {style: 'display: none;'} %>
+    <% end %>
+  </div>
+<% end %>
+
 <div class="row">
   <% @shops.each do |shop| %>
       <div class="col-sm-12 col-md-9 col-lg-6 col-xl-3">

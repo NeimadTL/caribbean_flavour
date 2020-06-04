@@ -1,5 +1,10 @@
 class Shop < ApplicationRecord
 
+  SORTING_VALUES = {
+    0 => 'home_delivery',
+    1 => 'all'
+  }
+
   validates :name, presence: true, uniqueness: true
   validates :delivery_options, presence: true, unless: -> { delivery_options.count > 0 }
   validates :cities, presence: true, unless: -> { cities.count > 0 }
@@ -26,6 +31,10 @@ class Shop < ApplicationRecord
 
   belongs_to :country, foreign_key: "country_code"
   belongs_to :city, foreign_key: "city_postcode"
+
+  scope :shops_delivering_in, -> (city_postcode) {
+    joins(:shop_delivery_coverages).where("shop_delivery_coverages.city_postcode = '#{city_postcode}'")
+  }
 
   def cities_to_s
     self.cities.each_with_object("") do |city, s|

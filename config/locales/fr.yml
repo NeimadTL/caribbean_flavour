@@ -355,6 +355,8 @@ fr:
       best_regards: "Cordialement,"
       caribbean_flavour_team: "l'équipe de Caribbean Flavour"
       hello: "Bonjour"
+  home_delivery: "Magasins livrants chez moi"
+  all: "Tous les magasins"
 
   activerecord:
     models:

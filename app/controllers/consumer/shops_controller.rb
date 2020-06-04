@@ -6,7 +6,12 @@ class Consumer::ShopsController < ApplicationController
   # GET /consumer/shops
   # GET /consumer/shops.json
   def index
-    @shops = Shop.all
+    if user_signed_in? && params[:sort] && params[:sort].to_i == 0
+      @shops = Shop.shops_delivering_in(current_user.city_postcode)
+    else
+      @shops = Shop.all
+    end
+
   end
 
   # GET /consumer/shops/1
