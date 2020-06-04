@@ -32,7 +32,7 @@ class Shop < ApplicationRecord
   belongs_to :country, foreign_key: "country_code"
   belongs_to :city, foreign_key: "city_postcode"
 
-  scope :shops_delivering_in, -> (city_postcode) {
+  scope :delivering_in, -> (city_postcode) {
     joins(:shop_delivery_coverages).where("shop_delivery_coverages.city_postcode = '#{city_postcode}'")
   }
 

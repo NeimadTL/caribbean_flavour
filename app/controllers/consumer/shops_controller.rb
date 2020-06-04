@@ -6,8 +6,8 @@ class Consumer::ShopsController < ApplicationController
   # GET /consumer/shops
   # GET /consumer/shops.json
   def index
-    if user_signed_in? && params[:sort] && params[:sort].to_i == 0
-      @shops = Shop.shops_delivering_in(current_user.city_postcode)
+    if user_signed_in? && params[:sort] && params[:sort].to_i == Shop::SORTING_VALUES.key('home_delivery')
+      @shops = Shop.delivering_in(current_user.city_postcode)
     else
       @shops = Shop.all
     end
