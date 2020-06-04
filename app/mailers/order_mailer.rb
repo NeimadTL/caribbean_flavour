@@ -10,7 +10,13 @@ class OrderMailer < ApplicationMailer
     opts[:subject] = 'New order has been placed !'
   end
 
-  def cancelled_order
+  def cancelled_order(order, opts={})
+    @order = order
+    mail(to: @order.shop.user.email)
+    opts[:from] = 'no-reply@example.com'
+    opts[:reply_to] = 'no-reply@example.com'
+    opts[:subject] = 'An order has been cancelled'
+
   end
 
   def shipped_order(order, opts={})

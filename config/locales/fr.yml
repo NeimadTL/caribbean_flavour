@@ -338,14 +338,23 @@ fr:
       caribbean_flavour_team: "l'équipe de Caribbean Flavour"
       hello: "Bonjour"
     shipped_order:
-      hello: "Hello"
-      order_text: "We just wanted to let you know that the delivery of your order#%{order_id} is in progress."
+      hello: "Bonjour"
+      order_text: "Nous voulions vous informer que la livraison de votre commande#%{order_id} est en cours."
       order_detail: "Voici les détails:"
       shop: "Magasin"
       delivery_option: "Moyen de livraison:"
       order_number: "Commande"
       best_regards: "Cordialement,"
       caribbean_flavour_team: "l'équipe de Caribbean Flavour"
+    cancelled_order:
+      customer: "Client:"
+      delivery_option: "Moyen de livraison:"
+      order_number: "Commande"
+      order_text: "Malheureusement, un de vos client a annulé sa commande#%{order_id}."
+      order_detail: "Voici les détails:"
+      best_regards: "Cordialement,"
+      caribbean_flavour_team: "l'équipe de Caribbean Flavour"
+      hello: "Bonjour"
 
   activerecord:
     models:
