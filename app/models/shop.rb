@@ -5,6 +5,8 @@ class Shop < ApplicationRecord
     1 => 'all'
   }
 
+  STANDARD_DELIVERY_FEES = 2.5
+
   validates :name, presence: true, uniqueness: true
   validates :delivery_options, presence: true, unless: -> { delivery_options.count > 0 }
   validates :cities, presence: true, unless: -> { cities.count > 0 }
@@ -12,6 +14,8 @@ class Shop < ApplicationRecord
   validates :street, presence: true
   validates :minimum_delivery_price, presence: true,
             numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :standard_delivery_fees, presence: true,
+            numericality: { greater_than_or_equal_to: 0.0, less_than_or_equal_to: STANDARD_DELIVERY_FEES }
 
   has_many :stocks, dependent: :destroy
   has_many :products, through: :stocks, dependent: :destroy

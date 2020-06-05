@@ -98,6 +98,7 @@ fr:
         additional_address_information: "Complément d'adresse"
         shop_city: "Ville"
         minimum_delivery_price: "Prix minimum pour livraison"
+        standard_delivery_fees: "Frais standard de livraison"
       edit:
         treak_shop_header: "Réglez les paramètres de votre magasin"
         back_link: "Précédent"

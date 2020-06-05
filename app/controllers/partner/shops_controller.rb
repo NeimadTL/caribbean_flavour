@@ -57,7 +57,8 @@ class Partner::ShopsController < ApplicationController
     def shop_params
       params.require(:shop).permit(:name, :product_category_code, :country_code,
         :phone_number, :street, :additional_address_information, :city_postcode,
-        :minimum_delivery_price, delivery_option_ids: [], city_ids: [])
+        :minimum_delivery_price, :standard_delivery_fees, delivery_option_ids: [],
+        city_ids: [])
     end
 
 end
