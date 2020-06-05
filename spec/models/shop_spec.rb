@@ -8,6 +8,9 @@ RSpec.describe Shop, type: :model do
   it { should validate_presence_of :minimum_delivery_price }
   it { should validate_numericality_of(:minimum_delivery_price).only_integer.is_greater_than_or_equal_to(0) }
 
+  it { should validate_presence_of :standard_delivery_fees }
+  it { should validate_numericality_of(:standard_delivery_fees).is_greater_than_or_equal_to(0.0).is_less_than_or_equal_to(2.5) }
+
 
   describe "name uniqueness validation" do
     subject { Shop.create(name: 'shop', user_id: 1, product_category_code: 1,
