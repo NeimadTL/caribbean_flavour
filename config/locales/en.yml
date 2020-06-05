@@ -303,6 +303,7 @@ en:
         requires_consumer_access_rights: "The page you were looking for requires consumer access rights"
         items_total_price: "Order price:"
         order_number: "Order"
+        fees_included: "of fees included"
       new:
         order_recap_header: "Your order's recap"
         back_btn: "Back"
@@ -323,6 +324,7 @@ en:
         require_to_be_order_owner: "You are not the owner of this order"
         order_number: "Order"
         shop_name: "Shop:"
+        standard_delivery_fees_label: "Standard delivery fees"
       create:
         order_successfully_created: "Order was successfully created."
         requires_consumer_access_rights: "The page you were looking for requires consumer access rights"

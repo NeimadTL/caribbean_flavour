@@ -274,6 +274,7 @@ fr:
         requires_consumer_access_rights: "La page que vous recherchez requiert un droit d'accès consommateur."
         items_total_price: "Prix de la commande:"
         order_number: "Commande"
+        fees_included: "de frais inclus"
       new:
         order_recap_header: "Récapitulatif de votre commande"
         back_btn: "Précédent"
@@ -294,6 +295,7 @@ fr:
         require_to_be_order_owner: "Vous n'êtes pas le propriétaire de cette commande"
         order_number: "Commande"
         shop_name: "Magasin:"
+        standard_delivery_fees_label: "Frais standard de livraison"
       create:
         order_successfully_created: "Commande créée avec succès."
         requires_consumer_access_rights: "La page que vous recherchez requiert un droit d'accès consommateur."

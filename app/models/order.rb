@@ -31,7 +31,11 @@ class Order < ApplicationRecord
   end
 
   def total_price
-    self.order_line_items.to_a.sum { |item| item.total_price }
+    total = self.order_line_items.to_a.sum { |item| item.total_price }
+    if self.delivery_option_code == DeliveryOption::CUSTOMER_PLACE_OPTION_CODE && self.shop.standard_delivery_fees > 0
+      total += self.shop.standard_delivery_fees
+    end
+    total
   end
 
 
