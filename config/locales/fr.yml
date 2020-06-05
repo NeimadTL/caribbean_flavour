@@ -66,6 +66,7 @@ fr:
         requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
         items_total_price: "Prix de la commande:"
         order_number: "Commande"
+        fees_included: "de frais inclus"
       show:
         order_number: "Commande"
         name_col: "Nom"
@@ -79,6 +80,7 @@ fr:
         back_link: "Précédent"
         requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
         require_to_be_shop_order: "Cette commande n'appartient pas à votre magasin"
+        standard_delivery_fees_label: "Frais de livraison standard"
       update:
         order_successfully_updated: "Statut de la commande mis à jour avec succès"
         requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."

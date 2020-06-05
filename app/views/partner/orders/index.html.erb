@@ -18,6 +18,9 @@
           </p>
           <p class="card-text">
             <%= image_tag "cash-outline.svg", size: "24" %> <%= number_to_currency(order.total_price, locale: I18n.locale) %>
+            <% if order.shop.standard_delivery_fees > 0 && order.delivery_option_code == DeliveryOption::CUSTOMER_PLACE_OPTION_CODE %>
+              (<%= number_to_currency(order.shop.standard_delivery_fees, locale: I18n.locale) %> <%= t('.fees_included') %>)
+            <% end %>
           </p>
           <p class="card-text"><strong><%= t('.order_status') %></strong> <%= t(Order::STATUS[order.status_id]) %><p>
           <%= link_to t('.details_link'), partner_order_path(order), class: 'btn btn-primary btn-sm' %>

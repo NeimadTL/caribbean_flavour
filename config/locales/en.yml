@@ -92,6 +92,7 @@ en:
         requires_partner_access_rights: "The page you were looking for requires partner access rights"
         items_total_price: "Order price:"
         order_number: "Order"
+        fees_included: "of fees included"
       show:
         order_number: "Order"
         name_col: "Name"
@@ -104,6 +105,7 @@ en:
         edit_status_link: "Update Status"
         back_link: "Back"
         requires_partner_access_rights: "The page you were looking for requires partner access rights"
+        standard_delivery_fees_label: "Standard delivery fees"
       update:
         order_successfully_updated: "Order's status was successfully updated."
         requires_partner_access_rights: "The page you were looking for requires partner access rights"
