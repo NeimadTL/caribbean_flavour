@@ -391,6 +391,7 @@ fr:
         delivery_options: "Moyens de livraison"
         product_category: "Catégorie de produit"
         minimum_delivery_price: "Prix minimum de livraison"
+        standard_delivery_fees: "Frais de livraison standard"
       stock:
         product: "Produit"
         price: "Prix"
@@ -444,6 +445,12 @@ fr:
             minimum_delivery_price:
               greater_than_or_equal_to: "doit être supérieur ou égale à zéro"
               not_an_integer: "doit être un chiffre entier"
+            standard_delivery_fees:
+              blank: "ne peut être vide"
+              not_a_number: "doit être une valeur numérique"
+              greater_than_or_equal_to: "ne peut être inférieur 0"
+              less_than_or_equal_to: "ne peut être supérieur à 2.5"
+
 
         stock:
           attributes:
