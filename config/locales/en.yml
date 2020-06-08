@@ -269,6 +269,7 @@ en:
         require_to_be_cart_owner_item: "This product is not in your cart"
       form_modal:
         add_to_cart_btn: "Add to cart"
+        qty_label: "Quantity (Kgs)"
     carts:
       show:
         cart_header: "Cart"

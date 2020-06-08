@@ -7,7 +7,7 @@
           <th scope="col"><%= t('.name_col') %></th>
           <th scope="col"><%= t('.unit_price_col') %></th>
           <th scope="col"><%= t('.qty_col') %></th>
-          <th scope="col"><%= t('.price_col') %></th>
+          <!-- <th scope="col"><%= t('.price_col') %></th> -->
           <th scope="col"><%= t('.action_col') %></th>
         </tr>
       </thead>
@@ -17,7 +17,7 @@
             <td><%= item.stock.product.name %></td>
             <td><%= number_to_currency(item.price, locale: I18n.locale) %></td>
             <td><%= item.quantity %></td>
-            <td><%= number_to_currency(item.total_price, locale: I18n.locale) %></td>
+            <!-- <td><%= number_to_currency(item.total_price, locale: I18n.locale) %></td> -->
             <td>
               <div class="dropdown">
                 <button class="btn transparent-btn" type="button" id="dropdownMenu2"
@@ -34,7 +34,7 @@
           </tr>
         <% end %>
         <tr>
-          <td colspan="4">Total</td>
+          <td colspan="3">Total</td>
           <td class="total_cell"><%= number_to_currency(@cart.total_price_for(items), locale: I18n.locale) %></td>
         </tr>
       </tbody>
