@@ -238,7 +238,7 @@ fr:
         requires_consumer_access_rights: "La page que vous recherchez requiert un droit d'accès consommateur."
         require_to_be_cart_owner: "Vous n'est pas propriétaire de ce panier"
         require_to_be_cart_owner_item: "Ce produit n'est pas dans votre panier"
-      new_modal:
+      form_modal:
         add_to_cart_btn: "Ajouter au panier"
     carts:
       show:

@@ -33,6 +33,7 @@ class Consumer::LineItemsController < ApplicationController
 
   # GET /line_items/1/edit
   def edit
+    respond_to { |format| format.js }
   end
 
   # POST /line_items
