@@ -15,3 +15,7 @@ $(function () {
 $(document).on('hidden.bs.modal', '.modal', function () {
   $("#lineItemModalId").remove(); $(".modal-dialog").remove();
 });
+
+$(document).on('hidden.bs.modal', '.modal', function () {
+  $("#orderModalId").remove(); $(".modal-dialog").remove();
+});

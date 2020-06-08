@@ -1,0 +1,64 @@
+<div id="orderModalId" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><%= t('.order_recap', shop_name: @shop.name) %></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="col-sm-3 col-md-6 col-lg-9 col-xl-12">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col"><%= t('.name_col') %></th>
+                <th scope="col"><%= t('.unit_price_col') %></th>
+                <th scope="col"><%= t('.qty_col') %></th>
+                <th scope="col"><%= t('.price_col') %></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @cart.line_items_of(@shop).each do |item| %>
+                <tr>
+                  <td><%= item.stock.product.name %></td>
+                  <td><%= number_to_currency(item.price, locale: I18n.locale) %></td>
+                  <td><%= item.quantity %></td>
+                  <td><%= number_to_currency(item.total_price, locale: I18n.locale) %></td>
+                </tr>
+              <% end %>
+              <tr>
+                <td colspan="3">Total</td>
+                <td class="total_cell"><%= number_to_currency(@cart.total_price_for(@cart.line_items_of(@shop)), locale: I18n.locale) %></td>
+              </tr>
+            </tbody>
+        </table>
+
+        <% if @home_delivery_mininum_amount_msg %>
+          <div class="card mb-3">
+            <div class="card-body text-info">
+              <%= @home_delivery_mininum_amount_msg %>
+            </div>
+          </div>
+        <% end %>
+
+        <%= simple_form_for(@order, url: consumer_cart_shop_orders_path(current_user.cart, @shop)) do |f| %>
+          <%= f.error_notification %>
+          <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+          <div class="form-inputs">
+            <%= f.input :delivery_option_code, as: :radio_buttons, label: t('.delivery_option'),
+                collection: @shop.delivery_options, label_method: :to_option,
+                value_method: :code %>
+          </div>
+
+
+          <div class="form-actions modal-footer">
+            <%= f.button :submit, t('.place_order_btn'), class: "btn btn-primary" %>
+          </div>
+        <% end %>
+
+
+      </div>
+    </div>
+  </div>
+</div>

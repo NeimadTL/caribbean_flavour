@@ -26,6 +26,7 @@ class Consumer::OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
+    respond_to { |format| format.js }
   end
 
   # GET /orders/1/edit

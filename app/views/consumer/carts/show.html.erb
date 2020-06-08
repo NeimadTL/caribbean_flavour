@@ -40,6 +40,7 @@
       </tbody>
   </table>
   <%= link_to t('.keep_shopping_link'), consumer_shop_path(shop), class: 'btn btn-sm btn-primary float-left' %>
-  <%= link_to t('.order_link'), new_consumer_cart_shop_order_path(current_user.cart, shop), class: 'btn btn-sm btn-primary float-right' %>
+  <%= link_to t('.order_link'), new_consumer_cart_shop_order_path(current_user.cart, shop), remote: true,
+      class: 'btn btn-sm btn-primary float-right' %>
   <br><br><br>
 <% end %>

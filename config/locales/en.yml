@@ -298,6 +298,14 @@ en:
         place_order_btn: "Place Order"
         requires_consumer_access_rights: "The page you were looking for requires consumer access rights"
         require_to_be_cart_owner: "You are not the owner of this cart"
+      new_modal:
+        place_order_btn: "Place Order"
+        name_col: "Name"
+        unit_price_col: "Unit Price"
+        qty_col: "Qty (Kgs)"
+        price_col: "Price"
+        actions_col: "Actions"
+        order_recap: "%{shop_name}'s order recap"
       index:
         my_orders_hearder: "My Orders"
         order_status: "Status:"

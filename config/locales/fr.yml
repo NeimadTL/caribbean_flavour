@@ -269,6 +269,13 @@ fr:
         place_order_btn: "Passer la commande"
         requires_consumer_access_rights: "La page que vous recherchez requiert un droit d'accès consommateur."
         require_to_be_cart_owner: "Vous n'est pas propriétaire de ce panier"
+      new_modal:
+        place_order_btn: "Passer la commande"
+        name_col: "Nom"
+        unit_price_col: "Prix unitaire"
+        qty_col: "Qté (Kgs)"
+        price_col: "Prix"
+        order_recap: "Récapitulatif de votre commande chez %{shop_name}"
       index:
         my_orders_hearder: "Mes commandes"
         order_status: "Statut:"
