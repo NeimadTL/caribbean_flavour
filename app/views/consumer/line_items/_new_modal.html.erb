@@ -1,0 +1,39 @@
+<div id="lineItemModalId" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="col-sm-3 col-md-6 col-lg-9 col-xl-12">
+        <div class="card mt-3 mb-3">
+          <div class="card-header"><%= stock.shop.name %></div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <%= stock.product.name %> : <%= number_to_currency(number_to_human(stock.price)) %>
+            </li>
+          </ul>
+        </div>
+        <% if @already_in_cart_msg %>
+          <p><%= @already_in_cart_msg %></p>
+        <% else %>
+          <%= simple_form_for(line_item, url: line_item.persisted? ? consumer_cart_stock_line_item_path :
+            consumer_cart_stock_line_items_path(current_user.cart, stock)) do |f| %>
+            <%= f.error_notification %>
+            <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+            <div class="form-inputs">
+              <%= f.input :quantity, label: t('.qty_label'), required: true, autofocus: true,
+                  input_html: { autocomplete: "quantity" } %>
+              <%= f.hidden_field :stock_id, value: stock.id %>
+            </div>
+            <div class="form-actions modal-footer">
+              <%= f.button :submit, t('.add_to_cart_btn'), class: 'btn btn-primary' %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

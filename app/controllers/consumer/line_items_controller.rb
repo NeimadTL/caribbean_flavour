@@ -28,6 +28,7 @@ class Consumer::LineItemsController < ApplicationController
   # GET /line_items/new
   def new
     @line_item = LineItem.new
+    respond_to { |format| format.js }
   end
 
   # GET /line_items/1/edit
@@ -91,7 +92,7 @@ class Consumer::LineItemsController < ApplicationController
 
     def item_in_cart_already
       if @cart.line_items.find_by(stock: @stock)
-        redirect_to consumer_shop_url(@stock.shop), alert: t('.item_in_cart_already')
+        @already_in_cart_msg = t('.item_in_cart_already')
       end
     end
 

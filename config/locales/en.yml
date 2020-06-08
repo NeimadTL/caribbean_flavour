@@ -267,6 +267,8 @@ en:
         requires_consumer_access_rights: "The page you were looking for requires consumer access rights"
         require_to_be_cart_owner: "You are not the owner of this cart"
         require_to_be_cart_owner_item: "This product is not in your cart"
+      new_modal:
+        add_to_cart_btn: "Add to cart"
     carts:
       show:
         cart_header: "Cart"

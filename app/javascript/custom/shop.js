@@ -11,3 +11,7 @@ $(function () {
     html: true
   })
 })
+
+$(document).on('hidden.bs.modal', '.modal', function () {
+  $("#lineItemModalId").remove(); $(".modal-dialog").remove();
+});

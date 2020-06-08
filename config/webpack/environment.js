@@ -7,4 +7,21 @@ environment.plugins.append('Provide', new webpack.ProvidePlugin({
   Popper: ['popper.js', 'default']
 }))
 
+environment.config.merge({
+  module: {
+    rules: [
+      {
+        test: require.resolve('jquery'),
+        use: [{
+          loader: 'expose-loader',
+          options: '$'
+        }, {
+          loader: 'expose-loader',
+          options: 'jQuery'
+        }]
+      }
+    ],
+  },
+});
+
 module.exports = environment
