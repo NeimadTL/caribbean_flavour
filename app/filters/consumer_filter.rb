@@ -54,7 +54,7 @@ module ConsumerFilter
     shop = Shop.find(params[:shop_id])
     orders_amount = @cart.total_price_for(@cart.line_items_of(@shop))
     if orders_amount < shop.minimum_delivery_price && params[:order][:delivery_option_code].to_i == DeliveryOption::CUSTOMER_PLACE_OPTION_CODE
-      redirect_to(new_consumer_cart_shop_order_url(@cart, shop), alert: t('.home_delivery_mininum_amount_msg', min_amount: @shop.minimum_delivery_price))
+      redirect_to(consumer_cart_url(@cart), alert: t('.home_delivery_mininum_amount_msg', min_amount: @shop.minimum_delivery_price))
     end
   end
 
