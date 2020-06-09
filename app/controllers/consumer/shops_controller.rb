@@ -11,7 +11,7 @@ class Consumer::ShopsController < ApplicationController
     else
       @shops = Shop.all
     end
-
+    @shops = @shops.paginate(page: params[:page], per_page: 1)
   end
 
   # GET /consumer/shops/1

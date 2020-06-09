@@ -16,6 +16,7 @@ class Consumer::OrdersController < ApplicationController
   # GET /orders.json
   def index
     @orders = Order.where(user_id: current_user.id).order(created_at: :desc)
+    @orders = @orders.paginate(page: params[:page], per_page: 10)
   end
 
   # GET /orders/1
