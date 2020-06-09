@@ -10,6 +10,7 @@ class Partner::OrdersController < ApplicationController
   # GET /partner/orders.json
   def index
     @orders = current_user.shop.orders.distinct.order(created_at: :desc)
+    @orders = @orders.paginate(page: params[:page], per_page: 10)
   end
 
   # GET /partner/orders/1
