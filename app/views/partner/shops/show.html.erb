@@ -1,3 +1,5 @@
+<% presenter = ShopPresenter.new(current_user.shop) %>
+
 <div class="row mb-2">
   <div class="col-sm">
     <div class="card text-center mt-3 mb-3">
@@ -29,11 +31,7 @@
     <div class="card mb-3">
       <div class="card-body">
         <h5><%= t('.delivery_option') %></h5>
-        <div>
-          <% current_user.shop.delivery_options.each do |delivery_option| %>
-            <span class="badge badge-info"><%= delivery_option.to_option %></span>
-          <% end %>
-        </div>
+        <div><%= presenter.delivery_options.html_safe %></div>
       </div>
     </div>
   </div>
@@ -41,11 +39,7 @@
     <div class="card">
       <div class="card-body">
         <h5><%= t('.delivery_coverage') %></h5>
-        <div>
-          <% current_user.shop.cities.each do |city| %>
-            <span class="badge badge-primary"><%= city.name %></span>
-          <% end %>
-        </div>
+        <div><%= presenter.cities.html_safe %></div>
       </div>
     </div>
   </div>

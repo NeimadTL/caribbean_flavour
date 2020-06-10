@@ -13,41 +13,42 @@
 
 <div class="row">
   <% @shops.each do |shop| %>
-      <div class="col-sm-12 col-md-9 col-lg-6 col-xl-3">
-        <div class="card mb-4" style="">
-          <%= image_tag "guadeloupe_fruits.png", class: 'card-img-top' %>
-          <div class="card-body">
-            <h5 class="card-title">
-              <%= image_tag "home-outline.svg", size: "24" %>
-              <span class="badge badge-warning"><%= shop.name %></span>
-            </h5>
-            <h5>
-              <%= image_tag "bicycle-outline.svg", size: "24" %>
-              <%= link_to "javascript:void(0);", class: 'btn btn-info btn-sm pt-0 pb-0',
-                  tabindex: "0", title: "Moyens de livraison", data: {
-                  toggle: "popover", content: shop.delivery_options_to_s,
-                  container: "body", placement: "auto" } do %> <%= t('.delivery_option_link') %>
-              <% end %>
-            </h5>
-            <h5>
-              <%= image_tag "trail-sign-outline.svg", size: "24" %>
-              <%= link_to "javascript:void(0);", class: 'btn btn-primary btn-sm pt-0 pb-0',
-                  tabindex: "0", title: "Couverture de livraison", data: {
-                  toggle: "popover", content: shop.cities_to_s, container: "body",
-                  placement: "auto" } do %> <%= t('.delivery_coverage_link') %>
-              <% end %>
-            </h5>
-            <p class="">
-              <%= image_tag "pin-outline.svg", size: "24" %>
-              <%= shop.city.name %>, <%= shop.country.name %>
-            </p>
-
-            <%= link_to consumer_shop_path(shop), class: 'btn btn-success btn-lg btn-block' do %>
-              <%= t('.enter_btn') %> <%= image_tag "enter-outline.svg", size: "24" %>
+    <% presenter = ShopPresenter.new(shop) %>
+    <div class="col-sm-12 col-md-9 col-lg-6 col-xl-3">
+      <div class="card mb-4" style="">
+        <%= image_tag "guadeloupe_fruits.png", class: 'card-img-top' %>
+        <div class="card-body">
+          <h5 class="card-title">
+            <%= image_tag "home-outline.svg", size: "24" %>
+            <span class="badge badge-warning"><%= shop.name %></span>
+          </h5>
+          <h5>
+            <%= image_tag "bicycle-outline.svg", size: "24" %>
+            <%= link_to "javascript:void(0);", class: 'btn btn-info btn-sm pt-0 pb-0',
+                tabindex: "0", title: "Moyens de livraison", data: {
+                toggle: "popover", content: presenter.delivery_options,
+                container: "body", placement: "auto" } do %> <%= t('.delivery_option_link') %>
             <% end %>
-          </div>
+          </h5>
+          <h5>
+            <%= image_tag "trail-sign-outline.svg", size: "24" %>
+            <%= link_to "javascript:void(0);", class: 'btn btn-primary btn-sm pt-0 pb-0',
+                tabindex: "0", title: "Couverture de livraison", data: {
+                toggle: "popover", content: presenter.cities, container: "body",
+                placement: "auto" } do %> <%= t('.delivery_coverage_link') %>
+            <% end %>
+          </h5>
+          <p class="">
+            <%= image_tag "pin-outline.svg", size: "24" %>
+            <%= shop.city.name %>, <%= shop.country.name %>
+          </p>
+
+          <%= link_to consumer_shop_path(shop), class: 'btn btn-success btn-lg btn-block' do %>
+            <%= t('.enter_btn') %> <%= image_tag "enter-outline.svg", size: "24" %>
+          <% end %>
         </div>
       </div>
+    </div>
   <% end %>
 </div>
 

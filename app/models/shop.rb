@@ -40,16 +40,4 @@ class Shop < ApplicationRecord
     joins(:shop_delivery_coverages).where("shop_delivery_coverages.city_postcode = '#{city_postcode}'")
   }
 
-  def cities_to_s
-    self.cities.each_with_object("") do |city, s|
-      s << "<span class='badge badge-primary'>#{city.name}</span> ".html_safe
-    end
-  end
-
-  def delivery_options_to_s
-    self.delivery_options.each_with_object("") do |delivery_option, s|
-      s << "<span class='badge badge-info'>#{delivery_option.to_option}</span> ".html_safe
-    end
-  end
-
 end
