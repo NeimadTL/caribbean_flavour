@@ -27,6 +27,8 @@ Rails.application.routes.draw do
     end
     # :edit may need to be added below if we decide that a consumer
     # can update and order till the status passes from 'ordered' to 'packing'
-    resources :orders, only: [:index, :show, :update, :destroy]
+    resources :orders, only: [:index, :show, :update, :destroy] do
+      member { get 'show_destroy_popup' }
+    end
   end
 end

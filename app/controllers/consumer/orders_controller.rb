@@ -4,9 +4,9 @@ class Consumer::OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :require_to_be_consumer
   before_action :require_to_be_cart_owner, only: [:new, :create]
-  before_action :require_to_be_order_owner, only: [:show, :destroy, :update] # :edit may need to be added (see routes comment)
+  before_action :require_to_be_order_owner, only: [:show, :destroy, :update, :show_destroy_popup] # :edit may need to be added (see routes comment)
   before_action :set_cart, only: [:new, :create]
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_order, only: [:show, :edit, :update, :destroy, :show_destroy_popup]
   before_action :set_shop, only: [:new, :create]
   before_action :show_home_delivery_minimum_amount, only: [:new]
   before_action :require_minimum_amount_for_home_delivery, only: [:create]
@@ -64,6 +64,10 @@ class Consumer::OrdersController < ApplicationController
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def show_destroy_popup
+    respond_to { |format| format.js }
   end
 
   # DELETE /orders/1

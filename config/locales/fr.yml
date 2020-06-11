@@ -319,6 +319,11 @@ fr:
         requires_consumer_access_rights: "La page que vous recherchez requiert un droit d'accès consommateur."
         require_to_be_order_owner: "Vous n'êtes pas le propriétaire de cette commande"
         require_ordered_status: "Vous ne pouvez pas annuler cette commande car elle n'est plus au status 'commandée'"
+      destroy_modal:
+        cancellation: "Annulation de commande"
+        are_you_sure: "Êtes-vous sûr ?"
+        cancel: "Annuler"
+        close: "Fermer"
   requires_consumer_access_rights: "La page que vous recherchez requiert un droit d'accès consommateur."
   require_to_be_cart_owner: "Vous n'est pas propriétaire de ce panier"
   item_in_cart_already: "Ce produit est déjà dans votre parnier. Si vous en voulez plus, merci d'aller dans votre panier et d'en augmenter la quantité."
