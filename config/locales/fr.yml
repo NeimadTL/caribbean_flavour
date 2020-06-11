@@ -42,6 +42,7 @@ fr:
       sign_out_link: "Déconnexion"
       sign_in_link: "Connnexion"
       sign_up_link: "S'enregistrer"
+      edit_account_link: "Modifier compte"
 
 
   partner:

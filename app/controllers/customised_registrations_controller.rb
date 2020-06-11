@@ -24,6 +24,7 @@ class CustomisedRegistrationsController < Devise::RegistrationsController
     end
 
     def account_update_params
+      @@user_symbols.delete(:is_partner)
       params.require(resource_name).permit(@@user_symbols.push(:current_password))
     end
 

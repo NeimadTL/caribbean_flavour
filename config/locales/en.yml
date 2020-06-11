@@ -71,6 +71,7 @@ en:
       sign_out_link: "Sign Out"
       sign_in_link: "Sign In"
       sign_up_link: "Sign Up"
+      edit_account_link: "Edit account"
 
   partner:
     orders:

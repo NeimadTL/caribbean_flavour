@@ -30,6 +30,13 @@
             required: true,
             autofocus: true,
             input_html: { autocomplete: "phone_number" }%>
-<%= f.input :is_partner,
-            as: :boolean,
-            label: t('.is_partner') %>
+<% if resource.persisted? %>
+  <%= f.input :is_partner,
+              as: :boolean,
+              label: t('.is_partner'),
+              disabled: true %>
+<% else %>
+  <%= f.input :is_partner,
+              as: :boolean,
+              label: t('.is_partner') %>
+<% end %>
