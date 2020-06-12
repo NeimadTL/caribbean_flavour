@@ -18,11 +18,10 @@ class Order < ApplicationRecord
 
   def add_line_item(items)
     items.each do |item|
-      saved = self.order_line_items.create(name: item.stock.product.name,
+      item = self.order_line_items.build(name: item.stock.product.name,
                                            unit_price: item.stock.price,
                                            quantity: item.quantity,
                                            shop_id: item.stock.shop.id)
-      item.delete if saved
     end
   end
 

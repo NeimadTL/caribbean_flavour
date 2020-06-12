@@ -8,7 +8,7 @@ class Consumer::OrdersController < ApplicationController
   before_action :set_cart, only: [:new, :create]
   before_action :set_order, only: [:show, :edit, :update, :destroy, :show_destroy_popup]
   before_action :set_shop, only: [:new, :create]
-  before_action :show_home_delivery_minimum_amount, only: [:new]
+  before_action :show_home_delivery_minimum_amount, only: [:new, :create]
   before_action :require_minimum_amount_for_home_delivery, only: [:create]
   before_action :require_ordered_status, only: [:destroy]
 
@@ -38,11 +38,13 @@ class Consumer::OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(order_params.merge(user: current_user))
+    items = @cart.line_items_of(@shop)
+    @order.add_line_item(items)
 
     respond_to do |format|
       if @order.save
-        @order.add_line_item(@cart.line_items_of(@shop))
         OrderMailer.new_order(@order).deliver_now
+        items.each { |item| item.delete }
         format.html { redirect_to consumer_order_url(@order), notice: t('.order_successfully_created') }
         format.json { render :show, status: :created, location: @order }
       else
