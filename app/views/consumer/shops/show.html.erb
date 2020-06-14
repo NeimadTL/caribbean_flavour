@@ -53,49 +53,39 @@
   </div>
 <% end %>
 
-<div class="row mb-2">
-  <div class="col-sm">
-    <div class="card mb-3">
-      <div class="card-body">
-        <h5><%= t('.products_header') %></h5>
-        <table class="table">
-            <thead>
-              <tr>
-                <th scope="col"><%= t('.name_col') %></th>
-                <th scope="col"><%= t('.price_col') %></th>
-                <th scope="col"><%= t('.actions_col') %></th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @shop.stocks.each do |stock| %>
-                <tr>
-                  <td><%= stock.product.name %></td>
-                  <td><%= number_to_currency(stock.price, locale: I18n.locale) %></td>
-                  <td>
-                    <% if user_signed_in? %>
-                      <% if current_user.role.code == Role::CONSUMER_ROLE_CODE %>
-                        <% unless @no_delivery_msg %>
-                          <%= link_to new_consumer_cart_stock_line_item_path(current_user.cart, stock),
-                              remote: true, class: 'btn transparent pt-0 pb-0' do %>
-                            <%= image_tag "cart-outline.svg", size: "24" %>
-                          <% end %>
-                        <% end %>
-                      <% end %>
-                    <% else %>
-                    <%= link_to "javascript:void(0);", class: 'btn transparent pt-0 pb-0', tabindex: "0", title: t('.popover_title'),
-                        data: { toggle: "popover", content: t('.popover_content'), container: "body", placement: "bottom" } do %>
-                      <%= image_tag "cart-outline.svg", size: "24" %>
-                    <% end %>
-                    <% end %>
-                  </td>
-                </tr>
+<h5><%= t('.products_header') %></h5>
+<div class="row">
+  <% @shop.stocks.each do |stock| %>
+    <div class="col-sm-12 col-md-9 col-lg-6 col-xl-3">
+      <div class="card mb-3" style="">
+        <%= image_tag "guadeloupe_fruits.png", class: 'card-img-top' %>
+        <div class="card-body">
+          <h5 class="card-title"><%= stock.product.name %></h5>
+          <div class="">
+            <%= number_to_currency(stock.price, locale: I18n.locale) %>
+            <% if user_signed_in? %>
+              <% if current_user.role.code == Role::CONSUMER_ROLE_CODE %>
+                <% unless @no_delivery_msg %>
+                  <%= link_to new_consumer_cart_stock_line_item_path(current_user.cart, stock),
+                      remote: true, class: 'btn transparent pt-0 pb-0 float-right' do %>
+                    <%= image_tag "cart-outline.svg", size: "24" %>
+                  <% end %>
+                <% end %>
               <% end %>
-            </tbody>
-        </table>
+            <% else %>
+              <%= link_to "javascript:void(0);", class: 'btn transparent pt-0 pb-0 float-right',
+                  tabindex: "0", title: t('.popover_title'), data: { toggle: "popover",
+                  content: t('.popover_content'), container: "body", placement: "bottom" } do %>
+                <%= image_tag "cart-outline.svg", size: "24" %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
 </div>
+
 
 <%= link_to consumer_shops_path, class: 'btn btn-success btn-lg btn-block mb-5' do %>
   <%= t('.exit_btn') %> <%= image_tag "exit-outline.svg", size: "24" %>

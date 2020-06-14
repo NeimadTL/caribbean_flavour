@@ -49,49 +49,35 @@
   <%= t('.tweak_shop_btn') %> <%= image_tag("build-outline.svg", size: "24") %>
 <% end %>
 
-
-
-<div class="row mb-2">
-  <div class="col-sm">
-    <div class="card mb-3">
-      <div class="card-body">
-        <h5><%= t('.products') %></h5>
-        <table class="table">
-            <thead>
-              <tr>
-                <!-- <th scope="col"><%= t('.reference') %></th> -->
-                <th scope="col"><%= t('.name') %></th>
-                <th scope="col"><%= t('.price') %></th>
-                <th scope="col"><%= t('.actions') %></th>
-              </tr>
-            </thead>
-            <tbody>
-              <% current_user.shop.stocks.each do |stock| %>
-                <tr>
-                  <!-- <td><%= stock.product.reference %></td> -->
-                  <td><%= stock.product.name %></td>
-                  <td><%= number_to_currency(stock.price, locale: I18n.locale) %></td>
-                  <td>
-                    <div class="dropdown">
-                      <button class="btn transparent-btn" type="button" id="dropdownMenu2"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <%= image_tag("ellipsis-horizontal-outline.svg", size: "24") %>
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <%= link_to t('.update'), edit_partner_shop_stock_path(current_user.shop, stock), class: 'dropdown-item' %>
-                        <%= link_to t('.delete'), partner_shop_stock_path(current_user.shop, stock), method: :delete,
-                            data: { confirm: t('.are_you_sure') }, class: 'dropdown-item' %>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-              <% end %>
-            </tbody>
-        </table>
+<h5><%= t('.products') %></h5>
+<div class="row">
+  <% @shop.stocks.each do |stock| %>
+    <div class="col-sm-12 col-md-9 col-lg-6 col-xl-3">
+      <div class="card mb-3" style="">
+        <%= image_tag "guadeloupe_fruits.png", class: 'card-img-top' %>
+        <div class="card-body">
+          <h5 class="card-title"><%= stock.product.name %></h5>
+          <!-- <%= stock.product.reference %> -->
+          <div class="">
+            <%= number_to_currency(stock.price, locale: I18n.locale) %>
+            <div class="dropdown dropleft float-right">
+              <button class="btn transparent-btn" type="button" id="dropdownMenu2"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= image_tag("ellipsis-horizontal-outline.svg", size: "24") %>
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <%= link_to t('.update'), edit_partner_shop_stock_path(current_user.shop, stock), class: 'dropdown-item' %>
+                <%= link_to t('.delete'), partner_shop_stock_path(current_user.shop, stock), method: :delete,
+                    data: { confirm: t('.are_you_sure') }, class: 'dropdown-item' %>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
 </div>
+
 
 <%= link_to new_partner_shop_stock_path(current_user.shop), class: 'btn btn-primary btn-lg btn-block mb-5' do %>
   <%= t('.add_product_btn') %> <%= image_tag("add-outline.svg", size: "24") %>
