@@ -54,7 +54,7 @@
   <% @shop.stocks.each do |stock| %>
     <div class="col-sm-12 col-md-9 col-lg-6 col-xl-3">
       <div class="card mb-3" style="">
-        <%= image_tag "guadeloupe_fruits.png", class: 'card-img-top' %>
+        <%= image_tag Product::ICONS[stock.product.reference], class: 'card-img-top border-bottom', size: '250x155' %>
         <div class="card-body">
           <h5 class="card-title"><%= stock.product.name %></h5>
           <!-- <%= stock.product.reference %> -->
