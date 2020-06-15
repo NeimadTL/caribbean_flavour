@@ -13,7 +13,7 @@
           <% @cart.line_items_of(@shop).each do |item| %>
             <li class="list-group-item">
               <div class="float-left">
-                <%= image_tag Product::ICONS[item.stock.product.reference], class: '', size: '64' %>
+                <%= image_tag Product::ICONS[item.stock.product.reference], class: 'img-fluid', size: '64' %>
               </div>
               <div class="float-right">
                 <div class="row">
