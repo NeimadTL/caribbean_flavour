@@ -8,30 +8,35 @@
         </button>
       </div>
       <div class="col-sm-3 col-md-6 col-lg-9 col-xl-12">
-        <table class="table mt-3">
-            <thead>
-              <tr>
-                <th scope="col"><%= t('.name_col') %></th>
-                <th scope="col"><%= t('.unit_price_col') %></th>
-                <th scope="col"><%= t('.qty_col') %></th>
-                <th scope="col"><%= t('.price_col') %></th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @cart.line_items_of(@shop).each do |item| %>
-                <tr>
-                  <td><%= item.stock.product.name %></td>
-                  <td><%= number_to_currency(item.price, locale: I18n.locale) %></td>
-                  <td><%= item.quantity %></td>
-                  <td><%= number_to_currency(item.total_price, locale: I18n.locale) %></td>
-                </tr>
-              <% end %>
-              <tr>
-                <td colspan="3">Total</td>
-                <td class="total_cell"><%= number_to_currency(@cart.total_price_for(@cart.line_items_of(@shop)), locale: I18n.locale) %></td>
-              </tr>
-            </tbody>
-        </table>
+
+        <ul class="list-group mt-2">
+          <% @cart.line_items_of(@shop).each do |item| %>
+            <li class="list-group-item">
+              <div class="float-left">
+                <%= image_tag Product::ICONS[item.stock.product.reference], class: '', size: '64' %>
+              </div>
+              <div class="float-right">
+                <div class="row">
+                  <div class="col"><h5 class="card-title"><%= item.stock.product.name %></h5></div>
+                  <div class="col"><p><%= number_to_currency(item.price, locale: I18n.locale) %></p></div>
+                </div>
+                <div class="row">
+                  <div class="col"><span class="badge badge-primary badge-pill"><%= item.quantity %> Kgs</span></div>
+                  <!-- <td><%= number_to_currency(item.total_price, locale: I18n.locale) %></td> -->
+                  <div class="col"></div> <!-- LEAVE THIS HERE OTHERWISE YOU'RE GONNA GET SHIT FUCKED UP BRUH -->
+                </div>
+              </div>
+            </li>
+          <% end %>
+          <li class="list-group-item">
+            <div class="float-right">
+              <div class="row">
+              <div class="col"><h5 class="card-title">Total</h5></div>
+              <div class="col"><p><%= number_to_currency(@cart.total_price_for(@cart.line_items_of(@shop)), locale: I18n.locale) %></p></div>
+            </div>
+            </div>
+          </li>
+        </ul>
 
         <% if @home_delivery_mininum_amount_msg %>
           <div class="card mb-3">
