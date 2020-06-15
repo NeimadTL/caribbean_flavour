@@ -1,24 +1,22 @@
 <h1><%= t('.cart_header') %></h1><br>
+
 <% @cart.line_items_by_shop.each do |shop, items| %>
   <h5><%= shop.name %></h5>
-  <table class="table">
-      <thead>
-        <tr>
-          <th scope="col"><%= t('.name_col') %></th>
-          <th scope="col"><%= t('.unit_price_col') %></th>
-          <th scope="col"><%= t('.qty_col') %></th>
-          <!-- <th scope="col"><%= t('.price_col') %></th> -->
-          <th scope="col"><%= t('.action_col') %></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% items.each do |item| %>
-          <tr>
-            <td><%= item.stock.product.name %></td>
-            <td><%= number_to_currency(item.price, locale: I18n.locale) %></td>
-            <td><%= item.quantity %></td>
+  <ul class="list-group">
+    <% items.each do |item| %>
+      <li class="list-group-item">
+        <div class="float-left">
+          <%= image_tag Product::ICONS[item.stock.product.reference], class: '', size: '64' %>
+        </div>
+        <div class="float-right">
+          <div class="row">
+            <div class="col"><h5 class="card-title"><%= item.stock.product.name %></h5></div>
+            <div class="col"><p><%= number_to_currency(item.price, locale: I18n.locale) %></p></div>
+          </div>
+          <div class="row">
+            <div class="col"><span class="badge badge-primary badge-pill"><%= item.quantity %> Kgs</span></div>
             <!-- <td><%= number_to_currency(item.total_price, locale: I18n.locale) %></td> -->
-            <td>
+            <div class="col">
               <div class="dropdown dropleft">
                 <button class="btn transparent-btn" type="button" id="dropdownMenu2"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -30,17 +28,21 @@
                       data: { confirm: t('.are_you_sure') }, class: 'dropdown-item' %>
                 </div>
               </div>
-            </td>
-          </tr>
-        <% end %>
-        <tr>
-          <td colspan="3">Total</td>
-          <td class="total_cell"><%= number_to_currency(@cart.total_price_for(items), locale: I18n.locale) %></td>
-        </tr>
-      </tbody>
-  </table>
-  <%= link_to t('.keep_shopping_link'), consumer_shop_path(shop), class: 'btn btn-sm btn-primary float-left' %>
+            </div>
+          </div>
+        </div>
+      </li>
+    <% end %>
+    <li class="list-group-item">
+      <div class="float-right">
+        <div class="row">
+        <div class="col"><h5 class="card-title">Total</h5></div>
+        <div class="col"><p><%= number_to_currency(@cart.total_price_for(items), locale: I18n.locale) %></p></div>
+      </div>
+      </div>
+    </li>
+  </ul>
+  <%= link_to t('.keep_shopping_link'), consumer_shop_path(shop), class: 'btn btn-sm btn-primary float-left mt-2' %>
   <%= link_to t('.order_link'), new_consumer_cart_shop_order_path(current_user.cart, shop), remote: true,
-      class: 'btn btn-sm btn-primary float-right' %>
-  <br><br><br>
+      class: 'btn btn-sm btn-primary float-right mt-2' %>
 <% end %>
