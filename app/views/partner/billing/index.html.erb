@@ -1,11 +1,40 @@
-<% @orders.each do |order| %>
-  <h5 class="card-title">
-    <%= t('.order_number') %>#<%= order.id %>
-    (<%= number_to_currency(order.items_total_price, locale: I18n.locale) %>)
-    [<%= number_to_currency(order.items_total_price * 0.03, locale: I18n.locale) %>]
-  </h5>
-<% end %>
-<h5 class="card-title">
-  Total (<%= number_to_currency(@orders.sum { |order| order.items_total_price }, locale: I18n.locale) %>)
-[<%= number_to_currency(@orders.sum { |order| order.items_total_price * 0.03 }, locale: I18n.locale) %>]
-</h5>
+<h1><%= t('.billing_header') %></h1>
+
+<ul class="list-group mt-2">
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    <div class="col"><h5 class="card-title">Total</h5></div>
+    <div class="col">
+    <h5 class="card-title">
+      <span class="badge badge-success badge-pill">
+        +<%= number_to_currency(@orders.sum { |order| order.items_total_price }, locale: I18n.locale) %>
+      </span>
+    </h5>
+    </div>
+    <div class="col">
+    <h5 class="card-title">
+      <span class="badge badge-primary badge-pill">
+        -<%= number_to_currency(@orders.sum { |order| order.items_total_price * 0.03 }, locale: I18n.locale) %>
+      </span>
+    </h5>
+    </div>
+  </li>
+  <% @orders.each do |order| %>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <div class="col"><h5 class="card-title"><%= t('.order_number') %>#<%= order.id %></h5></div>
+      <div class="col">
+      <h5 class="card-title">
+        <span class="badge badge-success badge-pill">
+          +<%= number_to_currency(order.items_total_price, locale: I18n.locale) %>
+        </span>
+      </h5>
+      </div>
+      <div class="col">
+      <h5 class="card-title">
+        <span class="badge badge-primary badge-pill">
+          -<%= number_to_currency(order.items_total_price, locale: I18n.locale) %>
+        </span>
+      </h5>
+      </div>
+    </li>
+  <% end %>
+</ul>

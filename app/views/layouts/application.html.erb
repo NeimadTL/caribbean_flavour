@@ -38,6 +38,9 @@
               <li class="nav-item">
                 <%= link_to t('.my_shop_link'), partner_shops_path, class: 'nav-link' %>
               </li>
+              <li class="nav-item">
+                <%= link_to t('.billing_link'), partner_billing_index_path, class: 'nav-link' %>
+              </li>
             <% elsif current_user.role.code == Role::ADMIN_ROLE_CODE %>
               <li class="nav-item">
                 <%= link_to t('.products_link'), admin_products_path, class: 'nav-link' %>
@@ -45,15 +48,15 @@
             <% end %>
           <% end %>
 
-          <li class="nav-item">
-            <a class="nav-link" href="#"><%= t('.features_link') %></a>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="#"><#%= t('.features_link') %></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><%= t('.pricing_link') %></a>
+            <a class="nav-link" href="#"><#%= t('.pricing_link') %></a>
           </li>
           <li class="nav-item">
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li>
+          </li> -->
         </ul>
 
         <ul class="navbar-nav ml-auto">

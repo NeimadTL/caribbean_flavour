@@ -72,6 +72,7 @@ en:
       sign_in_link: "Sign In"
       sign_up_link: "Sign Up"
       edit_account_link: "Edit account"
+      billing_link: "Billing"
 
   partner:
     orders:
@@ -204,6 +205,11 @@ en:
         require_to_be_shop_owner: "You are not the owner of this shop"
         require_to_be_shop_owner_product: "This product is not in your shop"
       product_in_shop_already: "This product is already in your shop."
+    billing:
+      index:
+        billing_header: "Billing"
+        order_number: "Order"
+
   invalid_shop: "Something went wrong : invalid shop"
   requires_partner_access_rights: "The page you were looking for requires partner access rights"
   require_to_be_shop_order: "This order does not belong to your shop"
