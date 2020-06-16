@@ -37,6 +37,10 @@ class Order < ApplicationRecord
     total
   end
 
+  def items_total_price
+    self.order_line_items.to_a.sum { |item| item.total_price }
+  end
+
 
   # def to_status
   #   case self.status

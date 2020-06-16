@@ -1,0 +1,11 @@
+<% @orders.each do |order| %>
+  <h5 class="card-title">
+    <%= t('.order_number') %>#<%= order.id %>
+    (<%= number_to_currency(order.items_total_price, locale: I18n.locale) %>)
+    [<%= number_to_currency(order.items_total_price * 0.03, locale: I18n.locale) %>]
+  </h5>
+<% end %>
+<h5 class="card-title">
+  Total (<%= number_to_currency(@orders.sum { |order| order.items_total_price }, locale: I18n.locale) %>)
+[<%= number_to_currency(@orders.sum { |order| order.items_total_price * 0.03 }, locale: I18n.locale) %>]
+</h5>
