@@ -41,18 +41,4 @@ class Order < ApplicationRecord
     self.order_line_items.to_a.sum { |item| item.total_price }
   end
 
-
-  # def to_status
-  #   case self.status
-  #   when "ordered"
-  #     I18n.t('ordered_status')
-  #   when "packed"
-  #     I18n.t('packed_status')
-  #   when "shipped"
-  #     I18n.t('shipped_status')
-  #   when "delivered"
-  #     I18n.t('delivered_status')
-  #   end
-  # end
-
 end
