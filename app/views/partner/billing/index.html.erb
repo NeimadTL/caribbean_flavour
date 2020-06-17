@@ -13,7 +13,7 @@
     <div class="col">
     <h5 class="card-title">
       <span class="badge badge-primary badge-pill">
-        -<%= number_to_currency(@orders.sum { |order| order.items_total_price * 0.03 }, locale: I18n.locale) %>
+        -<%= number_to_currency(@orders.sum { |order| order.items_total_price * Partner::BillingController::RATE }, locale: I18n.locale) %>
       </span>
     </h5>
     </div>
@@ -31,7 +31,7 @@
       <div class="col">
       <h5 class="card-title">
         <span class="badge badge-primary badge-pill">
-          -<%= number_to_currency(order.items_total_price * 0.03, locale: I18n.locale) %>
+          -<%= number_to_currency(order.items_total_price * Partner::BillingController::RATE, locale: I18n.locale) %>
         </span>
       </h5>
       </div>
