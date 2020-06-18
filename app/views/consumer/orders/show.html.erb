@@ -17,10 +17,10 @@
           <td><%= number_to_currency(item.total_price, locale: I18n.locale) %></td>
         </tr>
       <% end %>
-      <% if @order.shop.standard_delivery_fees > 0 && @order.delivery_option_code == DeliveryOption::CUSTOMER_PLACE_OPTION_CODE %>
+      <% if @order.standard_delivery_fees > 0 && @order.delivery_option_code == DeliveryOption::CUSTOMER_PLACE_OPTION_CODE %>
         <tr>
           <td colspan="3"><%= t('.standard_delivery_fees_label') %></td>
-          <td class="total_cell"><%= number_to_currency(@order.shop.standard_delivery_fees, locale: I18n.locale) %></td>
+          <td class="total_cell"><%= number_to_currency(@order.standard_delivery_fees, locale: I18n.locale) %></td>
         </tr>
       <% end %>
       <tr>

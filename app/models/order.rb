@@ -25,16 +25,16 @@ class Order < ApplicationRecord
     end
   end
 
+  def add_delivery_fees(fees)
+    self.standard_delivery_fees = fees
+  end
+
   def shop
     Shop.find(self.order_line_items.first.shop_id)
   end
 
   def total_price
-    total = self.order_line_items.to_a.sum { |item| item.total_price }
-    if self.delivery_option_code == DeliveryOption::CUSTOMER_PLACE_OPTION_CODE && self.shop.standard_delivery_fees > 0
-      total += self.shop.standard_delivery_fees
-    end
-    total
+    self.items_total_price + self.standard_delivery_fees
   end
 
   def items_total_price
