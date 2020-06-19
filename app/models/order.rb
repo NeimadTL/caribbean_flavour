@@ -21,7 +21,8 @@ class Order < ApplicationRecord
     items.each do |item|
       item = self.order_line_items.build(name: item.stock.product.name,
                                            unit_price: item.stock.price,
-                                           quantity: item.quantity)
+                                           quantity: item.quantity,
+                                           product_reference: item.stock.product.reference)
     end
   end
 

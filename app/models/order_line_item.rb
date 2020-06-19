@@ -4,7 +4,8 @@ class OrderLineItem < ApplicationRecord
   validates :unit_price, presence: true, numericality: { greater_than: 0 }
   validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validates_presence_of :order
-  
+  validates :product_reference, presence: true
+
   belongs_to :order, inverse_of: :order_line_items
 
   def total_price
