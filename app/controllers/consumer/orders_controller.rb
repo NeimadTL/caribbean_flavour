@@ -44,7 +44,7 @@ class Consumer::OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
-        OrderMailer.new_order(@order).deliver_now
+        # OrderMailer.new_order(@order).deliver_now
         items.each { |item| item.delete }
         format.html { redirect_to consumer_order_url(@order), notice: t('.order_successfully_created') }
         format.json { render :show, status: :created, location: @order }
@@ -76,7 +76,7 @@ class Consumer::OrdersController < ApplicationController
   # DELETE /orders/1
   # DELETE /orders/1.json
   def destroy
-    OrderMailer.cancelled_order(@order).deliver_now
+    # OrderMailer.cancelled_order(@order).deliver_now
     @order.destroy
     respond_to do |format|
       format.html { redirect_to consumer_orders_url, notice: t('.order_successfully_destroyed') }

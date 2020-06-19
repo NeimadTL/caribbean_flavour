@@ -27,7 +27,7 @@ class Partner::OrdersController < ApplicationController
   def update
     respond_to do |format|
       if @order.update(order_params)
-        OrderMailer.shipped_order(@order).deliver_now
+        # OrderMailer.shipped_order(@order).deliver_now
         format.html { redirect_to partner_orders_url, notice: t('.order_successfully_updated') }
         format.json { render :show, status: :ok, location: @order }
       else
