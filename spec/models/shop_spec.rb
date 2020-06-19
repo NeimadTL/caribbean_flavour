@@ -22,6 +22,8 @@ RSpec.describe Shop, type: :model do
   it { should have_many :stocks }
   it { should have_many :products }
 
+  it { should have_many :orders }
+
   it { should belong_to :user }
 
   it { should have_many :shop_delivery_options }

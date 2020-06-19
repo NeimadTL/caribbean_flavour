@@ -8,10 +8,8 @@ RSpec.describe OrderLineItem, type: :model do
   it { should validate_presence_of :quantity }
   it { should validate_numericality_of(:quantity).only_integer.is_greater_than(0) }
 
-  it { should validate_presence_of :order_id }
-  it { should validate_presence_of :shop_id }
+  it { should validate_presence_of :order }
 
-  it { should belong_to :order }
-  it { should belong_to :shop }
+  it { should belong_to(:order).inverse_of(:order_line_items) }
 
 end
