@@ -20,8 +20,7 @@ class Shop < ApplicationRecord
   has_many :stocks, dependent: :destroy
   has_many :products, through: :stocks, dependent: :destroy
 
-  has_many :order_line_items, dependent: :destroy
-  has_many :orders, through: :order_line_items, dependent: :destroy
+  has_many :orders, dependent: :destroy
 
   belongs_to :user
 
