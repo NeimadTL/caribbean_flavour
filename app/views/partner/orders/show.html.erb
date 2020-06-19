@@ -1,43 +1,53 @@
-<h5><%= t('.order_number') %>#<%= @order.id %></h5>
-<table class="table">
-    <thead>
-      <tr>
-        <th scope="col"><%= t('.name_col') %></th>
-        <th scope="col"><%= t('.unit_price_col') %></th>
-        <th scope="col"><%= t('.qty_col') %></th>
-        <th scope="col"><%= t('.price_col') %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @order.order_line_items.each do |item| %>
-        <tr>
-          <td><%= item.name %></td>
-          <td><%= number_to_currency(item.unit_price, locale: I18n.locale) %></td>
-          <td><%= item.quantity %></td>
-          <td><%= number_to_currency(item.total_price, locale: I18n.locale) %></td>
-        </tr>
-      <% end %>
-      <% if @order.standard_delivery_fees > 0 && @order.delivery_option_code == DeliveryOption::CUSTOMER_PLACE_OPTION_CODE %>
-        <tr>
-          <td colspan="3"><%= t('.standard_delivery_fees_label') %></td>
-          <td class="total_cell"><%= number_to_currency(@order.standard_delivery_fees, locale: I18n.locale) %></td>
-        </tr>
-      <% end %>
-      <tr>
-        <td colspan="3">Total</td>
-        <td class="total_cell"><%= number_to_currency(@order.total_price, locale: I18n.locale) %></td>
-      </tr>
-    </tbody>
-</table>
+<div class="card mt-3 mb-3">
+  <div class="card-header">
+    <h5 class="card-title"><%= t('.order_number') %>#<%= @order.id %></h5>
+    <div class="row">
+      <div class="col"><%= image_tag "person-circle-outline.svg", size: "24" %> <%= @order.user.firstname %> <%= @order.user.lastname %></div>
+      <div class="col"><%= image_tag "bicycle-outline.svg", size: "24" %> <%= @order.delivery_option.to_option %></div>
+      <div class="col"><strong><%= t('.status') %></strong> <%= t(Order::STATUS[@order.status_id]) %></div>
+    </div>
+  </div>
+  <ul class="list-group">
+    <% @order.order_line_items.each do |item| %>
+      <li class="list-group-item border">
+        <div class="float-left">
+          <%= image_tag Product::ICONS[item.product_reference], class: 'img-fluid', size: '64' %>
+        </div>
+        <div class="float-right">
+          <div class="row">
+            <div class="col"><h5 class="card-title"><%= item.name %></h5></div>
+            <div class="col"><h5 class="text-nowrap"><%= number_to_currency(item.total_price, locale: I18n.locale) %></h5></div>
+          </div>
+          <div class="row">
+            <div class="col"><span class="badge badge-primary badge-pill"><%= item.quantity %> Kgs</span></div>
+            <!-- <td><%= number_to_currency(item.total_price, locale: I18n.locale) %></td> -->
+            <div class="col"></div>
+          </div>
+        </div>
+      </li>
+    <% end %>
+    <% if @order.standard_delivery_fees > 0 && @order.delivery_option_code == DeliveryOption::CUSTOMER_PLACE_OPTION_CODE %>
+      <li class="list-group-item">
+        <div class="float-right">
+          <div class="row">
+            <div class="col-9"><h5 class="card-title"><%= t('.standard_delivery_fees_label') %></h5></div>
+            <div class="col-3"><h5 class="text-nowrap"><%= number_to_currency(@order.standard_delivery_fees, locale: I18n.locale) %></h5></div>
+          </div>
+        </div>
+      </li>
+    <% end %>
+    <li class="list-group-item">
+      <div class="float-right">
+        <div class="row">
+        <div class="col"><h5 class="card-title">Total</h5></div>
+        <div class="col"><h5 class="text-nowrap"><%= number_to_currency(@order.total_price, locale: I18n.locale) %></h5></div>
+      </div>
+      </div>
+    </li>
+  </ul>
+</div>
 
 
-<p>
-  <strong><%= t('.customer')%></strong> <%= @order.user.firstname %> <%= @order.user.lastname %><br>
-  <strong><%= t('.delivery_option') %></strong> <%= @order.delivery_option.to_option %><br>
-  <strong><%= t('.status') %></strong> <%= t(Order::STATUS[@order.status_id]) %>
-</p>
+<%= link_to t('.edit_status_link'), edit_partner_order_path(@order), class: "btn btn-primary btn-sm float-right" %>
 
-
-
-<%= link_to t('.edit_status_link'), edit_partner_order_path(@order) %> |
 <%= link_to t('.back_link'), partner_orders_path %>
