@@ -40,7 +40,7 @@ class Consumer::OrdersController < ApplicationController
     @order = Order.new(order_params.merge(user: current_user, shop: @shop))
     items = @cart.line_items_of(@shop)
     @order.add_line_item(items)
-    @order.add_delivery_fees(@shop.standard_delivery_fees) if @order.delivery_option_code == DeliveryOption::CUSTOMER_PLACE_OPTION_CODE
+    @order.add_delivery_fees(@shop.standard_delivery_fees) if @order.delivery_option_code == DeliveryOption::CUSTOMER_PLACE_OPTION_CODE || @order.delivery_option_code == DeliveryOption::PARCEL_PICKUP_POINT_OPTION_CODE
 
     respond_to do |format|
       if @order.save

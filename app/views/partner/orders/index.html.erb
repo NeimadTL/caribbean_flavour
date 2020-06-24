@@ -18,7 +18,7 @@
           </p>
           <p class="card-text">
             <%= image_tag "cash-outline.svg", size: "24" %> <%= number_to_currency(order.total_price, locale: I18n.locale) %>
-            <% if order.standard_delivery_fees > 0 && order.delivery_option_code == DeliveryOption::CUSTOMER_PLACE_OPTION_CODE %>
+            <% if order.standard_delivery_fees > 0 && (order.delivery_option_code == DeliveryOption::CUSTOMER_PLACE_OPTION_CODE || order.delivery_option_code == DeliveryOption::PARCEL_PICKUP_POINT_OPTION_CODE) %>
               (<%= number_to_currency(order.standard_delivery_fees, locale: I18n.locale) %> <%= t('.fees_included') %>)
             <% end %>
           </p>
