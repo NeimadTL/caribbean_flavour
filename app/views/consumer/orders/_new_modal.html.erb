@@ -17,8 +17,8 @@
               </div>
               <div class="float-right">
                 <div class="row">
-                  <div class="col"><h5 class="card-title"><%= item.stock.product.name %></h5></div>
-                  <div class="col"><p><%= number_to_currency(item.price, locale: I18n.locale) %></p></div>
+                  <div class="col"><h5 class="card-title text-nowrap"><%= item.stock.product.name %></h5></div>
+                  <div class="col"><p class="text-nowrap"><%= number_to_currency(item.price, locale: I18n.locale) %></p></div>
                 </div>
                 <div class="row">
                   <div class="col"><span class="badge badge-primary badge-pill"><%= item.quantity %> Kgs</span></div>
@@ -28,12 +28,20 @@
               </div>
             </li>
           <% end %>
+          <li class="list-group-item d-none" id="standard_delivery_fees_li_id">
+            <div class="float-right">
+              <div class="row">
+                <div class="col"><h5 class="card-title text-nowrap"><%= t('.standard_delivery_fees_label') %></h5></div>
+                <div class="col"><p id="standard_delivery_fees_id" class="text-nowrap"></p></div>
+              </div>
+            </div>
+          </li>
           <li class="list-group-item">
             <div class="float-right">
               <div class="row">
-              <div class="col"><h5 class="card-title">Total</h5></div>
-              <div class="col"><p><%= number_to_currency(@cart.total_price_for(@cart.line_items_of(@shop)), locale: I18n.locale) %></p></div>
-            </div>
+                <div class="col"><h5 class="card-title text-nowrap">Total</h5></div>
+                <div class="col"><p id="total_value_id" class="text-nowrap"><%= number_to_currency(@cart.total_price_for(@cart.line_items_of(@shop)), locale: I18n.locale) %></p></div>
+              </div>
             </div>
           </li>
         </ul>

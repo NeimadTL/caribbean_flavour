@@ -17,6 +17,10 @@ class Consumer::ShopsController < ApplicationController
   # GET /consumer/shops/1
   # GET /consumer/shops/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /consumer/shops/new

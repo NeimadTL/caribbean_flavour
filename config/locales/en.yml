@@ -107,7 +107,7 @@ en:
         edit_status_link: "Update Status"
         back_link: "Back"
         requires_partner_access_rights: "The page you were looking for requires partner access rights"
-        standard_delivery_fees_label: "Standard delivery fees"
+        standard_delivery_fees_label: "Delivery fees"
       update:
         order_successfully_updated: "Order's status was successfully updated."
         requires_partner_access_rights: "The page you were looking for requires partner access rights"
@@ -127,7 +127,7 @@ en:
         additional_address_information: "Additional address information"
         shop_city: "City"
         minimum_delivery_price: "Minimum price for delivery"
-        standard_delivery_fees: "Standard delivery fees"
+        standard_delivery_fees: "Delivery fees"
       edit:
         treak_shop_header: "Treak your shop settings"
         back_link: "Back"
@@ -315,6 +315,7 @@ en:
         actions_col: "Actions"
         order_recap: "%{shop_name}'s order recap"
         delivery_option: "Choose a delivery option"
+        standard_delivery_fees_label: "Delivery fees"
       index:
         my_orders_hearder: "My Orders"
         order_status: "Status:"
@@ -345,7 +346,7 @@ en:
         require_to_be_order_owner: "You are not the owner of this order"
         order_number: "Order"
         shop_name: "Shop:"
-        standard_delivery_fees_label: "Standard delivery fees"
+        standard_delivery_fees_label: "Delivery fees"
       create:
         order_successfully_created: "Order was successfully created."
         requires_consumer_access_rights: "The page you were looking for requires consumer access rights"

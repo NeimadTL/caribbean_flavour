@@ -1,0 +1,8 @@
+if ($("#order_delivery_option_code_1").is(':checked') || $("#order_delivery_option_code_3").is(':checked')) {
+  $("#standard_delivery_fees_li_id").removeClass("d-none");
+  $("#standard_delivery_fees_id").html("<%= number_to_currency(@shop.standard_delivery_fees, locale: I18n.locale) %>");
+  $("#total_value_id").html("<%= number_to_currency(current_user.cart.total_price_for(current_user.cart.line_items_of(@shop))+@shop.standard_delivery_fees, locale: I18n.locale) %>");
+} else {
+  $("#standard_delivery_fees_li_id").addClass("d-none");
+  $("#total_value_id").html("<%= number_to_currency(current_user.cart.total_price_for(current_user.cart.line_items_of(@shop)), locale: I18n.locale) %>");
+}

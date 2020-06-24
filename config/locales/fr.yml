@@ -82,7 +82,7 @@ fr:
         back_link: "Précédent"
         requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
         require_to_be_shop_order: "Cette commande n'appartient pas à votre magasin"
-        standard_delivery_fees_label: "Frais de livraison standard"
+        standard_delivery_fees_label: "Frais de livraison"
       update:
         order_successfully_updated: "Statut de la commande mis à jour avec succès"
         requires_partner_access_rights: "La page que vous recherchez requiert un droit d'accès partenaire."
@@ -102,7 +102,7 @@ fr:
         additional_address_information: "Complément d'adresse"
         shop_city: "Ville"
         minimum_delivery_price: "Prix minimum pour livraison"
-        standard_delivery_fees: "Frais standard de livraison"
+        standard_delivery_fees: "Frais de livraison"
       edit:
         treak_shop_header: "Réglez les paramètres de votre magasin"
         back_link: "Précédent"
@@ -284,6 +284,7 @@ fr:
         price_col: "Prix"
         order_recap: "Récapitulatif de votre commande chez %{shop_name}"
         delivery_option: "Choisissez un moyen de livraison"
+        standard_delivery_fees_label: "Frais de livraison"
       index:
         my_orders_hearder: "Mes commandes"
         order_status: "Statut:"
@@ -314,7 +315,7 @@ fr:
         require_to_be_order_owner: "Vous n'êtes pas le propriétaire de cette commande"
         order_number: "Commande"
         shop_name: "Magasin:"
-        standard_delivery_fees_label: "Frais standard de livraison"
+        standard_delivery_fees_label: "Frais de livraison"
       create:
         order_successfully_created: "Commande créée avec succès."
         requires_consumer_access_rights: "La page que vous recherchez requiert un droit d'accès consommateur."
@@ -413,7 +414,7 @@ fr:
         delivery_options: "Moyens de livraison"
         product_category: "Catégorie de produit"
         minimum_delivery_price: "Prix minimum de livraison"
-        standard_delivery_fees: "Frais de livraison standard"
+        standard_delivery_fees: "Frais de livraison"
       stock:
         product: "Produit"
         price: "Prix"
