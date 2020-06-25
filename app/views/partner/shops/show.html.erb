@@ -50,10 +50,10 @@
 <% end %>
 
 <h5><%= t('.products') %></h5>
-<div class="row">
+<div class="row row-cols-1 row-cols-2">
   <% @shop.stocks.each do |stock| %>
-    <div class="col-sm-12 col-md-9 col-lg-6 col-xl-3">
-      <div class="card mb-3" style="">
+    <div class="col-sm-12 col-md-9 col-lg-6 col-xl-3 mb-3">
+      <div class="card h-100" style="">
         <%= image_tag Product::ICONS[stock.product.reference], class: 'card-img-top border-bottom p-3 img-fluid' %>
         <div class="card-body">
           <h5 class="card-title"><%= stock.product.name %></h5>
