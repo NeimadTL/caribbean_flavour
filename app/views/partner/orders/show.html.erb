@@ -30,8 +30,8 @@
       <li class="list-group-item">
         <div class="float-right">
           <div class="row">
-            <div class="col-9"><h5 class="card-title"><%= t('.standard_delivery_fees_label') %></h5></div>
-            <div class="col-3"><h5 class="text-nowrap"><%= number_to_currency(@order.standard_delivery_fees, locale: I18n.locale) %></h5></div>
+            <div class="col"><h5 class="card-title text-nowrap"><%= t('.standard_delivery_fees_label') %></h5></div>
+            <div class="col"><h5 class="text-nowrap"><%= number_to_currency(@order.standard_delivery_fees, locale: I18n.locale) %></h5></div>
           </div>
         </div>
       </li>
