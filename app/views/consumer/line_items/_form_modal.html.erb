@@ -1,6 +1,6 @@
 <div id="lineItemModalId" class="modal" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
+    <div class="modal-content" style="background: #eee;">
       <div class="modal-header">
         <h5 class="modal-title">Modal title</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -9,10 +9,18 @@
       </div>
       <div class="col-sm-3 col-md-6 col-lg-9 col-xl-12">
         <div class="card mt-3 mb-3">
-          <div class="card-header"><%= stock.shop.name %></div>
+          <!-- <div class="card-header"><-%= stock.shop.name %></div> -->
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
-              <%= stock.product.name %> : <%= number_to_currency(number_to_human(stock.price)) %>
+              <div class="float-left">
+                <%= image_tag Product::ICONS[stock.product.reference], class: 'img-fluid', size: '64' %>
+              </div>
+              <div class="float-right">
+                <div class="row">
+                  <div class="col"><h5 class="card-title text-nowrap"><%= stock.product.name %></h5></div>
+                  <div class="col"><p class="text-nowrap"><%= number_to_currency(stock.price, locale: I18n.locale) %></p></div>
+                </div>
+              </div>
             </li>
           </ul>
         </div>

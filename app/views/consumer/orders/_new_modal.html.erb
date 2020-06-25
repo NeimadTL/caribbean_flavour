@@ -1,6 +1,6 @@
 <div id="orderModalId" class="modal" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-    <div class="modal-content">
+    <div class="modal-content" style="background: #eee;">
       <div class="modal-header">
         <h5 class="modal-title"><%= t('.order_recap', shop_name: @shop.name) %></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -11,7 +11,7 @@
 
         <ul class="list-group mt-2">
           <% @cart.line_items_of(@shop).each do |item| %>
-            <li class="list-group-item">
+            <li class="list-group-item" style="background: #eee;">
               <div class="float-left">
                 <%= image_tag Product::ICONS[item.stock.product.reference], class: 'img-fluid', size: '64' %>
               </div>
@@ -28,7 +28,7 @@
               </div>
             </li>
           <% end %>
-          <li class="list-group-item d-none" id="standard_delivery_fees_li_id">
+          <li class="list-group-item d-none" id="standard_delivery_fees_li_id" style="background: #eee;">
             <div class="float-right">
               <div class="row">
                 <div class="col"><h5 class="card-title text-nowrap"><%= t('.standard_delivery_fees_label') %></h5></div>
@@ -36,7 +36,7 @@
               </div>
             </div>
           </li>
-          <li class="list-group-item">
+          <li class="list-group-item" style="background: #eee;">
             <div class="float-right">
               <div class="row">
                 <div class="col"><h5 class="card-title text-nowrap">Total</h5></div>

@@ -4,7 +4,7 @@
   <h5><%= shop.name %></h5>
   <ul class="list-group">
     <% items.each do |item| %>
-      <li class="list-group-item">
+      <li class="list-group-item" style="background-color: #eee;">
         <div class="float-left">
           <%= image_tag Product::ICONS[item.stock.product.reference], class: 'img-fluid', size: '64' %>
         </div>
@@ -33,7 +33,7 @@
         </div>
       </li>
     <% end %>
-    <li class="list-group-item">
+    <li class="list-group-item" style="background-color: #eee;">
       <div class="float-right">
         <div class="row">
         <div class="col"><h5 class="card-title">Total</h5></div>
