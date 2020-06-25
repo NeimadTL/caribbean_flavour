@@ -37,7 +37,7 @@
       <div class="float-right">
         <div class="row">
         <div class="col"><h5 class="card-title">Total</h5></div>
-        <div class="col"><p><%= number_to_currency(@cart.total_price_for(items), locale: I18n.locale) %></p></div>
+        <div class="col"><p class="text-nowrap"><%= number_to_currency(@cart.total_price_for(items), locale: I18n.locale) %></p></div>
       </div>
       </div>
     </li>
