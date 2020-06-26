@@ -15,7 +15,7 @@
   <% @shops.each do |shop| %>
     <% presenter = ShopPresenter.new(shop) %>
     <div class="col-sm-12 col-md-9 col-lg-6 col-xl-3">
-      <div class="card mb-4" style="background-color: #eee;">
+      <div class="card mb-4 border-0" style="background-color: #eee; box-shadow: 0 0 1px 0 rgba(42, 42, 42, 0.4), 0 3px 4px 0 rgba(42, 42, 42, 0.2);">
         <%= image_tag "guadeloupe_fruits.png", class: 'card-img-top' %>
         <div class="card-body">
           <h5 class="card-title">

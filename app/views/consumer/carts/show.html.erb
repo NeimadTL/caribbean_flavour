@@ -2,9 +2,9 @@
 
 <% @cart.line_items_by_shop.each do |shop, items| %>
   <h5><%= shop.name %></h5>
-  <ul class="list-group">
+  <ul class="list-group" style="box-shadow: 0 0 1px 0 rgba(42, 42, 42, 0.4), 0 3px 4px 0 rgba(42, 42, 42, 0.2);">
     <% items.each do |item| %>
-      <li class="list-group-item" style="background-color: #eee;">
+      <li class="list-group-item border-0" style="background-color: #eee;">
         <div class="float-left">
           <%= image_tag Product::ICONS[item.stock.product.reference], class: 'img-fluid', size: '64' %>
         </div>
@@ -33,7 +33,7 @@
         </div>
       </li>
     <% end %>
-    <li class="list-group-item" style="background-color: #eee;">
+    <li class="list-group-item border-0" style="background-color: #eee;">
       <div class="float-right">
         <div class="row">
         <div class="col"><h5 class="card-title">Total</h5></div>
