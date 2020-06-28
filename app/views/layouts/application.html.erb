@@ -97,13 +97,17 @@
             <% if current_user.role.code == Role::CONSUMER_ROLE_CODE %>
               <li class="nav-item d-none d-xl-block d-xl-none">
                 <%= link_to consumer_cart_path(current_user.cart), class: 'btn transparent-btn' do %>
-                  <%= image_tag("cart-outline.svg", size: "24") %>
+                  <span class="badge badge-warning nav-link text-dark">
+                    <%= image_tag("cart-outline.svg", size: "24") %>
+                  </span>
                 <% end %>
               </li>
             <% elsif current_user.role.code == Role::PARTNER_ROLE_CODE %>
               <li class="nav-item d-none d-xl-block d-xl-none">
                 <%= link_to partner_shops_path, class: 'btn transparent-btn' do %>
-                  <%= image_tag("home-outline.svg", size: "24") %>
+                  <span class="badge badge-warning nav-link text-dark">
+                    <%= image_tag("home-outline.svg", size: "24") %>
+                  </span>
                 <% end %>
               </li>
             <% end %>
