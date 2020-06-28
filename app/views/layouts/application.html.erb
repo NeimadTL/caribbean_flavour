@@ -21,13 +21,13 @@
           <div class="p-2 bd-highlight">
             <% if current_user.role.code == Role::CONSUMER_ROLE_CODE %>
               <%= link_to consumer_cart_path(current_user.cart), class: 'btn transparent-btn' do %>
-                <span class="badge badge-warning nav-link text-dark">
+                <span class="badge badge-warning nav-link text-dark border-0" style="box-shadow: 0 0 1px 0 rgba(42, 42, 42, 0.4), 0 3px 4px 0 rgba(42, 42, 42, 0.2);">
                   <%= image_tag("cart-outline.svg", size: "24") %>
                 </span>
               <% end %>
             <% elsif current_user.role.code == Role::PARTNER_ROLE_CODE %>
               <%= link_to partner_shops_path, class: 'btn transparent-btn' do %>
-                <span class="badge badge-warning nav-link text-dark">
+                <span class="badge badge-warning nav-link text-dark border-0" style="box-shadow: 0 0 1px 0 rgba(42, 42, 42, 0.4), 0 3px 4px 0 rgba(42, 42, 42, 0.2);">
                   <%= image_tag("home-outline.svg", size: "24") %>
                 </span>
               <% end %>
@@ -36,7 +36,7 @@
           <div class="dropdown p-2 bd-highlight">
             <button class="btn transparent-btn" type="button" id="dropdownMenuButton"
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               <span class="badge badge-warning nav-link text-dark">
+               <span class="badge badge-warning nav-link text-dark border-0" style="box-shadow: 0 0 1px 0 rgba(42, 42, 42, 0.4), 0 3px 4px 0 rgba(42, 42, 42, 0.2);">
                  <%= image_tag("person-outline.svg", size: "24") %>
                </span>
             </button>
@@ -97,7 +97,7 @@
             <% if current_user.role.code == Role::CONSUMER_ROLE_CODE %>
               <li class="nav-item d-none d-xl-block d-xl-none">
                 <%= link_to consumer_cart_path(current_user.cart), class: 'btn transparent-btn' do %>
-                  <span class="badge badge-warning nav-link text-dark">
+                  <span class="badge badge-warning nav-link text-dark border-0" style="box-shadow: 0 0 1px 0 rgba(42, 42, 42, 0.4), 0 3px 4px 0 rgba(42, 42, 42, 0.2);">
                     <%= image_tag("cart-outline.svg", size: "24") %>
                   </span>
                 <% end %>
@@ -105,7 +105,7 @@
             <% elsif current_user.role.code == Role::PARTNER_ROLE_CODE %>
               <li class="nav-item d-none d-xl-block d-xl-none">
                 <%= link_to partner_shops_path, class: 'btn transparent-btn' do %>
-                  <span class="badge badge-warning nav-link text-dark">
+                  <span class="badge badge-warning nav-link text-dark border-0" style="box-shadow: 0 0 1px 0 rgba(42, 42, 42, 0.4), 0 3px 4px 0 rgba(42, 42, 42, 0.2);">
                     <%= image_tag("home-outline.svg", size: "24") %>
                   </span>
                 <% end %>
@@ -115,7 +115,7 @@
               <div class="dropdown">
                 <button class="btn transparent-btn" type="button" id="dropdownMenuButton"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="badge badge-warning nav-link text-dark">
+                  <span class="badge badge-warning nav-link text-dark border-0" style="box-shadow: 0 0 1px 0 rgba(42, 42, 42, 0.4), 0 3px 4px 0 rgba(42, 42, 42, 0.2);">
                     Hey @<%= current_user.username %>
                   </span>
                 </button>
