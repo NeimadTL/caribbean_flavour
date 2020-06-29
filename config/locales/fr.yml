@@ -247,6 +247,7 @@ fr:
       form_modal:
         add_to_cart_btn: "Ajouter au panier"
         qty_label: "Quantité (Kgs)"
+        add_product_to_cart: "Ajouter ce produit à votre panier"
     carts:
       show:
         cart_header: "Panier"

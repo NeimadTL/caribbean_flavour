@@ -277,6 +277,7 @@ en:
       form_modal:
         add_to_cart_btn: "Add to cart"
         qty_label: "Quantity (Kgs)"
+        add_product_to_cart: "Add this product to your cart"
     carts:
       show:
         cart_header: "Cart"
