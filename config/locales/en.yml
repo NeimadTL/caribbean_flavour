@@ -217,6 +217,18 @@ en:
   require_to_be_shop_owner: "You are not the owner of this shop"
   require_to_be_shop_owner_product: "This product is not in your shop"
   product_in_shop_already: "This product is already in your shop."
+  JAN: "January"
+  FEB: "February"
+  MAR: "March"
+  APR: "April"
+  MAY: "May"
+  JUN: "June"
+  JUL: "July"
+  AUG: "August"
+  SEP: "September"
+  OCT: "October"
+  NOV: "November"
+  DEC: "December"
 
 
   consumer:

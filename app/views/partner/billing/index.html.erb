@@ -3,7 +3,7 @@
 <% if user_signed_in? %>
   <div class="mt-2 mb-2">
     <%= form_tag partner_billing_index_path, method: :get do %>
-      <%= select_tag "month", options_for_select(Partner::BillingController::MONTHS.map { |k,v| [v,k] },
+      <%= select_tag "month", options_for_select(Partner::BillingController::MONTHS.map { |k,v| [t(v),k] },
       params[:month]||Time.now.month), onchange: 'this.form.submit()', class: 'mt-2' %>
       <%= submit_tag 'submit', {style: 'display: none;'} %>
     <% end %>
